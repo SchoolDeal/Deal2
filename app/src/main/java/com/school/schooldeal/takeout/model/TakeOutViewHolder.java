@@ -6,6 +6,7 @@ import com.school.schooldeal.base.BaseViewHolder;
 
 /**
  * Created by U-nookia on 2016/12/23.
+ * 外卖界面的viewHolder
  */
 
 public class TakeOutViewHolder extends BaseViewHolder {

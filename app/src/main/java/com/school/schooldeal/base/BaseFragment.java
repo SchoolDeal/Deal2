@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by U-nookia on 2016/12/19.
+ * fragment的base
  */
 
 public abstract class BaseFragment extends Fragment{
@@ -24,7 +25,9 @@ public abstract class BaseFragment extends Fragment{
         return view;
     }
 
+    //做数据或其他初始化的方法
     protected abstract void initData();
 
+    //获取当前fragment的view的方法
     protected abstract int getResourceId();
 }

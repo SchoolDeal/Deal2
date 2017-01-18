@@ -13,6 +13,7 @@ import butterknife.BindView;
 
 /**
  * Created by U-nookia on 2016/12/19.
+ * 外卖界面的view
  */
 
 public class TakeOutFragment extends BaseFragment

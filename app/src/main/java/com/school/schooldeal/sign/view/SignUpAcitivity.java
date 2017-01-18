@@ -1,11 +1,10 @@
-package com.school.schooldeal.sign;
+package com.school.schooldeal.sign.view;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
@@ -17,12 +16,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by U-nookia on 2016/12/19.
- * 注册activity
+ * Created by U-nookia on 2017/1/18.
  */
 
 public class SignUpAcitivity extends BaseActivity {
-
     @BindView(R.id.name_edit)
     EditText nameEdit;
     @BindView(R.id.name_float_edit)
@@ -39,7 +36,7 @@ public class SignUpAcitivity extends BaseActivity {
     Button signUp;
 
     public static Intent getIntentToSignUpActivity(Context context) {
-        Intent intent = new Intent(context, SignUpAcitivity.class);
+        Intent intent = new Intent(context,SignUpAcitivity.class);
         return intent;
     }
 
@@ -49,7 +46,7 @@ public class SignUpAcitivity extends BaseActivity {
     }
 
     @Override
-    public int getContentViewId() {
+    protected int getContentViewId() {
         return R.layout.activity_signup;
     }
 

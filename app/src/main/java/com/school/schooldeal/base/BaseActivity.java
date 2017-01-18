@@ -11,6 +11,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by U-nookia on 2016/12/19.
+ * activity的base
  */
 
 public abstract class BaseActivity extends FragmentActivity {
@@ -37,7 +38,9 @@ public abstract class BaseActivity extends FragmentActivity {
         }
     }
 
+    //用于做数据或其他初始化的方法
     protected abstract void initData();
 
+    //获取到当前activity的view的方法
     protected abstract int getContentViewId();
 }

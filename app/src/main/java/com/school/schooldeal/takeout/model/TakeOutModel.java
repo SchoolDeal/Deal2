@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by U-nookia on 2016/12/19.
+ * 外卖界面的数据处理类，用于获取数据集合，对数据集合做操作
  */
 
 public class TakeOutModel implements ImplTakeOutModel{

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bmob.push.BmobPush;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
@@ -46,8 +47,13 @@ public class MainActivity extends BaseActivity implements
     protected void initData(){
         initFragments();
         initViewPager();
-        initBottomNavigationBar();
-        initToolBar();
+        initBottomNavigationBar();    //初始化底部导航栏
+        initToolBar();                //初始化toolbar
+        initPushService();            //启动推送服务
+    }
+
+    private void initPushService() {
+        BmobPush.startWork(this);
     }
 
     private void initToolBar() {

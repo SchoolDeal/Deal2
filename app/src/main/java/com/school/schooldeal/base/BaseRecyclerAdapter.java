@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by U-nookia on 2016/12/22.
+ * 泛型里传入该适配器中数据集合的类型
  */
 
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
@@ -37,10 +38,12 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         return context;
     }
 
+    //用于设置集合中的数据
     public void setData(List<T> lists){
         this.lists = lists;
         notifyDataSetChanged();
     }
 
+    //用于绑定数据和视图的抽象方法
     protected abstract void bindData(BaseViewHolder holder,T item);
 }
