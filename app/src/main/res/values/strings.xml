@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SchoolDeal</string>
+    <string name="app_title">title</string>
+    <string name="school_task_title">title</string>
+    <string name="take_out_title">title</string>
+    <string name="mine_title">title</string>
+    <string name="message_title">title</string>
+</resources>
