@@ -1,6 +1,6 @@
 package com.school.schooldeal.takeout.view;
 
-import com.school.schooldeal.adapter.TakeOutDataAdapter;
+import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 
 /**
  * Created by U-nookia on 2016/12/19.

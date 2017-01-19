@@ -1,4 +1,4 @@
-package com.school.schooldeal.adapter;
+package com.school.schooldeal.takeout.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;

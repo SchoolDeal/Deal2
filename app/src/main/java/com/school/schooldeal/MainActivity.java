@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.school.schooldeal.adapter.MyFragmentPagerAdapter;
+import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.base.BaseFragment;
 import com.school.schooldeal.message.view.MessageFragment;

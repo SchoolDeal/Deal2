@@ -1,4 +1,4 @@
-package com.school.schooldeal.tools;
+package com.school.schooldeal.commen.util;
 
 import android.content.Context;
 import android.util.Log;

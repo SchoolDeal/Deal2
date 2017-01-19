@@ -2,7 +2,7 @@ package com.school.schooldeal.takeout.presenter;
 
 import android.content.Context;
 
-import com.school.schooldeal.adapter.TakeOutDataAdapter;
+import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.model.ImplTakeOutModel;
 import com.school.schooldeal.takeout.model.TakeOutModel;
 import com.school.schooldeal.takeout.view.ImplTakeOutFragment;

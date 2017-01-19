@@ -2,10 +2,9 @@ package com.school.schooldeal.takeout.view;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.school.schooldeal.R;
-import com.school.schooldeal.adapter.TakeOutDataAdapter;
+import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.base.BaseFragment;
 import com.school.schooldeal.takeout.presenter.TakeOutPresenter;
 
