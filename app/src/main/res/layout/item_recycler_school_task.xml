@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_margin="4dp">
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp">
+
+        <ImageView
+            android:src="@mipmap/edward"
+            android:id="@+id/img_head_school_task_item"
+            android:layout_width="90dp"
+            android:layout_height="90dp"/>
+        <TextView
+            android:id="@+id/destinationHint_school_task_item"
+            android:layout_marginLeft="26dp"
+            android:text="目的地："
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/img_head_school_task_item"
+            android:layout_alignTop="@id/img_head_school_task_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/destination_school_task_order"
+            android:layout_toRightOf="@id/destinationHint_school_task_item"
+            android:layout_alignTop="@id/destinationHint_school_task_item"
+            android:text="28栋506"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/start_school_task_item"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="26dp"
+            android:layout_below="@id/destinationHint_school_task_item"
+            android:layout_toRightOf="@id/img_head_school_task_item"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:text="千喜鹤食堂  -  "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/describe_school_task_item"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/destinationHint_school_task_item"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/start_school_task_item"
+            android:text="帮忙带一份饭，十元左右就好，蟹蟹"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/remunerationHint_school_task_item"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@id/img_head_school_task_item"
+            android:layout_below="@id/describe_school_task_item"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:text="报酬:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="3元"
+            android:layout_below="@id/describe_school_task_item"
+            android:layout_toRightOf="@id/remunerationHint_school_task_item"
+            android:id="@+id/remuneration_school_task_item"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/rob_school_task_item"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/describe_school_task_item"
+            android:text="抢  单"
+            android:textColor="@color/black"
+            android:background="@color/yellow"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

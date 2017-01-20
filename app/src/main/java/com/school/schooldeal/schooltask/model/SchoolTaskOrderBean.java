@@ -8,5 +8,16 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class SchoolTaskOrderBean extends BmobObject{
+    private int amount;
+    public  SchoolTaskOrderBean(int amount){
+        this.amount = amount;
+    }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
