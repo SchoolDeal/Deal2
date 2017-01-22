@@ -1,67 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:padding="30dp">
-
-    <ImageView
-        android:layout_width="45sp"
-        android:layout_height="45sp"
-        android:background="@color/colorAccent"
-        android:id="@+id/name_img"/>
-
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_toRightOf="@+id/name_img"
-        android:layout_alignBottom="@+id/name_img"
-        android:id="@+id/name_float_edit">
-        <EditText
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/sign_view">
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textSize="16dp"
-            android:hint="this is the name"
-            android:id="@+id/name_edit"/>
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-    <ImageView
-        android:layout_width="45sp"
-        android:layout_height="45sp"
-        android:background="@color/colorAccent"
-        android:layout_marginTop="12dp"
-        android:id="@+id/password_img"
-        android:layout_below="@+id/name_img"/>
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/password_img"
-        android:layout_alignBottom="@+id/password_img"
-        android:layout_below="@+id/name_float_edit"
-        android:id="@+id/password_float_edit">
-        <EditText
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_name"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="11"
+            android:inputType="phone"
+            app:met_iconLeft="@mipmap/name"
+            app:met_iconPadding="6dp"
+            app:met_helperText="your phone which used to sign up"
+            android:hint="账号" />
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textSize="16dp"
-            android:hint="this is the password"
-            android:id="@+id/password_edit"/>
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_password"
+            android:layout_below="@+id/edit_name"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/password"
+            android:inputType="textPassword"
+            android:hint="密码" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signIn"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:text="Sign up"
+            android:id="@+id/signUp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_password"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:text="Sign in"
+            android:id="@+id/signIn" />
+    </RelativeLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/password_img"
-        android:layout_marginTop="12dp"
-        android:text="Sign up"
-        android:id="@+id/signUp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/password_img"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/signUp"
-        android:text="Sign in"
-        android:id="@+id/signIn"/>
+        android:gravity="center_horizontal"
+        android:id="@+id/choice"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/sign_choice"
+            android:gravity="center"
+            android:text="我是店家"
+            android:id="@+id/restaurant"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"/>
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/sign_choice"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:id="@+id/student"
+            android:text="我是学生"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"/>
+    </LinearLayout>
 
 </RelativeLayout>

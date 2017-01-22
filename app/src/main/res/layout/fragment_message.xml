@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--<com.jude.easyrecyclerview.EasyRecyclerView
+    android:background="#EFEFEF"
+    android:id="@+id/refresh">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/message_recycler"
-        app:layout_empty="@mipmap/empty"
-        app:layout_progress="@layout/recycler_progress"
-        app:layout_error="@layout/recycler_error"
-        android:scrollbarStyle="insideOverlay"
-        android:scrollbars="none"></com.jude.easyrecyclerview.EasyRecyclerView>-->
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/message_recycler">
-
-    </android.support.v7.widget.RecyclerView>
-
-</LinearLayout>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/message_recycler">
+        </android.support.v7.widget.RecyclerView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/empty"
+            android:src="@mipmap/empty"/>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

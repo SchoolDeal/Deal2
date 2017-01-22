@@ -1,82 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:padding="30dp">
 
-    <ImageView
-        android:layout_width="45sp"
-        android:layout_height="45sp"
-        android:background="@color/colorAccent"
-        android:id="@+id/name_img"/>
-
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_toRightOf="@+id/name_img"
-        android:layout_alignBottom="@+id/name_img"
-        android:id="@+id/name_float_edit">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textSize="16dp"
-            android:hint="this is the name"
-            android:id="@+id/name_edit"/>
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-    <ImageView
-        android:layout_width="45sp"
-        android:layout_height="45sp"
-        android:background="@color/colorAccent"
-        android:layout_marginTop="12dp"
-        android:id="@+id/password_img"
-        android:layout_below="@+id/name_img"/>
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_name"
+        app:met_floatingLabel="highlight"
+        app:met_minCharacters="3"
+        app:met_maxCharacters="11"
+        android:inputType="phone"
+        app:met_iconLeft="@mipmap/name"
+        app:met_iconPadding="6dp"
+        app:met_helperText="your phone which used to sign up"
+        android:hint="账号" />
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/password_img"
-        android:layout_alignBottom="@+id/password_img"
-        android:layout_below="@+id/name_float_edit"
-        android:id="@+id/password_float_edit">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textSize="16dp"
-            android:hint="this is the password"
-            android:id="@+id/password_edit"/>
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
-
-    <ImageView
-        android:layout_width="45sp"
-        android:layout_height="45sp"
-        android:background="@color/colorAccent"
-        android:layout_marginTop="12dp"
-        android:id="@+id/email_img"
-        android:layout_below="@+id/password_img"/>
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:layout_width="match_parent"
-        android:layout_height="66dp"
-        android:layout_marginTop="12dp"
-        android:layout_toRightOf="@+id/email_img"
-        android:layout_alignBottom="@+id/email_img"
-        android:layout_below="@+id/password_float_edit"
-        android:id="@+id/email_float_edit">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textSize="16dp"
-            android:hint="this is the email"
-            android:id="@+id/email_edit"/>
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+        android:layout_height="wrap_content"
+        android:id="@+id/edit_password"
+        android:layout_below="@+id/edit_name"
+        app:met_floatingLabel="highlight"
+        app:met_minCharacters="3"
+        app:met_maxCharacters="20"
+        app:met_iconPadding="6dp"
+        app:met_iconLeft="@mipmap/password"
+        android:inputType="textPassword"
+        android:hint="密码" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_img"
+        android:layout_below="@+id/signIn"
         android:layout_marginTop="12dp"
+        android:background="@color/white"
         android:text="Sign up"
-        android:id="@+id/signUp"/>
+        android:id="@+id/signUp" />
 
 </RelativeLayout>

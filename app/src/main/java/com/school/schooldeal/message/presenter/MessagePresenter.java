@@ -1,7 +1,9 @@
 package com.school.schooldeal.message.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.message.model.ImplMessageModel;
 import com.school.schooldeal.message.model.MessageAdapter;
 import com.school.schooldeal.message.model.MessageModel;
@@ -25,5 +27,10 @@ public class MessagePresenter{
     public void initAdapter() {
         adapter.setData(MessageModel.getMessageList());
         messageFragment.setAdapter(adapter);
+    }
+
+    public void onRefresh() {
+        Log.e("main","refresh");
+        messageFragment.stopRefresh();
     }
 }

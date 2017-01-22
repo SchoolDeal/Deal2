@@ -10,4 +10,6 @@ import com.school.schooldeal.message.model.MessageAdapter;
 public interface ImplMessageFragment {
     //设置适配器
     void setAdapter(MessageAdapter adapter);
+    //停止刷新
+    void stopRefresh();
 }
