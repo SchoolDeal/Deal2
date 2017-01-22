@@ -47,7 +47,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="56dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/my_order_release"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
     <RelativeLayout
@@ -73,7 +74,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="6dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -90,6 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/my_order_receive"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
     <RelativeLayout
@@ -99,7 +101,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="6dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -116,6 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/my_order_finish"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
     <RelativeLayout
@@ -125,7 +128,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="6dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -142,6 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/feed_back"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
     <RelativeLayout
@@ -151,7 +155,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="6dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -168,6 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/about_us"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
     <RelativeLayout
@@ -177,7 +182,7 @@
         android:paddingRight="12dp"
         android:layout_marginTop="6dp"
         android:gravity="center_vertical"
-        android:background="@color/md_amber_200"
+        android:background="#73C54F"
         android:orientation="horizontal"
         android:focusable="true"
         android:clickable="true"
@@ -194,6 +199,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/version"
             android:layout_alignParentRight="true"
+            android:padding="4dp"
             android:src="@mipmap/right"/>
     </RelativeLayout>
 </LinearLayout>
