@@ -13,6 +13,15 @@ public class TakeawayService extends BmobObject {
     private Boolean isFinish;               //是否完成
     private String finishTime;              //完成时间
     private Float remuneration;             //报酬
+    private Integer number;                 //份数
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
 
     public String getFinishTime() {
         return finishTime;
@@ -71,6 +80,7 @@ public class TakeawayService extends BmobObject {
                 ", request=" + request +
                 ", isFinish=" + isFinish +
                 ", remuneration=" + remuneration +
+                ", number=" + number +
                 '}';
     }
 }

@@ -2,4 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="recycler_margin_r_l">16dp</dimen>
+    <dimen name="recycler_margin_b_t">16dp</dimen>
+    <dimen name="recycler_text_img">6dp</dimen>
+    <dimen name="takeoutDetails_text_below_img">10dp</dimen>
+    <dimen name="takeoutDetails_text_below_text">5dp</dimen>
+    <dimen name="takeoutDetails_text_horizontal_text">10dp</dimen>
+    <dimen name="takeoutDetails_Hint_textSize">16sp</dimen>
+    <dimen name="takeoutDetails_content_textSize">16sp</dimen>
 </resources>

@@ -9,9 +9,21 @@ import cn.bmob.v3.BmobObject;
 
 public class TakeOutOrderBean{
     private int amount;
+    private String destination;
+    private String restaurantName;
+    private String restaurantAddress;
+    private int money;
 
     public TakeOutOrderBean(int amount) {
         this.amount = amount;
+    }
+
+    public TakeOutOrderBean(int amount, String destination, int money, String restaurantAddress, String restaurantName) {
+        this.amount = amount;
+        this.destination = destination;
+        this.money = money;
+        this.restaurantAddress = restaurantAddress;
+        this.restaurantName = restaurantName;
     }
 
     public int getAmount() {

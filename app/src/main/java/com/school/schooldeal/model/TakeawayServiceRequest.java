@@ -15,6 +15,15 @@ public class TakeawayServiceRequest extends BmobObject {
     private Apartment apartment;   //这份外卖的目的公寓
     private String remarks;        //备注信息
     private Float remuneration;    //预期报酬
+    private Integer number;        //份数
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
 
     public Apartment getApartment() {
         return apartment;
@@ -74,7 +83,7 @@ public class TakeawayServiceRequest extends BmobObject {
 
     @Override
     public String toString() {
-        return "TakeawayRequest{" +
+        return "TakeawayServiceRequest{" +
                 "apartment=" + apartment +
                 ", requestID='" + requestID + '\'' +
                 ", generatedTime='" + generatedTime + '\'' +
@@ -82,6 +91,7 @@ public class TakeawayServiceRequest extends BmobObject {
                 ", restaurant=" + restaurant +
                 ", remarks='" + remarks + '\'' +
                 ", remuneration=" + remuneration +
+                ", number=" + number +
                 '}';
     }
 }
