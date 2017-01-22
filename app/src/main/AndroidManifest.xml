@@ -75,6 +75,10 @@
             android:launchMode="singleTop">
         </activity>
 
+        //schooltask的activity
+        <activity android:name=".schooltask.view.SchoolTaskActivity">
+        </activity>
+
         //推送
         <service
             android:label="PushService"
