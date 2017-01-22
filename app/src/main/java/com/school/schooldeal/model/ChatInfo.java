@@ -12,6 +12,7 @@ public class ChatInfo extends BmobObject {
     private String sentTime;        //消息发送时间
     private Student sentStudent;    //发消息的学生
     private Student receiveStudent; //收消息的学生
+    private int unReadMsgNum;       //未读的消息数
 
     public String getMsgContent() {
         return msgContent;
@@ -53,6 +54,14 @@ public class ChatInfo extends BmobObject {
         this.sentTime = sentTime;
     }
 
+    public int getUnReadMsgNum() {
+        return unReadMsgNum;
+    }
+
+    public void setUnReadMsgNum(int unReadMsgNum) {
+        this.unReadMsgNum = unReadMsgNum;
+    }
+
     @Override
     public String toString() {
         return "ChatInfo{" +
@@ -61,6 +70,7 @@ public class ChatInfo extends BmobObject {
                 ", sentTime='" + sentTime + '\'' +
                 ", sentStudent=" + sentStudent +
                 ", receiveStudent=" + receiveStudent +
+                ", unReadMsgNum=" + unReadMsgNum +
                 '}';
     }
 }
