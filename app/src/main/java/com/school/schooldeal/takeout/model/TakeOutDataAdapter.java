@@ -44,6 +44,11 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
     }
 
     @Override
+    protected int getViewType(TakeOutOrderBean takeOutOrderBean) {
+        return 0;
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.card_takeout:

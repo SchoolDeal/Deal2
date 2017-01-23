@@ -17,6 +17,12 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
     public SchoolTaskDataAdapter(Context context){
         super(context);
     }
+
+    @Override
+    protected int getViewType(SchoolTaskOrderBean schoolTaskOrderBean) {
+        return 0;
+    }
+
     @Override
     protected void bindData(BaseViewHolder holder, SchoolTaskOrderBean item) {
 

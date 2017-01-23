@@ -2,10 +2,8 @@ package com.school.schooldeal.sign.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,13 +12,11 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.commen.util.SignUtil;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.sign.presenter.SignInPresenter;
-import com.wrapp.floatlabelededittext.FloatLabeledEditText;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -85,12 +81,12 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
             case R.id.restaurant:
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
-                SignUtil.IS_STUDENT = false;
+                Util.IS_STUDENT = false;
                 break;
             case R.id.student:
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
-                SignUtil.IS_STUDENT = true;
+                Util.IS_STUDENT = true;
                 break;
         }
     }

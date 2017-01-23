@@ -29,15 +29,20 @@ public class MessageAdapter extends BaseRecyclerAdapter<ChatInfo> {
     }
 
     @Override
+    protected int getViewType(ChatInfo chatInfo) {
+        return 0;
+    }
+
+    @Override
     protected void bindData(BaseViewHolder holder, final ChatInfo item) {
         final CircleImageView img = holder.getView(R.id.img_message_item);
         img.setImageResource(R.mipmap.head);
         TextView name = holder.getView(R.id.message_name);
-        name.setText(item.getMsgID());
+        name.setText(item.getSentStudent().getUsername());
         TextView content = holder.getView(R.id.message_content);
-        content.setText(item.getMsgContent().get(item.getMsgContent().size()-1));
+        content.setText(item.getMsgContent().get(item.getMsgContent().size()-1).getContent());
         TextView time = holder.getView(R.id.message_time);
-        time.setText(item.getSentTime());
+        time.setText(item.getMsgContent().get(item.getMsgContent().size()-1).getTime());
         TextView msgNum = holder.getView(R.id.message_num);
         if (item.getUnReadMsgNum()==0) msgNum.setVisibility(View.GONE);
         else msgNum.setText(item.getUnReadMsgNum()+"");

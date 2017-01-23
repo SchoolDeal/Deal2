@@ -13,7 +13,6 @@ public class Student extends BmobUser {
     private String studentID;       //ID
     private School school;          //对应学校
     private Apartment apartment;    //对应公寓
-    private String name;            //名字
     private String sex;             //性别
     private String phoneNum;        //电话
     private Integer credibility;    //信誉度
@@ -32,14 +31,6 @@ public class Student extends BmobUser {
 
     public void setCredibility(Integer credibility) {
         this.credibility = credibility;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPhoneNum() {
@@ -80,7 +71,6 @@ public class Student extends BmobUser {
                 ", studentID='" + studentID + '\'' +
                 ", school=" + school +
                 ", apartment=" + apartment +
-                ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", credibility=" + credibility +

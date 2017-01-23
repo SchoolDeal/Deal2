@@ -2,17 +2,15 @@ package com.school.schooldeal.sign.view;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.commen.util.SignUtil;
+import com.school.schooldeal.commen.util.Util;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -51,7 +49,7 @@ public class SignUpAcitivity extends BaseActivity {
     }
 
     private void checkUserIsStudentOrNot() {
-        if (SignUtil.IS_STUDENT) showStudentSignUpView();
+        if (Util.IS_STUDENT) showStudentSignUpView();
         else showRestaurantSignUpView();
     }
 

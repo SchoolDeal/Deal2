@@ -34,6 +34,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
         bindData(holder,lists.get(position));
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return getViewType(lists.get(position));
+    }
+
+    protected abstract int getViewType(T t);
+
     public Context getContext(){
         return context;
     }
