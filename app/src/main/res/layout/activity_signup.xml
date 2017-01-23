@@ -1,43 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
-    android:padding="30dp">
-
-    <com.rengwuxian.materialedittext.MaterialEditText
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_name"
-        app:met_floatingLabel="highlight"
-        app:met_minCharacters="3"
-        app:met_maxCharacters="11"
-        android:inputType="phone"
-        app:met_iconLeft="@mipmap/name"
-        app:met_iconPadding="6dp"
-        app:met_helperText="your phone which used to sign up"
-        android:hint="账号" />
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edit_password"
-        android:layout_below="@+id/edit_name"
-        app:met_floatingLabel="highlight"
-        app:met_minCharacters="3"
-        app:met_maxCharacters="20"
-        app:met_iconPadding="6dp"
-        app:met_iconLeft="@mipmap/password"
-        android:inputType="textPassword"
-        android:hint="密码" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="30dp">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_phone"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="11"
+            android:inputType="phone"
+            app:met_iconLeft="@mipmap/phone"
+            app:met_iconPadding="6dp"
+            app:met_helperText="your phone number"
+            android:hint="手机号" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_email"
+            android:layout_below="@+id/edit_phone"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/mail"
+            android:inputType="textEmailAddress"
+            android:hint="邮箱" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_name"
+            android:layout_below="@+id/edit_email"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/name"
+            android:inputType="text"
+            android:hint="昵称" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_sex"
+            android:layout_below="@+id/edit_name"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="1"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/sex"
+            android:inputType="text"
+            android:hint="性别" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_password"
+            android:layout_below="@+id/edit_sex"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/password"
+            android:inputType="textPassword"
+            android:hint="密码" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_school"
+            android:layout_below="@+id/edit_password"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/school"
+            android:inputType="text"
+            android:hint="学校" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_school_number"
+            android:layout_below="@+id/edit_school"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/number"
+            android:inputType="number"
+            android:hint="学号" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_apartment"
+            android:layout_below="@+id/edit_school_number"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="20"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/location"
+            android:inputType="text"
+            android:hint="学生公寓" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signIn"
-        android:layout_marginTop="12dp"
-        android:background="@color/white"
-        android:text="Sign up"
-        android:id="@+id/signUp" />
-
-</RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_apartment"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:text="Sign up"
+            android:id="@+id/signUp" />
+    </RelativeLayout>
+</ScrollView>

@@ -14,6 +14,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
+import com.school.schooldeal.commen.util.SignUtil;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.sign.presenter.SignInPresenter;
 import com.wrapp.floatlabelededittext.FloatLabeledEditText;
@@ -84,10 +85,12 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
             case R.id.restaurant:
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
+                SignUtil.IS_STUDENT = false;
                 break;
             case R.id.student:
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
+                SignUtil.IS_STUDENT = true;
                 break;
         }
     }

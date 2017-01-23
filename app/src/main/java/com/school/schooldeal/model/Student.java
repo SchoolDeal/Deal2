@@ -16,16 +16,7 @@ public class Student extends BmobUser {
     private String name;            //名字
     private String sex;             //性别
     private String phoneNum;        //电话
-    private Integer age;            //年龄
     private Integer credibility;    //信誉度
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
     public Apartment getApartment() {
         return apartment;
@@ -86,7 +77,6 @@ public class Student extends BmobUser {
     @Override
     public String toString() {
         return "Student{" +
-                "age=" + age +
                 ", studentID='" + studentID + '\'' +
                 ", school=" + school +
                 ", apartment=" + apartment +

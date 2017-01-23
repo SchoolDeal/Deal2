@@ -80,10 +80,15 @@
         </activity>
         <activity
             android:name=".sign.view.SignUpAcitivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         //schooltask的activity
         <activity android:name=".schooltask.view.SchoolTaskActivity">
+        </activity>
+        <activity android:name=".message.view.ConversationActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         //推送
         <service

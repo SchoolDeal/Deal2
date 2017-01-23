@@ -1,24 +1,27 @@
 package com.school.schooldeal.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import cn.bmob.v3.BmobObject;
 
 /**
  * Created by GavynZhang on 2017/1/20 19:09.
  */
 
-public class ChatInfo extends BmobObject {
+public class ChatInfo extends BmobObject implements Serializable{
     private String msgID;           //消息ID
-    private String msgContent;      //消息内容
+    private List<String> msgContent;      //消息内容
     private String sentTime;        //消息发送时间
     private Student sentStudent;    //发消息的学生
     private Student receiveStudent; //收消息的学生
     private int unReadMsgNum;       //未读的消息数
 
-    public String getMsgContent() {
+    public List<String> getMsgContent() {
         return msgContent;
     }
 
-    public void setMsgContent(String msgContent) {
+    public void setMsgContent(List<String> msgContent) {
         this.msgContent = msgContent;
     }
 
@@ -65,7 +68,7 @@ public class ChatInfo extends BmobObject {
     @Override
     public String toString() {
         return "ChatInfo{" +
-                "msgContent='" + msgContent + '\'' +
+                "msgContent=" + msgContent +
                 ", msgID='" + msgID + '\'' +
                 ", sentTime='" + sentTime + '\'' +
                 ", sentStudent=" + sentStudent +
