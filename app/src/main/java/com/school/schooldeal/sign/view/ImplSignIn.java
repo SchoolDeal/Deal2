@@ -5,6 +5,8 @@ package com.school.schooldeal.sign.view;
  */
 
 public interface ImplSignIn {
+    void finishActivity();
+
     //获取登录用户名
     String getUserName();
     //获取用户密码

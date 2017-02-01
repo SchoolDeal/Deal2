@@ -18,11 +18,11 @@
             app:met_floatingLabel="highlight"
             app:met_minCharacters="3"
             app:met_maxCharacters="11"
-            android:inputType="phone"
+            android:inputType="text"
             app:met_iconLeft="@mipmap/name"
             app:met_iconPadding="6dp"
-            app:met_helperText="your phone which used to sign up"
-            android:hint="账号" />
+            app:met_helperText="your name which used to sign up"
+            android:hint="昵称" />
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

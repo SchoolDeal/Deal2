@@ -64,19 +64,12 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
 
     @OnClick({R.id.signUp, R.id.signIn,R.id.restaurant,R.id.student})
     public void onClick(View view) {
-        Intent intent = null;
         switch (view.getId()) {
             case R.id.signUp:
                 presenter.signUp();
                 break;
             case R.id.signIn:
                 presenter.signIn();
-                String name = nameEdit.getText().toString();
-                String password = passwordEdit.getText().toString();
-                ToastUtil.makeShortToast(this, name + password);
-                intent = MainActivity.getIntentToMainActivity(this);
-                startActivity(intent);
-                finish();
                 break;
             case R.id.restaurant:
                 choice_view.setVisibility(View.GONE);
@@ -89,6 +82,11 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
                 Util.IS_STUDENT = true;
                 break;
         }
+    }
+
+    @Override
+    public void finishActivity(){
+        finish();
     }
 
     @Override

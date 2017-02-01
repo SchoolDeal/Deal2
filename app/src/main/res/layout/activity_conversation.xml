@@ -27,20 +27,23 @@
             android:id="@+id/conversation"></android.support.v7.widget.RecyclerView>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="56dp"
             android:background="@color/barBackColor"
             android:gravity="center">
             <EditText
                 android:layout_width="256dp"
-                android:layout_height="26dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="10dp"
                 android:background="@color/white"
                 android:id="@+id/input"/>
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_alignBottom="@+id/input"
                 android:layout_marginLeft="6dp"
-                android:background="@color/yellow"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:text="发送"
                 android:id="@+id/send"
                 android:layout_toRightOf="@+id/input"/>

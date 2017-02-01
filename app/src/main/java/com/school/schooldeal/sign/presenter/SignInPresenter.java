@@ -2,10 +2,15 @@ package com.school.schooldeal.sign.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
-import com.school.schooldeal.sign.model.User;
+import com.school.schooldeal.MainActivity;
+import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.ImplSignIn;
+import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.sign.view.SignUpAcitivity;
+
+import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by U-nookia on 2017/1/18.
@@ -28,9 +33,21 @@ public class SignInPresenter {
     public void signIn() {
         String name = signIn.getUserName();
         String password = signIn.getUserPassword();
-        User user = new User();
-        user.setUsername(name);
-        user.setPassword(password);
+        StudentUser studentUser = new StudentUser();
+        studentUser.setUsername(name);
+        studentUser.setPassword(password);
+        studentUser.login(context, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                Intent intent = MainActivity.getIntentToMainActivity(context);
+                context.startActivity(intent);
+                signIn.finishActivity();
+            }
 
+            @Override
+            public void onFailure(int i, String s) {
+                Toast.makeText(context,s,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

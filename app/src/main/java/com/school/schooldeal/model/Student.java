@@ -1,7 +1,5 @@
 package com.school.schooldeal.model;
 
-import com.school.schooldeal.sign.model.User;
-
 import cn.bmob.v3.BmobUser;
 
 /**
