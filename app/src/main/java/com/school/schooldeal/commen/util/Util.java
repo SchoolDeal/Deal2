@@ -8,4 +8,5 @@ public class Util {
     public static boolean IS_STUDENT = false;
     public static final int CONVERSATION_LEFT = 1;
     public static final int CONVERSATION_RIGHT = 2;
+    public static boolean FIRST_TIME_SIGNIN = true;
 }

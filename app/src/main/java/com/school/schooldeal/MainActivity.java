@@ -5,22 +5,33 @@ import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.base.BaseFragment;
+import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.view.MessageFragment;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
+import com.school.schooldeal.sign.model.RestaurantUser;
+import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.takeout.view.TakeOutFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.core.ConnectionStatus;
+import cn.bmob.newim.listener.ConnectListener;
+import cn.bmob.newim.listener.ConnectStatusChangeListener;
 import cn.bmob.push.BmobPush;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
@@ -50,6 +61,46 @@ public class MainActivity extends BaseActivity implements
         initBottomNavigationBar();    //初始化底部导航栏
         initToolBar();                //初始化toolbar
         initPushService();            //启动推送服务
+        connectServe();               //连接bmob服务器，用于即时通讯
+        setConnectStatusChangeListener();
+    }
+
+    private void setConnectStatusChangeListener() {
+        BmobIM.getInstance().setOnConnectStatusChangeListener(new ConnectStatusChangeListener() {
+            @Override
+            public void onChange(ConnectionStatus status) {
+                ToastUtil.makeShortToast(context,"change:"+status);
+            }
+        });
+    }
+
+    private void connectServe() {
+        if (Util.IS_STUDENT){
+            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
+            BmobIM.connect(user.getObjectId(), new ConnectListener() {
+                @Override
+                public void done(String uid, BmobException e) {
+                    if (e == null) {
+                        ToastUtil.makeShortToast(context,"connect success");
+                    } else {
+                        ToastUtil.makeShortToast(context,"connect false :"+e);
+                        Log.e(TAG,e.toString());
+                    }
+                }
+            });
+        }else {
+            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
+            BmobIM.connect(user.getObjectId(), new ConnectListener() {
+                @Override
+                public void done(String uid, BmobException e) {
+                    if (e == null) {
+                        ToastUtil.makeShortToast(context,"connect success");
+                    } else {
+                        ToastUtil.makeShortToast(context,"connect false :"+e);
+                    }
+                }
+            });
+        }
     }
 
     private void initPushService() {
@@ -132,5 +183,11 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        BmobIM.getInstance().disConnect();
+        super.onDestroy();
     }
 }

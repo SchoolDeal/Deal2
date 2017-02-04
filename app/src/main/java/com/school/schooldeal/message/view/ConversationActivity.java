@@ -16,6 +16,7 @@ import com.school.schooldeal.model.ChatInfo;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.newim.bean.BmobIMConversation;
 
 /**
  * Created by U-nookia on 2017/1/23.
@@ -52,18 +53,18 @@ public class ConversationActivity extends BaseActivity implements ImplConversati
 
     private void getTitleAndContent() {
         Intent intent = getIntent();
-        ChatInfo item = (ChatInfo) intent.getSerializableExtra("message");
+        /*BmobIMConversation item = (BmobIMConversation) intent.getSerializableExtra("c");
         initToolBar(item);
         initMsgContent(item);
-        conversation.scrollToPosition(item.getMsgContent().size()-1);
+        conversation.scrollToPosition(item.getMessages().size()-1);*/
     }
 
-    private void initMsgContent(ChatInfo item) {
+    private void initMsgContent(BmobIMConversation item) {
         presenter.initAdapter(item);
     }
 
-    private void initToolBar(ChatInfo item) {
-        toolBar.setTitle(item.getSentStudent().getUsername());
+    private void initToolBar(BmobIMConversation item) {
+        toolBar.setTitle(item.getConversationTitle());
     }
 
     @Override
