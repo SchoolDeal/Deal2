@@ -6,6 +6,8 @@ import com.school.schooldeal.message.model.ConversationAdapter;
 import com.school.schooldeal.message.view.ImplConversationActivity;
 import com.school.schooldeal.model.ChatInfo;
 
+import cn.bmob.newim.bean.BmobIMConversation;
+
 /**
  * Created by U-nookia on 2017/1/23.
  */
@@ -21,8 +23,8 @@ public class ConversationPresenter {
         adapter = new ConversationAdapter(context);
     }
 
-    public void initAdapter(ChatInfo item) {
-        adapter.setData(item.getMsgContent());
+    public void initAdapter(BmobIMConversation item) {
+        adapter.setData(item.getMessages());
         conversationActivity.setAdapter(adapter);
     }
 }

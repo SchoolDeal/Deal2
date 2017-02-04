@@ -2,6 +2,8 @@ package com.school.schooldeal.message.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,11 @@ import com.school.schooldeal.message.presenter.MessagePresenter;
 import com.school.schooldeal.message.view.ConversationActivity;
 import com.school.schooldeal.model.ChatInfo;
 
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMConversation;
+import cn.bmob.newim.bean.BmobIMUserInfo;
+import cn.bmob.newim.listener.ConversationListener;
+import cn.bmob.v3.exception.BmobException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -35,26 +42,7 @@ public class MessageAdapter extends BaseRecyclerAdapter<ChatInfo> {
 
     @Override
     protected void bindData(BaseViewHolder holder, final ChatInfo item) {
-        final CircleImageView img = holder.getView(R.id.img_message_item);
-        img.setImageResource(R.mipmap.head);
-        TextView name = holder.getView(R.id.message_name);
-        name.setText(item.getSentStudent().getUsername());
-        TextView content = holder.getView(R.id.message_content);
-        content.setText(item.getMsgContent().get(item.getMsgContent().size()-1).getContent());
-        TextView time = holder.getView(R.id.message_time);
-        time.setText(item.getMsgContent().get(item.getMsgContent().size()-1).getTime());
-        TextView msgNum = holder.getView(R.id.message_num);
-        if (item.getUnReadMsgNum()==0) msgNum.setVisibility(View.GONE);
-        else msgNum.setText(item.getUnReadMsgNum()+"");
-        View msg_item = holder.getView(R.id.msg_item);
-        msg_item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = ConversationActivity.getIntentToConversationActivity(getContext());
-                intent.putExtra("message",item);
-                getContext().startActivity(intent);
-            }
-        });
+
     }
 
     @Override
