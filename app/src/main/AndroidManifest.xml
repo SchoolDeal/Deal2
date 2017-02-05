@@ -165,8 +165,12 @@
         <!-- bmobim end -->
         <activity android:name=".takeout.view.TakeoutDetailsActivity">
         </activity>
+<<<<<<< Updated upstream
         <activity android:name=".takeout.view.TakeoutGenerateActivity">
         </activity>
+=======
+        <activity android:name=".schooltask.view.SchoolTaskDetailedActivity" />
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

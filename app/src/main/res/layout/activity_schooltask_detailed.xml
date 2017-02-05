@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:elevation="10dp"
+        android:id="@+id/toolBar_school_task_detailed"
+        android:background="@color/md_pink_200"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="false"
+        android:layout_width="match_parent"
+        android:layout_height="68dp">
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/school_task_detailed_img"
+        android:layout_below="@id/toolBar_school_task_detailed"
+        android:background="@mipmap/xueyou"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+    <TextView
+        android:id="@+id/school_task_detailed_destinationHint"
+        android:textSize="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/school_task_detailed_img"
+        android:text="目的地："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/school_task_detailed_destination"
+        android:textSize="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/school_task_detailed_img"
+        android:text="28栋506"
+        android:layout_toRightOf="@id/school_task_detailed_destinationHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/school_task_detailed_taskHint"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/school_task_detailed_destinationHint"
+        android:text="任务内容："
+        android:textSize="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textSize="16dp"
+        android:layout_marginTop="5dp"
+        android:text="20包不重样的辣条，蟹蟹"
+        android:layout_toRightOf="@id/school_task_detailed_taskHint"
+        android:layout_marginStart="5dp"
+        android:layout_below="@id/school_task_detailed_destination"
+        android:id="@+id/school_task_detailed_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="报酬："
+        android:id="@+id/school_task_detailed_moneyHint"
+        android:layout_below="@id/school_task_detailed_taskHint"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="5个滑稽币"
+        android:layout_marginStart="16dp"
+        android:id="@+id/school_task_detailed_money"
+        android:textSize="16dp"
+        android:layout_toRightOf="@id/school_task_detailed_moneyHint"
+        android:layout_below="@id/school_task_detailed_task"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/school_task_detailed_moneyHint"
+        android:id="@+id/school_task_detailed_phoneHint"
+        android:text="电话号码："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="23333333333"
+        android:layout_marginStart="16dp"
+        android:id="@+id/school_task_detailed_phone"
+        android:textSize="16dp"
+        android:layout_toRightOf="@id/school_task_detailed_phoneHint"
+        android:layout_below="@id/school_task_detailed_moneyHint"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/school_task_detailed_button"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:background="@color/md_amber_400"
+        android:elevation="10dp"
+        android:text="立即抢单"
+        android:textSize="17sp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

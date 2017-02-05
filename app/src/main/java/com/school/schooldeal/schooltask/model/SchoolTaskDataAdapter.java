@@ -2,6 +2,7 @@ package com.school.schooldeal.schooltask.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.school.schooldeal.R;
@@ -13,9 +14,12 @@ import com.school.schooldeal.base.BaseViewHolder;
  */
 
 public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBean>{
+    private OnSchoolTaskItemClickListener onItemClickListener = null;
+    private Context context;
 
     public SchoolTaskDataAdapter(Context context){
         super(context);
+        this.context = context;
     }
 
     @Override
@@ -31,6 +35,14 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new SchoolTaskViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_recycler_school_task,parent,false));
+                .inflate(R.layout.item_recycler_school_task,parent,false),onItemClickListener,context);
+    }
+    public void setOnItemClickListener(OnSchoolTaskItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnSchoolTaskItemClickListener{
+        void onItemClick(View view);
     }
 }
+
