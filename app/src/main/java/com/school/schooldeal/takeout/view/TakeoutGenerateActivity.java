@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeoutGenerateActivity{
+public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeoutGenerateActivity {
 
     @BindView(R.id.toolBar_takeoutGenerate)
     Toolbar mToolBarTakeoutGenerate;
@@ -31,8 +31,11 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     EditText mRemarksEditTakeoutGenerate;
     @BindView(R.id.generateRequest_takeoutGenerate)
     Button mGenerateRequestTakeoutGenerate;
+    @BindView(R.id.studentNameEdit_takeoutGenerate)
+    EditText mStudentNameEditTakeoutGenerate;
 
     TakeoutGeneratePresenter mPresenter = new TakeoutGeneratePresenter(this);
+
 
     @Override
     protected void initData() {
@@ -51,20 +54,25 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
 
     @OnClick(R.id.generateRequest_takeoutGenerate)
     public void onClick() {
-        if (mDestinationEditTakeoutGenerate == null ||
-                mStudentPhoneEditTakeoutGenerate == null ||
-                mAmountEditTakeoutGenerate == null ||
-                mRemunerationEditTakeoutGenerate == null ||
-                mRemarksEditTakeoutGenerate == null){
+        if (mDestinationEditTakeoutGenerate.getText().toString().equals("") ||
+                mStudentPhoneEditTakeoutGenerate.getText().toString().equals("")||
+                mAmountEditTakeoutGenerate.getText() == null ||
+                mRemunerationEditTakeoutGenerate.getText() == null ||
+                mRemarksEditTakeoutGenerate.getText() == null ||
+                mStudentNameEditTakeoutGenerate.getText() == null) {
+
             ToastUtil.makeShortToast(TakeoutGenerateActivity.this, "还没填完整哦！！");
-        }else{
+
+        } else {
             //生成外卖服务请求单
             TakeoutGenerateBean generateBean = new TakeoutGenerateBean();
             generateBean.setDestination(mDestinationEditTakeoutGenerate.getText().toString());
             generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
             generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
             generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
+
             mPresenter.generateTakeawayServiceRequest(generateBean);
         }
     }
+
 }

@@ -44,6 +44,7 @@ public class TakeOutFragment extends BaseFragment
         if (BmobUser.getCurrentUser(getContext()) instanceof StudentUser){
             mTakeoutFab.setVisibility(View.GONE);
         }
+        addOnScrollListener();
     }
 
     private void initRecycler() {
@@ -64,5 +65,25 @@ public class TakeOutFragment extends BaseFragment
     public void onClick() {
         Intent intent = new Intent(getContext(), TakeoutGenerateActivity.class);
         startActivity(intent);
+    }
+
+    //RecyclerView滑动监听
+    private void addOnScrollListener(){
+        takeOutRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                //
+                boolean isSignificantDelta = Math.abs(dy) > 4;
+                if (isSignificantDelta) {
+                    if (dy > 0) {
+                        //向上滑动时隐藏FloatingActionButton
+                        mTakeoutFab.hide();
+                    } else {
+                        //向下滑动时显示FloatingActionButton
+                        mTakeoutFab.show();
+                    }
+                }
+            }
+        });
     }
 }

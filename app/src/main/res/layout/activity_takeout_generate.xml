@@ -56,8 +56,49 @@
         android:layout_height="1dp"/>
 
     <RelativeLayout
-        android:id="@+id/studentPhoneRl_takeoutGenerate"
+        android:id="@+id/studentNameRl_takeoutGenerate"
         android:layout_below="@+id/dividing_1"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/studentNameImg_takeoutGenerate"
+            android:src="@mipmap/peoplegt"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_width="23dp"
+            android:layout_height="23dp"/>
+
+        <EditText
+            android:id="@+id/studentNameEdit_takeoutGenerate"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="4dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/studentNameImg_takeoutGenerate"
+            android:background="@null"
+            android:hint="外卖收货人姓名"
+            android:inputType="phone"
+            android:maxLines="2"
+            android:textColor="@color/md_grey_800"
+            android:textSize="17sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/dividing_2"
+        android:background="@color/md_grey_200"
+        android:layout_below="@+id/studentNameRl_takeoutGenerate"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_width="280dp"
+        android:layout_height="1dp"/>
+
+    <RelativeLayout
+        android:id="@+id/studentPhoneRl_takeoutGenerate"
+        android:layout_below="@+id/dividing_2"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -87,7 +128,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/dividing_2"
+        android:id="@+id/dividing_3"
         android:background="@color/md_grey_200"
         android:layout_below="@+id/studentPhoneRl_takeoutGenerate"
         android:layout_marginStart="60dp"
@@ -97,7 +138,7 @@
 
     <RelativeLayout
         android:id="@+id/amountRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_2"
+        android:layout_below="@+id/dividing_3"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -128,7 +169,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/dividing_3"
+        android:id="@+id/dividing_4"
         android:background="@color/md_grey_200"
         android:layout_below="@+id/amountRl_takeoutGenerate"
         android:layout_marginStart="60dp"
@@ -138,7 +179,7 @@
 
     <RelativeLayout
         android:id="@+id/remunerationRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_3"
+        android:layout_below="@+id/dividing_4"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -169,7 +210,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/dividing_4"
+        android:id="@+id/dividing_5"
         android:background="@color/md_grey_200"
         android:layout_below="@+id/remunerationRl_takeoutGenerate"
         android:layout_marginStart="60dp"
@@ -179,7 +220,7 @@
 
     <RelativeLayout
         android:id="@+id/remarksRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_4"
+        android:layout_below="@+id/dividing_5"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
