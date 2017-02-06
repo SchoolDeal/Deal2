@@ -34,7 +34,7 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     @BindView(R.id.studentNameEdit_takeoutGenerate)
     EditText mStudentNameEditTakeoutGenerate;
 
-    TakeoutGeneratePresenter mPresenter = new TakeoutGeneratePresenter(this);
+    TakeoutGeneratePresenter mPresenter = new TakeoutGeneratePresenter(this, context);
 
 
     @Override
@@ -56,10 +56,9 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     public void onClick() {
         if (mDestinationEditTakeoutGenerate.getText().toString().equals("") ||
                 mStudentPhoneEditTakeoutGenerate.getText().toString().equals("")||
-                mAmountEditTakeoutGenerate.getText() == null ||
-                mRemunerationEditTakeoutGenerate.getText() == null ||
-                mRemarksEditTakeoutGenerate.getText() == null ||
-                mStudentNameEditTakeoutGenerate.getText() == null) {
+                mAmountEditTakeoutGenerate.getText().toString().equals("") ||
+                mRemunerationEditTakeoutGenerate.getText().toString().equals("")||
+                mStudentNameEditTakeoutGenerate.getText().toString().equals("")) {
 
             ToastUtil.makeShortToast(TakeoutGenerateActivity.this, "还没填完整哦！！");
 
@@ -70,7 +69,8 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
             generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
             generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
             generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
-
+            if (!mRemarksEditTakeoutGenerate.getText().toString().equals(""))
+                generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
             mPresenter.generateTakeawayServiceRequest(generateBean);
         }
     }

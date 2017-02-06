@@ -6,11 +6,20 @@ package com.school.schooldeal.takeout.model;
 
 public class TakeoutGenerateBean {
 
-    private String destination;
-    private String studentName;
-    private String stuPhoneNum;
-    private int amount;
-    private float remuneration;
+    private String destination;     //目的地
+    private String studentName;     //学生名字
+    private String stuPhoneNum;     //外卖收货学生电话
+    private String remarks;         //备注信息
+    private int amount;             //数量（份数）
+    private float remuneration;     //报酬（每份）
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public String getStudentName() {
         return studentName;
@@ -58,6 +67,7 @@ public class TakeoutGenerateBean {
                 "destination='" + destination + '\'' +
                 ", studentName='" + studentName + '\'' +
                 ", stuPhoneNum='" + stuPhoneNum + '\'' +
+                ", remarks='" + remarks + '\'' +
                 ", amount=" + amount +
                 ", remuneration=" + remuneration +
                 '}';
