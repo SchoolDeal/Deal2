@@ -245,10 +245,7 @@
             android:textSize="17sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
     </RelativeLayout>
-
-
     <Button
         android:id="@+id/generateRequest_takeoutGenerate"
         android:text="完成"

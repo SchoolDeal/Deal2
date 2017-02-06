@@ -57,6 +57,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.school.schooldeal.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
+        <!--//融云apikey
+        <meta-data
+            android:name="RONG_CLOUD_APP_KEY"
+            android:value="e0x9wycfe0nlq" />-->
+
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="d54d3b85529eefa44ff34fcec513857d">
@@ -139,24 +156,6 @@
                 <action android:name="cn.bmob.push.action.NOTIFY"/>
             </intent-filter>
         </receiver>
-        //即时通讯service
-        <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver">
-            <intent-filter>
-                <action android:name="cn.bmob.action.RECONNECT"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name="cn.bmob.newim.core.service.BmobIMService"
-            android:process=":bmobcore"/>
-        <service
-            android:name="cn.bmob.newim.core.service.NotifyService"
-            android:process=":bmobcore"/>
-        <service android:name="cn.bmob.newim.core.service.ReConnectService"/>
-        <service android:name="cn.bmob.newim.core.service.HeartBeatService"/>
 
         <!-- 设置bmob appkey -->
         <meta-data
