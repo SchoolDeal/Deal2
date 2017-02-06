@@ -31,7 +31,6 @@ public class TakeoutGeneratePresenter {
     public void generateTakeawayServiceRequest(TakeoutGenerateBean generateBean){
 
         mTakeawayServiceRequest = new TakeawayServiceRequest();
-
         mTakeawayServiceRequest.setRemuneration(generateBean.getRemuneration());
         mTakeawayServiceRequest.setGeneratedTime(TimeUtils.getCurTimeString());
         if (!generateBean.getRemarks().equals(""))

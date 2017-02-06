@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    useLibrary 'org.apache.http.legacy'
 }
 
 apply plugin: 'com.neenbedankt.android-apt' //butter knife
@@ -56,4 +57,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //融云
     compile project(':IMKit')
+    compile files('libs/fastjson-1.2.5.jar')
+    compile files('libs/org.apache.http.legacy.jar')
 }
