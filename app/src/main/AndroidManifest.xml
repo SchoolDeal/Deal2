@@ -86,7 +86,8 @@
         //schooltask的activity
         <activity android:name=".schooltask.view.SchoolTaskActivity">
         </activity>
-        <activity android:name=".message.view.ConversationActivity"
+        <activity
+            android:name=".message.view.ConversationActivity"
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustPan">
         </activity>
@@ -163,6 +164,11 @@
             android:value="3f4d2c40f97655bcc35f76977f1a1158"/>
         <!-- bmobim end -->
         <activity android:name=".takeout.view.TakeoutDetailsActivity">
+        </activity>
+        <activity android:name=".takeout.view.TakeoutGenerateActivity">
+        </activity>
+
+        <activity android:name=".schooltask.view.SchoolTaskDetailedActivity" >
         </activity>
     </application>
 

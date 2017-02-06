@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
@@ -40,6 +41,13 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
 
     @Override
     public void setAdapter(SchoolTaskDataAdapter adapter) {
+        adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
+            @Override
+            public void onItemClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),SchoolTaskDetailedActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 

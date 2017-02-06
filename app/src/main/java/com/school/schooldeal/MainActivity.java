@@ -35,7 +35,7 @@ import cn.bmob.v3.exception.BmobException;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
-        ,ViewPager.OnPageChangeListener{
+        , ViewPager.OnPageChangeListener {
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -47,7 +47,8 @@ public class MainActivity extends BaseActivity implements
     Toolbar toolbar;
 
     private List<BaseFragment> fragments;
-    private String[] titles = {"take out","school task","message","mine"};
+    private String[] titles = {"take out", "school task", "message", "mine"};
+    private int nowPosition;
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity implements
     }
 
     @Override
-    protected void initData(){
+    protected void initData() {
         initFragments();
         initViewPager();
         initBottomNavigationBar();    //初始化底部导航栏
@@ -114,10 +115,10 @@ public class MainActivity extends BaseActivity implements
 
     private void initBottomNavigationBar() {
         bottom.setActiveColor(R.color.barBackColor);
-        bottom.addItem(new BottomNavigationItem(R.mipmap.small,titles[0]))
-                .addItem(new BottomNavigationItem(R.mipmap.small,titles[1]))
-                .addItem(new BottomNavigationItem(R.mipmap.small,titles[2]))
-                .addItem(new BottomNavigationItem(R.mipmap.small,titles[3]))
+        bottom.addItem(new BottomNavigationItem(R.mipmap.small, titles[0]))
+                .addItem(new BottomNavigationItem(R.mipmap.small, titles[1]))
+                .addItem(new BottomNavigationItem(R.mipmap.small, titles[2]))
+                .addItem(new BottomNavigationItem(R.mipmap.small, titles[3]))
                 .initialise();
         bottom.setTabSelectedListener(this);
         bottom.setAutoHideEnabled(true);
@@ -126,7 +127,7 @@ public class MainActivity extends BaseActivity implements
 
     private void initViewPager() {
         viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager()
-                ,fragments));
+                , fragments));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
     }

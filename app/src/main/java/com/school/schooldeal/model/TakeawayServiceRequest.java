@@ -1,5 +1,7 @@
 package com.school.schooldeal.model;
 
+import com.school.schooldeal.sign.model.RestaurantUser;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -10,27 +12,21 @@ import cn.bmob.v3.BmobObject;
 public class TakeawayServiceRequest extends BmobObject {
     private String requestID;
     private String generatedTime;
-    private Student student;       //买这份外卖的学生
-    private Restaurant restaurant; //发起这份请求的餐馆
-    private Apartment apartment;   //这份外卖的目的公寓
+    //private Student student;       //买这份外卖的学生
+    //private Restaurant restaurant; //发起这份请求的餐馆
+    //private Apartment apartment;   //这份外卖的目的公寓
+    private RestaurantUser restaurant;
     private String remarks;        //备注信息
     private Float remuneration;    //预期报酬
-    private Integer number;        //份数
+    private Integer amount;        //份数
+    private String destination;     //送达地址
 
-    public Integer getNumber() {
-        return number;
+    public String getRequestID() {
+        return requestID;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public Apartment getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-        this.apartment = apartment;
+    public void setRequestID(String requestID) {
+        this.requestID = requestID;
     }
 
     public String getGeneratedTime() {
@@ -39,6 +35,14 @@ public class TakeawayServiceRequest extends BmobObject {
 
     public void setGeneratedTime(String generatedTime) {
         this.generatedTime = generatedTime;
+    }
+
+    public RestaurantUser getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantUser restaurant) {
+        this.restaurant = restaurant;
     }
 
     public String getRemarks() {
@@ -57,41 +61,32 @@ public class TakeawayServiceRequest extends BmobObject {
         this.remuneration = remuneration;
     }
 
-    public String getRequestID() {
-        return requestID;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setRequestID(String requestID) {
-        this.requestID = requestID;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "TakeawayServiceRequest{" +
-                "apartment=" + apartment +
-                ", requestID='" + requestID + '\'' +
+                "requestID='" + requestID + '\'' +
                 ", generatedTime='" + generatedTime + '\'' +
-                ", student=" + student +
                 ", restaurant=" + restaurant +
                 ", remarks='" + remarks + '\'' +
                 ", remuneration=" + remuneration +
-                ", number=" + number +
+                ", amount=" + amount +
+                ", destination='" + destination + '\'' +
                 '}';
     }
 }
