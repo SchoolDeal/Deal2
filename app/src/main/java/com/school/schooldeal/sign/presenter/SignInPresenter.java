@@ -44,8 +44,10 @@ public class SignInPresenter {
         studentUser.login(context, new SaveListener() {
             @Override
             public void onSuccess() {
-                String token = getTokenFromUserName(name);
-                connectRongServer(token);
+                /*String token = getTokenFromUserName(name);
+                connectRongServer(token);*/
+                context.startActivity(MainActivity.getIntentToMainActivity(context));
+                signIn.finishActivity();
             }
 
             @Override
@@ -57,7 +59,19 @@ public class SignInPresenter {
 
     //通过userName获取token，无服务器暂时使用测试账号的固定token
     private String getTokenFromUserName(String name) {
-        return "oIN3M/NuCbUpOYV8uNlJuQUxfaeHzBs8mkpTCLL2wIVx4AHnUomQmEzi99+PZmy71NmYxkfsPi7nd2RA570Xe9WFmdqUizNO";
+        /*String token;
+        switch (name){
+            case "hhh":
+                token = "bml4X4+aeMMkTjSo2XuzsnVumJ4qNUD0jcgTjKydEYEt1a5FoJo1zVWNCJNLYUhUD54XxL7giEia5ixnaPSSKDMeLoTfDmjUT53BbNzu";
+                break;
+            case "10086":
+                token = "Dan3q5fHhNymRFtA9Zc6BFCQ0kQwNttiVMuh9nCDrJ57B2Ngwb4yG6YkFywcerkAmf2fobDb+Lh4fEb4yIaxmvqzN+8JbP2g";
+                break;
+            default:
+                token = "";
+                break;
+        }*/
+        return "bml4X4+aeMMkTjSo2XuzsnVumJ4qNUD0jcgTjKydEYEt1a5FoJo1zVWNCJNLYUhUD54XxL7giEia5ixnaPSSKDMeLoTfDmjUT53BbNzu";
     }
 
     private void connectRongServer(String token) {

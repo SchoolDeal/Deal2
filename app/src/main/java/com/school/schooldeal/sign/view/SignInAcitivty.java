@@ -9,11 +9,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
-import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.Util;
-import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.sign.presenter.SignInPresenter;
 
 import butterknife.BindView;

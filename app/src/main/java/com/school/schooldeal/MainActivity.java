@@ -235,7 +235,7 @@ public class MainActivity extends BaseActivity implements
             if (isDebug) {
                 uri = Uri.parse("rong://" + getApplicationInfo().packageName).buildUpon()
                         .appendPath("conversationlist")
-                        .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "true") //设置私聊会话是否聚合显示
+                        .appendQueryParameter(Conversation.ConversationType.PRIVATE.getName(), "false") //设置私聊会话是否聚合显示
                         .appendQueryParameter(Conversation.ConversationType.GROUP.getName(), "true")//群组
                         .appendQueryParameter(Conversation.ConversationType.PUBLIC_SERVICE.getName(), "false")//公共服务号
                         .appendQueryParameter(Conversation.ConversationType.APP_PUBLIC_SERVICE.getName(), "false")//订阅号
@@ -354,12 +354,27 @@ public class MainActivity extends BaseActivity implements
         switch (menuItem.getItemId()) {
             case R.id.action_find:
                 msg += "Click find";
-                onCountChanged(166);
+                onCountChanged(0);
+                startChat();
                 break;
         }
         if(!msg.equals("")) {
             Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    private void startChat() {
+        String other,current;
+        current = BmobUser.getCurrentUser(context).getUsername();
+        if (current.equals("hhh")){
+            other = "ea9c412700";
+        }else {
+            other = "bd01ae9f81";
+        }
+
+        RongIM.getInstance().
+                startPrivateChat(MainActivity.this,
+                        other, current.equals("hhh")?"10086":"hhh");
     }
 }
