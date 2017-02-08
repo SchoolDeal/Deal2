@@ -22,6 +22,7 @@ import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.model.ConversationListAdapterEx;
 import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
@@ -67,12 +68,6 @@ public class MainActivity extends BaseActivity implements
     private List<Fragment> fragments;
     private String[] titles = {"take out", "school task", "message", "mine"};
     private List<Friend> userIdList;
-    public static String token_10086 = "nPQezcD7+5dl8Zi9aqJcPVCQ0kQwNttiVMuh9nCDrJ57B2Ngwb4yGwnd+J9YRjLpXLYT6/rCmOJ4fEb4yIaxmvqzN+8JbP2g";
-    public static String token_hhh = "5CE3CaknyLsOZP/MoLckR0D0jcgTjKydEYEt1a5FoJo1zVWNCJNLYUQBH5XurmKlugJtXUiUK0SSKDMeLoTfDmjUT53BbNzu";
-    public static String id_10086 = "ea9c412700";
-    public static String id_hhh = "bd01ae9f81";
-    public static String img_hhh = "http://static.yingyonghui.com/screenshots/1657/1657011_4.jpg";
-    public static String img_10086 = "http://i5.hexunimg.cn/2012-11-07/147694350.jpg";
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -97,8 +92,8 @@ public class MainActivity extends BaseActivity implements
 
     private void initUserIdList() {
         userIdList = new ArrayList<>();
-        Friend friend_10086 = new Friend(id_10086,img_10086,"10086") ;
-        Friend friend_hhh = new Friend(id_hhh,img_hhh,"hhh") ;
+        Friend friend_10086 = new Friend(Util.id_10086,Util.img_10086,"10086") ;
+        Friend friend_hhh = new Friend(Util.id_hhh,Util.img_hhh,"hhh") ;
         userIdList.add(friend_10086);
         userIdList.add(friend_hhh);
     }
@@ -108,10 +103,10 @@ public class MainActivity extends BaseActivity implements
         String token;
         switch (name){
             case "hhh":
-                token = token_hhh;
+                token = Util.token_hhh;
                 break;
             case "10086":
-                token = token_10086;
+                token = Util.token_10086;
                 break;
             default:
                 token = "";
@@ -413,9 +408,9 @@ public class MainActivity extends BaseActivity implements
         String other,current;
         current = BmobUser.getCurrentUser(context).getUsername();
         if (current.equals("hhh")){
-            other = id_10086;
+            other = Util.id_10086;
         }else {
-            other = id_hhh;
+            other = Util.id_hhh;
         }
         RongIM.getInstance().
                 startPrivateChat(MainActivity.this,
