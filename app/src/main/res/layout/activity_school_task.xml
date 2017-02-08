@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolBar_school_task"
-        android:background="@color/md_blue_600"
-        android:fitsSystemWindows="true"
-        android:clipToPadding="false"
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="68dp">
-    </android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:elevation="10dp"
+            android:id="@+id/toolBar_school_task"
+            android:background="@color/md_blue_600"
+            android:fitsSystemWindows="true"
+            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="68dp">
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v7.widget.RecyclerView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/school_task_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        app:layout_behavior="com.school.schooldeal.commen.util.ScrollAwareFABBehavior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        app:rippleColor="@android:color/background_dark"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_action_name" />
+
+</android.support.design.widget.CoordinatorLayout>
