@@ -11,9 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,16 +21,12 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.base.BaseFragment;
 import com.school.schooldeal.commen.util.ToastUtil;
-import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.model.ConversationListAdapterEx;
+import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
-import com.school.schooldeal.message.view.MessageFragment;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
-import com.school.schooldeal.sign.model.RestaurantUser;
-import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.takeout.view.TakeOutFragment;
 
@@ -40,25 +34,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import cn.bmob.newim.BmobIM;
-import cn.bmob.newim.core.ConnectionStatus;
-import cn.bmob.newim.listener.ConnectListener;
-import cn.bmob.newim.listener.ConnectStatusChangeListener;
 import cn.bmob.push.BmobPush;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.manager.IUnReadMessageObserver;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
 
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
         , ViewPager.OnPageChangeListener, IUnReadMessageObserver,
-        Toolbar.OnMenuItemClickListener{
+        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider{
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -76,6 +66,13 @@ public class MainActivity extends BaseActivity implements
 
     private List<Fragment> fragments;
     private String[] titles = {"take out", "school task", "message", "mine"};
+    private List<Friend> userIdList;
+    public static String token_10086 = "nPQezcD7+5dl8Zi9aqJcPVCQ0kQwNttiVMuh9nCDrJ57B2Ngwb4yGwnd+J9YRjLpXLYT6/rCmOJ4fEb4yIaxmvqzN+8JbP2g";
+    public static String token_hhh = "5CE3CaknyLsOZP/MoLckR0D0jcgTjKydEYEt1a5FoJo1zVWNCJNLYUQBH5XurmKlugJtXUiUK0SSKDMeLoTfDmjUT53BbNzu";
+    public static String id_10086 = "ea9c412700";
+    public static String id_hhh = "bd01ae9f81";
+    public static String img_hhh = "http://static.yingyonghui.com/screenshots/1657/1657011_4.jpg";
+    public static String img_10086 = "http://i5.hexunimg.cn/2012-11-07/147694350.jpg";
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -84,15 +81,64 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void initData() {
+        initUserIdList();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
         initDialog();
         initFragments();
         initViewPager();
+        connectRongServer(getTokenFromUserName(BmobUser.getCurrentUser(context).getUsername()));
         initPushMessage();
         initBedgeItem();
         initBottomNavigationBar();    //初始化底部导航栏
         initToolBar();                //初始化toolbar
         initPushService();            //启动推送服务
+        RongIM.setUserInfoProvider(this,true);
+    }
+
+    private void initUserIdList() {
+        userIdList = new ArrayList<>();
+        Friend friend_10086 = new Friend(id_10086,img_10086,"10086") ;
+        Friend friend_hhh = new Friend(id_hhh,img_hhh,"hhh") ;
+        userIdList.add(friend_10086);
+        userIdList.add(friend_hhh);
+    }
+
+    //通过userName获取token，无服务器暂时使用测试账号的固定token
+    private String getTokenFromUserName(String name) {
+        String token;
+        switch (name){
+            case "hhh":
+                token = token_hhh;
+                break;
+            case "10086":
+                token = token_10086;
+                break;
+            default:
+                token = "";
+                break;
+        }
+        return token;
+    }
+
+    private void connectRongServer(String token) {
+        if (getApplicationInfo().packageName.equals(MyApplication.getCurProcessName(getApplicationContext()))) {
+            RongIM.connect(token, new RongIMClient.ConnectCallback() {
+                @Override
+                public void onTokenIncorrect() {
+                    ToastUtil.makeShortToast(context,"token出错");
+                }
+                @Override
+                public void onSuccess(String userid) {
+                    //userid，是我们在申请token时填入的userid
+                    System.out.println("========userid" + userid);
+                    ToastUtil.makeShortToast(context,"connect success");
+                }
+                @Override
+                public void onError(RongIMClient.ErrorCode errorCode) {
+                    ToastUtil.makeShortToast(context,"connect false:"+errorCode);
+                }
+            });
+        }
     }
 
     private void initDialog() {
@@ -354,7 +400,6 @@ public class MainActivity extends BaseActivity implements
         switch (menuItem.getItemId()) {
             case R.id.action_find:
                 msg += "Click find";
-                onCountChanged(0);
                 startChat();
                 break;
         }
@@ -368,13 +413,24 @@ public class MainActivity extends BaseActivity implements
         String other,current;
         current = BmobUser.getCurrentUser(context).getUsername();
         if (current.equals("hhh")){
-            other = "ea9c412700";
+            other = id_10086;
         }else {
-            other = "bd01ae9f81";
+            other = id_hhh;
         }
-
         RongIM.getInstance().
                 startPrivateChat(MainActivity.this,
-                        other, current.equals("hhh")?"10086":"hhh");
+                        other,current.equals("hhh")?"10086":"hhh");
+    }
+
+    @Override
+    public UserInfo getUserInfo(String s) {
+        for (Friend i : userIdList) {
+            if (i.getId().equals(s)) {
+                Log.e(TAG, i.getImg());
+                return new UserInfo(i.getId(),i.getName(), Uri.parse(i.getImg()));
+            }
+        }
+        Log.e("MainActivity","UserId is ：" +s );
+        return null;
     }
 }
