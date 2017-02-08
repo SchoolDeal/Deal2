@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.ImplSignIn;
 import com.school.schooldeal.sign.view.SignInAcitivty;
@@ -71,7 +72,7 @@ public class SignInPresenter {
                 token = "";
                 break;
         }*/
-        return MainActivity.token_10086;
+        return Util.token_10086;
     }
 
     private void connectRongServer(String token) {
