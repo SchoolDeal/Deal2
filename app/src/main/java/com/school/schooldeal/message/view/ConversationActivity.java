@@ -2,10 +2,14 @@ package com.school.schooldeal.message.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.message.presenter.ConversationPresenter;
+
+import butterknife.BindView;
 
 
 /**
@@ -15,6 +19,8 @@ import com.school.schooldeal.message.presenter.ConversationPresenter;
 public class ConversationActivity extends BaseActivity{
 
     private ConversationPresenter presenter;
+    @BindView(R.id.title)
+    TextView mTextView;
 
     public static Intent getIntentToConversationActivity(Context context) {
         Intent intent = new Intent(context, ConversationActivity.class);
@@ -23,9 +29,8 @@ public class ConversationActivity extends BaseActivity{
 
     @Override
     protected void initData() {
-        //presenter = new ConversationPresenter(context,this);
-        //initRecycler();
-        //getTitleAndContent();
+        mTextView.setText(getIntent().getData().getQueryParameter("title"));
+        Log.e("type", "type is:" + getIntent().getData().getPath());
     }
 
     /*private void initRecycler() {

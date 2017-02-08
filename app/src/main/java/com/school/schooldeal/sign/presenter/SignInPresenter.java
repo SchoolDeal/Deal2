@@ -71,7 +71,7 @@ public class SignInPresenter {
                 token = "";
                 break;
         }*/
-        return "bml4X4+aeMMkTjSo2XuzsnVumJ4qNUD0jcgTjKydEYEt1a5FoJo1zVWNCJNLYUhUD54XxL7giEia5ixnaPSSKDMeLoTfDmjUT53BbNzu";
+        return MainActivity.token_10086;
     }
 
     private void connectRongServer(String token) {
