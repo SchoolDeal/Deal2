@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 /**
  * Created by 教科书式的机智少年 on 2017/2/8.
  * 这是左右滑动的Behavior
+ *
  */
 
 public class FABBehavior extends FloatingActionButton.Behavior {

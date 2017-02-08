@@ -15,6 +15,7 @@ import android.view.animation.Interpolator;
 /**
  * Created by 教科书式的机智少年 on 2017/2/8.
  * 这是上下滑动的Behavior
+ *
  */
 
 public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
