@@ -42,6 +42,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.manager.IUnReadMessageObserver;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.CSCustomServiceInfo;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
@@ -395,13 +396,30 @@ public class MainActivity extends BaseActivity implements
         switch (menuItem.getItemId()) {
             case R.id.action_find:
                 msg += "Click find";
-                startChat();
+                //startChat();
+                startCustumerService();
                 break;
         }
         if(!msg.equals("")) {
             Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
         }
         return true;
+    }
+
+    private void startCustumerService() {
+        //首先需要构造使用客服者的用户信息
+        CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
+        CSCustomServiceInfo csInfo = csBuilder.nickName("融云").build();
+
+/**
+ * 启动客户服聊天界面。
+ *
+ * @param context           应用上下文。
+ * @param customerServiceId 要与之聊天的客服 Id。
+ * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
+ * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
+ */
+        RongIM.getInstance().startCustomerServiceChat(context, "KEFU148662207661664", "在线客服",csInfo);
     }
 
     private void startChat() {
