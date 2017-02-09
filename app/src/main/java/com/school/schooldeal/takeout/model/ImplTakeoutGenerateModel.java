@@ -1,11 +1,11 @@
 package com.school.schooldeal.takeout.model;
 
-import com.school.schooldeal.model.TakeawayServiceRequest;
+import com.school.schooldeal.model.TakeawayRequest;
 
 /**
  * Created by GavynZhang on 2017/2/4 23:20.
  */
 
 public interface ImplTakeoutGenerateModel {
-    void saveToBmob(TakeawayServiceRequest serviceRequest);
+    void saveToBmob(TakeawayRequest serviceRequest);
 }

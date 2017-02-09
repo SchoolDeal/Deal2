@@ -7,7 +7,7 @@ import cn.bmob.v3.BmobObject;
  * 用于保存非外卖的所有服务请求
  */
 
-public class CommonServiceRequest extends BmobObject {
+public class CommonRequest extends BmobObject {
     private String requestID;       //请求编号
     private String generatedTime;   //生成时间
     private Student student;        //发起请求的学生
@@ -74,7 +74,7 @@ public class CommonServiceRequest extends BmobObject {
 
     @Override
     public String toString() {
-        return "CommonServiceRequest{" +
+        return "CommonRequest{" +
                 "generatedTime='" + generatedTime + '\'' +
                 ", requestID='" + requestID + '\'' +
                 ", student=" + student +

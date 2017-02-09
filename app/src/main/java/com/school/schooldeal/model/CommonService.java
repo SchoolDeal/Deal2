@@ -10,7 +10,7 @@ import cn.bmob.v3.BmobObject;
 public class CommonService extends BmobObject {
     private String serviceID;   //服务单号
     private Student student;
-    private CommonServiceRequest request;
+    private CommonRequest request;
     private Boolean isFinish;
     private Float remuneration;
 
@@ -30,11 +30,11 @@ public class CommonService extends BmobObject {
         this.remuneration = remuneration;
     }
 
-    public CommonServiceRequest getRequest() {
+    public CommonRequest getRequest() {
         return request;
     }
 
-    public void setRequest(CommonServiceRequest request) {
+    public void setRequest(CommonRequest request) {
         this.request = request;
     }
 

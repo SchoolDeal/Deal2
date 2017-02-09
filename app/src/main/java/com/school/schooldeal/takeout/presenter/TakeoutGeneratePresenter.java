@@ -1,9 +1,10 @@
 package com.school.schooldeal.takeout.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.school.schooldeal.commen.util.TimeUtils;
-import com.school.schooldeal.model.TakeawayServiceRequest;
+import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.takeout.model.ImplTakeoutGenerateModel;
 import com.school.schooldeal.takeout.model.TakeoutGenerateBean;
@@ -17,9 +18,11 @@ import cn.bmob.v3.BmobUser;
  */
 
 public class TakeoutGeneratePresenter {
+    public static final String className = "TGPresenter";
+
     private ImplTakeoutGenerateActivity mGenerateActivity;
     private ImplTakeoutGenerateModel mGenerateModel;
-    private TakeawayServiceRequest mTakeawayServiceRequest;
+    private TakeawayRequest mTakeawayRequest;
     private Context mContext;
 
     public TakeoutGeneratePresenter(ImplTakeoutGenerateActivity generateActivity, Context context) {
@@ -29,17 +32,18 @@ public class TakeoutGeneratePresenter {
     }
 
     public void generateTakeawayServiceRequest(TakeoutGenerateBean generateBean){
+        Log.d(className, "On Presenter, generateTakeawayServiceRequest");
 
-        mTakeawayServiceRequest = new TakeawayServiceRequest();
-        mTakeawayServiceRequest.setRemuneration(generateBean.getRemuneration());
-        mTakeawayServiceRequest.setGeneratedTime(TimeUtils.getCurTimeString());
+        mTakeawayRequest = new TakeawayRequest();
+        mTakeawayRequest.setRemuneration(generateBean.getRemuneration());
+        mTakeawayRequest.setGeneratedTime(TimeUtils.getCurTimeString());
         if (!generateBean.getRemarks().equals(""))
-            mTakeawayServiceRequest.setRemarks(generateBean.getRemarks());
-        mTakeawayServiceRequest.setDestination(generateBean.getDestination());
-        mTakeawayServiceRequest.setAmount(generateBean.getAmount());
-        mTakeawayServiceRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
+            mTakeawayRequest.setRemarks(generateBean.getRemarks());
+        mTakeawayRequest.setDestination(generateBean.getDestination());
+        mTakeawayRequest.setAmount(generateBean.getAmount());
+        mTakeawayRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
 
-        mGenerateModel.saveToBmob(mTakeawayServiceRequest);
+        mGenerateModel.saveToBmob(mTakeawayRequest);
     }
 
 }

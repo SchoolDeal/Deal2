@@ -3,7 +3,7 @@ package com.school.schooldeal.takeout.model;
 import android.content.Context;
 
 import com.school.schooldeal.commen.util.ToastUtil;
-import com.school.schooldeal.model.TakeawayServiceRequest;
+import com.school.schooldeal.model.TakeawayRequest;
 
 import cn.bmob.v3.listener.SaveListener;
 
@@ -20,7 +20,7 @@ public class TakeoutGenerateModel implements ImplTakeoutGenerateModel {
     }
 
     @Override
-    public void saveToBmob(TakeawayServiceRequest serviceRequest) {
+    public void saveToBmob(TakeawayRequest serviceRequest) {
         serviceRequest.save(mContext, new SaveListener() {
             @Override
             public void onSuccess() {
@@ -29,7 +29,7 @@ public class TakeoutGenerateModel implements ImplTakeoutGenerateModel {
 
             @Override
             public void onFailure(int i, String s) {
-
+                ToastUtil.makeShortToast(mContext, "Save Fail, i: "+i+" String: "+s);
             }
         });
     }

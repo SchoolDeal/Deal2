@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.view.animation.Interpolator;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
 import com.school.schooldeal.commen.util.ScrollAwareFABBehavior;
+import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.presenter.TakeOutPresenter;
@@ -35,6 +37,8 @@ import cn.bmob.v3.BmobUser;
 public class TakeOutFragment extends BaseFragment
         implements ImplTakeOutFragment {
 
+    public static final String className = "TakeOutFragment";
+
     @BindView(R.id.takeOutRecycler)
     RecyclerView takeOutRecycler;
     @BindView(R.id.takeout_fab)
@@ -48,8 +52,12 @@ public class TakeOutFragment extends BaseFragment
         initRecycler();
         presenter = new TakeOutPresenter(getContext(), this);
         presenter.initAdapter();
-        if (BmobUser.getCurrentUser(getContext()) instanceof StudentUser){
+        if (BmobUser.getCurrentUser(getContext(), StudentUser.class) != null){
             mTakeoutFab.setVisibility(View.GONE);
+            Log.d(className, "is student user");
+        }
+        if (BmobUser.getCurrentUser(getContext(), RestaurantUser.class) != null){
+            Log.d(className, "is restaurant user");
         }
         addOnScrollListener();
     }

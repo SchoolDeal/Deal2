@@ -5,11 +5,11 @@ import com.school.schooldeal.sign.model.RestaurantUser;
 import cn.bmob.v3.BmobObject;
 
 /**
- * Created by GavynZhang on 2017/1/20 19:04.
- * 餐馆发起的送外卖请求
+ * Created by GavynZhang on 2017/2/10 0:25.
  */
 
-public class TakeawayServiceRequest extends BmobObject {
+public class TakeawayRequest extends BmobObject {
+
     private String requestID;
     private String generatedTime;
     //private Student student;       //买这份外卖的学生
@@ -61,14 +61,6 @@ public class TakeawayServiceRequest extends BmobObject {
         this.remuneration = remuneration;
     }
 
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
     public Integer getAmount() {
         return amount;
     }
@@ -77,9 +69,17 @@ public class TakeawayServiceRequest extends BmobObject {
         this.amount = amount;
     }
 
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
     @Override
     public String toString() {
-        return "TakeawayServiceRequest{" +
+        return "TakeawayRequest{" +
                 "requestID='" + requestID + '\'' +
                 ", generatedTime='" + generatedTime + '\'' +
                 ", restaurant=" + restaurant +
