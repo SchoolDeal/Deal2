@@ -17,109 +17,165 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <ImageView
-        android:id="@+id/restaurant_img"
+    <ScrollView
+        android:id="@+id/scroll_takeoutDetails"
         android:layout_below="@+id/toolBar_takeoutDetails"
-        android:background="@mipmap/king"
+        android:layout_above="@+id/capture_detail"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
-    <TextView
-        android:id="@+id/destinationHint_takeoutDetails"
-        android:text="@string/destinationHint_takeoutDetails"
-        android:layout_below="@+id/restaurant_img"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_img"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:textColor="@color/md_grey_900"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/businessHint_takeoutDetails"
-        android:layout_below="@+id/destinationHint_takeoutDetails"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:textColor="@color/md_grey_900"
-        android:text="@string/businessHint_takeoutDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/business_takeoutDetails"
-        android:layout_below="@+id/destinationHint_takeoutDetails"
-        android:layout_toEndOf="@+id/businessHint_takeoutDetails"
-        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:text="渝州铁板烧"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/bizAddressHint_takeoutDetails"
-        android:layout_below="@+id/businessHint_takeoutDetails"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="@string/bizAddressHint_takeoutDetails"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:textColor="@color/md_grey_900"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/bizPhoneNumHint_takeoutDetails"
-        android:layout_below="@+id/bizAddressHint_takeoutDetails"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="@string/bizPhoneNumHint_takeoutDetails"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:textColor="@color/md_grey_900"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/bizPhoneNum_takeoutDetails"
-        android:layout_below="@+id/bizAddressHint_takeoutDetails"
-        android:layout_toEndOf="@+id/bizPhoneNumHint_takeoutDetails"
-        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="233333333333"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/restaurant_img"
+                android:background="@mipmap/king"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+            <TextView
+                android:id="@+id/destinationHint_takeoutDetails"
+                android:text="@string/destinationHint_takeoutDetails"
+                android:layout_below="@+id/restaurant_img"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_img"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:textColor="@color/md_grey_900"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/money_takeoutDetails"
-        android:layout_below="@+id/bizPhoneNumHint_takeoutDetails"
-        android:layout_toEndOf="@+id/moneyHint_takeoutDetails"
-        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="3元"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/amountHint_takeoutDetails"
-        android:layout_below="@+id/moneyHint_takeoutDetails"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="@string/amountHint_takeoutDetails"
-        android:textColor="@color/md_grey_900"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/amount_takeout"
-        android:layout_below="@+id/moneyHint_takeoutDetails"
-        android:layout_toEndOf="@+id/amountHint_takeoutDetails"
-        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
-        android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
-        android:text="2份"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/businessHint_takeoutDetails"
+                android:layout_below="@+id/destinationHint_takeoutDetails"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:textColor="@color/md_grey_900"
+                android:text="@string/businessHint_takeoutDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/business_takeoutDetails"
+                android:layout_below="@+id/destinationHint_takeoutDetails"
+                android:layout_toEndOf="@+id/businessHint_takeoutDetails"
+                android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:text="渝州铁板烧"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/bizAddressHint_takeoutDetails"
+                android:layout_below="@+id/business_takeoutDetails"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+
+                android:text="@string/bizAddressHint_takeoutDetails"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:textColor="@color/md_grey_900"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/bizPhoneNumHint_takeoutDetails"
+                android:layout_below="@+id/bizAddress_takeoutDetails"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:text="@string/bizPhoneNumHint_takeoutDetails"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:textColor="@color/md_grey_900"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/bizPhoneNum_takeoutDetails"
+                android:layout_below="@+id/bizAddress_takeoutDetails"
+                android:layout_toEndOf="@+id/bizPhoneNumHint_takeoutDetails"
+                android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:text="23333333333333333333333333333333333333333333333333333333333333"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/money_takeoutDetails"
+                android:layout_below="@+id/bizPhoneNum_takeoutDetails"
+                android:layout_toEndOf="@+id/moneyHint_takeoutDetails"
+                android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:text="3元"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/amountHint_takeoutDetails"
+                android:layout_below="@+id/money_takeoutDetails"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:text="@string/amountHint_takeoutDetails"
+                android:textColor="@color/md_grey_900"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/amount_takeout"
+                android:layout_below="@+id/money_takeoutDetails"
+                android:layout_toEndOf="@+id/amountHint_takeoutDetails"
+                android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:text="2份"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/destination_takeoutDetails"
+                android:text="28栋666"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/business_takeoutDetails"
+                android:layout_alignEnd="@+id/business_takeoutDetails" />
+
+            <TextView
+                android:id="@+id/bizAddress_takeoutDetails"
+                android:text="重邮老校门对面堕落街13号23333333377777777777777777777777
+                777777777777777777777777777777777777777777777777777777777777777777777777
+                777777777777777777777777777777777777777777777777777777777777777777777777
+                777777777777777777777777777777777777777777777777777777777777777777777777
+                7777777777777777777777777333"
+                android:textSize="@dimen/takeoutDetails_content_textSize"
+                android:textColor="@color/md_grey_800"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_below="@+id/businessHint_takeoutDetails"
+                android:layout_alignStart="@+id/bizPhoneNum_takeoutDetails" />
+
+            <TextView
+                android:id="@+id/moneyHint_takeoutDetails"
+                android:text="@string/moneyHint_takeoutDetails"
+                android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                android:textColor="@color/md_grey_900"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/money_takeoutDetails"
+                android:layout_alignBottom="@+id/money_takeoutDetails"
+                android:layout_alignStart="@+id/amountHint_takeoutDetails" />
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
     <Button
         android:id="@+id/capture_detail"
         android:layout_alignParentBottom="true"
@@ -130,37 +186,5 @@
         android:textSize="17sp"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
-
-    <TextView
-        android:id="@+id/destination_takeoutDetails"
-        android:text="28栋666"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/business_takeoutDetails"
-        android:layout_alignEnd="@+id/business_takeoutDetails" />
-
-    <TextView
-        android:id="@+id/bizAddress_takeoutDetails"
-        android:text="重邮老校门对面堕落街13号"
-        android:textSize="@dimen/takeoutDetails_content_textSize"
-        android:textColor="@color/md_grey_800"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bizPhoneNum_takeoutDetails"
-        android:layout_alignStart="@+id/bizPhoneNum_takeoutDetails" />
-
-    <TextView
-        android:id="@+id/moneyHint_takeoutDetails"
-        android:text="@string/moneyHint_takeoutDetails"
-        android:textSize="@dimen/takeoutDetails_Hint_textSize"
-        android:textColor="@color/md_grey_900"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/money_takeoutDetails"
-        android:layout_alignBottom="@+id/money_takeoutDetails"
-        android:layout_alignStart="@+id/amountHint_takeoutDetails" />
-
 
 </RelativeLayout>

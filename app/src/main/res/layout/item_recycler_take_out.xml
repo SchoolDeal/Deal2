@@ -34,7 +34,7 @@
             android:layout_toEndOf="@+id/img_take_out_item"
             android:layout_marginStart="@dimen/recycler_text_img"
             android:text="目的地:"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/destinationHint_take_out_order"/>
         <TextView
@@ -44,7 +44,7 @@
             android:layout_toEndOf="@+id/destinationHint_take_out_order"
             android:layout_marginStart="6dp"
             android:text="27栋502"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/destination_take_out_order"/>
         <TextView
@@ -55,7 +55,7 @@
             android:layout_marginStart="@dimen/recycler_text_img"
             android:layout_marginTop="6dp"
             android:text="渝州铁板烧"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/business_take_out_order"/>
         <TextView
@@ -79,7 +79,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="重邮老校门对面堕落街13号sdfsdfsdfsdfsdf"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/address_take_out_order"/>
         <TextView
@@ -90,7 +90,7 @@
             android:layout_marginStart="@dimen/recycler_text_img"
             android:layout_marginTop="16dp"
             android:text="运费:"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/moneyHint_take_out_order"/>
         <TextView
@@ -101,7 +101,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="16dp"
             android:text="20"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/money_take_out_order"/>
         <TextView
@@ -112,7 +112,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="16dp"
             android:text="份数:"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/amountHint_take_out_order"/>
         <TextView
@@ -123,7 +123,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="16dp"
             android:text="4"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:id="@+id/amount_take_out_order"/>
         <Button
@@ -140,6 +140,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:textColor="@color/black"
+            android:textSize="17dp"
             android:background="@color/md_amber_300"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

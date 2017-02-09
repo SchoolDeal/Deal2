@@ -8,6 +8,6 @@
     <dimen name="takeoutDetails_text_below_img">10dp</dimen>
     <dimen name="takeoutDetails_text_below_text">5dp</dimen>
     <dimen name="takeoutDetails_text_horizontal_text">10dp</dimen>
-    <dimen name="takeoutDetails_Hint_textSize">16sp</dimen>
-    <dimen name="takeoutDetails_content_textSize">16sp</dimen>
+    <dimen name="takeoutDetails_Hint_textSize">16dp</dimen>
+    <dimen name="takeoutDetails_content_textSize">16dp</dimen>
 </resources>

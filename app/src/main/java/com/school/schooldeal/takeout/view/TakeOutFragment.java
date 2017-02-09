@@ -1,17 +1,23 @@
 package com.school.schooldeal.takeout.view;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
+import com.school.schooldeal.commen.util.ScrollAwareFABBehavior;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.presenter.TakeOutPresenter;
@@ -35,6 +41,7 @@ public class TakeOutFragment extends BaseFragment
     FloatingActionButton mTakeoutFab;
 
     private TakeOutPresenter presenter;
+    private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
 
     @Override
     protected void initData() {
@@ -78,12 +85,32 @@ public class TakeOutFragment extends BaseFragment
                     if (dy > 0) {
                         //向上滑动时隐藏FloatingActionButton
                         mTakeoutFab.hide();
+//                        ViewCompat.animate(mTakeoutFab)
+//                                .translationY(mTakeoutFab.getHeight() + getMarginBottom(mTakeoutFab))
+//                                .setInterpolator(INTERPOLATOR)
+//                                .withLayer()
+//                                .setListener(null)
+//                                .start();
                     } else {
                         //向下滑动时显示FloatingActionButton
                         mTakeoutFab.show();
+//                        ViewCompat.animate(mTakeoutFab).translationY(0)
+//                               .setInterpolator(INTERPOLATOR)
+//                                .withLayer()
+//                                .setListener(null)
+//                               .start();
                     }
                 }
             }
         });
+    }
+
+    private int getMarginBottom(View v) {
+        int marginBottom = 0;
+        final ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
+        if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+            marginBottom = ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;
+        }
+        return marginBottom;
     }
 }

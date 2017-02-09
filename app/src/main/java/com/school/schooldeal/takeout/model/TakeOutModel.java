@@ -27,6 +27,14 @@ public class TakeOutModel implements ImplTakeOutModel{
         orders.add(new TakeOutOrderBean(6));
         orders.add(new TakeOutOrderBean(7));
         orders.add(new TakeOutOrderBean(8));
+        orders.add(new TakeOutOrderBean(1));
+        orders.add(new TakeOutOrderBean(2));
+        orders.add(new TakeOutOrderBean(3));
+        orders.add(new TakeOutOrderBean(4));
+        orders.add(new TakeOutOrderBean(5));
+        orders.add(new TakeOutOrderBean(6));
+        orders.add(new TakeOutOrderBean(7));
+        orders.add(new TakeOutOrderBean(8));
 
         return orders;
     }
