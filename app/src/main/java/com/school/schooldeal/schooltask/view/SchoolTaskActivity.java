@@ -1,6 +1,7 @@
 package com.school.schooldeal.schooltask.view;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,11 +18,13 @@ import butterknife.BindView;
  * Created by 教科书式的机智少年 on 2017/1/21.
  */
 
-public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskActivity{
+public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskActivity,View.OnClickListener{
     @BindView(R.id.school_task_recycler)
     RecyclerView recyclerView;
     @BindView(R.id.toolBar_school_task)
     Toolbar toolbar;
+    @BindView(R.id.school_task_fab)
+    FloatingActionButton fab;
     private SchoolTaskOtherPresenter presenter;
     private String title = "SchoolTask";
     @Override
@@ -32,6 +35,7 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
         initRecyclerView();
         presenter = new SchoolTaskOtherPresenter(context,this);
         presenter.initAdapter();
+        setClickListener();
     }
 
     @Override
@@ -51,11 +55,28 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.school_task_fab:
+                Intent intent = new Intent(getApplicationContext(),SchoolTaskReleaseActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+
     private void initRecyclerView(){
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
+
     private void initToolBar(){
         toolbar.setTitle(title);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
     }
+
+    private void setClickListener(){
+        fab.setOnClickListener(this);
+    }
+
+
 }

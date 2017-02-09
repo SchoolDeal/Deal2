@@ -180,6 +180,7 @@
 
         <activity android:name=".schooltask.view.SchoolTaskDetailedActivity" >
         </activity>
+        <activity android:name=".schooltask.view.SchoolTaskReleaseActivity" />
     </application>
 
 </manifest>

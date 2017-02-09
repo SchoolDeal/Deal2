@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/school_task_release_toolbar"
+        android:background="@color/md_cyan_A400"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
+        android:elevation="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="68dp">
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/school_task_release_destinationHint"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="16dp"
+        android:src="@mipmap/locationgt"
+        android:layout_below="@id/school_task_release_toolbar"
+        android:layout_width="23dp"
+        android:layout_height="23dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_marginRight="15dp"
+        app:met_floatingLabel="highlight"
+        android:inputType="textPhonetic"
+        android:layout_alignBottom="@id/school_task_release_destinationHint"
+        android:id="@+id/school_task_release_destination"
+        android:layout_toRightOf="@id/school_task_release_destinationHint"
+        android:hint="收货地址"
+        android:layout_below="@id/school_task_release_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@mipmap/peoplegt"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/school_task_release_destinationHint"
+        android:id="@+id/school_task_release_nameHint"
+        android:layout_width="23dp"
+        android:layout_height="23dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        app:met_floatingLabel="highlight"
+        android:inputType="textPhonetic"
+        android:id="@+id/school_task_release_name"
+        android:layout_alignBottom="@id/school_task_release_nameHint"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/school_task_release_nameHint"
+        android:hint="收货人姓名"
+        android:layout_below="@id/school_task_release_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/school_task_release_phoneHint"
+        android:layout_marginTop="35dp"
+        android:src="@mipmap/phonegt"
+        android:layout_marginStart="16dp"
+        android:layout_below="@id/school_task_release_nameHint"
+        android:layout_width="23dp"
+        android:layout_height="23dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/school_task_release_phoneHint"
+        android:layout_alignBottom="@id/school_task_release_phoneHint"
+        android:layout_below="@id/school_task_release_name"
+        android:hint="收货人电话号码"
+        app:met_floatingLabel="highlight"
+        android:id="@+id/school_task_release_phone"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/school_task_release_refundHint"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@id/school_task_release_phoneHint"
+        android:src="@mipmap/refundgt"
+        android:layout_width="23dp"
+        android:layout_height="23dp"/>
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_alignBottom="@id/school_task_release_refundHint"
+        android:layout_below="@id/school_task_release_phone"
+        android:layout_toRightOf="@id/school_task_release_refundHint"
+        android:layout_marginRight="15dp"
+        android:hint="报酬"
+        android:inputType="number"
+        android:id="@+id/school_task_release_refund"
+        app:met_floatingLabel="highlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="完成"
+        android:textSize="17dp"
+        android:background="@color/md_amber_400"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"/>
+
+</RelativeLayout>
