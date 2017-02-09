@@ -57,6 +57,8 @@ dependencies {
     //圆形头像
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //融云
+    //MaterialEditText
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile project(':IMKit')
     compile files('libs/fastjson-1.2.5.jar')
     compile files('libs/org.apache.http.legacy.jar')
