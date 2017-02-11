@@ -28,6 +28,8 @@ import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
+import com.school.schooldeal.sign.model.RestaurantUser;
+import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.takeout.view.TakeOutFragment;
 
@@ -50,7 +52,7 @@ import io.rong.message.ContactNotificationMessage;
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
         , ViewPager.OnPageChangeListener, IUnReadMessageObserver,
-        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider{
+        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider, ConnectLisenter{
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -70,6 +72,8 @@ public class MainActivity extends BaseActivity implements
     private String[] titles = {"take out", "school task", "message", "mine"};
     private List<Friend> userIdList;
 
+    private ServerConnectManager manager;
+
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;
@@ -77,12 +81,15 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void initData() {
+        manager = new ServerConnectManager();
+        manager.setServerConnectManager(this);
         initUserIdList();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
         initDialog();
         initFragments();
         initViewPager();
-        connectRongServer(getTokenFromUserName(BmobUser.getCurrentUser(context).getUsername()));
+        //connectRongServer(getToken());
+        getToken();
         initPushMessage();
         initBedgeItem();
         initBottomNavigationBar();    //初始化底部导航栏
@@ -100,8 +107,8 @@ public class MainActivity extends BaseActivity implements
     }
 
     //通过userName获取token，无服务器暂时使用测试账号的固定token
-    private String getTokenFromUserName(String name) {
-        String token;
+    private void getToken() {
+        /*String token;
         switch (name){
             case "hhh":
                 token = Util.token_hhh;
@@ -113,7 +120,20 @@ public class MainActivity extends BaseActivity implements
                 token = "";
                 break;
         }
-        return token;
+        return token;*/
+        if (Util.IS_STUDENT) {
+            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
+            String id = user.getObjectId();
+            String name = user.getUsername();
+            String url = Util.img_hhh;
+            manager.getToken(id,name,url);
+        }else {
+            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
+            String id = user.getObjectId();
+            String name = user.getUsername();
+            String url = Util.img_10086;
+            manager.getToken(id,name,url);
+        }
     }
 
     private void connectRongServer(String token) {
@@ -126,7 +146,7 @@ public class MainActivity extends BaseActivity implements
                 @Override
                 public void onSuccess(String userid) {
                     //userid，是我们在申请token时填入的userid
-                    System.out.println("========userid" + userid);
+                    Log.d("-------id",userid);
                     ToastUtil.makeShortToast(context,"connect success");
                 }
                 @Override
@@ -445,5 +465,10 @@ public class MainActivity extends BaseActivity implements
         }
         Log.e("MainActivity","UserId is ：" +s );
         return null;
+    }
+
+    @Override
+    public void connect(String token) {
+        connectRongServer(token);
     }
 }

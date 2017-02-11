@@ -8,12 +8,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_public_service_input_menu.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_conversation.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_public_service_input_menu_item.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_public_service_input_menu_item.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_conversation.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_ext_plugin_item.xml",
@@ -80,12 +80,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_mention_list_item.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_conversation.xml",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_picsel_catalog_listview.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_picsel_catalog_listview.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_conversation.xml",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_fr_conversation_member_list.xml",
@@ -100,12 +100,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_input_pager_layout.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_fr_conversationlist.xml",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_fr_conversationlist.xml"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_dialog_popup_options_item.xml",
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_dialog_popup_options_item.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_fr_conversationlist.xml",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_fr_conversationlist.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_group_conversation.xml",
@@ -128,12 +128,12 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_public_service_message.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_rich_content_message.xml",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_rich_content_message.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_ext_sub_menu_item.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_ext_sub_menu_item.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_rich_content_message.xml",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_rich_content_message.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_ac_file_list.xml",
@@ -216,12 +216,12 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_pic_popup_window.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_discussion_notification_message.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_discussion_notification_message.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_ext_sub_menu_container.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_ext_sub_menu_container.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_discussion_notification_message.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_discussion_notification_message.xml"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_item_public_service_rich_content_message.xml",
@@ -256,12 +256,12 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_ext_voice_input.xml"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_fr_public_service_sub_list.xml",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_fr_public_service_sub_list.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_dialog_popup_prompt_warning.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_dialog_popup_prompt_warning.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_fr_public_service_sub_list.xml",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_fr_public_service_sub_list.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\layout\\rc_picprev_activity.xml",
