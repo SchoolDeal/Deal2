@@ -18,7 +18,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
@@ -28,8 +27,6 @@ import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
-import com.school.schooldeal.sign.model.RestaurantUser;
-import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.takeout.view.TakeOutFragment;
 
@@ -52,7 +49,7 @@ import io.rong.message.ContactNotificationMessage;
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
         , ViewPager.OnPageChangeListener, IUnReadMessageObserver,
-        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider, ConnectLisenter{
+        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider{
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -72,8 +69,6 @@ public class MainActivity extends BaseActivity implements
     private String[] titles = {"take out", "school task", "message", "mine"};
     private List<Friend> userIdList;
 
-    private ServerConnectManager manager;
-
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;
@@ -81,15 +76,11 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void initData() {
-        manager = new ServerConnectManager();
-        manager.setServerConnectManager(this);
         initUserIdList();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
         initDialog();
         initFragments();
         initViewPager();
-        //connectRongServer(getToken());
-        getToken();
         initPushMessage();
         initBedgeItem();
         initBottomNavigationBar();    //初始化底部导航栏
@@ -104,57 +95,6 @@ public class MainActivity extends BaseActivity implements
         Friend friend_hhh = new Friend(Util.id_hhh,Util.img_hhh,"hhh") ;
         userIdList.add(friend_10086);
         userIdList.add(friend_hhh);
-    }
-
-    //通过userName获取token，无服务器暂时使用测试账号的固定token
-    private void getToken() {
-        /*String token;
-        switch (name){
-            case "hhh":
-                token = Util.token_hhh;
-                break;
-            case "10086":
-                token = Util.token_10086;
-                break;
-            default:
-                token = "";
-                break;
-        }
-        return token;*/
-        if (Util.IS_STUDENT) {
-            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
-            String id = user.getObjectId();
-            String name = user.getUsername();
-            String url = Util.img_hhh;
-            manager.getToken(id,name,url);
-        }else {
-            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
-            String id = user.getObjectId();
-            String name = user.getUsername();
-            String url = Util.img_10086;
-            manager.getToken(id,name,url);
-        }
-    }
-
-    private void connectRongServer(String token) {
-        if (getApplicationInfo().packageName.equals(MyApplication.getCurProcessName(getApplicationContext()))) {
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-                @Override
-                public void onTokenIncorrect() {
-                    ToastUtil.makeShortToast(context,"token出错");
-                }
-                @Override
-                public void onSuccess(String userid) {
-                    //userid，是我们在申请token时填入的userid
-                    Log.d("-------id",userid);
-                    ToastUtil.makeShortToast(context,"connect success");
-                }
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-                    ToastUtil.makeShortToast(context,"connect false:"+errorCode);
-                }
-            });
-        }
     }
 
     private void initDialog() {
@@ -172,7 +112,7 @@ public class MainActivity extends BaseActivity implements
         };
 
         RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
-        getConversationPush();// 获取 push 的 id 和 target
+        getConversationPush();// 获取push的id和target
         getPushMessage();
     }
 
@@ -430,15 +370,13 @@ public class MainActivity extends BaseActivity implements
         //首先需要构造使用客服者的用户信息
         CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
         CSCustomServiceInfo csInfo = csBuilder.nickName("融云").build();
-
-/**
- * 启动客户服聊天界面。
- *
- * @param context           应用上下文。
- * @param customerServiceId 要与之聊天的客服 Id。
- * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
- * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
- */
+        /**
+         * 启动客户服聊天界面
+         * @param context           应用上下文。
+         * @param customerServiceId 要与之聊天的客服 Id。
+         * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
+         * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
+         */
         RongIM.getInstance().startCustomerServiceChat(context, "KEFU148662207661664", "在线客服",csInfo);
     }
 
@@ -465,10 +403,5 @@ public class MainActivity extends BaseActivity implements
         }
         Log.e("MainActivity","UserId is ：" +s );
         return null;
-    }
-
-    @Override
-    public void connect(String token) {
-        connectRongServer(token);
     }
 }

@@ -26,15 +26,17 @@ public class ServerConnectManager {
         this.lisenter = lisenter;
     }
 
+    //服务器119.29.58.206
+    //本机内网192.168.1.102
     public void getToken(final String id, final String name, final String url){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Log.d("dfsfasdfa","run");
+                    Log.d("bbb","run");
                     Socket socket = new Socket("119.29.58.206",10086);
                     socket.setKeepAlive(true);
-                    Log.d("aaaaaaaaaaa","connect success");
+                    Log.d("bbb","connect success");
                     InputStream input = socket.getInputStream();
                     OutputStream output = socket.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
@@ -44,6 +46,7 @@ public class ServerConnectManager {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                     while (!(line = reader.readLine()).equals("0")){
                         token = line;
+                        Log.d("bbb",token);
                         lisenter.connect(token);
                     }
                     input.close();

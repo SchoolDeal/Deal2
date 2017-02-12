@@ -6,10 +6,13 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.school.schooldeal.ConnectLisenter;
 import com.school.schooldeal.MainActivity;
+import com.school.schooldeal.ServerConnectManager;
 import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
+import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.ImplSignIn;
 import com.school.schooldeal.sign.view.SignInAcitivty;
@@ -24,6 +27,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
@@ -32,18 +36,20 @@ import io.rong.imlib.RongIMClient;
  * Created by U-nookia on 2017/1/18.
  */
 
-public class SignInPresenter {
+public class SignInPresenter implements ConnectLisenter{
     private ImplSignIn signIn;
     private Context context;
-    private String line = null;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
+    private ServerConnectManager manager;
 
     public SignInPresenter(Context context,ImplSignIn signIn) {
         this.signIn = signIn;
         this.context = context;
         sp = context.getSharedPreferences("config",Context.MODE_PRIVATE);
         editor = sp.edit();
+        manager = new ServerConnectManager();
+        manager.setServerConnectManager(this);
     }
 
     public void signUp(){
@@ -60,11 +66,7 @@ public class SignInPresenter {
         studentUser.login(context, new SaveListener() {
             @Override
             public void onSuccess() {
-                /*String id = studentUser.getObjectId();
-                getToken(id,name,"");
-                connectRongServer(line);*/
-                context.startActivity(MainActivity.getIntentToMainActivity(context));
-                signIn.finishActivity();
+                getToken();
             }
 
             @Override
@@ -74,71 +76,34 @@ public class SignInPresenter {
         });
     }
 
-    //获取token
-    private void getToken(final String id, final String name, final String url) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Socket socket = new Socket("119.29.58.206",10086);
-                    socket.setKeepAlive(true);
-                    Log.d("aaaaaaaaaaa","connect success");
-                    InputStream input = socket.getInputStream();
-                    OutputStream output = socket.getOutputStream();
-                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-                    writer.write(id+"\n"+name+"\n"+url+"\n"+"0\n");
-                    writer.flush();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    while ((line = reader.readLine())!=null){
-
-                    }
-                    Log.d("aaaaaaaaaaa","read finish"+line);
-                    editor.putString("loginToken",line);
-                    editor.apply();
-                    input.close();
-                    output.close();
-                    writer.close();
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+    private void getToken(){
+        if (Util.IS_STUDENT) {
+            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
+            String id = user.getObjectId();
+            String name = user.getUsername();
+            String url = Util.img_hhh;
+            manager.getToken(id,name,url);
+        }else {
+            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
+            String id = user.getObjectId();
+            String name = user.getUsername();
+            String url = Util.img_10086;
+            manager.getToken(id,name,url);
+        }
     }
 
-    private void connectRongServer(String token) {
-        if (context.getApplicationInfo().packageName.equals(MyApplication.
-                getCurProcessName(context.getApplicationContext()))) {
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-                /**
-                 * Token 错误。可以从下面两点检查 1.  Token 是否过期，如果过期您需要向 App Server 重新请求一个新的 Token
-                 *                  2.  token 对应的 appKey 和工程里设置的 appKey 是否一致
-                 */
-                @Override
-                public void onTokenIncorrect() {
-                    ToastUtil.makeShortToast(context,"token出错");
-                }
+    private void connectRongServer(final String token) {
+        Log.d("bbb",token);
+        signIn.connectRongServer(token);
+    }
 
-                /**
-                 * 连接融云成功
-                 * @param userid 当前 token 对应的用户 id
-                 */
-                @Override
-                public void onSuccess(String userid) {
-                    Log.d("LoginActivity", "--onSuccess" + userid);
-                    context.startActivity(MainActivity.getIntentToMainActivity(context));
-                    signIn.finishActivity();
-                }
+    public void putTokenToSharedPreferences(String token){
+        editor.putString("loginToken",token);
+        editor.apply();
+    }
 
-                /**
-                 * 连接融云失败
-                 * @param errorCode 错误码，可到官网 查看错误码对应的注释
-                 */
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-                    ToastUtil.makeShortToast(context,"连接服务器失败，错误码"+errorCode);
-                }
-            });
-        }
+    @Override
+    public void connect(String token) {
+        connectRongServer(token);
     }
 }

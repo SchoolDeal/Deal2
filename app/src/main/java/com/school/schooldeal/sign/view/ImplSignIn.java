@@ -11,4 +11,6 @@ public interface ImplSignIn {
     String getUserName();
     //获取用户密码
     String getUserPassword();
+
+    void connectRongServer(String token);
 }
