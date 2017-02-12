@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.R;
@@ -47,8 +48,8 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
     @BindView(R.id.choice)
     LinearLayout choice_view;
 
-
     private SignInPresenter presenter;
+    private MaterialDialog dialog;
 
     public static Intent getIntentToSignInActivity(Context context) {
         Intent intent = new Intent(context, SignInAcitivty.class);
@@ -58,6 +59,7 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
     @Override
     protected void initData() {
         presenter = new SignInPresenter(this, this);
+        presenter.checkIfFirstTimeLogin();
     }
 
     @Override
@@ -110,13 +112,14 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
             RongIM.connect(token, new RongIMClient.ConnectCallback() {
                 @Override
                 public void onTokenIncorrect() {
-                    ToastUtil.makeShortToast(context,"token出错");
-                    Log.d("bbbb","token false");
+                    ToastUtil.makeShortToast(context,"token出错,正在重新获取token");
+                    Log.d("bbbb","token false,getting token again");
+                    presenter.getToken();
                 }
                 @Override
                 public void onSuccess(String userid) {
-                    //userid，是我们在申请token时填入的userid
                     Log.d("bbbb",userid);
+                    dismissDialog();
                     presenter.putTokenToSharedPreferences(token);
                     ToastUtil.makeShortToast(context,"connect success");
                     startActivity(MainActivity.getIntentToMainActivity(context));
@@ -125,9 +128,37 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
                 @Override
                 public void onError(RongIMClient.ErrorCode errorCode) {
                     ToastUtil.makeShortToast(context,"connect false:"+errorCode);
+                    dismissDialog();
                     Log.d("bbbb","tokenerror");
                 }
             });
         }
+    }
+
+    @Override
+    public void showDialog(String title,String content){
+        dialog = new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .progress(true,0)
+                .build();
+        dialog.show();
+    }
+
+    @Override
+    public void dismissDialog() {
+        dialog.dismiss();
+    }
+
+    @Override
+    public void clearView() {
+        student.setVisibility(View.GONE);
+        restaurant.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showView(){
+        student.setVisibility(View.VISIBLE);
+        restaurant.setVisibility(View.VISIBLE);
     }
 }

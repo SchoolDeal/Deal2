@@ -13,4 +13,12 @@ public interface ImplSignIn {
     String getUserPassword();
 
     void connectRongServer(String token);
+
+    void showDialog(String title,String content);
+
+    void dismissDialog();
+
+    void clearView();
+
+    void showView();
 }

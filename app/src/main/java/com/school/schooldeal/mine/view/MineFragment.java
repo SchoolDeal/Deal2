@@ -1,13 +1,17 @@
 package com.school.schooldeal.mine.view;
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
+import com.school.schooldeal.sign.view.SignInAcitivty;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,6 +43,10 @@ public class MineFragment extends BaseFragment {
     TextView aboutUs;
     @BindView(R.id.version)
     TextView version;
+    @BindView(R.id.top)
+    RelativeLayout topLayout;
+
+    private MaterialDialog dialog;
 
     @Override
     protected void initData() {
@@ -68,10 +76,11 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.head, R.id.my_order_release, R.id.my_order_receive, R.id.my_order_finish, R.id.feed_back, R.id.about_us, R.id.version})
+    @OnClick({R.id.top, R.id.my_order_release, R.id.my_order_receive, R.id.my_order_finish, R.id.feed_back, R.id.about_us, R.id.version})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.head:
+            case R.id.top:
+                showChooseDialog();
                 break;
             case R.id.my_order_release:
                 break;
@@ -84,6 +93,39 @@ public class MineFragment extends BaseFragment {
             case R.id.about_us:
                 break;
             case R.id.version:
+                break;
+        }
+    }
+
+    private void showChooseDialog() {
+        dialog = new MaterialDialog.Builder(getContext())
+                .items(R.array.top)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        clickTopDialog(position);
+                    }
+                }).build();
+        dialog.show();
+    }
+
+    private void clickTopDialog(int position) {
+        switch (position){
+            case 0:
+                //修改头像
+                break;
+            case 1:
+                //修改个人信息
+                break;
+            case 2:
+                //修改密码
+                break;
+            case 3:
+                //退出登录
+                BmobUser.logOut(getContext());
+                ToastUtil.makeLongToast(getContext(),"退出登录成功");
+                getContext().startActivity(SignInAcitivty.getIntentToSignInActivity(getContext()));
+                getActivity().finish();
                 break;
         }
     }

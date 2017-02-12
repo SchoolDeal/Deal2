@@ -3,34 +3,20 @@ package com.school.schooldeal.sign.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
 import com.school.schooldeal.ConnectLisenter;
-import com.school.schooldeal.MainActivity;
 import com.school.schooldeal.ServerConnectManager;
-import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.ImplSignIn;
-import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.sign.view.SignUpAcitivity;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
 
 /**
  * Created by U-nookia on 2017/1/18.
@@ -58,6 +44,7 @@ public class SignInPresenter implements ConnectLisenter{
     }
 
     public void signIn() {
+        signIn.showDialog("请稍候","正在登陆用户.......");
         final String name = signIn.getUserName();
         String password = signIn.getUserPassword();
         final StudentUser studentUser = new StudentUser();
@@ -71,12 +58,13 @@ public class SignInPresenter implements ConnectLisenter{
 
             @Override
             public void onFailure(int i, String s) {
+                signIn.dismissDialog();
                 Toast.makeText(context,s,Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void getToken(){
+    public void getToken(){
         if (Util.IS_STUDENT) {
             StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
             String id = user.getObjectId();
@@ -105,5 +93,44 @@ public class SignInPresenter implements ConnectLisenter{
     @Override
     public void connect(String token) {
         connectRongServer(token);
+    }
+
+    public void checkIfFirstTimeLogin() {
+        if (Util.IS_STUDENT){
+            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
+            if (user!=null) notFirstTimeLogin();
+        }else {
+            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
+            if (user!=null) notFirstTimeLogin();
+        }
+    }
+
+    /**
+     * 检测到不是第一次登陆，两个操作
+     * 1.将界面清空,显示dialog
+     * 2.从缓存中拿到token连接服务器，跳转到main界面
+     */
+    private void notFirstTimeLogin() {
+        clearView();
+        signIn.showDialog("请稍候","正在连接用户......");
+        getTokenFromCacheAndConnect();
+    }
+
+    private void getTokenFromCacheAndConnect() {
+        String cacheToken = sp.getString("loginToken", "");
+        if (cacheToken==null||cacheToken.equals("")) {
+            signIn.dismissDialog();
+            signIn.showView();
+            ToastUtil.makeLongToast(context,"无本地缓存token，请重新登陆获取token");
+        }
+        if (TextUtils.isEmpty(cacheToken)) {
+            return;
+        } else {
+            signIn.connectRongServer(cacheToken);
+        }
+    }
+
+    private void clearView() {
+        signIn.clearView();
     }
 }
