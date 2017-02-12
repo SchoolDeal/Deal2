@@ -10,6 +10,16 @@ public class RestaurantUser extends BmobUser {
     private String address;  //地址
     private float longitude; //经度
     private float latitude;  //纬度
+    private String name;     //餐馆名称
+    private String phone;    //联系电话
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getAddress() {
         return address;

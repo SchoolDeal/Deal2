@@ -4,22 +4,22 @@ import android.content.Context;
 
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.model.ImplTakeOutModel;
-import com.school.schooldeal.takeout.model.TakeOutModel;
+import com.school.schooldeal.takeout.model.TakeOutFragmentModel;
 import com.school.schooldeal.takeout.view.ImplTakeOutFragment;
 
 /**
  * Created by U-nookia on 2016/12/19.
  */
 
-public class TakeOutPresenter {
+public class TakeOutFragmentPresenter {
 
     private ImplTakeOutFragment takeOutFragment;
     private ImplTakeOutModel takeOutModel;
     private TakeOutDataAdapter adapter;
 
-    public TakeOutPresenter(Context context,ImplTakeOutFragment takeOutFragment) {
+    public TakeOutFragmentPresenter(Context context, ImplTakeOutFragment takeOutFragment) {
         this.takeOutFragment = takeOutFragment;
-        takeOutModel = new TakeOutModel();
+        takeOutModel = new TakeOutFragmentModel(context);
         adapter = new TakeOutDataAdapter(context);
     }
 

@@ -128,6 +128,11 @@ public class SignUpAcitivity extends BaseActivity {
         user.setUsername(name);
         user.setPassword(password);
         user.setMobilePhoneNumber(phone);
+        user.setAddress("重邮老校门对面堕落街13号");
+        user.setName("渝州铁板烧");
+        user.setLatitude(29.32f);
+        user.setLongitude(106.36f);
+
 
         user.signUp(context, new SaveListener() {
             @Override
