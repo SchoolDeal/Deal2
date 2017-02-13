@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,7 +20,6 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.ashokvarma.bottomnavigation.BadgeItem;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.school.schooldeal.application.MyApplication;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
@@ -38,7 +39,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import cn.bmob.push.BmobPush;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
@@ -52,7 +56,7 @@ import io.rong.message.ContactNotificationMessage;
 public class MainActivity extends BaseActivity implements
         BottomNavigationBar.OnTabSelectedListener
         , ViewPager.OnPageChangeListener, IUnReadMessageObserver,
-        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider, ConnectLisenter{
+        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider{
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -66,13 +70,11 @@ public class MainActivity extends BaseActivity implements
     private ConversationListFragment mConversationListFragment = null;
     private boolean isDebug;
     private Conversation.ConversationType[] mConversationsTypes = null;
-    private MaterialDialog dialog;
+    private MaterialDialog inputDialog,progressDialog;
 
     private List<Fragment> fragments;
     private String[] titles = {"take out", "school task", "message", "mine"};
     private List<Friend> userIdList;
-
-    private ServerConnectManager manager;
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -81,15 +83,10 @@ public class MainActivity extends BaseActivity implements
 
     @Override
     protected void initData() {
-        manager = new ServerConnectManager();
-        manager.setServerConnectManager(this);
         initUserIdList();
         isDebug = getSharedPreferences("config", MODE_PRIVATE).getBoolean("isDebug", false);
-        initDialog();
         initFragments();
         initViewPager();
-        //connectRongServer(getToken());
-        getToken();
         initPushMessage();
         initBedgeItem();
         initBottomNavigationBar();    //初始化底部导航栏
@@ -106,64 +103,6 @@ public class MainActivity extends BaseActivity implements
         userIdList.add(friend_hhh);
     }
 
-    //通过userName获取token，无服务器暂时使用测试账号的固定token
-    private void getToken() {
-        /*String token;
-        switch (name){
-            case "hhh":
-                token = Util.token_hhh;
-                break;
-            case "10086":
-                token = Util.token_10086;
-                break;
-            default:
-                token = "";
-                break;
-        }
-        return token;*/
-        if (Util.IS_STUDENT) {
-            StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
-            String id = user.getObjectId();
-            String name = user.getUsername();
-            String url = Util.img_hhh;
-            manager.getToken(id,name,url);
-        }else {
-            RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
-            String id = user.getObjectId();
-            String name = user.getUsername();
-            String url = Util.img_10086;
-            manager.getToken(id,name,url);
-        }
-    }
-
-    private void connectRongServer(String token) {
-        if (getApplicationInfo().packageName.equals(MyApplication.getCurProcessName(getApplicationContext()))) {
-            RongIM.connect(token, new RongIMClient.ConnectCallback() {
-                @Override
-                public void onTokenIncorrect() {
-                    ToastUtil.makeShortToast(context,"token出错");
-                }
-                @Override
-                public void onSuccess(String userid) {
-                    //userid，是我们在申请token时填入的userid
-                    Log.d("-------id",userid);
-                    ToastUtil.makeShortToast(context,"connect success");
-                }
-                @Override
-                public void onError(RongIMClient.ErrorCode errorCode) {
-                    ToastUtil.makeShortToast(context,"connect false:"+errorCode);
-                }
-            });
-        }
-    }
-
-    private void initDialog() {
-        dialog = new MaterialDialog.Builder(context)
-                .title("请稍候")
-                .content("正在刷新")
-                .build();
-    }
-
     private void initPushMessage() {
         final Conversation.ConversationType[] conversationTypes = {
                 Conversation.ConversationType.PRIVATE,
@@ -172,7 +111,7 @@ public class MainActivity extends BaseActivity implements
         };
 
         RongIM.getInstance().addUnReadMessageCountChangedObserver(this, conversationTypes);
-        getConversationPush();// 获取 push 的 id 和 target
+        getConversationPush();// 获取push的id和target
         getPushMessage();
     }
 
@@ -187,22 +126,22 @@ public class MainActivity extends BaseActivity implements
                     startActivity(new Intent(MainActivity.this, SignInAcitivty.class));
                 } else {
                     if (!RongIM.getInstance().getCurrentConnectionStatus().equals(RongIMClient.ConnectionStatusListener.ConnectionStatus.CONNECTED)) {
-                        dialog.show();
+                        showProgressDialog("提示","请稍候");
                         RongIM.connect(cacheToken, new RongIMClient.ConnectCallback() {
                             @Override
                             public void onTokenIncorrect() {
-                                dialog.dismiss();
+                                dismissProgressDialog();
                                 ToastUtil.makeShortToast(context,"token出现错误");
                             }
 
                             @Override
                             public void onSuccess(String s) {
-                                dialog.dismiss();
+                                dismissProgressDialog();
                             }
 
                             @Override
                             public void onError(RongIMClient.ErrorCode e) {
-                                dialog.dismiss();
+                                dismissProgressDialog();
                                 ToastUtil.makeShortToast(context,"出现错误"+e);
                             }
                         });
@@ -417,7 +356,8 @@ public class MainActivity extends BaseActivity implements
             case R.id.action_find:
                 msg += "Click find";
                 //startChat();
-                startCustumerService();
+                //startCustumerService();
+                showInputDialog();
                 break;
         }
         if(!msg.equals("")) {
@@ -426,33 +366,127 @@ public class MainActivity extends BaseActivity implements
         return true;
     }
 
+    private void showInputDialog() {
+        inputDialog = new MaterialDialog.Builder(context)
+                .title("搜索")
+                .content("请输入用户的昵称：")
+                .inputType(InputType.TYPE_CLASS_TEXT)
+                .input("用户昵称", "", new MaterialDialog.InputCallback() {
+                    @Override
+                    public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                        getUserFromInput(input);
+                    }
+                }).build();
+        inputDialog.show();
+    }
+
+    /*
+    通过输入的用户名获取用户对象
+     */
+    private void getUserFromInput(CharSequence input) {
+        showProgressDialog("提示","正在搜索该用户，请稍候");
+        if (Util.IS_STUDENT){
+            queryStudentUser(input);
+        }else {
+            queryRestaurantUser(input);
+        }
+    }
+
+    private void queryRestaurantUser(CharSequence input) {
+        BmobQuery<RestaurantUser> query = new BmobQuery<>();
+        query.addWhereEqualTo("username", input);
+        query.findObjects(context, new FindListener<RestaurantUser>() {
+            @Override
+            public void onSuccess(List<RestaurantUser> list) {
+                if (null!=list){
+                    if (list.size()==1){
+                        RestaurantUser user = list.get(0);
+                        String id = user.getObjectId();
+                        String name = user.getUsername();
+                        startChat(id,name);
+                    }else {
+                        ToastUtil.makeShortToast(context,"没有该用户");
+                    }
+                }
+
+                dismissProgressDialog();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                ToastUtil.makeShortToast(context,"搜索用户出错"+s);
+                dismissProgressDialog();
+            }
+        });
+    }
+
+    private void queryStudentUser(CharSequence input) {
+        BmobQuery<StudentUser> query = new BmobQuery<>();
+        query.addWhereEqualTo("username", input);
+        query.findObjects(context, new FindListener<StudentUser>() {
+            @Override
+            public void onSuccess(List<StudentUser> list) {
+                if (null!=list){
+                    if (list.size()==1){
+                        StudentUser user = list.get(0);
+                        String id = user.getObjectId();
+                        String name = user.getUsername();
+                        startChat(id,name);
+                    }else {
+                        ToastUtil.makeShortToast(context,"没有该用户");
+                    }
+                }
+                dismissProgressDialog();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                ToastUtil.makeShortToast(context,"搜索用户出错"+s);
+                dismissProgressDialog();
+            }
+        });
+    }
+
+    private void dismissInputDialog(){
+        inputDialog.dismiss();
+    }
+
+    private void showProgressDialog(String title,String content){
+        progressDialog = new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .progress(true,0)
+                .build();
+        progressDialog.show();
+    }
+
+    private void dismissProgressDialog(){
+        progressDialog.dismiss();
+    }
+
+    /*
+    启动客服服务
+     */
     private void startCustumerService() {
         //首先需要构造使用客服者的用户信息
         CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
         CSCustomServiceInfo csInfo = csBuilder.nickName("融云").build();
-
-/**
- * 启动客户服聊天界面。
- *
- * @param context           应用上下文。
- * @param customerServiceId 要与之聊天的客服 Id。
- * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
- * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
- */
+        /**
+         * 启动客户服聊天界面
+         * @param context           应用上下文。
+         * @param customerServiceId 要与之聊天的客服 Id。
+         * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
+         * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
+         */
         RongIM.getInstance().startCustomerServiceChat(context, "KEFU148662207661664", "在线客服",csInfo);
     }
 
-    private void startChat() {
-        String other,current;
-        current = BmobUser.getCurrentUser(context).getUsername();
-        if (current.equals("hhh")){
-            other = Util.id_10086;
-        }else {
-            other = Util.id_hhh;
-        }
-        RongIM.getInstance().
+    private void startChat(String id,String name) {
+        /*RongIM.getInstance().
                 startPrivateChat(MainActivity.this,
-                        other,current.equals("hhh")?"10086":"hhh");
+                        id,name);*/
+        RongIM.getInstance().startConversation(context, Conversation.ConversationType.PRIVATE,
+                id,name);
     }
 
     @Override
@@ -465,10 +499,5 @@ public class MainActivity extends BaseActivity implements
         }
         Log.e("MainActivity","UserId is ：" +s );
         return null;
-    }
-
-    @Override
-    public void connect(String token) {
-        connectRongServer(token);
     }
 }

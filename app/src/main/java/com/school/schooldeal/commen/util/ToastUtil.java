@@ -20,11 +20,27 @@ public class ToastUtil {
         toast.show();
     }
 
+    public static void makeLongToast(Context context,String message){
+        if (toast!=null){
+            toast.cancel();
+        }
+        toast = Toast.makeText(context,message,Toast.LENGTH_LONG);
+        toast.show();
+    }
+
     public static void makeShortToast(Context context,int message){
         if (toast!=null){
             toast.cancel();
         }
         toast = Toast.makeText(context,message,Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+    public static void makeLongToast(Context context,int message){
+        if (toast!=null){
+            toast.cancel();
+        }
+        toast = Toast.makeText(context,message,Toast.LENGTH_LONG);
         toast.show();
     }
 }
