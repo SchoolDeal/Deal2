@@ -96,10 +96,11 @@ public class SignInPresenter implements ConnectLisenter{
     }
 
     public void checkIfFirstTimeLogin() {
+        Util.IS_STUDENT = sp.getBoolean("isStudent",false);
         if (Util.IS_STUDENT){
             StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
             if (user!=null) notFirstTimeLogin();
-        }else {
+        }else if (!Util.IS_STUDENT){
             RestaurantUser user = BmobUser.getCurrentUser(context,RestaurantUser.class);
             if (user!=null) notFirstTimeLogin();
         }
@@ -132,5 +133,10 @@ public class SignInPresenter implements ConnectLisenter{
 
     private void clearView() {
         signIn.clearView();
+    }
+
+    public void putBoolean(boolean isStudent) {
+        editor.putBoolean("isStudent",isStudent);
+        editor.apply();
     }
 }

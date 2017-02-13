@@ -81,11 +81,13 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
                 Util.IS_STUDENT = false;
+                presenter.putBoolean(Util.IS_STUDENT);
                 break;
             case R.id.student:
                 choice_view.setVisibility(View.GONE);
                 sign_view.setVisibility(View.VISIBLE);
                 Util.IS_STUDENT = true;
+                presenter.putBoolean(Util.IS_STUDENT);
                 break;
         }
     }
@@ -129,6 +131,7 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
                 public void onError(RongIMClient.ErrorCode errorCode) {
                     ToastUtil.makeShortToast(context,"connect false:"+errorCode);
                     dismissDialog();
+                    
                     Log.d("bbbb","tokenerror");
                 }
             });

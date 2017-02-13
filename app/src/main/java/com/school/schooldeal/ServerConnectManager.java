@@ -35,6 +35,7 @@ public class ServerConnectManager {
                 try {
                     Log.d("bbb","run");
                     Socket socket = new Socket("119.29.58.206",10086);
+                    socket.setReuseAddress(true);
                     socket.setKeepAlive(true);
                     Log.d("bbb","connect success");
                     InputStream input = socket.getInputStream();
