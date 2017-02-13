@@ -27,6 +27,7 @@
         <ImageView
             android:id="@+id/destinationImg_takeoutGenerate"
             android:src="@mipmap/locationgt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"
@@ -65,6 +66,7 @@
         <ImageView
             android:id="@+id/studentNameImg_takeoutGenerate"
             android:src="@mipmap/peoplegt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"
@@ -78,7 +80,6 @@
             android:layout_toRightOf="@+id/studentNameImg_takeoutGenerate"
             android:background="@null"
             android:hint="外卖收货人姓名"
-            android:inputType="phone"
             android:maxLines="2"
             android:textColor="@color/md_grey_800"
             android:textSize="17sp"
@@ -106,6 +107,7 @@
         <ImageView
             android:id="@+id/studentPhoneImg_takeoutGenerate"
             android:src="@mipmap/phonegt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"
@@ -146,6 +148,7 @@
         <ImageView
             android:id="@+id/amountImg_takeoutGenerate"
             android:src="@mipmap/amountgt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"
@@ -187,6 +190,7 @@
         <ImageView
             android:id="@+id/remunerationImg_takeoutGenerate"
             android:src="@mipmap/refundgt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"
@@ -228,6 +232,7 @@
         <ImageView
             android:id="@+id/remarksImg_takeoutGenerate"
             android:src="@mipmap/textgt"
+            android:tint="@color/mint_green"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_width="23dp"

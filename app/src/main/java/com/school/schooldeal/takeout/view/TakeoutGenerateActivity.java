@@ -69,6 +69,7 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
             generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
             generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
             generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
+            generateBean.setStudentName(mStudentNameEditTakeoutGenerate.getText().toString());
             if (!mRemarksEditTakeoutGenerate.getText().toString().equals(""))
                 generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
             mPresenter.generateTakeawayServiceRequest(generateBean);

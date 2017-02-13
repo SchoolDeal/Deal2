@@ -8,22 +8,36 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class TakeOutOrderBean{
+    private String id;
     private int amount;
     private String destination;
     private String restaurantName;
     private String restaurantAddress;
-    private int money;
+    private Float money;
+
+    public TakeOutOrderBean(){
+
+    }
 
     public TakeOutOrderBean(int amount) {
         this.amount = amount;
     }
 
-    public TakeOutOrderBean(int amount, String destination, int money, String restaurantAddress, String restaurantName) {
+    public TakeOutOrderBean(int amount, String destination, Float money, String restaurantAddress, String restaurantName) {
         this.amount = amount;
         this.destination = destination;
         this.money = money;
         this.restaurantAddress = restaurantAddress;
         this.restaurantName = restaurantName;
+    }
+
+    public TakeOutOrderBean(String id, int amount, String destination, String restaurantName, String restaurantAddress, Float money) {
+        this.id = id;
+        this.amount = amount;
+        this.destination = destination;
+        this.restaurantName = restaurantName;
+        this.restaurantAddress = restaurantAddress;
+        this.money = money;
     }
 
     public int getAmount() {
@@ -32,5 +46,45 @@ public class TakeOutOrderBean{
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
+    public Float getMoney() {
+        return money;
+    }
+
+    public void setMoney(Float money) {
+        this.money = money;
     }
 }

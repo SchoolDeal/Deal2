@@ -42,7 +42,7 @@ public class TakeoutGeneratePresenter {
         mTakeawayRequest.setDestination(generateBean.getDestination());
         mTakeawayRequest.setAmount(generateBean.getAmount());
         mTakeawayRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
-
+        mTakeawayRequest.setConsigneeName(generateBean.getStudentName());
         mGenerateModel.saveToBmob(mTakeawayRequest);
     }
 

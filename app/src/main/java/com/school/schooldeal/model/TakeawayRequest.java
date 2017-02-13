@@ -16,10 +16,19 @@ public class TakeawayRequest extends BmobObject {
     //private Restaurant restaurant; //发起这份请求的餐馆
     //private Apartment apartment;   //这份外卖的目的公寓
     private RestaurantUser restaurant;
+    private String consigneeName;   //收货人姓名
     private String remarks;        //备注信息
     private Float remuneration;    //预期报酬
     private Integer amount;        //份数
     private String destination;     //送达地址
+
+    public String getConsigneeName() {
+        return consigneeName;
+    }
+
+    public void setConsigneeName(String consigneeName) {
+        this.consigneeName = consigneeName;
+    }
 
     public String getRequestID() {
         return requestID;
@@ -83,6 +92,7 @@ public class TakeawayRequest extends BmobObject {
                 "requestID='" + requestID + '\'' +
                 ", generatedTime='" + generatedTime + '\'' +
                 ", restaurant=" + restaurant +
+                ", consigneeName='" + consigneeName + '\'' +
                 ", remarks='" + remarks + '\'' +
                 ", remuneration=" + remuneration +
                 ", amount=" + amount +

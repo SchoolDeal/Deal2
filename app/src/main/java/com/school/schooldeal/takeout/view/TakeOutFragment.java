@@ -1,33 +1,23 @@
 package com.school.schooldeal.takeout.view;
 
 import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
-import com.school.schooldeal.commen.util.ScrollAwareFABBehavior;
-import com.school.schooldeal.sign.model.RestaurantUser;
-import com.school.schooldeal.sign.model.StudentUser;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
-import com.school.schooldeal.takeout.presenter.TakeOutPresenter;
+import com.school.schooldeal.takeout.presenter.TakeOutFragmentPresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
 
 /**
  * Created by U-nookia on 2016/12/19.
@@ -44,22 +34,21 @@ public class TakeOutFragment extends BaseFragment
     @BindView(R.id.takeout_fab)
     FloatingActionButton mTakeoutFab;
 
-    private TakeOutPresenter presenter;
+    private TakeOutFragmentPresenter presenter;
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
 
     @Override
     protected void initData() {
         initRecycler();
-        presenter = new TakeOutPresenter(getContext(), this);
+        presenter = new TakeOutFragmentPresenter(getContext(), this);
         presenter.initAdapter();
-        if (BmobUser.getCurrentUser(getContext(), StudentUser.class) != null){
-            mTakeoutFab.setVisibility(View.GONE);
+        if (Util.IS_STUDENT){
             Log.d(className, "is student user");
-        }
-        if (BmobUser.getCurrentUser(getContext(), RestaurantUser.class) != null){
+            mTakeoutFab.setVisibility(View.GONE);
+        }else {
             Log.d(className, "is restaurant user");
+            addOnScrollListener();
         }
-        addOnScrollListener();
     }
 
     private void initRecycler() {
@@ -121,4 +110,6 @@ public class TakeOutFragment extends BaseFragment
         }
         return marginBottom;
     }
+
+
 }

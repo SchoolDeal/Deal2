@@ -9,9 +9,18 @@ public class TakeoutGenerateBean {
     private String destination;     //目的地
     private String studentName;     //学生名字
     private String stuPhoneNum;     //外卖收货学生电话
+    private String consigneeName;   //收货学生姓名
     private String remarks;         //备注信息
     private int amount;             //数量（份数）
     private float remuneration;     //报酬（每份）
+
+    public String getConsigneeName() {
+        return consigneeName;
+    }
+
+    public void setConsigneeName(String consigneeName) {
+        this.consigneeName = consigneeName;
+    }
 
     public String getRemarks() {
         return remarks;

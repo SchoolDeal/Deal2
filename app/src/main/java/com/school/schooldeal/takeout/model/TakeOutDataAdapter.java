@@ -26,8 +26,16 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
 
     @Override
     protected void bindData(BaseViewHolder holder, TakeOutOrderBean item) {
-        TextView textView = holder.getView(R.id.amount_take_out_order);
-        textView.setText(item.getAmount()+"");
+        TextView amount = holder.getView(R.id.amount_take_out_order);
+        TextView destination = holder.getView(R.id.destination_take_out_order);
+        TextView money = holder.getView(R.id.money_take_out_order);
+        TextView restaurantAddress = holder.getView(R.id.address_take_out_order);
+        TextView restaurantName = holder.getView(R.id.business_take_out_order);
+        amount.setText(item.getAmount()+"");
+        destination.setText(item.getDestination());
+        money.setText(item.getMoney().toString());
+        restaurantAddress.setText(item.getRestaurantAddress());
+        restaurantName.setText(item.getRestaurantName());
     }
 
     @Override
