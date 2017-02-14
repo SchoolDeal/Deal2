@@ -12,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -25,7 +24,6 @@ import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.model.ConversationListAdapterEx;
-import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
@@ -72,7 +70,7 @@ public class MainActivity extends BaseActivity implements
     private MaterialDialog inputDialog,progressDialog;
 
     private List<Fragment> fragments;
-    private String[] titles = {"take out", "school task", "message", "mine"};
+    private String[] titles = {"外卖", "学校任务", "消息", "我的"};
     private List<BmobUser> userIdList;
 
     public static Intent getIntentToMainActivity(Context context) {
@@ -96,10 +94,6 @@ public class MainActivity extends BaseActivity implements
 
     private void initUserIdList() {
         userIdList = new ArrayList<>();
-        /*Friend friend_10086 = new Friend(Util.id_10086,Util.img_10086,"10086") ;
-        Friend friend_hhh = new Friend(Util.id_hhh,Util.img_hhh,"hhh") ;
-        userIdList.add(friend_10086);
-        userIdList.add(friend_hhh);*/
         addStudentsAndRestaurants(userIdList);
     }
 

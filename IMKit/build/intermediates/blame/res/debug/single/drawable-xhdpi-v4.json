@@ -128,12 +128,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4aa.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_white.9.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_bubble_white.9.png"
-    },
-    {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f649.png",
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f649.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_white.9.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_bubble_white.9.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_group_ok_disabled.png",
@@ -144,12 +144,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_notice_loading.png"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_emotion_toggle.png",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_emotion_toggle.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_keyboard_hover.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_keyboard_hover.png"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_emotion_toggle.png",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_emotion_toggle.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png",
@@ -204,20 +204,20 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_audio_toggle_hover.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f62a.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f62a.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48b.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f48b.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_btn_pub_service_enter_hover.png"
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f62a.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f62a.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_send_voice_two.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_send_voice_two.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_enter_hover.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_btn_pub_service_enter_hover.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_setting_friends_add.png",
@@ -284,12 +284,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_group_cancel_pressed.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_pb_file_download_progress_background.9.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_pb_file_download_progress_background.9.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ed_pub_service_search_normal.9.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ed_pub_service_search_normal.9.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_pb_file_download_progress_background.9.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_pb_file_download_progress_background.9.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_audio_toggle.png",
@@ -320,12 +320,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ext_locator.png"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f648.png",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f648.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_file_icon_word.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_file_icon_word.png"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f648.png",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f648.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_yes.png",
@@ -368,16 +368,16 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ext_location_tip.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f600.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f600.png"
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48a.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f48a.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play2.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_voice_sent_play2.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48a.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f48a.png"
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f600.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f600.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f36b.png",
@@ -416,12 +416,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_voide_message_unread.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f48d.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f48d.png"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f624.png",
@@ -548,16 +548,16 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f648.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_pb_file_download_progress_background.9.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_pb_file_download_progress_background.9.png"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_picsel_empty_pic.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f37b.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f37b.png"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_picsel_empty_pic.png",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_picsel_empty_pic.png"
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_pb_file_download_progress_background.9.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_pb_file_download_progress_background.9.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f628.png",
@@ -588,12 +588,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u2600.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_voice_input_toggle.9.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_voice_input_toggle.9.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_4.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_4.png"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_voice_input_toggle.9.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_voice_input_toggle.9.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_no.png",
@@ -612,12 +612,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_radio_button_off.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_files_normal.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_files_normal.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ac_other_file_icon.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ac_other_file_icon.png"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_files_normal.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_files_normal.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play2.png",
@@ -632,24 +632,24 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_unread_message_count.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_phone_pressed.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_phone_pressed.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f631.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f631.png"
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_coversation_portrait.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_coversation_portrait.png"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_msg_portrait.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_msg_portrait.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f36b.png",
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f36b.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_msg_portrait.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_def_msg_portrait.png"
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f631.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f631.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_bubble_left.9.png",
@@ -684,12 +684,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f623.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f601.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f601.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_back_press.9.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_back_press.9.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f601.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f601.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u26a1.png",
@@ -704,12 +704,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f61f.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_0.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_0.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f556.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f556.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_0.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_0.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_def_rich_content.png",
@@ -760,20 +760,20 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_picsel_pictype_normal.png"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play3.png",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_voice_sent_play3.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ad_list_folder_icon.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ad_list_folder_icon.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4a4.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4a4.png"
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_voice_sent_play3.png",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_voice_sent_play3.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_btn_pub_service_follow_normal.png",
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_btn_pub_service_follow_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4a4.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4a4.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f62f.png",
@@ -816,12 +816,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ic_volume_2.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f64f.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f64f.png"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f4a4.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f4a4.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f64f.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f64f.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_evaluate_plugin_hover.png",
@@ -868,24 +868,24 @@
         "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ext_location_marker.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_edit_text_background_hover.9.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_edit_text_background_hover.9.png"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f3e1.png",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f3e1.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f636.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f636.png"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f3e1.png",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f3e1.png"
-    },
-    {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ad_list_audio_icon.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ad_list_audio_icon.png"
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_edit_text_background_hover.9.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_edit_text_background_hover.9.png"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u1f633.png",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\u1f633.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ad_list_audio_icon.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_ad_list_audio_icon.png"
     },
     {
         "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_ic_volume_5.png",
@@ -936,12 +936,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_send_toggle_hover.png"
     },
     {
-        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_group_ok_normal.png",
-        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_group_ok_normal.png"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_keyboard_hover.png",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_keyboard_hover.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rc_cs_group_ok_normal.png",
+        "source": "F:\\AndroidStudioProjects\\Deal2\\IMKit\\src\\main\\res\\drawable-xhdpi\\rc_cs_group_ok_normal.png"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\u26c4.png",

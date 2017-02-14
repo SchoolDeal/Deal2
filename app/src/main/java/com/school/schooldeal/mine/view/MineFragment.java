@@ -1,6 +1,9 @@
 package com.school.schooldeal.mine.view;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -9,6 +12,8 @@ import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
+import com.school.schooldeal.mine.model.MineAdapter;
+import com.school.schooldeal.mine.presenter.MinePresenter;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.SignInAcitivty;
@@ -22,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by U-nookia on 2016/12/20.
  */
 
-public class MineFragment extends BaseFragment {
+public class MineFragment extends BaseFragment implements ImplMineFragment{
 
 
     @BindView(R.id.head)
@@ -31,26 +36,25 @@ public class MineFragment extends BaseFragment {
     TextView name;
     @BindView(R.id.score)
     TextView score;
-    @BindView(R.id.my_order_release)
-    TextView myOrderRelease;
-    @BindView(R.id.my_order_receive)
-    TextView myOrderReceive;
-    @BindView(R.id.my_order_finish)
-    TextView myOrderFinish;
-    @BindView(R.id.feed_back)
-    TextView feedBack;
-    @BindView(R.id.about_us)
-    TextView aboutUs;
-    @BindView(R.id.version)
-    TextView version;
     @BindView(R.id.top)
     RelativeLayout topLayout;
+    @BindView(R.id.list_mine)
+    RecyclerView listMine;
 
     private MaterialDialog dialog;
 
     @Override
     protected void initData() {
         initMyMessage();
+        initRecycler();
+        MinePresenter presenter = new MinePresenter(getContext(),this);
+        presenter.initAdapter();
+    }
+
+    private void initRecycler() {
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        listMine.setLayoutManager(manager);
+        listMine.addItemDecoration(new MyItemDecoration());
     }
 
     private void initMyMessage() {
@@ -62,7 +66,6 @@ public class MineFragment extends BaseFragment {
             if (Util.FIRST_TIME_SIGNIN) score_num = 0;
             else score_num = user.getCreditScore();
             score.setText("信用分："+score_num+"");
-
         } else {
             RestaurantUser user = BmobUser.getCurrentUser(getContext(),RestaurantUser.class);
             String name_str = user.getUsername();
@@ -76,23 +79,11 @@ public class MineFragment extends BaseFragment {
         return R.layout.fragment_mine;
     }
 
-    @OnClick({R.id.top, R.id.my_order_release, R.id.my_order_receive, R.id.my_order_finish, R.id.feed_back, R.id.about_us, R.id.version})
+    @OnClick(R.id.top)
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.top:
                 showChooseDialog();
-                break;
-            case R.id.my_order_release:
-                break;
-            case R.id.my_order_receive:
-                break;
-            case R.id.my_order_finish:
-                break;
-            case R.id.feed_back:
-                break;
-            case R.id.about_us:
-                break;
-            case R.id.version:
                 break;
         }
     }
@@ -128,5 +119,10 @@ public class MineFragment extends BaseFragment {
                 getActivity().finish();
                 break;
         }
+    }
+
+    @Override
+    public void setAdapter(MineAdapter adapter){
+        listMine.setAdapter(adapter);
     }
 }
