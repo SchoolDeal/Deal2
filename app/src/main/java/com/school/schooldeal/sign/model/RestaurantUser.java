@@ -14,6 +14,7 @@ public class RestaurantUser extends BmobUser {
     private BmobGeoPoint position;  //用于方便查看最近的点
     private String name;     //餐馆名称
     private boolean isStudent;
+    private String phone;
 
     public boolean isStudent() {
         return isStudent;
