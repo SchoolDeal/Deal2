@@ -3,12 +3,10 @@ package com.school.schooldeal;
 import android.util.Log;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
@@ -39,10 +37,15 @@ public class ServerConnectManager {
                     socket.setKeepAlive(true);
                     Log.d("bbb","connect success");
                     InputStream input = socket.getInputStream();
-                    OutputStream output = socket.getOutputStream();
-                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-                    writer.write(id+"\n"+name+"\n"+url+"\n"+"0\n");
-                    writer.flush();
+                    //OutputStream output = socket.getOutputStream();
+                    //BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+                    //writer.write(id+"\n"+name+"\n"+url+"\n"+"0\n");
+                    //writer.flush();
+
+                    ObjectOutputStream objectOutput = new ObjectOutputStream(socket.getOutputStream());
+                    ServerConnectBean bean = new ServerConnectBean(id,name,url);
+                    objectOutput.writeObject(bean);
+                    objectOutput.flush();
 
                     BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                     while (!(line = reader.readLine()).equals("0")){
@@ -50,9 +53,10 @@ public class ServerConnectManager {
                         Log.d("bbb",token);
                         lisenter.connect(token);
                     }
+                    objectOutput.close();
                     input.close();
-                    output.close();
-                    writer.close();
+                    //output.close();
+                    //writer.close();
                     reader.close();
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -104,6 +104,7 @@ public class SignUpAcitivity extends BaseActivity {
         user.setMobilePhoneNumber(phone);
         user.setEmail(email);
         user.setSex(sex);
+        user.setStudent(true);
 
         user.signUp(context, new SaveListener() {
             @Override
@@ -132,7 +133,7 @@ public class SignUpAcitivity extends BaseActivity {
         user.setName("渝州铁板烧");
         user.setLatitude(29.32f);
         user.setLongitude(106.36f);
-
+        user.setStudent(false);
 
         user.signUp(context, new SaveListener() {
             @Override

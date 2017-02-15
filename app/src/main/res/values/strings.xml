@@ -1,15 +1,26 @@
 <resources>
     <string name="app_name">Deal</string>
     <string name="app_title">title</string>
-    <string name="school_task_title">title</string>
-    <string name="take_out_title">title</string>
-    <string name="mine_title">title</string>
-    <string name="message_title">title</string>
+    <string name="school_task_title">学校任务</string>
+    <string name="take_out_title">外卖</string>
+    <string name="mine_title">我的</string>
+    <string name="message_title">消息</string>
     <string name="destinationHint_takeoutDetails">目的地：</string>
     <string name="businessHint_takeoutDetails">餐馆：</string>
     <string name="bizAddressHint_takeoutDetails">餐馆地址：</string>
     <string name="bizPhoneNumHint_takeoutDetails">餐馆电话：</string>
     <string name="moneyHint_takeoutDetails">报酬：</string>
     <string name="amountHint_takeoutDetails">份数：</string>
-
+    <string name="order_release">发布订单</string>
+    <string name="order_receive">接收订单</string>
+    <string name="order_finish">完成订单</string>
+    <string name="fed_back">反馈错误</string>
+    <string name="customer_service">联系客服</string>
+    <string name="about_us">关于我们</string>
+    <string name="version_up">版本更新</string>
+    <string name="tip_for_empty">输入内容不能为空</string>
+    <string name="commit_success">提交成功</string>
+    <string name="commit_false">提交失败，错误码</string>
+    <string name="no_student">没有该学生用户</string>
+    <string name="no_restaurant">没有该商家用户</string>
 </resources>

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 import com.school.schooldeal.ConnectLisenter;
+import com.school.schooldeal.R;
 import com.school.schooldeal.ServerConnectManager;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
@@ -47,13 +48,49 @@ public class SignInPresenter implements ConnectLisenter{
         signIn.showDialog("请稍候","正在登陆用户.......");
         final String name = signIn.getUserName();
         String password = signIn.getUserPassword();
+        if (Util.IS_STUDENT) studentSignIn(name,password);
+        else restaurantSignIn(name,password);
+    }
+
+    private void restaurantSignIn(String name, String password) {
+        final RestaurantUser restaurantUser = new RestaurantUser();
+        restaurantUser.setUsername(name);
+        restaurantUser.setPassword(password);
+        restaurantUser.login(context, new SaveListener() {
+            @Override
+            public void onSuccess() {
+                if ((BmobUser.getCurrentUser(context,RestaurantUser.class)).isStudent()){
+                    signIn.dismissDialog();
+                    ToastUtil.makeShortToast(context, R.string.no_restaurant);
+                    BmobUser.logOut(context);
+                    signIn.clearEdit();
+                }else {
+                    getToken();
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                signIn.dismissDialog();
+                Toast.makeText(context,s,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void studentSignIn(String name,String password) {
         final StudentUser studentUser = new StudentUser();
         studentUser.setUsername(name);
         studentUser.setPassword(password);
         studentUser.login(context, new SaveListener() {
             @Override
             public void onSuccess() {
-                getToken();
+                if (!(BmobUser.getCurrentUser(context,StudentUser.class)).isStudent()) {
+                    signIn.dismissDialog();
+                    ToastUtil.makeShortToast(context, R.string.no_student);
+                    BmobUser.logOut(context);
+                }else {
+                    getToken();
+                }
             }
 
             @Override

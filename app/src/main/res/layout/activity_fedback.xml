@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="false"
+        android:id="@+id/fed_back_toolBar"
+        android:background="@color/barBackColor">
+    </android.support.v7.widget.Toolbar>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/fed_back_toolBar"
+        android:background="@drawable/ep"
+        android:hint="将遇到的问题写在这里吧"
+        android:textSize="18dp"
+        android:gravity="top"
+        android:paddingTop="6dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:layout_margin="6dp"
+        android:id="@+id/fed_back"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fed_back"
+        android:id="@+id/fed_back_bt"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:text="提  交  反  馈"
+        android:textSize="20dp"/>
+</RelativeLayout>
