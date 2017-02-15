@@ -13,7 +13,15 @@ public class RestaurantUser extends BmobUser {
     private double latitude;  //纬度
     private BmobGeoPoint position;  //用于方便查看最近的点
     private String name;     //餐馆名称
-    private String phone;    //联系电话
+    private boolean isStudent;
+
+    public boolean isStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(boolean student) {
+        isStudent = student;
+    }
 
     public BmobGeoPoint getPosition() {
         return position;

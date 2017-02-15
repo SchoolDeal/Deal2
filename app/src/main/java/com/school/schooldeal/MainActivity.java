@@ -45,7 +45,6 @@ import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.manager.IUnReadMessageObserver;
 import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.CSCustomServiceInfo;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.UserInfo;
 import io.rong.message.ContactNotificationMessage;
@@ -70,7 +69,7 @@ public class MainActivity extends BaseActivity implements
     private MaterialDialog inputDialog,progressDialog;
 
     private List<Fragment> fragments;
-    private String[] titles = {"外卖", "学校任务", "消息", "我的"};
+    private int[] titles = {R.string.take_out_title, R.string.school_task_title, R.string.message_title, R.string.mine_title};
     private List<BmobUser> userIdList;
 
     public static Intent getIntentToMainActivity(Context context) {
@@ -229,11 +228,20 @@ public class MainActivity extends BaseActivity implements
 
     private void initBottomNavigationBar() {
         bottom.setActiveColor(R.color.barBackColor);
-        bottom.addItem(new BottomNavigationItem(R.mipmap.locationgt, titles[0]))
-                .addItem(new BottomNavigationItem(R.mipmap.phonegt, titles[1]))
-                .addItem(new BottomNavigationItem(R.mipmap.textgt, titles[2]).setBadgeItem(no_read_message))
-                .addItem(new BottomNavigationItem(R.mipmap.number, titles[3]))
-                .initialise();
+        if (Util.IS_STUDENT){
+            bottom.addItem(new BottomNavigationItem(R.mipmap.locationgt, titles[0]))
+                    .addItem(new BottomNavigationItem(R.mipmap.phonegt, titles[1]))
+                    .addItem(new BottomNavigationItem(R.mipmap.textgt, titles[2]).setBadgeItem(no_read_message))
+                    .addItem(new BottomNavigationItem(R.mipmap.number, titles[3]))
+                    .initialise();
+        }else {
+            toolbar.setBackgroundResource(R.color.md_teal_400);
+            toolbar.setTitleTextColor(0xffffff);
+            bottom.addItem(new BottomNavigationItem(R.mipmap.locationgt, titles[0]))
+                    .addItem(new BottomNavigationItem(R.mipmap.textgt, titles[2]).setBadgeItem(no_read_message))
+                    .addItem(new BottomNavigationItem(R.mipmap.number, titles[3]))
+                    .initialise();
+        }
         bottom.setTabSelectedListener(this);
         bottom.setAutoHideEnabled(true);
     }
@@ -253,6 +261,7 @@ public class MainActivity extends BaseActivity implements
         fragments.add(new SchoolTaskFragment());
         fragments.add(conversationList);
         fragments.add(new MineFragment());
+        if (!Util.IS_STUDENT) fragments.remove(1);
     }
 
     private Fragment initConversationList() {
@@ -317,10 +326,18 @@ public class MainActivity extends BaseActivity implements
     public void onTabSelected(int position) {
         viewPager.setCurrentItem(position);
         toolbar.setTitle(titles[position]);
-        if (position==2){
+        if (Util.IS_STUDENT)
+            if (position==2){
             toolbar.getMenu().getItem(0).setVisible(true);
-        }else {
+            }else {
             toolbar.getMenu().getItem(0).setVisible(false);
+            }
+        else{
+            if (position==1){
+                toolbar.getMenu().getItem(0).setVisible(true);
+            }else {
+                toolbar.getMenu().getItem(0).setVisible(false);
+            }
         }
     }
 
@@ -382,8 +399,6 @@ public class MainActivity extends BaseActivity implements
         switch (menuItem.getItemId()) {
             case R.id.action_find:
                 msg += "Click find";
-                //startChat();
-                //startCustumerService();
                 showInputDialog();
                 break;
         }
@@ -412,50 +427,18 @@ public class MainActivity extends BaseActivity implements
      */
     private void getUserFromInput(CharSequence input) {
         showProgressDialog("提示","正在搜索该用户，请稍候");
-        if (Util.IS_STUDENT){
-            queryStudentUser(input);
-        }else {
-            queryRestaurantUser(input);
-        }
+        queryUser(input);
     }
 
-    private void queryRestaurantUser(CharSequence input) {
-        BmobQuery<RestaurantUser> query = new BmobQuery<>();
+    private void queryUser(CharSequence input) {
+        BmobQuery<BmobUser> query = new BmobQuery<>();
         query.addWhereEqualTo("username", input);
-        query.findObjects(context, new FindListener<RestaurantUser>() {
+        query.findObjects(context, new FindListener<BmobUser>() {
             @Override
-            public void onSuccess(List<RestaurantUser> list) {
+            public void onSuccess(List<BmobUser> list) {
                 if (null!=list){
                     if (list.size()==1){
-                        RestaurantUser user = list.get(0);
-                        String id = user.getObjectId();
-                        String name = user.getUsername();
-                        startChat(id,name);
-                    }else {
-                        ToastUtil.makeShortToast(context,"没有该用户");
-                    }
-                }
-
-                dismissProgressDialog();
-            }
-
-            @Override
-            public void onError(int i, String s) {
-                ToastUtil.makeShortToast(context,"搜索用户出错"+s);
-                dismissProgressDialog();
-            }
-        });
-    }
-
-    private void queryStudentUser(CharSequence input) {
-        BmobQuery<StudentUser> query = new BmobQuery<>();
-        query.addWhereEqualTo("username", input);
-        query.findObjects(context, new FindListener<StudentUser>() {
-            @Override
-            public void onSuccess(List<StudentUser> list) {
-                if (null!=list){
-                    if (list.size()==1){
-                        StudentUser user = list.get(0);
+                        BmobUser user = list.get(0);
                         String id = user.getObjectId();
                         String name = user.getUsername();
                         startChat(id,name);
@@ -472,10 +455,6 @@ public class MainActivity extends BaseActivity implements
                 dismissProgressDialog();
             }
         });
-    }
-
-    private void dismissInputDialog(){
-        inputDialog.dismiss();
     }
 
     private void showProgressDialog(String title,String content){
@@ -489,23 +468,6 @@ public class MainActivity extends BaseActivity implements
 
     private void dismissProgressDialog(){
         progressDialog.dismiss();
-    }
-
-    /*
-    启动客服服务
-     */
-    private void startCustumerService() {
-        //首先需要构造使用客服者的用户信息
-        CSCustomServiceInfo.Builder csBuilder = new CSCustomServiceInfo.Builder();
-        CSCustomServiceInfo csInfo = csBuilder.nickName("融云").build();
-        /**
-         * 启动客户服聊天界面
-         * @param context           应用上下文。
-         * @param customerServiceId 要与之聊天的客服 Id。
-         * @param title             聊天的标题，如果传入空值，则默认显示与之聊天的客服名称。
-         * @param customServiceInfo 当前使用客服者的用户信息。{@link io.rong.imlib.model.CSCustomServiceInfo}
-         */
-        RongIM.getInstance().startCustomerServiceChat(context, "KEFU148662207661664", "在线客服",csInfo);
     }
 
     private void startChat(String id,String name) {

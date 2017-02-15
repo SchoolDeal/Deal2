@@ -21,6 +21,10 @@ public class TakeOutOrderBean{
 
     public TakeOutOrderBean(int amount) {
         this.amount = amount;
+        money = 10f;
+        destination = "dsfa";
+        restaurantName = "dsaf";
+        restaurantAddress = "asdfg";
     }
 
     public TakeOutOrderBean(int amount, String destination, Float money, String restaurantAddress, String restaurantName) {

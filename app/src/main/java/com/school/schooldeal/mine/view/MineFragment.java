@@ -29,7 +29,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MineFragment extends BaseFragment implements ImplMineFragment{
 
-
     @BindView(R.id.head)
     CircleImageView head;
     @BindView(R.id.name)
@@ -42,13 +41,22 @@ public class MineFragment extends BaseFragment implements ImplMineFragment{
     RecyclerView listMine;
 
     private MaterialDialog dialog;
+    private MinePresenter presenter;
 
     @Override
     protected void initData() {
         initMyMessage();
         initRecycler();
-        MinePresenter presenter = new MinePresenter(getContext(),this);
+        presenter = new MinePresenter(getContext(),this);
         presenter.initAdapter();
+        changeItems();
+    }
+
+    private void changeItems() {
+        if (!Util.IS_STUDENT){
+            presenter.reduceItem(1);
+            presenter.reduceItem(1);
+        }
     }
 
     private void initRecycler() {
@@ -70,7 +78,7 @@ public class MineFragment extends BaseFragment implements ImplMineFragment{
             RestaurantUser user = BmobUser.getCurrentUser(getContext(),RestaurantUser.class);
             String name_str = user.getUsername();
             name.setText(name_str);
-            score.setVisibility(View.INVISIBLE);
+            score.setText("商家用户");
         }
     }
 

@@ -13,6 +13,15 @@ public class StudentUser extends BmobUser{
     private String schoolNumber;  //学号
     private int school;          //学校编号
     private int apartment;       //公寓编号
+    private boolean isStudent;
+
+    public boolean isStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(boolean student) {
+        isStudent = student;
+    }
 
     public int getApartment() {
         return apartment;

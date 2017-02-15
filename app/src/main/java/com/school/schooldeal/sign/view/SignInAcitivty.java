@@ -155,13 +155,28 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
 
     @Override
     public void clearView() {
-        student.setVisibility(View.GONE);
-        restaurant.setVisibility(View.GONE);
+        choice_view.setVisibility(View.GONE);
     }
 
     @Override
     public void showView(){
-        student.setVisibility(View.VISIBLE);
-        restaurant.setVisibility(View.VISIBLE);
+        choice_view.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void clearEdit(){
+        nameEdit.setText("");
+        passwordEdit.setText("");
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (choice_view.getVisibility()==View.GONE){
+            choice_view.setVisibility(View.VISIBLE);
+            sign_view.setVisibility(View.GONE);
+            clearEdit();
+        }else if (choice_view.getVisibility()==View.VISIBLE){
+            super.onBackPressed();
+        }
     }
 }

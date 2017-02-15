@@ -21,4 +21,6 @@ public interface ImplSignIn {
     void clearView();
 
     void showView();
+
+    void clearEdit();
 }
