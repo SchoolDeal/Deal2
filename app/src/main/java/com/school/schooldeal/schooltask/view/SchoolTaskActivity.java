@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
+import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.schooltask.model.SchoolTaskDataAdapter;
 import com.school.schooldeal.schooltask.presenter.SchoolTaskOtherPresenter;
 
@@ -33,8 +34,7 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
         title = intent.getStringExtra("title");
         initToolBar();
         initRecyclerView();
-        presenter = new SchoolTaskOtherPresenter(context,this);
-        presenter.initAdapter();
+        presenter = new SchoolTaskOtherPresenter(context,this,title);
         setClickListener();
     }
 
@@ -45,10 +45,18 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
 
     @Override
     public void setAdapter(SchoolTaskDataAdapter adapter) {
-        adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
+        /*adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
             @Override
             public void onItemClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),SchoolTaskDetailedActivity.class);
+                startActivity(intent);
+            }
+        });*/
+        adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
+            @Override
+            public void onItemClick(View view, CommonRequest commonRequest) {
+                Intent intent = new Intent(context,SchoolTaskDetailedActivity.class);
+                intent.putExtra("CommonRequest",commonRequest);
                 startActivity(intent);
             }
         });

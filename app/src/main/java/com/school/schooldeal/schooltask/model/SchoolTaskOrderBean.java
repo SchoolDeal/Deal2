@@ -1,5 +1,7 @@
 package com.school.schooldeal.schooltask.model;
 
+import com.school.schooldeal.model.CommonRequest;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -9,8 +11,10 @@ import cn.bmob.v3.BmobObject;
 
 public class SchoolTaskOrderBean extends BmobObject{
     private int amount;
-    public  SchoolTaskOrderBean(int amount){
+    private CommonRequest commonRequest;
+    public  SchoolTaskOrderBean(int amount,CommonRequest commonRequest){
         this.amount = amount;
+        this.commonRequest = commonRequest;
     }
 
     public int getAmount() {
@@ -19,5 +23,13 @@ public class SchoolTaskOrderBean extends BmobObject{
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public CommonRequest getCommonRequest() {
+        return commonRequest;
+    }
+
+    public void setCommonRequest(CommonRequest commonRequest) {
+        this.commonRequest = commonRequest;
     }
 }

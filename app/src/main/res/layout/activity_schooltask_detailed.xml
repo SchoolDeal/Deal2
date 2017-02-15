@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
-        android:elevation="10dp"
+        android:elevation="20dp"
         android:id="@+id/toolBar_school_task_detailed"
         android:background="@color/md_pink_200"
         android:fitsSystemWindows="true"
@@ -98,6 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
+        android:textColor="@color/white"
         android:id="@+id/school_task_detailed_button"
         android:foreground="?android:attr/selectableItemBackground"
         android:background="@color/md_amber_400"

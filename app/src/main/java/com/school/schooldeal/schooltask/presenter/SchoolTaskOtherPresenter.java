@@ -5,7 +5,10 @@ import android.content.Context;
 import com.school.schooldeal.schooltask.model.ImplSchoolTaskModel;
 import com.school.schooldeal.schooltask.model.SchoolTaskDataAdapter;
 import com.school.schooldeal.schooltask.model.SchoolTaskModel;
+import com.school.schooldeal.schooltask.model.SchoolTaskOrderBean;
 import com.school.schooldeal.schooltask.view.ImplSchoolTaskActivity;
+
+import java.util.List;
 
 /**
  * Created by 教科书式的机智少年 on 2017/1/21.
@@ -16,14 +19,18 @@ public class SchoolTaskOtherPresenter {
     private Context context;
     private SchoolTaskDataAdapter adapter;
     private ImplSchoolTaskModel schoolTaskModel;
-    public SchoolTaskOtherPresenter(Context context, ImplSchoolTaskActivity implSchoolTaskActivity){
+    private String title;
+    public SchoolTaskOtherPresenter(Context context, ImplSchoolTaskActivity implSchoolTaskActivity,String title){
         this.context = context;
+        this.title = title;
         schoolTaskActivity = implSchoolTaskActivity;
-        schoolTaskModel = new SchoolTaskModel();
+        schoolTaskModel = new SchoolTaskModel(context,this);
         adapter = new SchoolTaskDataAdapter(context);
+        schoolTaskModel.getLocated();
+        schoolTaskModel.getOrders();
     }
-    public void initAdapter() {
-        adapter.setData(schoolTaskModel.getOrders());
+    public void initAdapter(List<SchoolTaskOrderBean> orders) {
+        adapter.setData(orders);
         schoolTaskActivity.setAdapter(adapter);
     }
 }

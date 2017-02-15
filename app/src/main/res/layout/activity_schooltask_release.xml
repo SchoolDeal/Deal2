@@ -94,8 +94,28 @@
         app:met_floatingLabel="highlight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/school_task_release_textHint"
+        android:layout_below="@id/school_task_release_refundHint"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:src="@mipmap/textgt"
+        android:layout_width="23dp"
+        android:layout_height="23dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/school_task_release_text"
+        android:layout_below="@id/school_task_release_refund"
+        android:layout_toRightOf="@id/school_task_release_textHint"
+        app:met_floatingLabel="highlight"
+        android:layout_marginRight="15dp"
+        android:hint="详细信息"
+        android:inputType="textPhonetic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/school_task_release_button"
+        android:textColor="@color/white"
         android:text="完成"
         android:textSize="17dp"
         android:background="@color/md_amber_400"

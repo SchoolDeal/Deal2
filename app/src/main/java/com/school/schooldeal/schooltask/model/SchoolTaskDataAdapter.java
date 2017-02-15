@@ -1,6 +1,7 @@
 package com.school.schooldeal.schooltask.model;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
+import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.model.CommonRequest;
+import com.school.schooldeal.model.Student;
 
 /**
  * Created by 教科书式的机智少年 on 2017/1/20.
@@ -24,25 +28,43 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
 
     @Override
     protected int getViewType(SchoolTaskOrderBean schoolTaskOrderBean) {
-        return 0;
+        return schoolTaskOrderBean.getAmount();
     }
 
     @Override
-    protected void bindData(BaseViewHolder holder, SchoolTaskOrderBean item) {
-
+    protected void bindData(BaseViewHolder holder, final SchoolTaskOrderBean item) {
+        final SchoolTaskViewHolder viewHolder = (SchoolTaskViewHolder)holder;
+        final CommonRequest commonRequest = item.getCommonRequest();
+        Student student = commonRequest.getStudent();
+        final CardView root = viewHolder.getRoot();
+        viewHolder.getLocation().setText(student.getUsername());
+        viewHolder.getDescribe().setText(commonRequest.getRequestContent());
+        viewHolder.getRemuneration().setText(commonRequest.getRemuneration()+"元");
+        viewHolder.getRob().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.makeShortToast(context,"抢单成功");
+            }
+        });
+        root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickListener.onItemClick(root,commonRequest);
+            }
+        });
     }
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new SchoolTaskViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_recycler_school_task,parent,false),onItemClickListener,context);
+                .inflate(R.layout.item_recycler_school_task,parent,false),context);
     }
     public void setOnItemClickListener(OnSchoolTaskItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
     public interface OnSchoolTaskItemClickListener{
-        void onItemClick(View view);
+        void onItemClick(View view,CommonRequest commonRequest);
     }
 }
 
