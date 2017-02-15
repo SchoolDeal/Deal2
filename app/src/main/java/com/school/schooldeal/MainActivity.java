@@ -12,7 +12,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -25,7 +24,6 @@ import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.model.ConversationListAdapterEx;
-import com.school.schooldeal.message.model.Friend;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
@@ -41,7 +39,6 @@ import butterknife.BindView;
 import cn.bmob.push.BmobPush;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
@@ -73,8 +70,8 @@ public class MainActivity extends BaseActivity implements
     private MaterialDialog inputDialog,progressDialog;
 
     private List<Fragment> fragments;
-    private String[] titles = {"take out", "school task", "message", "mine"};
-    private List<Friend> userIdList;
+    private String[] titles = {"外卖", "学校任务", "消息", "我的"};
+    private List<BmobUser> userIdList;
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -97,10 +94,40 @@ public class MainActivity extends BaseActivity implements
 
     private void initUserIdList() {
         userIdList = new ArrayList<>();
-        Friend friend_10086 = new Friend(Util.id_10086,Util.img_10086,"10086") ;
-        Friend friend_hhh = new Friend(Util.id_hhh,Util.img_hhh,"hhh") ;
-        userIdList.add(friend_10086);
-        userIdList.add(friend_hhh);
+        addStudentsAndRestaurants(userIdList);
+    }
+
+    private void addStudentsAndRestaurants(final List<BmobUser> users) {
+        BmobQuery<StudentUser> studentUsersQuery = new BmobQuery<>();
+        studentUsersQuery.addWhereNotEqualTo("username","");
+        studentUsersQuery.findObjects(context, new FindListener<StudentUser>() {
+            @Override
+            public void onSuccess(List<StudentUser> list) {
+                users.addAll(list);
+                addRestaurants(users);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
+    }
+
+    private void addRestaurants(final List<BmobUser> users) {
+        BmobQuery<RestaurantUser> studentUsersQuery = new BmobQuery<>();
+        studentUsersQuery.addWhereNotEqualTo("username","");
+        studentUsersQuery.findObjects(context, new FindListener<RestaurantUser>() {
+            @Override
+            public void onSuccess(List<RestaurantUser> list) {
+                users.addAll(list);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+
+            }
+        });
     }
 
     private void initPushMessage() {
@@ -482,22 +509,17 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void startChat(String id,String name) {
-        /*RongIM.getInstance().
-                startPrivateChat(MainActivity.this,
-                        id,name);*/
         RongIM.getInstance().startConversation(context, Conversation.ConversationType.PRIVATE,
                 id,name);
     }
 
     @Override
     public UserInfo getUserInfo(String s) {
-        for (Friend i : userIdList) {
-            if (i.getId().equals(s)) {
-                Log.e(TAG, i.getImg());
-                return new UserInfo(i.getId(),i.getName(), Uri.parse(i.getImg()));
+        for (BmobUser i : userIdList) {
+            if (i.getObjectId().equals(s)) {
+                return new UserInfo(i.getObjectId(),i.getUsername(), Uri.parse(Util.img_10086));
             }
         }
-        Log.e("MainActivity","UserId is ：" +s );
         return null;
     }
 }

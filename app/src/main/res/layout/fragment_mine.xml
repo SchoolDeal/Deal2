@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="86dp"
@@ -11,7 +10,7 @@
         android:clickable="true"
         android:id="@+id/top"
         android:foreground="?android:attr/selectableItemBackground"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="@color/white"
         android:padding="12dp">
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="66sp"
@@ -22,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/head"
-            android:paddingLeft="12dp"
+            android:paddingLeft="18dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
             <TextView
@@ -31,7 +30,7 @@
                 android:id="@+id/name"
                 android:text="用户名"
                 android:textColor="@color/black"
-                android:textSize="18dp"/>
+                android:textSize="20dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,166 +40,12 @@
                 android:textSize="16dp"/>
         </LinearLayout>
     </RelativeLayout>
-    <RelativeLayout
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="56dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/my_order_release"
-            android:text="发布订单"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/my_order_release"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/my_order_receive"
-            android:text="接受订单"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/my_order_receive"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/my_order_finish"
-            android:text="完成订单"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/my_order_finish"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/feed_back"
-            android:text="反馈错误"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/feed_back"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/about_us"
-            android:text="关于我们"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/about_us"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:layout_marginTop="6dp"
-        android:gravity="center_vertical"
-        android:background="#73C54F"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:id="@+id/version"
-            android:text="版本更新"
-            android:textSize="18dp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/version"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:src="@mipmap/right"/>
-    </RelativeLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"
+        android:layout_marginTop="42dp"
+        android:id="@+id/list_mine">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
