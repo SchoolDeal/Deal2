@@ -16,6 +16,8 @@ import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.presenter.TakeOutFragmentPresenter;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -35,6 +37,7 @@ public class TakeOutFragment extends BaseFragment
     FloatingActionButton mTakeoutFab;
 
     private TakeOutFragmentPresenter presenter;
+    //FloatingActionBtn动画
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
 
     @Override

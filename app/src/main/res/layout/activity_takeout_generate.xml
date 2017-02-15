@@ -17,240 +17,355 @@
         android:layout_height="68dp">
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/destinationRl_takeoutGenerate"
+    <ScrollView
+        android:id="@+id/scroll_takeoutGenerate"
         android:layout_below="@+id/toolBar_takeoutGenerate"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/generateRequest_takeoutGenerate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/destinationImg_takeoutGenerate"
-            android:src="@mipmap/locationgt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
-        <EditText
-            android:id="@+id/destinationEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/destinationImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="送达地址"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
+        <RelativeLayout
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/schoolRl_takeoutGenerate"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/dividing_1"
-        android:background="@color/md_grey_200"
-        android:layout_below="@+id/destinationRl_takeoutGenerate"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="280dp"
-        android:layout_height="1dp"/>
+                <ImageView
+                    android:id="@+id/destinationImg_takeoutGenerate"
+                    android:src="@mipmap/locationgt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+                <TextView
+                    android:id="@+id/school_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/destinationImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="选择学校"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-    <RelativeLayout
-        android:id="@+id/studentNameRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_1"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/schoolDropBtn_takeoutGenerate"
+                    android:src="@drawable/ic_drop_down"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="44dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
 
-        <ImageView
-            android:id="@+id/studentNameImg_takeoutGenerate"
-            android:src="@mipmap/peoplegt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
+            </RelativeLayout>
 
-        <EditText
-            android:id="@+id/studentNameEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/studentNameImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="外卖收货人姓名"
-            android:maxLines="2"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/dividing_1"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/schoolRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/apartmentRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_1"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/dividing_2"
-        android:background="@color/md_grey_200"
-        android:layout_below="@+id/studentNameRl_takeoutGenerate"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="280dp"
-        android:layout_height="1dp"/>
+                <ImageView
+                    android:id="@+id/apartmentImg_takeoutGenerate"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+                <TextView
+                    android:id="@+id/apartment_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/apartmentImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="选择公寓"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
-    <RelativeLayout
-        android:id="@+id/studentPhoneRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_2"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/apartmentDropBtn_takeoutGenerate"
+                    android:src="@drawable/ic_drop_down"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="44dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
 
-        <ImageView
-            android:id="@+id/studentPhoneImg_takeoutGenerate"
-            android:src="@mipmap/phonegt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
-        <EditText
-            android:id="@+id/studentPhoneEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/studentPhoneImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="外卖收货人联系电话"
-            android:inputType="phone"
-            android:maxLines="2"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/dividing_2"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/apartmentRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
 
-    <ImageView
-        android:id="@+id/dividing_3"
-        android:background="@color/md_grey_200"
-        android:layout_below="@+id/studentPhoneRl_takeoutGenerate"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="280dp"
-        android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/bedroomRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_2"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/amountRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_3"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/bedroomImg_takeoutGenerate"
+                    android:src="@mipmap/cascades"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
 
-        <ImageView
-            android:id="@+id/amountImg_takeoutGenerate"
-            android:src="@mipmap/amountgt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
+                <EditText
+                    android:id="@+id/bedroomEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/bedroomImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="寝室号"
+                    android:maxLines="2"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/amountEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/amountImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="这儿填份数"
-            android:maxLines="1"
-            android:inputType="number"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/dividing_3"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/bedroomRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
 
-    <ImageView
-        android:id="@+id/dividing_4"
-        android:background="@color/md_grey_200"
-        android:layout_below="@+id/amountRl_takeoutGenerate"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="280dp"
-        android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/studentNameRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_3"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/remunerationRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_4"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/studentNameImg_takeoutGenerate"
+                    android:src="@mipmap/peoplegt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
 
-        <ImageView
-            android:id="@+id/remunerationImg_takeoutGenerate"
-            android:src="@mipmap/refundgt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
+                <EditText
+                    android:id="@+id/studentNameEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/studentNameImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="外卖收货人姓名"
+                    android:maxLines="2"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:id="@+id/remunerationEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/remunerationImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="每份的报酬"
-            android:maxLines="1"
-            android:inputType="number"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/dividing_4"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/studentNameRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
 
-    <ImageView
-        android:id="@+id/dividing_5"
-        android:background="@color/md_grey_200"
-        android:layout_below="@+id/remunerationRl_takeoutGenerate"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_width="280dp"
-        android:layout_height="1dp"/>
+            <RelativeLayout
+                android:id="@+id/studentPhoneRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_4"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/remarksRl_takeoutGenerate"
-        android:layout_below="@+id/dividing_5"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/studentPhoneImg_takeoutGenerate"
+                    android:src="@mipmap/phonegt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+                <EditText
+                    android:id="@+id/studentPhoneEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/studentPhoneImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="外卖收货人联系电话"
+                    android:inputType="phone"
+                    android:maxLines="2"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/remarksImg_takeoutGenerate"
-            android:src="@mipmap/textgt"
-            android:tint="@color/mint_green"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_width="23dp"
-            android:layout_height="23dp"/>
+            </RelativeLayout>
 
-        <EditText
-            android:id="@+id/remarksEdit_takeoutGenerate"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="4dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/remarksImg_takeoutGenerate"
-            android:background="@null"
-            android:hint="备注"
-            android:textColor="@color/md_grey_800"
-            android:textSize="17sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/dividing_5"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/studentPhoneRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:id="@+id/amountRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_5"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/amountImg_takeoutGenerate"
+                    android:src="@mipmap/amountgt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+
+                <EditText
+                    android:id="@+id/amountEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/amountImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="这儿填份数"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/dividing_6"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/amountRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:id="@+id/remunerationRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_6"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/remunerationImg_takeoutGenerate"
+                    android:src="@mipmap/refundgt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+
+                <EditText
+                    android:id="@+id/remunerationEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/remunerationImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="每份的报酬"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/dividing_7"
+                android:background="@color/md_grey_200"
+                android:layout_below="@+id/remunerationRl_takeoutGenerate"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="280dp"
+                android:layout_height="1dp"/>
+
+            <RelativeLayout
+                android:id="@+id/remarksRl_takeoutGenerate"
+                android:layout_below="@+id/dividing_7"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/remarksImg_takeoutGenerate"
+                    android:src="@mipmap/textgt"
+                    android:tint="@color/mint_green"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"/>
+
+                <EditText
+                    android:id="@+id/remarksEdit_takeoutGenerate"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/remarksImg_takeoutGenerate"
+                    android:background="@null"
+                    android:hint="备注"
+                    android:textColor="@color/md_grey_800"
+                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+
     <Button
         android:id="@+id/generateRequest_takeoutGenerate"
         android:text="完成"

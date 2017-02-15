@@ -15,20 +15,15 @@ public class TakeawayRequest extends BmobObject {
     //private Student student;       //买这份外卖的学生
     //private Restaurant restaurant; //发起这份请求的餐馆
     //private Apartment apartment;   //这份外卖的目的公寓
-    private RestaurantUser restaurant;
-    private String consigneeName;   //收货人姓名
-    private String remarks;        //备注信息
-    private Float remuneration;    //预期报酬
-    private Integer amount;        //份数
-    private String destination;     //送达地址
-
-    public String getConsigneeName() {
-        return consigneeName;
-    }
-
-    public void setConsigneeName(String consigneeName) {
-        this.consigneeName = consigneeName;
-    }
+    //private String destination;         //送达地址
+    private RestaurantUser restaurant;  //发起这份请求的餐馆
+    private String consigneeName;       //收货人姓名
+    private String remarks;             //备注信息
+    private Float remuneration;         //预期报酬
+    private Integer amount;             //份数
+    private School school;              //收货学校
+    private Apartment apartment;        //收货公寓
+    private String bedroom;             //收货寝室号
 
     public String getRequestID() {
         return requestID;
@@ -52,6 +47,14 @@ public class TakeawayRequest extends BmobObject {
 
     public void setRestaurant(RestaurantUser restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getConsigneeName() {
+        return consigneeName;
+    }
+
+    public void setConsigneeName(String consigneeName) {
+        this.consigneeName = consigneeName;
     }
 
     public String getRemarks() {
@@ -78,12 +81,28 @@ public class TakeawayRequest extends BmobObject {
         this.amount = amount;
     }
 
-    public String getDestination() {
-        return destination;
+    public School getSchool() {
+        return school;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public Apartment getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+        this.apartment = apartment;
+    }
+
+    public String getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(String bedroom) {
+        this.bedroom = bedroom;
     }
 
     @Override
@@ -96,7 +115,9 @@ public class TakeawayRequest extends BmobObject {
                 ", remarks='" + remarks + '\'' +
                 ", remuneration=" + remuneration +
                 ", amount=" + amount +
-                ", destination='" + destination + '\'' +
+                ", school=" + school +
+                ", apartment=" + apartment +
+                ", bedroom='" + bedroom + '\'' +
                 '}';
     }
 }

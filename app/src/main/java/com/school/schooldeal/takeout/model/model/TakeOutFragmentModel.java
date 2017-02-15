@@ -1,11 +1,16 @@
-package com.school.schooldeal.takeout.model;
+package com.school.schooldeal.takeout.model.model;
 
 import android.content.Context;
 import android.util.Log;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
+import com.school.schooldeal.commen.util.Located;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.sign.model.RestaurantUser;
+import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
+import com.school.schooldeal.takeout.model.impl.ImplTakeOutFragmentModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +24,19 @@ import cn.bmob.v3.listener.FindListener;
  * 外卖界面的数据处理类，用于获取数据集合，对数据集合做操作
  */
 
-public class TakeOutFragmentModel implements ImplTakeOutModel{
+public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
 
     private static final String className = "TOFragmentModel";
 
     private List<TakeOutOrderBean> orders;
     private Context mContext;
+    private Located mLocated;
 
     public TakeOutFragmentModel(Context context) {
         orders = new ArrayList<>();
         this.mContext = context;
+        if (Util.IS_STUDENT)
+            mLocated = new Located(context);
     }
 
 
@@ -37,28 +45,18 @@ public class TakeOutFragmentModel implements ImplTakeOutModel{
 
         if (Util.IS_STUDENT){
             //定位并获取附近商家订单
-            orders.add(new TakeOutOrderBean(1));
-            orders.add(new TakeOutOrderBean(2));
-            orders.add(new TakeOutOrderBean(3));
-            orders.add(new TakeOutOrderBean(4));
-            orders.add(new TakeOutOrderBean(5));
-            orders.add(new TakeOutOrderBean(6));
-            orders.add(new TakeOutOrderBean(7));
-            orders.add(new TakeOutOrderBean(8));
-            orders.add(new TakeOutOrderBean(1));
-            orders.add(new TakeOutOrderBean(2));
-            orders.add(new TakeOutOrderBean(3));
-            orders.add(new TakeOutOrderBean(4));
-            orders.add(new TakeOutOrderBean(5));
-            orders.add(new TakeOutOrderBean(6));
-            orders.add(new TakeOutOrderBean(7));
-            orders.add(new TakeOutOrderBean(8));
+            startLocate();
+
+
+
+
         }else{
             //获取商家发布的订单
             final RestaurantUser restaurantUser = BmobUser.getCurrentUser(mContext, RestaurantUser.class);
             BmobQuery<TakeawayRequest> requestQuery = new BmobQuery<>();
             requestQuery.addWhereEqualTo("restaurant", restaurantUser);
             requestQuery.include("restaurant");
+            requestQuery.include("apartment");
             requestQuery.findObjects(mContext, new FindListener<TakeawayRequest>() {
                 @Override
                 public void onSuccess(List<TakeawayRequest> list) {
@@ -69,7 +67,7 @@ public class TakeOutFragmentModel implements ImplTakeOutModel{
                         TakeOutOrderBean orderBean = new TakeOutOrderBean(
                                 request.getObjectId(),
                                 request.getAmount(),
-                                request.getDestination(),
+                                request.getApartment().getApartmentName()+request.getBedroom(),
                                 request.getRestaurant().getName(),
                                 request.getRestaurant().getAddress(),
                                 request.getRemuneration()
@@ -87,5 +85,19 @@ public class TakeOutFragmentModel implements ImplTakeOutModel{
         }
 
         return orders;
+    }
+
+    public void startLocate(){
+        mLocated.starLocated(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null){
+                    Log.d(className, "onLocationChanged: "+aMapLocation.getAddress());
+
+                }else{
+                    Log.e(className, "Error, code:"+aMapLocation.getErrorCode()+" Info: "+aMapLocation.getErrorInfo());
+                }
+            }
+        });
     }
 }

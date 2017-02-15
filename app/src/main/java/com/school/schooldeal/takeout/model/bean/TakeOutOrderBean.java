@@ -1,4 +1,4 @@
-package com.school.schooldeal.takeout.model;
+package com.school.schooldeal.takeout.model.bean;
 
 import cn.bmob.v3.BmobObject;
 

@@ -2,14 +2,21 @@ package com.school.schooldeal.takeout.view;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
-import com.school.schooldeal.takeout.model.TakeoutGenerateBean;
+import com.school.schooldeal.takeout.model.bean.TakeoutGenerateBean;
 import com.school.schooldeal.takeout.presenter.TakeoutGeneratePresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,10 +24,22 @@ import butterknife.OnClick;
 
 public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeoutGenerateActivity {
 
+    private static final String className = "TOGActivity";
+
     @BindView(R.id.toolBar_takeoutGenerate)
     Toolbar mToolBarTakeoutGenerate;
-    @BindView(R.id.destinationEdit_takeoutGenerate)
-    EditText mDestinationEditTakeoutGenerate;
+    @BindView(R.id.school_takeoutGenerate)
+    TextView mSchoolTakeoutGenerate;
+    @BindView(R.id.schoolDropBtn_takeoutGenerate)
+    ImageView mSchoolDropBtnTakeoutGenerate;
+    @BindView(R.id.apartment_takeoutGenerate)
+    TextView mApartmentTakeoutGenerate;
+    @BindView(R.id.apartmentDropBtn_takeoutGenerate)
+    ImageView mApartmentDropBtnTakeoutGenerate;
+    @BindView(R.id.bedroomEdit_takeoutGenerate)
+    EditText mBedroomEditTakeoutGenerate;
+    @BindView(R.id.studentNameEdit_takeoutGenerate)
+    EditText mStudentNameEditTakeoutGenerate;
     @BindView(R.id.studentPhoneEdit_takeoutGenerate)
     EditText mStudentPhoneEditTakeoutGenerate;
     @BindView(R.id.amountEdit_takeoutGenerate)
@@ -31,11 +50,13 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     EditText mRemarksEditTakeoutGenerate;
     @BindView(R.id.generateRequest_takeoutGenerate)
     Button mGenerateRequestTakeoutGenerate;
-    @BindView(R.id.studentNameEdit_takeoutGenerate)
-    EditText mStudentNameEditTakeoutGenerate;
 
     TakeoutGeneratePresenter mPresenter = new TakeoutGeneratePresenter(this, context);
 
+    //学校是否已选择
+    private boolean schoolSelected = false;
+    //公寓是否已选择
+    private boolean apartmentSelected = false;
 
     @Override
     protected void initData() {
@@ -52,25 +73,128 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
         mToolBarTakeoutGenerate.setTitleTextColor(getResources().getColor(R.color.white));
     }
 
-    @OnClick(R.id.generateRequest_takeoutGenerate)
-    public void onClick() {
-        if (mDestinationEditTakeoutGenerate.getText().toString().equals("") ||
-                mStudentPhoneEditTakeoutGenerate.getText().toString().equals("")||
-                mAmountEditTakeoutGenerate.getText().toString().equals("") ||
-                mRemunerationEditTakeoutGenerate.getText().toString().equals("")||
-                mStudentNameEditTakeoutGenerate.getText().toString().equals("")) {
+//    @OnClick(R.id.generateRequest_takeoutGenerate)
+//    public void onClick() {
+//        if (mDestinationEditTakeoutGenerate.getText().toString().equals("") ||
+//                mStudentPhoneEditTakeoutGenerate.getText().toString().equals("")||
+//                mAmountEditTakeoutGenerate.getText().toString().equals("") ||
+//                mRemunerationEditTakeoutGenerate.getText().toString().equals("")||
+//                mStudentNameEditTakeoutGenerate.getText().toString().equals("")) {
+//
+//            ToastUtil.makeShortToast(TakeoutGenerateActivity.this, "还没填完整哦！！");
+//
+//        } else {
+//            //生成外卖服务请求单
+//            TakeoutGenerateBean generateBean = new TakeoutGenerateBean();
+//            generateBean.setDestination(mDestinationEditTakeoutGenerate.getText().toString());
+//            generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
+//            generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
+//            generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
+//            generateBean.setStudentName(mStudentNameEditTakeoutGenerate.getText().toString());
+//            if (!"".equals(mRemarksEditTakeoutGenerate.getText().toString()))
+//                generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
+//            mPresenter.generateTakeawayServiceRequest(generateBean);
+//        }
+//    }
 
-            ToastUtil.makeShortToast(TakeoutGenerateActivity.this, "还没填完整哦！！");
+    /**
+     * 保存到Bmob成功的回调
+     */
+    @Override
+    public void saveSuccess() {
+        finish();
+    }
 
-        } else {
-            //生成外卖服务请求单
-            TakeoutGenerateBean generateBean = new TakeoutGenerateBean();
-            generateBean.setDestination(mDestinationEditTakeoutGenerate.getText().toString());
-            generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
-            generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
-            generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
-            generateBean.setStudentName(mStudentNameEditTakeoutGenerate.getText().toString());
-            if (!mRemarksEditTakeoutGenerate.getText().toString().equals(""))
+    /**
+     * 加载学校信息回调
+     *
+     * @param schools 请求结果
+     */
+    @Override
+    public void loadSchoolSuccess(List<String> schools) {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("选择学校")
+                //学校选择回调，设置文本以及传递选择内容至presenter
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        //设置显示的文本内容
+                        mSchoolTakeoutGenerate.setText(text);
+                        //通知presenter学校的选择结果
+                        mPresenter.setSelectedSchool(position);
+                        //已选学校
+                        schoolSelected = true;
+                    }
+                })
+                .items(schools)
+                .show();
+    }
+
+    /**
+     * 加载公寓信息的回调
+     *
+     * @param apartments 请求结果
+     */
+    @Override
+    public void loadApartmentSuccess(List<String> apartments) {
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("选择公寓")
+                .items(apartments)
+                .itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                        mApartmentTakeoutGenerate.setText(text);
+                        //通知presenter选择的结果
+                        mPresenter.setSelectedApartment(position);
+                        //已选公寓
+                        apartmentSelected = true;
+                    }
+                })
+                .show();
+    }
+
+
+    @OnClick({R.id.schoolDropBtn_takeoutGenerate,
+            R.id.apartmentDropBtn_takeoutGenerate,
+            R.id.generateRequest_takeoutGenerate})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.schoolDropBtn_takeoutGenerate:
+                //加载学校信息，完成后回调弹出学校的选择Dialog
+                mPresenter.loadSchool();
+                break;
+            case R.id.apartmentDropBtn_takeoutGenerate:
+                //如果已选择学校（包括缓存），则请求公寓数据
+                Log.d(className,"click: R.id.apartmentDropBtn_takeoutGenerate:" );
+                if (schoolSelected) {
+                    Log.d(className, "schoolSelected ");
+                    mPresenter.loadApartment();
+                } else {
+                    ToastUtil.makeShortToast(this, "请先选择学校");
+                }
+                break;
+            case R.id.generateRequest_takeoutGenerate:
+                generateTakeoutRequest();
+                break;
+        }
+    }
+
+    private void generateTakeoutRequest(){
+        if (!schoolSelected
+                || !apartmentSelected
+                || "".equals(mBedroomEditTakeoutGenerate.getText().toString())
+                || "".equals(mStudentNameEditTakeoutGenerate.getText().toString())
+                || "".equals(mStudentPhoneEditTakeoutGenerate.getText().toString())
+                || "".equals(mAmountEditTakeoutGenerate.getText().toString())
+                || "".equals(mRemunerationEditTakeoutGenerate.getText().toString())){
+            ToastUtil.makeShortToast(this, "还没填完整哦！！");
+        }else{
+            TakeoutGenerateBean generateBean = new TakeoutGenerateBean(
+                    mStudentPhoneEditTakeoutGenerate.getText().toString(),
+                    mStudentNameEditTakeoutGenerate.getText().toString(),
+                    Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()),
+                    Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
+            if (!"".equals(mRemarksEditTakeoutGenerate.getText().toString()))
                 generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
             mPresenter.generateTakeawayServiceRequest(generateBean);
         }

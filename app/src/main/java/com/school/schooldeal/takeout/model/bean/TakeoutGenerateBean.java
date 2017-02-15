@@ -1,4 +1,4 @@
-package com.school.schooldeal.takeout.model;
+package com.school.schooldeal.takeout.model.bean;
 
 /**
  * Created by GavynZhang on 2017/2/5 0:20.
@@ -6,13 +6,21 @@ package com.school.schooldeal.takeout.model;
 
 public class TakeoutGenerateBean {
 
-    private String destination;     //目的地
-    private String studentName;     //学生名字
+//    private String destination;     //目的地
+//    private String studentName;     //学生名字
     private String stuPhoneNum;     //外卖收货学生电话
     private String consigneeName;   //收货学生姓名
     private String remarks;         //备注信息
     private int amount;             //数量（份数）
     private float remuneration;     //报酬（每份）
+
+    public String getStuPhoneNum() {
+        return stuPhoneNum;
+    }
+
+    public void setStuPhoneNum(String stuPhoneNum) {
+        this.stuPhoneNum = stuPhoneNum;
+    }
 
     public String getConsigneeName() {
         return consigneeName;
@@ -28,30 +36,6 @@ public class TakeoutGenerateBean {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
-    }
-
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public String getStuPhoneNum() {
-        return stuPhoneNum;
-    }
-
-    public void setStuPhoneNum(String stuPhoneNum) {
-        this.stuPhoneNum = stuPhoneNum;
     }
 
     public int getAmount() {
@@ -73,12 +57,18 @@ public class TakeoutGenerateBean {
     @Override
     public String toString() {
         return "TakeoutGenerateBean{" +
-                "destination='" + destination + '\'' +
-                ", studentName='" + studentName + '\'' +
-                ", stuPhoneNum='" + stuPhoneNum + '\'' +
+                "stuPhoneNum='" + stuPhoneNum + '\'' +
+                ", consigneeName='" + consigneeName + '\'' +
                 ", remarks='" + remarks + '\'' +
                 ", amount=" + amount +
                 ", remuneration=" + remuneration +
                 '}';
+    }
+
+    public TakeoutGenerateBean(String stuPhoneNum, String consigneeName, int amount, float remuneration) {
+        this.stuPhoneNum = stuPhoneNum;
+        this.consigneeName = consigneeName;
+        this.amount = amount;
+        this.remuneration = remuneration;
     }
 }

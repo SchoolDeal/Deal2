@@ -1,5 +1,6 @@
-package com.school.schooldeal.takeout.model;
+package com.school.schooldeal.takeout.model.impl;
 
+import com.school.schooldeal.model.School;
 import com.school.schooldeal.model.TakeawayRequest;
 
 /**
@@ -8,4 +9,6 @@ import com.school.schooldeal.model.TakeawayRequest;
 
 public interface ImplTakeoutGenerateModel {
     void saveToBmob(TakeawayRequest serviceRequest);
+    void loadSchoolData();
+    void loadApartmentData(School school);
 }

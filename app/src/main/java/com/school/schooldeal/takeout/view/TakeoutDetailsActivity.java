@@ -1,7 +1,6 @@
 package com.school.schooldeal.takeout.view;
 
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,7 +8,7 @@ import android.widget.TextView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.takeout.model.TakeOutOrderBean;
+import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 
 import butterknife.BindView;
 

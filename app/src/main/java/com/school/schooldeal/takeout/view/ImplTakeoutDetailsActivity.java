@@ -2,7 +2,7 @@ package com.school.schooldeal.takeout.view;
 
 import android.graphics.Bitmap;
 
-import com.school.schooldeal.takeout.model.TakeOutOrderBean;
+import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 
 /**
  * Created by GavynZhang on 2017/1/23 0:08.
