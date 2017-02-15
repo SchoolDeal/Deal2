@@ -17,6 +17,7 @@ import java.text.ParseException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.v3.datatype.BmobGeoPoint;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -104,7 +105,6 @@ public class SignUpAcitivity extends BaseActivity {
         user.setMobilePhoneNumber(phone);
         user.setEmail(email);
         user.setSex(sex);
-        user.setStudent(true);
 
         user.signUp(context, new SaveListener() {
             @Override
@@ -133,7 +133,8 @@ public class SignUpAcitivity extends BaseActivity {
         user.setName("渝州铁板烧");
         user.setLatitude(29.32f);
         user.setLongitude(106.36f);
-        user.setStudent(false);
+        user.setPosition(new BmobGeoPoint(29.32, 106.36));
+
 
         user.signUp(context, new SaveListener() {
             @Override

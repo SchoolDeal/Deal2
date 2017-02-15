@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
+import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 import com.school.schooldeal.takeout.view.TakeoutDetailsActivity;
 
 /**

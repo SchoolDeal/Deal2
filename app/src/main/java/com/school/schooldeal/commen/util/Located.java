@@ -41,7 +41,7 @@ public class Located{
     private Context context;
     public Located(Context context){
         this.context = context;
-        locationClient = new AMapLocationClient(context);
+        locationClient = new AMapLocationClient(context.getApplicationContext());
         locationClientOption = new AMapLocationClientOption();
         locationClientOption.setOnceLocationLatest(true);  //设置只定位一次
         locationClient.setLocationOption(locationClientOption);

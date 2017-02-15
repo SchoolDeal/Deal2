@@ -2,8 +2,8 @@ package com.school.schooldeal.takeout.presenter;
 
 import android.content.Context;
 
-import com.school.schooldeal.takeout.model.ImplTakeoutDetailsModel;
-import com.school.schooldeal.takeout.model.TakeoutDetailsModel;
+import com.school.schooldeal.takeout.model.impl.ImplTakeoutDetailsModel;
+import com.school.schooldeal.takeout.model.model.TakeoutDetailsModel;
 import com.school.schooldeal.takeout.view.ImplTakeoutDetailsActivity;
 
 /**

@@ -3,8 +3,8 @@ package com.school.schooldeal.takeout.presenter;
 import android.content.Context;
 
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
-import com.school.schooldeal.takeout.model.ImplTakeOutModel;
-import com.school.schooldeal.takeout.model.TakeOutFragmentModel;
+import com.school.schooldeal.takeout.model.impl.ImplTakeOutFragmentModel;
+import com.school.schooldeal.takeout.model.model.TakeOutFragmentModel;
 import com.school.schooldeal.takeout.view.ImplTakeOutFragment;
 
 /**
@@ -12,9 +12,10 @@ import com.school.schooldeal.takeout.view.ImplTakeOutFragment;
  */
 
 public class TakeOutFragmentPresenter {
+    private static final String className = "TOFPresenter";
 
     private ImplTakeOutFragment takeOutFragment;
-    private ImplTakeOutModel takeOutModel;
+    private ImplTakeOutFragmentModel takeOutModel;
     private TakeOutDataAdapter adapter;
 
     public TakeOutFragmentPresenter(Context context, ImplTakeOutFragment takeOutFragment) {

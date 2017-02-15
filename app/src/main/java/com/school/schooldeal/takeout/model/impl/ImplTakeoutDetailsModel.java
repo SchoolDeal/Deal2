@@ -1,4 +1,4 @@
-package com.school.schooldeal.takeout.model;
+package com.school.schooldeal.takeout.model.impl;
 
 /**
  * Created by GavynZhang on 2017/1/23 0:53.
