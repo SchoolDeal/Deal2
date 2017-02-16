@@ -1,5 +1,13 @@
 package com.school.schooldeal.commen.util;
 
+import android.content.Context;
+
+import com.school.schooldeal.R;
+import com.school.schooldeal.sign.model.SchoolData;
+
+import java.io.CharArrayReader;
+import java.util.Arrays;
+
 /**
  * Created by U-nookia on 2017/1/23.
  */
@@ -24,4 +32,18 @@ public class Util {
     public static final String customer_service = "联系客服";
     public static final String about_us = "关于我们";
     public static final String version_up = "版本更新";
+
+    public static String[] getApartmentArray(Context context,int school){
+        switch (school){
+            case SchoolData.CQUPT:
+                return context.getResources().getStringArray(R.array.cqupt_apart);
+            case SchoolData.CQU:
+                return context.getResources().getStringArray(R.array.cqu_apart);
+            case SchoolData.CQUMT:
+                return context.getResources().getStringArray(R.array.cqmu_apart);
+            case SchoolData.SU:
+                return context.getResources().getStringArray(R.array.su_apart);
+            default:return null;
+        }
+    }
 }

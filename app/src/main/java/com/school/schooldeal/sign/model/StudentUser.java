@@ -1,5 +1,10 @@
 package com.school.schooldeal.sign.model;
 
+import android.content.Context;
+
+import com.school.schooldeal.R;
+import com.school.schooldeal.commen.util.ToastUtil;
+
 import cn.bmob.v3.BmobUser;
 
 /**
@@ -14,6 +19,23 @@ public class StudentUser extends BmobUser{
     private int school;          //学校编号
     private int apartment;       //公寓编号
     private boolean isStudent;
+
+    public StudentUser() {
+    }
+
+    public StudentUser(Context context, String name, String password,
+                       int apartment, int school, String schoolNumber,
+                       String phone, String email, int sex) {
+        setUsername(name);
+        setPassword(password);
+        setApartment(apartment);
+        setSchool(school);
+        setSchoolNumber(schoolNumber);
+        setMobilePhoneNumber(phone);
+        setEmail(email);
+        setSex(sex);
+    }
+
     public boolean isStudent() {
         return isStudent;
     }
