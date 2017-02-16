@@ -2,6 +2,7 @@ package com.school.schooldeal.takeout.presenter;
 
 import android.content.Context;
 
+import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.takeout.model.impl.ImplTakeoutDetailsModel;
 import com.school.schooldeal.takeout.model.model.TakeoutDetailsModel;
 import com.school.schooldeal.takeout.view.ImplTakeoutDetailsActivity;
@@ -24,4 +25,13 @@ public class TakeOutDetailsPresenter {
     public void loadRestaurantPicture(){
 
     }
+
+    public void loadTakeawayDetails(String requestID){
+        mDetailsModel.loadTakeawayDetails(requestID);
+    }
+
+    public void loadTakeawayDetailsSuccess(TakeawayRequest takeawayRequest){
+        mDetailsActivity.showDetails(takeawayRequest);
+    }
+
 }

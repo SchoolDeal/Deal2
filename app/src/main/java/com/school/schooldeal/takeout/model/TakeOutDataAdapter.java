@@ -2,6 +2,7 @@ package com.school.schooldeal.takeout.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,12 @@ import android.widget.Toast;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 import com.school.schooldeal.takeout.view.TakeoutDetailsActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by U-nookia on 2016/12/23.
@@ -21,12 +26,17 @@ import com.school.schooldeal.takeout.view.TakeoutDetailsActivity;
 
 public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> implements View.OnClickListener{
 
+    private static final String className = "TODataAdapter";
+
+    private List<String> requestIDs = new ArrayList<>();
+
     public TakeOutDataAdapter(Context context) {
         super(context);
     }
 
     @Override
     protected void bindData(BaseViewHolder holder, TakeOutOrderBean item) {
+        requestIDs.add(item.getId());
         TextView amount = holder.getView(R.id.amount_take_out_order);
         TextView destination = holder.getView(R.id.destination_take_out_order);
         TextView money = holder.getView(R.id.money_take_out_order);
@@ -48,8 +58,15 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
-        holder.getView(R.id.card_takeout).setOnClickListener(this);
+        final int a = position;
         holder.getView(R.id.capture).setOnClickListener(this);
+        holder.getView(R.id.card_takeout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(className, "position: "+a+" id: "+requestIDs.get(a));
+                TakeoutDetailsActivity.actionStart(getContext(), requestIDs.get(a));
+            }
+        });
     }
 
     @Override
@@ -60,10 +77,10 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.card_takeout:
-                Intent intent = new Intent(getContext(), TakeoutDetailsActivity.class);
-                getContext().startActivity(intent);
-                break;
+//            case R.id.card_takeout:
+//                Intent intent = new Intent(getContext(), TakeoutDetailsActivity.class);
+//                getContext().startActivity(intent);
+//                break;
             case R.id.capture:
                 Toast.makeText(getContext(), "抢单成功", Toast.LENGTH_SHORT).show();
                 break;
