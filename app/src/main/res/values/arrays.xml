@@ -6,4 +6,48 @@
         <item>修改登陆密码</item>
         <item>退出登录</item>
     </string-array >
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+    </string-array >
+    <string-array name="school">
+        <item>重庆邮电大学</item>
+        <item>重庆大学</item>
+        <item>重庆医科大学</item>
+        <item>西南大学</item>
+    </string-array >
+    <string-array name="cqupt_apart">
+        <item>1栋</item>
+        <item>4栋</item>
+        <item>5栋</item>
+        <item>6栋</item>
+        <item>8栋</item>
+        <item>9栋</item>
+        <item>10栋</item>
+        <item>11栋</item>
+        <item>12栋</item>
+        <item>13栋</item>
+        <item>14栋</item>
+        <item>15栋</item>
+        <item>16栋</item>
+        <item>17栋</item>
+        <item>18栋</item>
+        <item>19栋</item>
+        <item>20栋</item>
+        <item>21栋</item>
+        <item>22栋</item>
+        <item>23a栋</item>
+        <item>23b栋</item>
+        <item>24栋</item>
+        <item>25栋</item>
+    </string-array >
+    <string-array name="cqu_apart">
+        <item>1</item>
+    </string-array >
+    <string-array name="cqmu_apart">
+        <item>1</item>
+    </string-array >
+    <string-array name="su_apart">
+        <item>1</item>
+    </string-array >
 </resources>
