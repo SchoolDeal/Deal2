@@ -18,7 +18,11 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobGeoPoint;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SQLQueryListener;
 
 /**
  * Created by U-nookia on 2016/12/19.
@@ -94,8 +98,32 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
     @Override
     public void loadOrders() {
         if (Util.IS_STUDENT){
+            Log.d(className, "is student");
+            //根据地理位置来请求数据，展示由近到远的外卖服务单
+            String sql = "select include apartment, include restaurant,* from TakeawayRequest where " +
+                    "restaurant in" +
+                    "(select * from _User where position near [106.23384,29.2735366])";
+            BmobQuery<TakeawayRequest> query = new BmobQuery<>();
+            query.setSQL(sql);
+            query.doSQLQuery(mContext, new SQLQueryListener<TakeawayRequest>() {
+                @Override
+                public void done(BmobQueryResult<TakeawayRequest> bmobQueryResult, BmobException e) {
+                    if (e == null) {
+                        List<TakeawayRequest> result = (List<TakeawayRequest>) bmobQueryResult.getResults();
+                        if (result != null && result.size() > 0) {
+                            conversionAndLoadSuccess(result);
+                        } else {
+                            Log.d(className, "查询成功，无数据返回");
+                        }
+                    }else{
+                        Log.d(className, "load error: "+e.getErrorCode()+" message: "+e.getMessage());
+                        mPresenter.loadOrdersFail(e.getErrorCode(), e.getMessage());
+                    }
+                }
+            });
 
         }else {
+            Log.d(className, "is restaurant");
             RestaurantUser restaurantUser = BmobUser.getCurrentUser(mContext, RestaurantUser.class);
             BmobQuery<TakeawayRequest> requestQuery = new BmobQuery<>();
             requestQuery.addWhereEqualTo("restaurant", restaurantUser);
@@ -103,29 +131,38 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             requestQuery.findObjects(mContext, new FindListener<TakeawayRequest>() {
                 @Override
                 public void onSuccess(List<TakeawayRequest> list) {
-                    for (TakeawayRequest request : list) {
-                        Log.d(className, "request: " + request.toString());
-                        TakeOutOrderBean orderBean = new TakeOutOrderBean(
-                                request.getObjectId(),
-                                request.getAmount(),
-                                request.getApartment().getApartmentName() + request.getBedroom()+"寝室",
-                                request.getRestaurant().getName(),
-                                request.getRestaurant().getAddress(),
-                                request.getRemuneration()
-
-                        );
-                        orderBean.setId(request.getObjectId());
-                        orders.add(orderBean);
-                    }
-                    mPresenter.loadOrdersSuccess(orders);
+                    conversionAndLoadSuccess(list);
                 }
 
                 @Override
                 public void onError(int i, String s) {
                     Log.d(className, "Query error, code: " + i + " , " + s);
+                    mPresenter.loadOrdersFail(i, s);
                 }
             });
         }
+    }
+
+    /**
+     * 转化成TakeoutOrderBean并传递至presenter
+     * @param list
+     */
+    private void conversionAndLoadSuccess(List<TakeawayRequest> list){
+        for (TakeawayRequest request : list) {
+            Log.d(className, "request: " + request.toString());
+            TakeOutOrderBean orderBean = new TakeOutOrderBean(
+                    request.getObjectId(),
+                    request.getAmount(),
+                    request.getApartment().getApartmentName() + request.getBedroom()+"寝室",
+                    request.getRestaurant().getName(),
+                    request.getRestaurant().getAddress(),
+                    request.getRemuneration()
+
+            );
+            orderBean.setId(request.getObjectId());
+            orders.add(orderBean);
+        }
+        mPresenter.loadOrdersSuccess(orders);
     }
 
     public void startLocate(){

@@ -26,10 +26,17 @@ public class TakeOutDetailsPresenter {
 
     }
 
+    /**
+     * 用于Activity加载数据调用
+     * @param requestID TakeawayRequest 表的ObjectID
+     */
     public void loadTakeawayDetails(String requestID){
         mDetailsModel.loadTakeawayDetails(requestID);
     }
 
+    /**
+     * @param takeawayRequest model加载成功的回调
+     */
     public void loadTakeawayDetailsSuccess(TakeawayRequest takeawayRequest){
         mDetailsActivity.showDetails(takeawayRequest);
     }
