@@ -1,6 +1,7 @@
 package com.school.schooldeal.takeout.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
@@ -38,5 +39,9 @@ public class TakeOutFragmentPresenter {
     public void loadOrdersSuccess(List<TakeOutOrderBean> orders){
         adapter.setData(orders);
         takeOutFragment.setAdapter(adapter);
+    }
+
+    public void loadOrdersFail(int i, String s){
+        Log.e(className, "Load Orders Fail, Code: "+i+" "+s);
     }
 }

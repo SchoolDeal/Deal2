@@ -87,6 +87,10 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         mRestaurantImg.setImageBitmap(picture);
     }
 
+    /**
+     * presenter加载成功的回调
+     * @param takeawayRequest 数据bean
+     */
     @Override
     public void showDetails(TakeawayRequest takeawayRequest) {
         mDestinationTakeoutDetails.setText(takeawayRequest.getApartment().getApartmentName()+takeawayRequest.getBedroom());
@@ -97,6 +101,9 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         mMoneyTakeoutDetails.setText("￥"+String.valueOf(takeawayRequest.getRemuneration()));
     }
 
+    /**
+     * 初始化Toolbar
+     */
     private void initToolbar(){
         mToolBarTakeoutDetails.setTitle("订单详情");
         mToolBarTakeoutDetails.setTitleTextColor(getResources().getColor(R.color.white));

@@ -166,6 +166,8 @@ public class SignUpAcitivity extends BaseActivity
         user.setLatitude(latitude);
         user.setLongitude(longtitude);
         user.setPosition(new BmobGeoPoint(longtitude, latitude));
+        //测试使用
+        //user.setPosition(new BmobGeoPoint(106.23384, 29.27353666666667));
 
 
         user.signUp(context, new SaveListener() {
