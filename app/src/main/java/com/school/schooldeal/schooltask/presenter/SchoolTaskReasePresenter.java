@@ -2,6 +2,7 @@ package com.school.schooldeal.schooltask.presenter;
 
 import android.content.Context;
 
+import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.schooltask.view.ImplSchoolTaskRelease;
 
 /**
@@ -75,6 +76,8 @@ public class SchoolTaskReasePresenter {
                 }
             }
         });*/
+
+        CommonRequest commonRequest = new CommonRequest();
 
     }
 }
