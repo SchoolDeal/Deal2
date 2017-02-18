@@ -14,7 +14,6 @@ public class RestaurantUser extends BmobUser {
     private BmobGeoPoint position;  //用于方便查看最近的点
     private String name;     //餐馆名称
     private boolean isStudent;
-    private String phone;
 
     public RestaurantUser() {
     }
@@ -71,20 +70,15 @@ public class RestaurantUser extends BmobUser {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     @Override
     public String toString() {
         return "RestaurantUser{" +
                 "address='" + address + '\'' +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +
+                ", position=" + position +
+                ", name='" + name + '\'' +
+                ", isStudent=" + isStudent +
                 '}';
     }
 }

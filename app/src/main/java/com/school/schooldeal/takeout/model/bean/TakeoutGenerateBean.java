@@ -13,6 +13,7 @@ public class TakeoutGenerateBean {
     private String remarks;         //备注信息
     private int amount;             //数量（份数）
     private float remuneration;     //报酬（每份）
+    private String bedroom;         //寝室号
 
     public String getStuPhoneNum() {
         return stuPhoneNum;
@@ -54,6 +55,14 @@ public class TakeoutGenerateBean {
         this.remuneration = remuneration;
     }
 
+    public String getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(String bedroom) {
+        this.bedroom = bedroom;
+    }
+
     @Override
     public String toString() {
         return "TakeoutGenerateBean{" +
@@ -65,9 +74,10 @@ public class TakeoutGenerateBean {
                 '}';
     }
 
-    public TakeoutGenerateBean(String stuPhoneNum, String consigneeName, int amount, float remuneration) {
+    public TakeoutGenerateBean(String stuPhoneNum, String consigneeName, String bedroom, int amount, float remuneration) {
         this.stuPhoneNum = stuPhoneNum;
         this.consigneeName = consigneeName;
+        this.bedroom = bedroom;
         this.amount = amount;
         this.remuneration = remuneration;
     }

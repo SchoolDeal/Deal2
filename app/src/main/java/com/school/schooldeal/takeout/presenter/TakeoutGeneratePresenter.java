@@ -67,6 +67,7 @@ public class TakeoutGeneratePresenter {
         mTakeawayRequest.setAmount(generateBean.getAmount());
         mTakeawayRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
         mTakeawayRequest.setConsigneeName(generateBean.getConsigneeName());
+        mTakeawayRequest.setBedroom(generateBean.getBedroom());
         if (! (mSchool == null || mApartment == null)) {
             mTakeawayRequest.setSchool(mSchool);
             mTakeawayRequest.setApartment(mApartment);
