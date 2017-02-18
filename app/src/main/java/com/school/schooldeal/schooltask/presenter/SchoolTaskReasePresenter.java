@@ -1,9 +1,14 @@
 package com.school.schooldeal.schooltask.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 
-import com.school.schooldeal.model.CommonRequest;
+import com.school.schooldeal.schooltask.model.ImplSchoolTaskReleaseModel;
+import com.school.schooldeal.schooltask.model.SchoolTaskReleaseModel;
+import com.school.schooldeal.schooltask.service.sendCommonService;
 import com.school.schooldeal.schooltask.view.ImplSchoolTaskRelease;
+
+import java.util.List;
 
 /**
  * Created by 教科书式的机智少年 on 2017/2/15.
@@ -12,11 +17,14 @@ import com.school.schooldeal.schooltask.view.ImplSchoolTaskRelease;
 public class SchoolTaskReasePresenter {
     private ImplSchoolTaskRelease release;
     private Context context;
+    private ImplSchoolTaskReleaseModel model;
+    private List<String> stores;
     public SchoolTaskReasePresenter(ImplSchoolTaskRelease release, Context context){
         this.release = release;
         this.context = context;
+        model = new SchoolTaskReleaseModel(this,context);
     }
-    public void sendMessage(String destination, String name, String phone, final String refund, String text){
+    public void sendMessage(String storename, String content, String refund, final String remarks){
         /*CommonRequest commonRequest = new CommonRequest();
         commonRequest.setRequestID("1111");
         commonRequest.setRequestContent(destination);
@@ -77,7 +85,22 @@ public class SchoolTaskReasePresenter {
             }
         });*/
 
-        CommonRequest commonRequest = new CommonRequest();
+        Intent intent = new Intent(context, sendCommonService.class);
+        intent.putExtra("storename",storename);
+        intent.putExtra("content",content);
+        intent.putExtra("refund",refund);
+        intent.putExtra("remarks",remarks);
+        context.startService(intent);
 
+    }
+
+    public void getStoresName(List<String> stores){
+        this.stores = stores;
+        model.getStores();
+    }
+
+    public void setStores(List<String> stores) {
+        this.stores = stores;
+        release.setStores(stores);
     }
 }

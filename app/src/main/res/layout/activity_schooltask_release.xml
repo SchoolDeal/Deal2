@@ -37,7 +37,7 @@
             android:textSize="18dp"
             android:layout_marginRight="16dp"
             android:layout_toRightOf="@id/school_task_release_desimg"
-            android:text="选择学校"
+            android:text="选择商店"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
@@ -112,13 +112,6 @@
         android:layout_marginRight="15dp"
         android:inputType="textPhonetic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/school_task_release_choose"
-        android:layout_below="@id/school_task_release_remarksHint"
-        android:text="选择商店"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 

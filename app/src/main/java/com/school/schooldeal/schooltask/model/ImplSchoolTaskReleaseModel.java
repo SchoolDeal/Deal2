@@ -8,4 +8,5 @@ import com.school.schooldeal.model.CommonRequest;
 
 public interface ImplSchoolTaskReleaseModel {
     public void sendMessage(CommonRequest commonRequest);
+    public void getStores();
 }

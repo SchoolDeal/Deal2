@@ -140,6 +140,8 @@
             android:name="cn.bmob.push.lib.service.PushNotifyService"
             android:process=":bmobpush">
         </service>
+        <!--发送学校任务订单-->
+        <service android:name=".schooltask.service.sendCommonService" />
 
         <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
