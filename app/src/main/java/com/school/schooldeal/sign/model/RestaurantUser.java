@@ -16,6 +16,13 @@ public class RestaurantUser extends BmobUser {
     private boolean isStudent;
     private String phone;
 
+    public RestaurantUser() {
+    }
+
+    public RestaurantUser(String name, String password, String phone, String address, String 渝州铁板烧, double latitude, double longtitude, BmobGeoPoint bmobGeoPoint) {
+
+    }
+
     public boolean isStudent() {
         return isStudent;
     }

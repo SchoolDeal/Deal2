@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.model.Apartment;
+import com.school.schooldeal.model.School;
 
 import cn.bmob.v3.BmobUser;
 
@@ -16,15 +18,15 @@ public class StudentUser extends BmobUser{
     private int creditScore;   //信用分
     private int sex;   //性别
     private String schoolNumber;  //学号
-    private int school;          //学校编号
-    private int apartment;       //公寓编号
+    private School school;          //学校编号
+    private Apartment apartment;       //公寓编号
     private boolean isStudent;
 
     public StudentUser() {
     }
 
     public StudentUser(Context context, String name, String password,
-                       int apartment, int school, String schoolNumber,
+                       Apartment apartment, School school, String schoolNumber,
                        String phone, String email, int sex) {
         setUsername(name);
         setPassword(password);
@@ -43,11 +45,11 @@ public class StudentUser extends BmobUser{
         isStudent = student;
     }
 
-    public int getApartment() {
+    public Apartment getApartment() {
         return apartment;
     }
 
-    public void setApartment(int apartment) {
+    public void setApartment(Apartment apartment) {
         this.apartment = apartment;
     }
 
@@ -59,11 +61,11 @@ public class StudentUser extends BmobUser{
         this.creditScore = creditScore;
     }
 
-    public int getSchool() {
+    public School getSchool() {
         return school;
     }
 
-    public void setSchool(int school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 

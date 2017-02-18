@@ -23,6 +23,7 @@ import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
+import com.school.schooldeal.sign.presenter.SignUpPresenter;
 
 import java.text.ParseException;
 
@@ -39,7 +40,7 @@ import static android.Manifest.permission.ACCESS_FINE_LOCATION;
  */
 
 public class SignUpAcitivity extends BaseActivity
-        implements View.OnFocusChangeListener,AMapLocationListener{
+        implements View.OnFocusChangeListener,AMapLocationListener,ImplSignUp{
 
     @BindView(R.id.edit_phone)
     MaterialEditText editPhone;
@@ -60,10 +61,7 @@ public class SignUpAcitivity extends BaseActivity
     @BindView(R.id.signUp)
     Button signUp;
 
-    //private MaterialDialog dialog;
-    private int sex,school,apartment;
-    private double longtitude,latitude;
-    private String address;
+    private SignUpPresenter presenter;
     private Located located;
 
     public static Intent getIntentToSignUpActivity(Context context) {
@@ -73,26 +71,69 @@ public class SignUpAcitivity extends BaseActivity
 
     @Override
     protected void initData() {
-        checkUserIsStudentOrNot();
+        presenter = new SignUpPresenter(context,this);
+        presenter.checkUserIsStudentOrNot();
     }
 
-    private void checkUserIsStudentOrNot() {
-        if (!Util.IS_STUDENT) showRestaurantSignUpView();
-        else setEdit();
-    }
-
-    private void setEdit() {
+    @Override
+    public void setEdit() {
         editSex.setOnFocusChangeListener(this);
         editSchool.setOnFocusChangeListener(this);
         editApartment.setOnFocusChangeListener(this);
     }
 
-    private void showRestaurantSignUpView() {
+    @Override
+    public void showRestaurantSignUpView() {
         editEmail.setVisibility(View.GONE);
         editSex.setVisibility(View.GONE);
         editSchool.setVisibility(View.GONE);
         editSchoolNumber.setVisibility(View.GONE);
         editApartment.setVisibility(View.GONE);
+    }
+
+    @Override
+    public String getPhone() {
+        return editPhone.getText().toString();
+    }
+
+    @Override
+    public String getEmail() {
+        return editEmail.getText().toString();
+    }
+
+    @Override
+    public String getName() {
+        return editName.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return editPassword.getText().toString();
+    }
+
+    @Override
+    public String getSchoolNumber() {
+        return editSchoolNumber.getText().toString();
+    }
+
+    @Override
+    public void finishView() {
+        finish();
+    }
+
+    @Override
+    public void setSex(CharSequence text) {
+        editSex.setText(text);
+    }
+
+    @Override
+    public void setSchool(CharSequence text) {
+        editSchool.setText(text);
+    }
+
+    @Override
+    public void setApartment(CharSequence text) {
+        editApartment.setText(text);
     }
 
     @Override
@@ -104,7 +145,7 @@ public class SignUpAcitivity extends BaseActivity
     public void onClick() {
         if (checkUserName()){
             if (Util.IS_STUDENT){
-                signUpStudent();
+                presenter.signUpStudent();
             }else{
                 located = new Located(context);
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && this.checkSelfPermission(ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED
@@ -112,114 +153,31 @@ public class SignUpAcitivity extends BaseActivity
                     requestPermissions(new String[]{ACCESS_COARSE_LOCATION,ACCESS_FINE_LOCATION},0);
                 }
                 located.starLocated(this);
-                signUpRestaurant();
             }
         }
     }
 
     private boolean checkUserName() {
         if (!editName.validateWith(
-                new RegexpValidator("姓名中含有非法字符", ConstUtils.REGEX_USERNAME))){
+                new RegexpValidator("不符合长度要求或姓名中含有非法字符", ConstUtils.REGEX_USERNAME))){
             return false;
         }
         return true;
     }
 
-    private void signUpStudent() {
-        String phone = editPhone.getText().toString();
-        String email = editEmail.getText().toString();
-        String name = editName.getText().toString();
-        String password = editPassword.getText().toString();
-        String schoolNumber = editSchoolNumber.getText().toString();
-
-        if (name.equals("")||password.equals("")||schoolNumber.equals("")||phone.equals("")||email.equals("")||apartment==0||school==0||sex==0){
-            ToastUtil.makeShortToast(context, "出现输入错误");
-            return;
-        }else {
-            StudentUser user = new StudentUser(context,name,password,apartment,school,schoolNumber,
-                    phone,email,sex);
-            user.signUp(context, new SaveListener() {
-                @Override
-                public void onSuccess() {
-                    Toast.makeText(context,"sign up success",Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                @Override
-                public void onFailure(int i, String s) {
-                    Toast.makeText(context,"sign false  "+s,Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
-
-    private void signUpRestaurant() {
-        String phone = editPhone.getText().toString();
-        String name = editName.getText().toString();
-        String password = editPassword.getText().toString();
-
-        RestaurantUser user = new RestaurantUser();
-        user.setUsername(name);
-        user.setPassword(password);
-        user.setMobilePhoneNumber(phone);
-        user.setAddress(address);
-        user.setName("渝州铁板烧");
-        user.setLatitude(latitude);
-        user.setLongitude(longtitude);
-        user.setPosition(new BmobGeoPoint(longtitude, latitude));
-
-
-        user.signUp(context, new SaveListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(context,"sign up success",Toast.LENGTH_SHORT).show();
-                finish();
-            }
-
-            @Override
-            public void onFailure(int i, String s) {
-                Toast.makeText(context,"sign false  "+s,Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     @OnClick(R.id.edit_sex)
     public void clickSex(){
-        new MaterialDialog.Builder(context)
-                .items(R.array.sex)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        sex = position+1;
-                        editSex.setText(text);
-                    }
-                }).build().show();
+        presenter.chooseSex();
     }
 
     @OnClick(R.id.edit_school)
     public void clickSchool(){
-        new MaterialDialog.Builder(context)
-                .items(R.array.school)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        school = position+1;
-                        editSchool.setText(text);
-                    }
-                }).build().show();
+        presenter.clickSchoolEdit();
     }
 
     @OnClick(R.id.edit_apartment)
     public void clickApartment(){
-        String[] apartments = Util.getApartmentArray(context,school);
-        new MaterialDialog.Builder(context)
-                .items(apartments)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        apartment = position+1;
-                        editApartment.setText(text);
-                    }
-                }).build().show();
+        presenter.clickApartmentEdit();
     }
 
     @Override
@@ -241,15 +199,16 @@ public class SignUpAcitivity extends BaseActivity
     public void onLocationChanged(AMapLocation aMapLocation) {
         if (aMapLocation!= null){
             if (aMapLocation.getErrorCode() == 0){
-                //这里写想要做的事
                 ToastUtil.makeShortToast(context,"located");
-                address = aMapLocation.getAddress();
-                longtitude = aMapLocation.getLongitude();
-                latitude = aMapLocation.getLatitude();
+                presenter.setAddress(aMapLocation.getAddress());
+                presenter.setLongtitude(aMapLocation.getLongitude());
+                presenter.setLatitude(aMapLocation.getLatitude());
+                presenter.signUpRestaurant();
             }else {
                 Log.e("AmapError","location Error, ErrCode:"
                         + aMapLocation.getErrorCode() + ", errInfo:"
                         + aMapLocation.getErrorInfo());
+                ToastUtil.makeShortToast(context,aMapLocation.getErrorInfo());
             }
         }
     }
