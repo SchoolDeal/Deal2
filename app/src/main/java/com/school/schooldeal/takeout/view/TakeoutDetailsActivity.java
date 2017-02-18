@@ -93,7 +93,7 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
      */
     @Override
     public void showDetails(TakeawayRequest takeawayRequest) {
-        mDestinationTakeoutDetails.setText(takeawayRequest.getApartment().getApartmentName()+takeawayRequest.getBedroom());
+        mDestinationTakeoutDetails.setText(takeawayRequest.getApartment().getApartmentName()+takeawayRequest.getBedroom()+"寝室");
         mBusinessTakeoutDetails.setText(takeawayRequest.getRestaurant().getName());
         mBizAddressTakeoutDetails.setText(takeawayRequest.getRestaurant().getAddress());
         mBizPhoneNumTakeoutDetails.setText(takeawayRequest.getRestaurant().getMobilePhoneNumber());
