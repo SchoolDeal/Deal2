@@ -3,6 +3,7 @@ package com.school.schooldeal.schooltask.presenter;
 import android.content.Context;
 import android.content.Intent;
 
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.schooltask.model.ImplSchoolTaskReleaseModel;
 import com.school.schooldeal.schooltask.model.SchoolTaskReleaseModel;
 import com.school.schooldeal.schooltask.service.sendCommonService;
@@ -84,7 +85,7 @@ public class SchoolTaskReasePresenter {
                 }
             }
         });*/
-
+        ToastUtil.makeShortToast(context,"↑+\n+正在发送");
         Intent intent = new Intent(context, sendCommonService.class);
         intent.putExtra("storename",storename);
         intent.putExtra("content",content);

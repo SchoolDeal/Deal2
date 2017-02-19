@@ -15,6 +15,7 @@ public class CommonRequest extends BmobObject {
     private String requestContent;  //请求内容
     private String requestRemarks;  //备注信息
     private Float remuneration;     //预期报酬
+    private int type;               //标签，表示是否被抢,0为待抢，1为已被抢
 
     public String getGeneratedTime() {
         return generatedTime;
@@ -72,16 +73,25 @@ public class CommonRequest extends BmobObject {
         this.student = student;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "CommonRequest{" +
-                "generatedTime='" + generatedTime + '\'' +
-                ", requestID='" + requestID + '\'' +
+                "requestID='" + requestID + '\'' +
+                ", generatedTime='" + generatedTime + '\'' +
                 ", student=" + student +
                 ", store=" + store +
                 ", requestContent='" + requestContent + '\'' +
                 ", requestRemarks='" + requestRemarks + '\'' +
                 ", remuneration=" + remuneration +
+                ", type=" + type +
                 '}';
     }
 }

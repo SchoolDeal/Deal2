@@ -28,7 +28,7 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/school_task_fab"
-        app:layout_behavior="com.school.schooldeal.commen.util.ScrollAwareFABBehavior"
+        app:layout_behavior="com.school.schooldeal.commen.util.FABBehavior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

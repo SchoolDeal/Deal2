@@ -2,9 +2,6 @@ package com.school.schooldeal.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,4 +50,8 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseVi
 
     //用于绑定数据和视图的抽象方法
     protected abstract void bindData(BaseViewHolder holder,T item);
+
+    public List<T> getLists() {
+        return lists;
+    }
 }

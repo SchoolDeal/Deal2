@@ -29,35 +29,6 @@ public class SchoolTaskFragment extends BaseFragment implements ImplSchoolTaskFr
     public static String TAG = "教科书式的机智少年";
     @Override
     protected void initData() {
-        /*initRecyclerView();
-        presenter = new SchoolTaskPresenter(getContext(),this);
-        presenter.initAdapter();*/
-        /*express.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","Express");
-                startActivity(intent);
-            }
-        });
-
-        takeFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","TakeFood");
-                startActivity(intent);
-            }
-        });
-
-        shopping.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","Shopping");
-                startActivity(intent);
-            }
-        });*/
         setOnClick();
     }
 
