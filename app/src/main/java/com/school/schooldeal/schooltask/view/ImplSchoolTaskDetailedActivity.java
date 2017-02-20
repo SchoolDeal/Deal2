@@ -5,6 +5,6 @@ package com.school.schooldeal.schooltask.view;
  */
 
 public interface ImplSchoolTaskDetailedActivity {
-    public void success();
-    public void failed();
+    void setType(int type);
+    int getType();
 }
