@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="top">
-        <item>修改头像</item>
         <item>修改个人信息</item>
-        <item>修改登陆密码</item>
         <item>退出登录</item>
+    </string-array >
+    <string-array name="local_or_takephoto">
+        <item>本地图片</item>
+        <item>手机拍照</item>
     </string-array >
     <string-array name="sex">
         <item>男</item>

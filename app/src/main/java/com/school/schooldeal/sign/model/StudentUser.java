@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.commen.util.ToastUtil;
+import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.Apartment;
 import com.school.schooldeal.model.School;
 
@@ -21,6 +22,15 @@ public class StudentUser extends BmobUser{
     private School school;          //学校编号
     private Apartment apartment;       //公寓编号
     private boolean isStudent;
+    private String imgUrl;  //头像url
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public StudentUser() {
     }
@@ -36,6 +46,7 @@ public class StudentUser extends BmobUser{
         setMobilePhoneNumber(phone);
         setEmail(email);
         setSex(sex);
+        setImgUrl(Util.defaultHeadImg);
     }
 
     public boolean isStudent() {

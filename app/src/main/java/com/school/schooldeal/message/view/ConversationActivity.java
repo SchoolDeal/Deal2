@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.message.presenter.ConversationPresenter;
 
 import butterknife.BindView;
 
@@ -18,7 +17,6 @@ import butterknife.BindView;
 
 public class ConversationActivity extends BaseActivity{
 
-    private ConversationPresenter presenter;
     @BindView(R.id.title)
     TextView mTextView;
 

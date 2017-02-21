@@ -1,5 +1,7 @@
 package com.school.schooldeal.sign.model;
 
+import com.school.schooldeal.commen.util.Util;
+
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobGeoPoint;
 
@@ -14,12 +16,29 @@ public class RestaurantUser extends BmobUser {
     private BmobGeoPoint position;  //用于方便查看最近的点
     private String name;     //餐馆名称
     private boolean isStudent;
+    private String imgUrl;   //头像url
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public RestaurantUser() {
     }
 
-    public RestaurantUser(String name, String password, String phone, String address, String 渝州铁板烧, double latitude, double longtitude, BmobGeoPoint bmobGeoPoint) {
-
+    public RestaurantUser(String name, String password, String phone, String address, String resName, double latitude, double longtitude, BmobGeoPoint bmobGeoPoint) {
+        setUsername(name);
+        setPassword(password);
+        setMobilePhoneNumber(phone);
+        setAddress(address);
+        setName(resName);
+        setLatitude(latitude);
+        setLongitude(longtitude);
+        setPosition(bmobGeoPoint);
+        setImgUrl(Util.defaultHeadImg);
     }
 
     public boolean isStudent() {

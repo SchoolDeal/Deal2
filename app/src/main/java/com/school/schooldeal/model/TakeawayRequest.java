@@ -12,8 +12,6 @@ public class TakeawayRequest extends BmobObject {
 
     private String requestID;
     private String generatedTime;
-    //private Student student;       //买这份外卖的学生
-    //private Restaurant restaurant; //发起这份请求的餐馆
     //private Apartment apartment;   //这份外卖的目的公寓
     //private String destination;         //送达地址
     private RestaurantUser restaurant;  //发起这份请求的餐馆

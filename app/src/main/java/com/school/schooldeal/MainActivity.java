@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -70,11 +71,18 @@ public class MainActivity extends BaseActivity implements
 
     private List<Fragment> fragments;
     private int[] titles = {R.string.take_out_title, R.string.school_task_title, R.string.message_title, R.string.mine_title};
+    private int[] titles_restaurant = {R.string.take_out_title, R.string.message_title, R.string.mine_title};
     private List<BmobUser> userIdList;
 
     public static Intent getIntentToMainActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         return intent;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initUserIdList();
     }
 
     @Override
@@ -325,14 +333,15 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onTabSelected(int position) {
         viewPager.setCurrentItem(position);
-        toolbar.setTitle(titles[position]);
-        if (Util.IS_STUDENT)
+        if (Util.IS_STUDENT){
+            toolbar.setTitle(titles[position]);
             if (position==2){
-            toolbar.getMenu().getItem(0).setVisible(true);
+                toolbar.getMenu().getItem(0).setVisible(true);
             }else {
-            toolbar.getMenu().getItem(0).setVisible(false);
+                toolbar.getMenu().getItem(0).setVisible(false);
             }
-        else{
+        } else{
+            toolbar.setTitle(titles_restaurant[position]);
             if (position==1){
                 toolbar.getMenu().getItem(0).setVisible(true);
             }else {
@@ -479,7 +488,8 @@ public class MainActivity extends BaseActivity implements
     public UserInfo getUserInfo(String s) {
         for (BmobUser i : userIdList) {
             if (i.getObjectId().equals(s)) {
-                return new UserInfo(i.getObjectId(),i.getUsername(), Uri.parse(Util.img_10086));
+                Log.d("123456",((StudentUser)i).getImgUrl());
+                return new UserInfo(i.getObjectId(),i.getUsername(), Uri.parse(((StudentUser)i).getImgUrl()));
             }
         }
         return null;

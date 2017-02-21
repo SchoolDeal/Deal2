@@ -12,52 +12,85 @@
     <android.support.v7.widget.CardView
         android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/school_task_card_express"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="6dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="3dp"
         app:cardElevation="3dp"
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="160dp">
         <ImageView
-            android:src="@mipmap/king"
+            android:src="@mipmap/express"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代取快递"
+            android:textSize="18dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="12dp"/>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/school_task_card_take_food"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="3dp"
         app:cardElevation="3dp"
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="160dp">
         <ImageView
-            android:src="@mipmap/xueyou"
+            android:src="@mipmap/food"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="餐厅带饭"
+            android:textSize="18dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="12dp"/>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:foreground="?android:attr/selectableItemBackground"
         android:id="@+id/school_task_card_shopping"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="3dp"
         app:cardElevation="3dp"
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="160dp">
         <ImageView
-            android:src="@mipmap/pontiff"
+            android:src="@mipmap/shopping"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="超市购物"
+            android:textSize="18dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="12dp"/>
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
