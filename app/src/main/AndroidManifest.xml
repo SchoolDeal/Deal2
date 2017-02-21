@@ -111,7 +111,8 @@
             android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
         //schooltask的activity
-        <activity android:name=".schooltask.view.SchoolTaskActivity">
+        <activity
+            android:name=".schooltask.view.SchoolTaskActivity">
         </activity>
         <activity
             android:name=".message.view.ConversationActivity"
