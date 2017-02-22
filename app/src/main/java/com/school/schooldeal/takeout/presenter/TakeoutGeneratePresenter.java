@@ -8,6 +8,7 @@ import com.school.schooldeal.model.Apartment;
 import com.school.schooldeal.model.School;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.sign.model.RestaurantUser;
+import com.school.schooldeal.takeout.TakeawayStatusConsts;
 import com.school.schooldeal.takeout.model.impl.ImplTakeoutGenerateModel;
 import com.school.schooldeal.takeout.model.bean.TakeoutGenerateBean;
 import com.school.schooldeal.takeout.model.model.TakeoutGenerateModel;
@@ -68,6 +69,8 @@ public class TakeoutGeneratePresenter {
         mTakeawayRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
         mTakeawayRequest.setConsigneeName(generateBean.getConsigneeName());
         mTakeawayRequest.setBedroom(generateBean.getBedroom());
+        //设置状态
+        mTakeawayRequest.setStatus(TakeawayStatusConsts.NOT_BEING_TAKEN);
         if (! (mSchool == null || mApartment == null)) {
             mTakeawayRequest.setSchool(mSchool);
             mTakeawayRequest.setApartment(mApartment);

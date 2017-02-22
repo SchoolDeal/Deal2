@@ -1,5 +1,7 @@
 package com.school.schooldeal.model;
 
+import com.school.schooldeal.sign.model.StudentUser;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -8,7 +10,7 @@ import cn.bmob.v3.BmobObject;
 
 public class TakeawayService extends BmobObject {
     private String serviceID;               //外卖服务单ID
-    private Student student;                //送外卖的学生
+    private StudentUser student;                //送外卖的学生
     private TakeawayRequest request; //对应的送外卖的请求
     private Boolean isFinish;               //是否完成
     private String finishTime;              //完成时间
@@ -23,11 +25,11 @@ public class TakeawayService extends BmobObject {
         this.serviceID = serviceID;
     }
 
-    public Student getStudent() {
+    public StudentUser getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentUser student) {
         this.student = student;
     }
 

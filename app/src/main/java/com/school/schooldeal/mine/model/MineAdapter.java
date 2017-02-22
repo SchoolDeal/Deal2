@@ -14,6 +14,7 @@ import com.school.schooldeal.base.BaseViewHolder;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.mine.view.FedBackActivity;
+import com.school.schooldeal.takeout.view.TakeoutListActivity;
 
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.CSCustomServiceInfo;
@@ -51,13 +52,20 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
     private void click(MineRecyclerItemBean item) {
         switch (item.getItem()){
             case Util.order_release:
+                if (Util.IS_STUDENT){
+
+                }else{
+                    TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.PUBLISHED);
+                }
                 //发布的订单
                 ToastUtil.makeShortToast(getContext(),item.getItem());
                 break;
             case Util.order_receive:
+                TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);
                 //接收的订单
                 break;
             case Util.order_finish:
+                TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.FINISHED);
                 //完成的订单
                 break;
             case Util.fed_back:

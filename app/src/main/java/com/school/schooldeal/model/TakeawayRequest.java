@@ -24,6 +24,15 @@ public class TakeawayRequest extends BmobObject {
     private School school;              //收货学校
     private Apartment apartment;        //收货公寓
     private String bedroom;             //收货寝室号
+    private Integer status;                 //服务单的状态，0: 未被接下  1: 已被接下  2: 被取消
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getRequestID() {
         return requestID;
@@ -118,6 +127,7 @@ public class TakeawayRequest extends BmobObject {
                 ", school=" + school +
                 ", apartment=" + apartment +
                 ", bedroom='" + bedroom + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

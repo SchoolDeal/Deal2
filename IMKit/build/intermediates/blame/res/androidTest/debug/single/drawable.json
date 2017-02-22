@@ -1,19 +1,19 @@
 [
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_emoji_grid_item_selector.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_emoji_grid_item_selector.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_corner_style.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_corner_style.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_edit_text_background_selector.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_edit_text_background_selector.xml"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_emoji_grid_item_selector.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_emoji_grid_item_selector.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_notification_connecting_animated.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_notification_connecting_animated.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_edit_text_background_selector.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_edit_text_background_selector.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_corner_voice_style.xml",
@@ -28,12 +28,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_edit_text_background_selector.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_group_dialog_ok_selector.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_cs_group_dialog_ok_selector.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_white_bg_shape.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_white_bg_shape.xml"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_group_dialog_ok_selector.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_cs_group_dialog_ok_selector.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_ratingbar.xml",
@@ -80,24 +80,24 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_item_top_list_selector.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_menu_background_selector.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_menu_background_selector.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_bg_menu.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_bg_menu.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_read_receipt_request_button.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_read_receipt_request_button.xml"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_menu_background_selector.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_menu_background_selector.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_switch_btn.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_switch_btn.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_group_dialog_ok_selector.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_cs_group_dialog_ok_selector.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_switch_btn.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_switch_btn.xml"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_read_receipt_request_button.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\bundles\\debug\\res\\drawable\\rc_read_receipt_request_button.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\rc_cs_corner_single_check_style.xml",

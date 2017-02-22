@@ -129,7 +129,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_centerInParent="true"
             android:layout_alignParentEnd="true"
             android:layout_alignBottom="@+id/img_take_out_item"
             android:layout_below="@+id/address_take_out_order"

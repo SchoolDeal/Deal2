@@ -8,12 +8,23 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class TakeOutOrderBean{
+
     private String id;
     private int amount;
     private String destination;
     private String restaurantName;
     private String restaurantAddress;
     private Float money;
+    //状态，根据此状态调整界面（按钮）
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public TakeOutOrderBean(){
 

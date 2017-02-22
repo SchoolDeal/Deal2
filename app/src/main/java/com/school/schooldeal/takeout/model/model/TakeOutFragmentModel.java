@@ -10,6 +10,7 @@ import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
+import com.school.schooldeal.takeout.TakeawayStatusConsts;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 import com.school.schooldeal.takeout.model.impl.ImplTakeOutFragmentModel;
 import com.school.schooldeal.takeout.presenter.TakeOutFragmentPresenter;
@@ -106,14 +107,15 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             String sql = "select include apartment, include restaurant,* from TakeawayRequest where " +
                     "restaurant in" +                        // ↓ 需要改成定位获取的数据
                     "(select * from _User where position near [106.23384,29.2735366])" +
-                    "and apartment = pointer('Apartment','"+apartmentObjectID+"')";
+                    "and apartment = pointer('Apartment','"+apartmentObjectID+"')" +
+                    "and status = 0";
             BmobQuery<TakeawayRequest> query = new BmobQuery<>();
             query.setSQL(sql);
             query.doSQLQuery(mContext, new SQLQueryListener<TakeawayRequest>() {
                 @Override
                 public void done(BmobQueryResult<TakeawayRequest> bmobQueryResult, BmobException e) {
                     if (e == null) {
-                        List<TakeawayRequest> result = (List<TakeawayRequest>) bmobQueryResult.getResults();
+                        List<TakeawayRequest> result = bmobQueryResult.getResults();
                         if (result != null && result.size() > 0) {
                             conversionAndLoadSuccess(result);
                         } else {
@@ -161,9 +163,9 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                     request.getRestaurant().getName(),
                     request.getRestaurant().getAddress(),
                     request.getRemuneration()
-
             );
             orderBean.setId(request.getObjectId());
+            orderBean.setStatus(request.getStatus());
             orders.add(orderBean);
         }
         mPresenter.loadOrdersSuccess(orders);

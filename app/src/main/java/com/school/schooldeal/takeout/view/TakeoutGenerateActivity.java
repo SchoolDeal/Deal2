@@ -73,30 +73,6 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
         mToolBarTakeoutGenerate.setTitleTextColor(getResources().getColor(R.color.white));
     }
 
-//    @OnClick(R.id.generateRequest_takeoutGenerate)
-//    public void onClick() {
-//        if (mDestinationEditTakeoutGenerate.getText().toString().equals("") ||
-//                mStudentPhoneEditTakeoutGenerate.getText().toString().equals("")||
-//                mAmountEditTakeoutGenerate.getText().toString().equals("") ||
-//                mRemunerationEditTakeoutGenerate.getText().toString().equals("")||
-//                mStudentNameEditTakeoutGenerate.getText().toString().equals("")) {
-//
-//            ToastUtil.makeShortToast(TakeoutGenerateActivity.this, "还没填完整哦！！");
-//
-//        } else {
-//            //生成外卖服务请求单
-//            TakeoutGenerateBean generateBean = new TakeoutGenerateBean();
-//            generateBean.setDestination(mDestinationEditTakeoutGenerate.getText().toString());
-//            generateBean.setStuPhoneNum(mStudentPhoneEditTakeoutGenerate.getText().toString());
-//            generateBean.setAmount(Integer.parseInt(mAmountEditTakeoutGenerate.getText().toString()));
-//            generateBean.setRemuneration(Float.parseFloat(mRemunerationEditTakeoutGenerate.getText().toString()));
-//            generateBean.setStudentName(mStudentNameEditTakeoutGenerate.getText().toString());
-//            if (!"".equals(mRemarksEditTakeoutGenerate.getText().toString()))
-//                generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
-//            mPresenter.generateTakeawayServiceRequest(generateBean);
-//        }
-//    }
-
     /**
      * 保存到Bmob成功的回调
      */
@@ -188,7 +164,9 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
                 || "".equals(mAmountEditTakeoutGenerate.getText().toString())
                 || "".equals(mRemunerationEditTakeoutGenerate.getText().toString())){
             ToastUtil.makeShortToast(this, "还没填完整哦！！");
-        }else{
+        }else if (Float.valueOf(mRemunerationEditTakeoutGenerate.getText().toString()) >= 100){
+            ToastUtil.makeShortToast(context, "每份报酬不要超过100元");
+        } else{
             TakeoutGenerateBean generateBean = new TakeoutGenerateBean(
                     mStudentPhoneEditTakeoutGenerate.getText().toString(),
                     mStudentNameEditTakeoutGenerate.getText().toString(),
