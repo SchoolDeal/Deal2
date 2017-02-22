@@ -15,7 +15,7 @@ public class CommonRequest extends BmobObject {
     private String requestContent;  //请求内容
     private String requestRemarks;  //备注信息
     private Float remuneration;     //预期报酬
-    private int type;               //标签，表示是否被抢,0为待抢，1为已被抢
+    private int type;               //标签，表示是否被抢,0为待抢，1为已被抢，2为被取消
 
     public String getGeneratedTime() {
         return generatedTime;

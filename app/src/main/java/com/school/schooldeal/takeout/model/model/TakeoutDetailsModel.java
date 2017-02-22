@@ -3,7 +3,6 @@ package com.school.schooldeal.takeout.model.model;
 import android.content.Context;
 import android.util.Log;
 
-import com.school.schooldeal.model.Restaurant;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.takeout.model.impl.ImplTakeoutDetailsModel;
 import com.school.schooldeal.takeout.presenter.TakeOutDetailsPresenter;

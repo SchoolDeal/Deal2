@@ -2,6 +2,7 @@ package com.school.schooldeal;
 
 import android.util.Log;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +17,7 @@ import java.net.Socket;
 public class ServerConnectManager {
     private ConnectLisenter lisenter;
     private String line,token;
+    private Socket socket;
 
     public ServerConnectManager() {
     }
@@ -32,34 +34,36 @@ public class ServerConnectManager {
             public void run() {
                 try {
                     Log.d("bbb","run");
-                    Socket socket = new Socket("119.29.58.206",10086);
+                    socket = new Socket("119.29.58.206",10086);
                     socket.setReuseAddress(true);
                     socket.setKeepAlive(true);
                     Log.d("bbb","connect success");
-                    InputStream input = socket.getInputStream();
-                    //OutputStream output = socket.getOutputStream();
-                    //BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-                    //writer.write(id+"\n"+name+"\n"+url+"\n"+"0\n");
-                    //writer.flush();
 
-                    ObjectOutputStream objectOutput = new ObjectOutputStream(socket.getOutputStream());
+                    //写入数据
+                    ObjectOutputStream objectOutput = new ObjectOutputStream(new BufferedOutputStream(socket.getOutputStream()));
                     ServerConnectBean bean = new ServerConnectBean(id,name,url);
                     objectOutput.writeObject(bean);
                     objectOutput.flush();
 
+                    //读取数据
+                    InputStream input = socket.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                     while (!(line = reader.readLine()).equals("0")){
                         token = line;
                         Log.d("bbb",token);
-                        lisenter.connect(token);
+                        if (token!=null)lisenter.connect(token);
                     }
                     objectOutput.close();
                     input.close();
-                    //output.close();
-                    //writer.close();
                     reader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }finally {
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }).start();

@@ -1,5 +1,6 @@
 package com.school.schooldeal.schooltask.view;
 
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -30,20 +31,28 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
     TextView money;
     @BindView(R.id.school_task_detailed_phone)
     TextView phone;
+    private static int ROB = 2;
+    private static int NOROB = 1;
+    private Intent intent;
+    private int type = 0; //用于判断是否已经抢过单子
+    private boolean rob = false;
     private CommonRequest commonRequest;
     private SchoolTaskDetailed schoolTaskDetailed;
     @Override
     protected void initData() {
         initToolBar();
-        commonRequest = (CommonRequest)getIntent().getSerializableExtra("CommonRequest");
+        intent = getIntent();
+        commonRequest = (CommonRequest)intent.getSerializableExtra("CommonRequest");
         schoolTaskDetailed = new SchoolTaskDetailed(context,this);
         button.setOnClickListener(this);
+        setData();
     }
 
     @Override
     protected int getContentViewId() {
         return R.layout.activity_schooltask_detailed;
     }
+
     private void initToolBar(){
         toolbar.setTitle("详细信息");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
@@ -51,17 +60,11 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
 
     @Override
     public void onClick(View v) {
-        schoolTaskDetailed.getrob();
-    }
-
-    @Override
-    public void success() {
-        ToastUtil.makeShortToast(context,"抢单成功");
-    }
-
-    @Override
-    public void failed() {
-        ToastUtil.makeShortToast(context,"抢单失败");
+        if (type == 0){
+            schoolTaskDetailed.getrob(commonRequest);
+        }else {
+            ToastUtil.makeShortToast(context,"您已抢过，换一个试试");
+        }
     }
 
     private void setData(){
@@ -70,4 +73,29 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
         money.setText(commonRequest.getRemuneration()+"元");
         phone.setText(commonRequest.getStudent().getPhoneNum());
     }
+
+    @Override
+    public void setType(int type) {
+        this.type = type;
+        rob = true;
+    }
+
+    @Override
+    public int getType() {
+        return type;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (rob == true){
+            Intent intent = new Intent();
+            intent.putExtra("position",this.intent.getIntExtra("position",0));
+            setResult(ROB,intent);
+            super.onBackPressed();
+        }else {
+            setResult(NOROB);
+            super.onBackPressed();
+        }
+    }
+
 }

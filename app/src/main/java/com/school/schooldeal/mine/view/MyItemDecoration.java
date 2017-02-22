@@ -6,6 +6,7 @@ import android.view.View;
 
 /**
  * Created by U-nookia on 2017/2/15.
+ * mine界面的各个item之间的边界
  */
 
 public class MyItemDecoration extends RecyclerView.ItemDecoration {

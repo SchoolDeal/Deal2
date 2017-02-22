@@ -104,6 +104,7 @@ public class sendCommonService extends Service {
         Store store = new Store();
         store.setObjectId(storeID);
         student.setObjectId("b91d31b71e");
+        commonRequest.setType(0);
         commonRequest.setStore(store);
         commonRequest.setStudent(student);
         commonRequest.setRequestContent(content);

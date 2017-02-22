@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.school.schooldeal.R;
@@ -28,6 +29,7 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
     FloatingActionButton fab;
     private SchoolTaskOtherPresenter presenter;
     private String title = "SchoolTask";
+    private SchoolTaskDataAdapter adapter;
     @Override
     protected void initData() {
         Intent intent = getIntent();
@@ -45,21 +47,16 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
 
     @Override
     public void setAdapter(SchoolTaskDataAdapter adapter) {
-        /*adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
-            @Override
-            public void onItemClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SchoolTaskDetailedActivity.class);
-                startActivity(intent);
-            }
-        });*/
         adapter.setOnItemClickListener(new SchoolTaskDataAdapter.OnSchoolTaskItemClickListener() {
             @Override
-            public void onItemClick(View view, CommonRequest commonRequest) {
+            public void onItemClick(View view, CommonRequest commonRequest,int position) {
                 Intent intent = new Intent(context,SchoolTaskDetailedActivity.class);
                 intent.putExtra("CommonRequest",commonRequest);
-                startActivity(intent);
+                intent.putExtra("position",position);
+                startActivityForResult(intent,1000);
             }
         });
+        this.adapter = adapter;
         recyclerView.setAdapter(adapter);
     }
 
@@ -87,4 +84,20 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 2){
+            Log.e("data","OK");
+            int position = data.getIntExtra("position",0);
+            Log.e("data",position+"");
+            /*不知是我眼拙还是什么
+            * 这里为什么就没有item移除的动画呢，这是个值得思考的问题(ˇˍˇ）~*/
+            adapter.getLists().remove(position);
+            adapter.notifyItemRemoved(position);
+            adapter.notifyItemRangeChanged(position,adapter.getItemCount());
+        }else {
+            Log.e("data","NO");
+        }
+    }
 }

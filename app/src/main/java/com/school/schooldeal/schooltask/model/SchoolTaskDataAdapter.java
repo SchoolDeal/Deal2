@@ -15,6 +15,8 @@ import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.CommonService;
 import com.school.schooldeal.model.Student;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
@@ -94,19 +96,38 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         rob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonService commonService = new CommonService();
-                Student student = new Student();
-                student.setObjectId("zxc");
-                commonService.setRequest(commonRequest);
-                commonService.setStudent(student);
-                commonService.setRemuneration(commonRequest.getRemuneration());
-                commonService.save(context, new SaveListener() {
+                BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
+                query.getObject(context, commonRequest.getObjectId(), new GetListener<CommonRequest>() {
                     @Override
-                    public void onSuccess() {
-                        ToastUtil.makeShortToast(context,"抢单成功");
-                        getLists().remove(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position,getItemCount());
+                    public void onSuccess(CommonRequest request) {
+                        if (request.getType() == 0){
+                            CommonService commonService = new CommonService();
+                            commonRequest.setType(1);
+                            Student student = new Student();
+                            student.setObjectId("zxc");
+                            commonService.setRequest(commonRequest);
+                            commonService.setStudent(student);
+                            commonService.setRemuneration(commonRequest.getRemuneration());
+                            commonService.save(context, new SaveListener() {
+                                @Override
+                                public void onSuccess() {
+                                    ToastUtil.makeShortToast(context,"抢单成功");
+                                    getLists().remove(position);
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position,getItemCount());
+                                }
+
+                                @Override
+                                public void onFailure(int i, String s) {
+                                    ToastUtil.makeShortToast(context,"抢单失败");
+                                }
+                            });
+                        }else {
+                            ToastUtil.makeShortToast(context,"糟糕，这个已经被抢了呢");
+                            getLists().remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position,getItemCount());
+                        }
                     }
 
                     @Override
@@ -120,7 +141,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         root.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onItemClick(root,commonRequest);
+                onItemClickListener.onItemClick(root,commonRequest,position);
             }
         });
 
@@ -137,7 +158,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
     }
 
     public interface OnSchoolTaskItemClickListener{
-        void onItemClick(View view,CommonRequest commonRequest);
+        void onItemClick(View view,CommonRequest commonRequest,int position);
     }
 }
 

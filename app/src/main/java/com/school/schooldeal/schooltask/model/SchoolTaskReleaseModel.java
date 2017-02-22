@@ -34,18 +34,15 @@ public class SchoolTaskReleaseModel  implements ImplSchoolTaskReleaseModel {
 
     @Override
     public void getStores() {
-        Log.e("data","OK3");
         String bql = "select * from Store";
         new BmobQuery<Store>().doSQLQuery(context, bql, new SQLQueryListener<Store>() {
             @Override
             public void done(BmobQueryResult<Store> bmobQueryResult, BmobException e) {
-                Log.e("data","OK4");
                 if (e == null){
                     List<Store> list = (ArrayList<Store>)bmobQueryResult.getResults();
                     if (list == null && list.size()==0){
                         ToastUtil.makeShortToast(context,"商店数据为空哦");
                     }else {
-                        Log.e("data","OK1");
                         List<String> stores = new ArrayList<String>();
                         for (int i = 0;i<list.size();i++){
                             stores.add(list.get(i).getStoreName());
@@ -53,7 +50,6 @@ public class SchoolTaskReleaseModel  implements ImplSchoolTaskReleaseModel {
                         presenter.setStores(stores);
                     }
                 }else {
-                    Log.e("data","ERRO");
                     Log.e("ReleaseModel  ", "错误码："+e.getErrorCode()+"，错误描述："+e.getMessage());
                     ToastUtil.makeShortToast(context,"请求商店信息错误，请稍后再试");
                 }

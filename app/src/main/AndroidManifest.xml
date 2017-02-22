@@ -90,6 +90,11 @@
             android:launchMode="singleTop">
         </activity>
         <activity
+            android:name=".mine.view.PersonalInformationActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity
             android:name=".sign.view.SignInAcitivty"
             android:launchMode="standard">
             <intent-filter>
@@ -104,7 +109,8 @@
             android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
         //schooltask的activity
-        <activity android:name=".schooltask.view.SchoolTaskActivity">
+        <activity
+            android:name=".schooltask.view.SchoolTaskActivity">
         </activity>
         <activity
             android:name=".message.view.ConversationActivity"
