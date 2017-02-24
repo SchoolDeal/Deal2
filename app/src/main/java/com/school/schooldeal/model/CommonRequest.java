@@ -16,6 +16,8 @@ public class CommonRequest extends BmobObject {
     private String requestRemarks;  //备注信息
     private Float remuneration;     //预期报酬
     private int type;               //标签，表示是否被抢,0为待抢，1为已被抢，2为被取消
+    private String apartmentId;
+    private int storeType;
 
     public String getGeneratedTime() {
         return generatedTime;
@@ -81,6 +83,22 @@ public class CommonRequest extends BmobObject {
         this.type = type;
     }
 
+    public String getApartmentId() {
+        return apartmentId;
+    }
+
+    public void setApartmentId(String apartmentId) {
+        this.apartmentId = apartmentId;
+    }
+
+    public int getStoreType() {
+        return storeType;
+    }
+
+    public void setStoreType(int storeType) {
+        this.storeType = storeType;
+    }
+
     @Override
     public String toString() {
         return "CommonRequest{" +
@@ -92,6 +110,8 @@ public class CommonRequest extends BmobObject {
                 ", requestRemarks='" + requestRemarks + '\'' +
                 ", remuneration=" + remuneration +
                 ", type=" + type +
+                ", apartmentId='" + apartmentId + '\'' +
+                ", storeType=" + storeType +
                 '}';
     }
 }

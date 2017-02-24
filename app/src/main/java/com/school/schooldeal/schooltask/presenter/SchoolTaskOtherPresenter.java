@@ -20,11 +20,11 @@ public class SchoolTaskOtherPresenter {
     private SchoolTaskDataAdapter adapter;
     private ImplSchoolTaskModel schoolTaskModel;
     private String title;
-    public SchoolTaskOtherPresenter(Context context, ImplSchoolTaskActivity implSchoolTaskActivity,String title){
+    public SchoolTaskOtherPresenter(Context context, ImplSchoolTaskActivity implSchoolTaskActivity,String title,int type){
         this.context = context;
         this.title = title;
         schoolTaskActivity = implSchoolTaskActivity;
-        schoolTaskModel = new SchoolTaskModel(context,this);
+        schoolTaskModel = new SchoolTaskModel(context,this,type);
         adapter = new SchoolTaskDataAdapter(context);
         schoolTaskModel.getLocated();
         schoolTaskModel.getOrders();
@@ -33,4 +33,13 @@ public class SchoolTaskOtherPresenter {
         adapter.setData(orders);
         schoolTaskActivity.setAdapter(adapter);
     }
+
+    public void getnewItems(SchoolTaskDataAdapter adapter){
+        schoolTaskModel.getnewItems(adapter);
+    }
+
+    public void stopRefresh(){
+        schoolTaskActivity.stopRefresh();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.school.schooldeal.schooltask.view;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -27,16 +28,20 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
     Toolbar toolbar;
     @BindView(R.id.school_task_fab)
     FloatingActionButton fab;
+    @BindView(R.id.school_task_swipe)
+    SwipeRefreshLayout refresh;
     private SchoolTaskOtherPresenter presenter;
     private String title = "SchoolTask";
     private SchoolTaskDataAdapter adapter;
+    private int type;
     @Override
     protected void initData() {
         Intent intent = getIntent();
         title = intent.getStringExtra("title");
+        type = intent.getIntExtra("type",1);
         initToolBar();
         initRecyclerView();
-        presenter = new SchoolTaskOtherPresenter(context,this,title);
+        presenter = new SchoolTaskOtherPresenter(context,this,title,type);
         setClickListener();
     }
 
@@ -56,6 +61,7 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
                 startActivityForResult(intent,1000);
             }
         });
+        setRefresh();
         this.adapter = adapter;
         recyclerView.setAdapter(adapter);
     }
@@ -88,9 +94,7 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 2){
-            Log.e("data","OK");
             int position = data.getIntExtra("position",0);
-            Log.e("data",position+"");
             /*不知是我眼拙还是什么
             * 这里为什么就没有item移除的动画呢，这是个值得思考的问题(ˇˍˇ）~*/
             adapter.getLists().remove(position);
@@ -100,4 +104,19 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
             Log.e("data","NO");
         }
     }
+
+    private void setRefresh(){
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.getnewItems(adapter);
+            }
+        });
+    }
+
+    @Override
+    public void stopRefresh(){
+        refresh.setRefreshing(false);
+    }
+
 }

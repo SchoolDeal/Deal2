@@ -82,7 +82,7 @@ public class sendCommonService extends Service {
             @Override
             public void onSuccess(List<Store> list) {
                 if (list != null && list.size()!= 0){
-                    storeID = list.get(0).getObjectId();
+                    store = list.get(0);
                     send();
                 }else {
                     ToastUtil.makeShortToast(getApplicationContext(),"学校订单发送失败，请稍后重试");
@@ -101,10 +101,10 @@ public class sendCommonService extends Service {
     private void send(){
         CommonRequest commonRequest = new CommonRequest();
         Student student = new Student();
-        Store store = new Store();
-        store.setObjectId(storeID);
-        student.setObjectId("b91d31b71e");
+        student.setObjectId("fc431324b6");
+        commonRequest.setApartmentId("a275751aa8");
         commonRequest.setType(0);
+        commonRequest.setStoreType(store.getStoreType());
         commonRequest.setStore(store);
         commonRequest.setStudent(student);
         commonRequest.setRequestContent(content);

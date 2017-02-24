@@ -85,7 +85,7 @@ public class SchoolTaskReasePresenter {
                 }
             }
         });*/
-        ToastUtil.makeShortToast(context,"↑+\n+正在发送");
+        ToastUtil.makeShortToast(context,"    ↑\n"+"正在发送");
         Intent intent = new Intent(context, sendCommonService.class);
         intent.putExtra("storename",storename);
         intent.putExtra("content",content);

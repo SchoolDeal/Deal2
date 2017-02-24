@@ -7,4 +7,5 @@ package com.school.schooldeal.schooltask.model;
 public interface ImplSchoolTaskModel {
     void getOrders();
     void getLocated();
+    void getnewItems(SchoolTaskDataAdapter adapter);
 }

@@ -2,11 +2,9 @@ package com.school.schooldeal.schooltask.model;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseViewHolder;
@@ -23,6 +21,7 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
     private TextView location;
     private TextView describe;
     private TextView remuneration;
+    private TextView storename;
 
     public SchoolTaskViewHolder(View itemView,Context context) {
         super(itemView);
@@ -32,6 +31,7 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
         location = (TextView)itemView.findViewById(R.id.destination_school_task_order);
         describe = (TextView)itemView.findViewById(R.id.describe_school_task_item);
         remuneration = (TextView)itemView.findViewById(R.id.remuneration_school_task_item);
+        storename = (TextView)itemView.findViewById(R.id.start_school_task_item);
         /*root.setOnClickListener(this);
         rob.setOnClickListener(this);*/
     }
@@ -90,5 +90,13 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
 
     public void setRoot(CardView root) {
         this.root = root;
+    }
+
+    public TextView getStorename() {
+        return storename;
+    }
+
+    public void setStorename(TextView storename) {
+        this.storename = storename;
     }
 }

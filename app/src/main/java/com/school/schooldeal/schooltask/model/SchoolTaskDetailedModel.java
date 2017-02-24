@@ -32,7 +32,7 @@ public class SchoolTaskDetailedModel implements ImplSchoolTaskDetailedModel{
                 if (request.getType() == 0){
                     CommonService commonService = new CommonService();
                     Student student = new Student();
-                    student.setObjectId("zxc");
+                    student.setObjectId("b91d31b71e");
                     commonService.setRequest(commonRequest);
                     commonService.setStudent(student);
                     commonService.setRemuneration(commonRequest.getRemuneration());

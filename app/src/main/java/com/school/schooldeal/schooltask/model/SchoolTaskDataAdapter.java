@@ -15,6 +15,8 @@ import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.CommonService;
 import com.school.schooldeal.model.Student;
 
+import java.util.List;
+
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
@@ -92,6 +94,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         viewHolder.getLocation().setText(student.getUsername());
         viewHolder.getDescribe().setText(commonRequest.getRequestContent());
         viewHolder.getRemuneration().setText(commonRequest.getRemuneration()+"元");
+        viewHolder.getStorename().setText(commonRequest.getStore().getStoreName()+":");
 
         rob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +106,9 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
                         if (request.getType() == 0){
                             CommonService commonService = new CommonService();
                             commonRequest.setType(1);
+                            commonRequest.update(context);
                             Student student = new Student();
-                            student.setObjectId("zxc");
+                            student.setObjectId("b91d31b71e");
                             commonService.setRequest(commonRequest);
                             commonService.setStudent(student);
                             commonService.setRemuneration(commonRequest.getRemuneration());
@@ -155,6 +159,11 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
     }
     public void setOnItemClickListener(OnSchoolTaskItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+    public void setnewItems(List<SchoolTaskOrderBean> newOrders){
+        getLists().clear();
+        getLists().addAll(newOrders);
+        notifyDataSetChanged();
     }
 
     public interface OnSchoolTaskItemClickListener{

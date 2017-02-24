@@ -8,4 +8,5 @@ import com.school.schooldeal.schooltask.model.SchoolTaskDataAdapter;
 
 public interface ImplSchoolTaskActivity {
     void setAdapter(SchoolTaskDataAdapter adapter);
+    void stopRefresh();
 }
