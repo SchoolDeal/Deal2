@@ -88,32 +88,32 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_picsel_preview.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_ac_albums.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_ac_albums.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_item_conversation_member.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_conversation_member.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_share_location_message.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_share_location_message.xml"
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_ac_albums.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_ac_albums.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_ext_voice_input.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_ext_voice_input.xml"
     },
     {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_share_location_message.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_share_location_message.xml"
+    },
+    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_item_voice_message.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_item_voice_message.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_item_conversation.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_picsel_original.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_picsel_original.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_item_conversation.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_item_conversation.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_ac_file_download.xml",
@@ -188,12 +188,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\layout\\rc_ac_file_download.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_dialog_popup_options_item.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_dialog_popup_options_item.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_picsel_preview.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_picsel_preview.xml"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_dialog_popup_options_item.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\layout\\rc_dialog_popup_options_item.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\layout\\rc_ext_plugin_pager.xml",

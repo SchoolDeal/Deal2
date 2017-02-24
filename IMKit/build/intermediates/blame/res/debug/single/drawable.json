@@ -24,12 +24,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_ext_plugin_location_selector.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_corner_single_check_style.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_cs_corner_single_check_style.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_sel_picsel_toolbar_back.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_sel_picsel_toolbar_back.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_corner_single_check_style.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_cs_corner_single_check_style.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_sel_picsel_toolbar_send.xml",
@@ -48,12 +48,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_cs_evaluate_selector.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ic_files_selector.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_ic_files_selector.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_list_divider_style.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_cs_list_divider_style.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_ic_files_selector.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_ic_files_selector.xml"
     },
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_an_voice_sent.xml",
@@ -84,12 +84,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_bg_item.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_group_checkbox_selector.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_cs_group_checkbox_selector.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_evaluate_selector.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_cs_evaluate_selector.xml"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_cs_group_checkbox_selector.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_cs_group_checkbox_selector.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_bg_item.xml",
@@ -124,16 +124,16 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_cs_group_ok_text_selector.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_voice_style.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_corner_voice_style.xml"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_popup_dialog_style.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_corner_popup_dialog_style.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_location_style.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_corner_location_style.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_popup_dialog_style.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_corner_popup_dialog_style.xml"
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_corner_voice_style.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_corner_voice_style.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\debug\\drawable\\rc_item_top_list_selector.xml",

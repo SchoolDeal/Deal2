@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -33,6 +34,8 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
 
 /**
  * Created by U-nookia on 2017/2/21.
@@ -71,6 +74,7 @@ public class PersonalInformationActivity extends BaseActivity {
         editor = sp.edit();
         String url = sp.getString("head_url", Util.defaultHeadImg);
         setHead(url);
+        nameTextModify.setText(BmobUser.getCurrentUser(context).getUsername());
     }
 
     @Override
@@ -132,12 +136,15 @@ public class PersonalInformationActivity extends BaseActivity {
         if (Util.IS_STUDENT){
             StudentUser newUser = new StudentUser();
             newUser.setImgUrl(fileUrl);
-            StudentUser currentUser = BmobUser.getCurrentUser(context,StudentUser.class);
+            newUser.setStudent(Util.IS_STUDENT);
+            final StudentUser currentUser = BmobUser.getCurrentUser(context,StudentUser.class);
             newUser.update(context, currentUser.getObjectId(), new UpdateListener() {
                 @Override
                 public void onSuccess() {
                     ToastUtil.makeShortToast(context,"更新用户头像成功");
                     makeImgCache(fileUrl);
+                    BmobUser.getCurrentUser(context,StudentUser.class).update(context);
+                    refreshUserImg(fileUrl);
                 }
 
                 @Override
@@ -148,12 +155,15 @@ public class PersonalInformationActivity extends BaseActivity {
         }else {
             RestaurantUser newUser = new RestaurantUser();
             newUser.setImgUrl(fileUrl);
-            RestaurantUser currentUser = BmobUser.getCurrentUser(context,RestaurantUser.class);
+            newUser.setStudent(Util.IS_STUDENT);
+            final RestaurantUser currentUser = BmobUser.getCurrentUser(context,RestaurantUser.class);
             newUser.update(context, currentUser.getObjectId(), new UpdateListener() {
                 @Override
                 public void onSuccess() {
                     ToastUtil.makeShortToast(context,"更新用户头像成功");
                     makeImgCache(fileUrl);
+                    BmobUser.getCurrentUser(context,RestaurantUser.class).update(context);
+                    refreshUserImg(fileUrl);
                 }
 
                 @Override
@@ -162,6 +172,12 @@ public class PersonalInformationActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    public void refreshUserImg(String url){
+        BmobUser user = BmobUser.getCurrentUser(context);
+        UserInfo info = new UserInfo(user.getObjectId(),user.getUsername(), Uri.parse(url));
+        RongIM.getInstance().refreshUserInfoCache(info);
     }
 
     private void makeImgCache(String url) {
