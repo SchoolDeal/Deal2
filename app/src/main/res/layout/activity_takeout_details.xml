@@ -48,6 +48,16 @@
                     android:text="@string/destinationHint_takeoutDetails"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
                     android:textColor="@color/md_grey_900"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/destination_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/destinationHint_takeoutDetails"
+                    android:layout_toRightOf="@id/destinationHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -59,16 +69,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
-                    android:layout_toEndOf="@id/destinationHint_takeoutDetails"
+                    android:layout_toEndOf="@id/destination_colon"
                     android:layout_alignBaseline="@+id/destinationHint_takeoutDetails"/>
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/separated_01"
+                android:background="@color/md_grey_400"
+                android:layout_below="@+id/destinationRl_takeoutdetails"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
             <RelativeLayout
                 android:id="@+id/businessRl_takeoutDetails"
-                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_below="@+id/destinationRl_takeoutdetails"
+                android:layout_below="@+id/separated_01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -77,11 +97,20 @@
                     android:text="@string/businessHint_takeoutDetails"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
                     android:textColor="@color/md_grey_900"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/business_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/businessHint_takeoutDetails"
+                    android:layout_toRightOf="@id/businessHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:id="@+id/business_takeoutDetails"
-                    android:layout_toEndOf="@+id/businessHint_takeoutDetails"
+                    android:layout_toEndOf="@+id/business_colon"
                     android:layout_alignBaseline="@+id/businessHint_takeoutDetails"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
                     android:textSize="@dimen/takeoutDetails_content_textSize"
@@ -92,10 +121,20 @@
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/separated_02"
+                android:background="@color/md_grey_400"
+                android:layout_below="@+id/businessRl_takeoutDetails"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
             <RelativeLayout
                 android:id="@+id/bizAddressRl_takeoutDetails"
-                android:layout_below="@+id/businessRl_takeoutDetails"
-                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_below="@+id/separated_02"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -105,27 +144,46 @@
                     android:text="@string/bizAddressHint_takeoutDetails"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
                     android:textColor="@color/md_grey_900"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/bizAddress_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/bizAddressHint_takeoutDetails"
+                    android:layout_toRightOf="@id/bizAddressHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/bizAddress_takeoutDetails"
-                    android:text="重邮老校门对面堕落街13号2"
+                    android:text="重邮老校门对面堕落街13号223123123123123123123"
                     android:textSize="@dimen/takeoutDetails_content_textSize"
                     android:textColor="@color/md_grey_800"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
                     android:layout_alignBaseline="@+id/bizAddressHint_takeoutDetails"
-                    android:layout_toEndOf="@+id/bizAddressHint_takeoutDetails"/>
+                    android:layout_toEndOf="@+id/bizAddress_colon"/>
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/separated_03"
+                android:background="@color/md_grey_400"
+                android:layout_below="@+id/bizAddressRl_takeoutDetails"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
             <RelativeLayout
                 android:id="@+id/bizPhoneNumRl_takeoutDetails"
-                android:layout_below="@+id/bizAddressRl_takeoutDetails"
+                android:layout_below="@+id/separated_03"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -134,8 +192,19 @@
                     android:text="@string/bizPhoneNumHint_takeoutDetails"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
                     android:textColor="@color/md_grey_900"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/bizPhoneNum_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/bizPhoneNumHint_takeoutDetails"
+                    android:layout_toRightOf="@id/bizPhoneNumHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
                 <TextView
                     android:id="@+id/bizPhoneNum_takeoutDetails"
                     android:text="2333333333"
@@ -143,17 +212,27 @@
                     android:textColor="@color/md_grey_800"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/bizPhoneNumHint_takeoutDetails"
+                    android:layout_toEndOf="@+id/bizPhoneNum_colon"
                     android:layout_alignBaseline="@+id/bizPhoneNumHint_takeoutDetails"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"/>
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/separated_04"
+                android:background="@color/md_grey_400"
+                android:layout_below="@+id/bizPhoneNumRl_takeoutDetails"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
             <RelativeLayout
                 android:id="@+id/moneyRl_takeoutDetails"
-                android:layout_below="@+id/bizPhoneNumRl_takeoutDetails"
+                android:layout_below="@+id/separated_04"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -162,6 +241,16 @@
                     android:text="@string/moneyHint_takeoutDetails"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
                     android:textColor="@color/md_grey_900"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/money_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/moneyHint_takeoutDetails"
+                    android:layout_toRightOf="@id/moneyHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -172,17 +261,27 @@
                     android:textColor="@color/md_grey_800"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/moneyHint_takeoutDetails"
+                    android:layout_toEndOf="@+id/money_colon"
                     android:layout_alignBaseline="@+id/moneyHint_takeoutDetails"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"/>
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/separated_05"
+                android:background="@color/md_grey_400"
+                android:layout_below="@+id/moneyRl_takeoutDetails"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
             <RelativeLayout
                 android:id="@+id/amountRl_takeoutDetails"
-                android:layout_below="@+id/moneyRl_takeoutDetails"
+                android:layout_below="@+id/separated_05"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -191,8 +290,19 @@
                     android:text="@string/amountHint_takeoutDetails"
                     android:textColor="@color/md_grey_900"
                     android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/amount_colon"
+                    android:text="："
+                    android:textSize="16dp"
+                    android:textColor="@color/md_grey_900"
+                    android:layout_alignBaseline="@+id/amountHint_takeoutDetails"
+                    android:layout_toRightOf="@id/amountHint_takeoutDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+
                 <TextView
                     android:id="@+id/amount_takeout"
                     android:text="2份"
@@ -200,18 +310,118 @@
                     android:textColor="@color/md_grey_800"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/amountHint_takeoutDetails"
+                    android:layout_toEndOf="@+id/amount_colon"
                     android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
                     android:layout_alignBaseline="@+id/amountHint_takeoutDetails"/>
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/RlForBusinessShow_takeoutDetails"
+                android:layout_below="@+id/amountRl_takeoutDetails"
+                android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/separated_06"
+                    android:background="@color/md_grey_400"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
 
+                <RelativeLayout
+                    android:id="@+id/studentNameRl_takeoutDetails"
+                    android:layout_below="@+id/separated_06"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/studentNameHint_takeoutDetails"
+                        android:text="@string/studentNameHint_takeoutDetails"
+                        android:textColor="@color/md_grey_900"
+                        android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/studentName_colon"
+                        android:text="："
+                        android:textSize="16dp"
+                        android:textColor="@color/md_grey_900"
+                        android:layout_alignBaseline="@+id/studentNameHint_takeoutDetails"
+                        android:layout_toRightOf="@id/studentNameHint_takeoutDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/studentName_takeoutDetails"
+                        android:text="李华"
+                        android:textSize="@dimen/takeoutDetails_content_textSize"
+                        android:textColor="@color/md_grey_800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/studentName_colon"
+                        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                        android:layout_alignBaseline="@+id/studentNameHint_takeoutDetails"/>
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/separated_07"
+                    android:background="@color/md_grey_400"
+                    android:layout_below="@+id/studentNameRl_takeoutDetails"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="@dimen/takeoutDetails_text_below_text"
+                    android:layout_marginBottom="@dimen/takeoutDetails_text_below_separated"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+
+                <RelativeLayout
+                    android:id="@+id/studentPhoneNumRl_takeoutDetails"
+                    android:layout_below="@+id/separated_07"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/studentPhoneNumHint_takeoutDetails"
+                        android:text="@string/studentPhoneNumHint_takeoutDetails"
+                        android:textColor="@color/md_grey_900"
+                        android:textSize="@dimen/takeoutDetails_Hint_textSize"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/studentPhoneNum_colon"
+                        android:text="："
+                        android:textSize="16dp"
+                        android:textColor="@color/md_grey_900"
+                        android:layout_alignBaseline="@+id/studentPhoneNumHint_takeoutDetails"
+                        android:layout_toRightOf="@id/studentPhoneNumHint_takeoutDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/studentPhoneNum_takeoutDetails"
+                        android:text="18323232323"
+                        android:textSize="@dimen/takeoutDetails_content_textSize"
+                        android:textColor="@color/md_grey_800"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/studentPhoneNum_colon"
+                        android:layout_marginStart="@dimen/takeoutDetails_text_horizontal_text"
+                        android:layout_alignBaseline="@+id/studentPhoneNumHint_takeoutDetails"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
         </RelativeLayout>
-
-
 
     </ScrollView>
 

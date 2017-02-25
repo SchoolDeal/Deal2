@@ -3,6 +3,7 @@ package com.school.schooldeal.takeout.presenter;
 import android.content.Context;
 
 import com.school.schooldeal.model.TakeawayRequest;
+import com.school.schooldeal.model.TakeawayService;
 import com.school.schooldeal.takeout.model.GenerateService;
 import com.school.schooldeal.takeout.model.ImplCaptureRequest;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
@@ -64,5 +65,20 @@ public class TakeOutDetailsPresenter implements ImplCaptureRequest{
     @Override
     public void captureRequestSuccess() {
         mDetailsActivity.captureRequestSuccess();
+    }
+
+    /**
+     * 用于加载学生信息
+     */
+    public void loadStudentInfo(){
+        mDetailsModel.loadStudentInfo();
+    }
+
+    /**
+     * 请求学生以及服务相关信息
+     * @param takeawayService 请求的数据
+     */
+    public void loadStudentInfoSuccess(TakeawayService takeawayService){
+        mDetailsActivity.showStudentInfo(takeawayService);
     }
 }

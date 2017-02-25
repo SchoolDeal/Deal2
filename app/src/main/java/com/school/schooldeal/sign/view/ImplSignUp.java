@@ -19,6 +19,9 @@ public interface ImplSignUp {
 
     String getSchoolNumber();
 
+    String getBedroom();
+
+
     void finishView();
 
     void setSex(CharSequence text);
@@ -26,4 +29,8 @@ public interface ImplSignUp {
     void setSchool(CharSequence text);
 
     void setApartment(CharSequence text);
+
+    void setBedroom(CharSequence text);
+
+
 }

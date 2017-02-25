@@ -7,4 +7,5 @@ package com.school.schooldeal.takeout.model.impl;
 public interface ImplTakeoutDetailsModel {
     void loadPicture();
     void loadTakeawayDetails(String requestID);
+    void loadStudentInfo();
 }

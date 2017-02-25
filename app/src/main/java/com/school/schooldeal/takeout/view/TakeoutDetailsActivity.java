@@ -10,12 +10,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.TakeawayRequest;
+import com.school.schooldeal.model.TakeawayService;
 import com.school.schooldeal.takeout.TakeawayStatusConsts;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 import com.school.schooldeal.takeout.presenter.TakeOutDetailsPresenter;
@@ -45,6 +47,12 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
     ImageView mRestaurantImg;
     @BindView(R.id.capture_detail)
     Button mCaptureDetail;
+    @BindView(R.id.studentName_takeoutDetails)
+    TextView mStudentNameTakeoutDetails;
+    @BindView(R.id.studentPhoneNum_takeoutDetails)
+    TextView mStudentPhoneNumTakeoutDetails;
+    @BindView(R.id.RlForBusinessShow_takeoutDetails)
+    RelativeLayout mRlForBusinessShowTakeoutDetails;
 
     private TakeOutDetailsPresenter mPresenter = new TakeOutDetailsPresenter(this, this);
     private String requestID = "";
@@ -67,6 +75,10 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
 
 //        Intent intent = getIntent();
 //        this.requestID = intent.getStringExtra("requestID");
+
+        if (Util.IS_STUDENT){
+            mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -101,22 +113,25 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
      */
     @Override
     public void showDetails(TakeawayRequest takeawayRequest) {
-        Log.d(className, "TakeawayRequest: "+takeawayRequest.toString());
+        Log.d(className, "TakeawayRequest: " + takeawayRequest.toString());
         mDestinationTakeoutDetails.setText(takeawayRequest.getApartment().getApartmentName() + takeawayRequest.getBedroom() + "寝室");
         mBusinessTakeoutDetails.setText(takeawayRequest.getRestaurant().getName());
         mBizAddressTakeoutDetails.setText(takeawayRequest.getRestaurant().getAddress());
         mBizPhoneNumTakeoutDetails.setText(takeawayRequest.getRestaurant().getMobilePhoneNumber());
         mAmountTakeout.setText(takeawayRequest.getAmount().toString() + "份");
         mMoneyTakeoutDetails.setText("￥" + String.valueOf(takeawayRequest.getRemuneration()));
-        if (!Util.IS_STUDENT){
+        if (!Util.IS_STUDENT) {
             mCaptureDetail.setClickable(false);
             mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
             if (takeawayRequest.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN)
                 mCaptureDetail.setText("暂未被抢");
-            else if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN)
+            else if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
                 mCaptureDetail.setText("已被抢");
-            else if (takeawayRequest.getStatus() == TakeawayStatusConsts.COMPLETED)
+                mPresenter.loadStudentInfo();
+            } else if (takeawayRequest.getStatus() == TakeawayStatusConsts.COMPLETED) {
                 mCaptureDetail.setText("已完成");
+            }
+
         }
     }
 
@@ -126,14 +141,27 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
     }
 
     /**
+     * 在本方法中展示学生相关信息，仅当前登录用户为餐馆以及该单已被学生抢走时调用
+     *
+     * @param service
+     */
+    @Override
+    public void showStudentInfo(TakeawayService service) {
+        if (!"".equals(service.getStudent().getUsername()))
+            mStudentNameTakeoutDetails.setText(service.getStudent().getUsername());
+        if (!"".equals(service.getStudent().getMobilePhoneNumber()))
+            mStudentPhoneNumTakeoutDetails.setText(service.getStudent().getMobilePhoneNumber());
+    }
+
+    /**
      * 初始化Toolbar
      */
     private void initToolbar() {
         mToolBarTakeoutDetails.setTitle("订单详情");
         mToolBarTakeoutDetails.setTitleTextColor(getResources().getColor(R.color.white));
-        if (Util.IS_STUDENT){
+        if (Util.IS_STUDENT) {
             mToolBarTakeoutDetails.setBackgroundColor(getResources().getColor(R.color.barBackColor));
-        }else{
+        } else {
             mToolBarTakeoutDetails.setBackgroundColor(getResources().getColor(R.color.md_teal_400));
         }
     }

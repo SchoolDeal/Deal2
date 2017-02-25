@@ -110,11 +110,23 @@
             app:met_iconLeft="@mipmap/location"
             android:inputType="text"
             android:hint="学生公寓" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/edit_bedroom"
+            android:layout_below="@+id/edit_apartment"
+            app:met_floatingLabel="highlight"
+            app:met_minCharacters="1"
+            app:met_maxCharacters="8"
+            app:met_iconPadding="6dp"
+            app:met_iconLeft="@mipmap/home"
+            android:inputType="text"
+            android:hint="寝室号"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_apartment"
+            android:layout_below="@+id/edit_bedroom"
             android:layout_marginTop="12dp"
             android:background="@color/white"
             android:text="Sign up"

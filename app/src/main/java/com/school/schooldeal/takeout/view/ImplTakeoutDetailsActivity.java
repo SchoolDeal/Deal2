@@ -3,6 +3,7 @@ package com.school.schooldeal.takeout.view;
 import android.graphics.Bitmap;
 
 import com.school.schooldeal.model.TakeawayRequest;
+import com.school.schooldeal.model.TakeawayService;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 
 /**
@@ -14,4 +15,5 @@ public interface ImplTakeoutDetailsActivity {
     void showRestaurantPicture(Bitmap picture);
     void showDetails(TakeawayRequest takeawayRequest);
     void captureRequestSuccess();
+    void showStudentInfo(TakeawayService service);
 }

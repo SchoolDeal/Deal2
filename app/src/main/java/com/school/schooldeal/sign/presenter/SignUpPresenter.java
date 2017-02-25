@@ -60,13 +60,14 @@ public class SignUpPresenter implements ListToDialog{
         String name = signUp.getName();
         String password = signUp.getPassword();
         String schoolNumber = signUp.getSchoolNumber();
+        String bedroom = signUp.getBedroom();
 
-        if (name.equals("")||password.equals("")||schoolNumber.equals("")||phone.equals("")||email.equals("")||apartment==null||school==null||sex==0){
+        if (name.equals("")||password.equals("")||schoolNumber.equals("")||phone.equals("")||email.equals("")||apartment==null||school==null||sex==0||"".equals(bedroom)){
             ToastUtil.makeShortToast(context, "出现输入错误");
             return;
         }else {
             StudentUser user = new StudentUser(context,name,password,apartment,school,schoolNumber,
-                    phone,email,sex);
+                    phone,email,sex,bedroom);
             user.setStudent(true);
             user.signUp(context, new SaveListener() {
                 @Override

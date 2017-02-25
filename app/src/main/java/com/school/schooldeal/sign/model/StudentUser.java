@@ -23,6 +23,7 @@ public class StudentUser extends BmobUser{
     private Apartment apartment;       //公寓编号
     private boolean isStudent;
     private String imgUrl;  //头像url
+    private String bedroom; //寝室号
 
     public String getImgUrl() {
         return imgUrl;
@@ -37,7 +38,7 @@ public class StudentUser extends BmobUser{
 
     public StudentUser(Context context, String name, String password,
                        Apartment apartment, School school, String schoolNumber,
-                       String phone, String email, int sex) {
+                       String phone, String email, int sex, String bedroom) {
         setUsername(name);
         setPassword(password);
         setApartment(apartment);
@@ -47,6 +48,7 @@ public class StudentUser extends BmobUser{
         setEmail(email);
         setSex(sex);
         setImgUrl(Util.defaultHeadImg);
+        setBedroom(bedroom);
     }
 
     public boolean isStudent() {
@@ -96,14 +98,25 @@ public class StudentUser extends BmobUser{
         this.sex = sex;
     }
 
+    public String getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(String bedroom) {
+        this.bedroom = bedroom;
+    }
+
     @Override
     public String toString() {
         return "StudentUser{" +
-                "apartment=" + apartment +
-                ", creditScore=" + creditScore +
+                "creditScore=" + creditScore +
                 ", sex=" + sex +
                 ", schoolNumber='" + schoolNumber + '\'' +
                 ", school=" + school +
+                ", apartment=" + apartment +
+                ", isStudent=" + isStudent +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", bedroom='" + bedroom + '\'' +
                 '}';
     }
 }

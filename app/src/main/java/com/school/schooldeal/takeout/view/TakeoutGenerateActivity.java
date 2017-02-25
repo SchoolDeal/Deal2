@@ -6,9 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.school.schooldeal.R;
@@ -31,12 +30,12 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     Toolbar mToolBarTakeoutGenerate;
     @BindView(R.id.school_takeoutGenerate)
     TextView mSchoolTakeoutGenerate;
-    @BindView(R.id.schoolDropBtn_takeoutGenerate)
-    ImageView mSchoolDropBtnTakeoutGenerate;
+    //    @BindView(R.id.schoolDropBtn_takeoutGenerate)
+//    ImageButton mSchoolDropBtnTakeoutGenerate;
     @BindView(R.id.apartment_takeoutGenerate)
     TextView mApartmentTakeoutGenerate;
-    @BindView(R.id.apartmentDropBtn_takeoutGenerate)
-    ImageView mApartmentDropBtnTakeoutGenerate;
+    //    @BindView(R.id.apartmentDropBtn_takeoutGenerate)
+//    ImageButton mApartmentDropBtnTakeoutGenerate;
     @BindView(R.id.bedroomEdit_takeoutGenerate)
     EditText mBedroomEditTakeoutGenerate;
     @BindView(R.id.studentNameEdit_takeoutGenerate)
@@ -51,13 +50,20 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     EditText mRemarksEditTakeoutGenerate;
     @BindView(R.id.generateRequest_takeoutGenerate)
     Button mGenerateRequestTakeoutGenerate;
+    @BindView(R.id.schoolRl_takeoutGenerate)
+    RelativeLayout mSchoolRlTakeoutGenerate;
+    @BindView(R.id.apartmentRl_takeoutGenerate)
+    RelativeLayout mApartmentRlTakeoutGenerate;
 
     TakeoutGeneratePresenter mPresenter = new TakeoutGeneratePresenter(this, context);
+
 
     //学校是否已选择
     private boolean schoolSelected = false;
     //公寓是否已选择
     private boolean apartmentSelected = false;
+
+    MaterialDialog loadingDialog;
 
     @Override
     protected void initData() {
@@ -89,6 +95,7 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
      */
     @Override
     public void loadSchoolSuccess(List<String> schools) {
+        loadingDialog.dismiss();
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("选择学校")
                 //学校选择回调，设置文本以及传递选择内容至presenter
@@ -114,6 +121,7 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
      */
     @Override
     public void loadApartmentSuccess(List<String> apartments) {
+        loadingDialog.dismiss();
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("选择公寓")
                 .items(apartments)
@@ -131,20 +139,22 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
     }
 
 
-    @OnClick({R.id.schoolDropBtn_takeoutGenerate,
-            R.id.apartmentDropBtn_takeoutGenerate,
+    @OnClick({R.id.schoolRl_takeoutGenerate,
+            R.id.apartmentRl_takeoutGenerate,
             R.id.generateRequest_takeoutGenerate})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.schoolDropBtn_takeoutGenerate:
+            case R.id.schoolRl_takeoutGenerate:
                 //加载学校信息，完成后回调弹出学校的选择Dialog
+                showLoading("选择学校", "加载中");
                 mPresenter.loadSchool();
                 break;
-            case R.id.apartmentDropBtn_takeoutGenerate:
+            case R.id.apartmentRl_takeoutGenerate:
                 //如果已选择学校（包括缓存），则请求公寓数据
-                Log.d(className,"click: R.id.apartmentDropBtn_takeoutGenerate:" );
+                Log.d(className, "click: R.id.apartmentDropBtn_takeoutGenerate:");
                 if (schoolSelected) {
                     Log.d(className, "schoolSelected ");
+                    showLoading("选择公寓", "加载中");
                     mPresenter.loadApartment();
                 } else {
                     ToastUtil.makeShortToast(this, "请先选择学校");
@@ -156,20 +166,20 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
         }
     }
 
-    private void generateTakeoutRequest(){
+    private void generateTakeoutRequest() {
         if (!schoolSelected
                 || !apartmentSelected
                 || "".equals(mBedroomEditTakeoutGenerate.getText().toString())
                 || "".equals(mStudentNameEditTakeoutGenerate.getText().toString())
                 || "".equals(mStudentPhoneEditTakeoutGenerate.getText().toString())
                 || "".equals(mAmountEditTakeoutGenerate.getText().toString())
-                || "".equals(mRemunerationEditTakeoutGenerate.getText().toString())){
+                || "".equals(mRemunerationEditTakeoutGenerate.getText().toString())) {
             ToastUtil.makeShortToast(this, "还没填完整哦！！");
-        }else if (Float.valueOf(mRemunerationEditTakeoutGenerate.getText().toString()) >= 100){
+        } else if (Float.valueOf(mRemunerationEditTakeoutGenerate.getText().toString()) >= 100) {
             ToastUtil.makeShortToast(context, "每份报酬不要超过100元");
-        }else if(Integer.valueOf(mAmountEditTakeoutGenerate.getText().toString()) > 20){
+        } else if (Integer.valueOf(mAmountEditTakeoutGenerate.getText().toString()) > 20) {
             ToastUtil.makeShortToast(context, "每次不能超过20份");
-        } else{
+        } else {
             TakeoutGenerateBean generateBean = new TakeoutGenerateBean(
                     mStudentPhoneEditTakeoutGenerate.getText().toString(),
                     mStudentNameEditTakeoutGenerate.getText().toString(),
@@ -180,6 +190,15 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
                 generateBean.setRemarks(mRemarksEditTakeoutGenerate.getText().toString());
             mPresenter.generateTakeawayServiceRequest(generateBean);
         }
+    }
+
+    private void showLoading(String title, String content) {
+        loadingDialog = new MaterialDialog
+                .Builder(this)
+                .title(title)
+                .content(content)
+                .progress(true, 0)
+                .show();
     }
 
 }
