@@ -47,55 +47,6 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             mLocated = new Located(context);
     }
 
-
-    @Override
-    public List<TakeOutOrderBean> getOrders() {
-
-        if (Util.IS_STUDENT){
-            //定位并获取附近商家订单
-            startLocate();
-
-
-
-
-        }else{
-            //获取商家发布的订单
-            final RestaurantUser restaurantUser = BmobUser.getCurrentUser(mContext, RestaurantUser.class);
-            BmobQuery<TakeawayRequest> requestQuery = new BmobQuery<>();
-            requestQuery.addWhereEqualTo("restaurant", restaurantUser);
-            requestQuery.include("apartment,restaurant");
-            requestQuery.findObjects(mContext, new FindListener<TakeawayRequest>() {
-                @Override
-                public void onSuccess(List<TakeawayRequest> list) {
-                    for (TakeawayRequest request : list){
-
-                        Log.d(className, "request: "+request.toString());
-//                        Log.d(className, "餐馆数据： "+request.getRestaurant().toString());
-//                        Log.d(className, "餐馆名称： "+request.getRestaurant().getName()+" 餐馆地址："+
-//                                request.getRestaurant().getAddress());
-                        TakeOutOrderBean orderBean = new TakeOutOrderBean(
-                                request.getObjectId(),
-                                request.getAmount(),
-                                request.getApartment().getApartmentName()+request.getBedroom(),
-                                String.valueOf(request.getRestaurant().getLongitude()),
-                                request.getRestaurant().getAddress(),
-                                request.getRemuneration()
-
-                        );
-                        orders.add(orderBean);
-                    }
-                }
-
-                @Override
-                public void onError(int i, String s) {
-                    Log.d(className, "Query error, code: "+i+" , "+s);
-                }
-            });
-        }
-
-        return orders;
-    }
-
     @Override
     public void loadOrders() {
         if (Util.IS_STUDENT){
@@ -119,6 +70,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                             conversionAndLoadSuccess(result);
                         } else {
                             Log.d(className, "查询成功，无数据返回");
+                            mPresenter.loadOrdersSuccess(null);
                         }
                     }else{
                         Log.d(className, "load error: "+e.getErrorCode()+" message: "+e.getMessage());
@@ -132,6 +84,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             RestaurantUser restaurantUser = BmobUser.getCurrentUser(mContext, RestaurantUser.class);
             BmobQuery<TakeawayRequest> requestQuery = new BmobQuery<>();
             requestQuery.addWhereEqualTo("restaurant", restaurantUser);
+            requestQuery.addWhereEqualTo("status", TakeawayStatusConsts.NOT_BEING_TAKEN);
             requestQuery.include("apartment,restaurant");
             requestQuery.findObjects(mContext, new FindListener<TakeawayRequest>() {
                 @Override
@@ -153,6 +106,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
      * @param list
      */
     private void conversionAndLoadSuccess(List<TakeawayRequest> list){
+        int addNum = 0;
         for (TakeawayRequest request : list) {
             Log.d(className, "request: " + request.toString());
             TakeOutOrderBean orderBean = new TakeOutOrderBean(
@@ -165,7 +119,8 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             );
             orderBean.setId(request.getObjectId());
             orderBean.setStatus(request.getStatus());
-            orders.add(orderBean);
+            if (!orders.contains(orderBean))
+                orders.add(orderBean);
         }
         mPresenter.loadOrdersSuccess(orders);
     }
@@ -176,7 +131,6 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             public void onLocationChanged(AMapLocation aMapLocation) {
                 if (aMapLocation != null){
                     Log.d(className, "onLocationChanged: "+aMapLocation.getAddress());
-
                 }else{
                     Log.e(className, "Error, code:"+aMapLocation.getErrorCode()+" Info: "+aMapLocation.getErrorInfo());
                 }

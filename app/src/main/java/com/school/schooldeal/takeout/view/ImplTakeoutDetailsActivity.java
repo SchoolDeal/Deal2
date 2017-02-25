@@ -13,4 +13,5 @@ public interface ImplTakeoutDetailsActivity {
     void showDetailsData(TakeOutOrderBean takeOutOrderBean);
     void showRestaurantPicture(Bitmap picture);
     void showDetails(TakeawayRequest takeawayRequest);
+    void captureRequestSuccess();
 }

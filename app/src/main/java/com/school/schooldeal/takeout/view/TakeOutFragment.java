@@ -1,24 +1,27 @@
 package com.school.schooldeal.takeout.view;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.takeout.model.TakeOutDataAdapter;
 import com.school.schooldeal.takeout.presenter.TakeOutFragmentPresenter;
 
-import java.util.List;
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -35,6 +38,8 @@ public class TakeOutFragment extends BaseFragment
     RecyclerView takeOutRecycler;
     @BindView(R.id.takeout_fab)
     FloatingActionButton mTakeoutFab;
+    @BindView(R.id.swipeRefresh_takeoutFragment)
+    SwipeRefreshLayout mSwipeRefreshTakeoutFragment;
 
     private TakeOutFragmentPresenter presenter;
     //FloatingActionBtn动画
@@ -45,17 +50,24 @@ public class TakeOutFragment extends BaseFragment
         initRecycler();
         presenter = new TakeOutFragmentPresenter(getContext(), this);
         presenter.initAdapter();
-        if (Util.IS_STUDENT){
+        if (Util.IS_STUDENT) {
             Log.d(className, "is student user");
             mTakeoutFab.setVisibility(View.GONE);
-        }else {
+        } else {
             Log.d(className, "is restaurant user");
             addOnScrollListener();
         }
+        initSwipeRefresh();
     }
 
     private void initRecycler() {
         takeOutRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
     }
 
     @Override
@@ -68,6 +80,17 @@ public class TakeOutFragment extends BaseFragment
         takeOutRecycler.setAdapter(adapter);
     }
 
+    @Override
+    public void loadSuccess() {
+        mSwipeRefreshTakeoutFragment.setRefreshing(false);
+    }
+
+    @Override
+    public void loadDataEmpty() {
+        mSwipeRefreshTakeoutFragment.setRefreshing(false);
+        ToastUtil.makeShortToast(getContext(), "数据为空");
+    }
+
     @OnClick(R.id.takeout_fab)
     public void onClick() {
         Intent intent = new Intent(getContext(), TakeoutGenerateActivity.class);
@@ -75,7 +98,7 @@ public class TakeOutFragment extends BaseFragment
     }
 
     //RecyclerView滑动监听
-    private void addOnScrollListener(){
+    private void addOnScrollListener() {
         takeOutRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -114,5 +137,17 @@ public class TakeOutFragment extends BaseFragment
         return marginBottom;
     }
 
-
+    private void initSwipeRefresh(){
+        mSwipeRefreshTakeoutFragment.setColorSchemeResources(
+                R.color.md_red_600,
+                R.color.md_yellow_600,
+                R.color.md_blue_600);
+        mSwipeRefreshTakeoutFragment.setRefreshing(true);
+        mSwipeRefreshTakeoutFragment.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                presenter.initAdapter();
+            }
+        });
+    }
 }

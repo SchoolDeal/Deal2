@@ -21,13 +21,25 @@ import cn.bmob.v3.listener.UpdateListener;
 public class GenerateService {
 
     public static final String className = "GenerateService";
+    public static final int ADAPTER = 0;
+    public static final int DETAIL = 1;
+
+    private ImplCaptureRequest mCaptureRequest;
+
+    private int status;
+    private Context context;
+
+    public GenerateService(Context context, ImplCaptureRequest captureRequest) {
+        mCaptureRequest = captureRequest;
+        this.context = context;
+    }
 
     /**
      * 用于生成TakeawayService
-     * @param context 上下文
      * @param takeOutOrderBean 相关数据Bean
      */
-    public static void generateService(final Context context, TakeOutOrderBean takeOutOrderBean){
+    public void generateService(TakeOutOrderBean takeOutOrderBean, int status){
+        this.status = status;
         StudentUser studentUser = BmobUser.getCurrentUser(context, StudentUser.class);
         TakeawayService service = new TakeawayService();
         service.setStudent(studentUser);
@@ -43,6 +55,7 @@ public class GenerateService {
             @Override
             public void onSuccess() {
                 ToastUtil.makeShortToast(context, "抢单成功");
+                mCaptureRequest.captureRequestSuccess();
             }
 
             @Override
@@ -59,7 +72,7 @@ public class GenerateService {
      * @param context 上下文
      * @param objectID TakeawayRequest的ObjectID
      */
-    private static void upDateRequest(Context context, String objectID){
+    private void upDateRequest(Context context, String objectID){
         TakeawayRequest takeawayRequest = new TakeawayRequest();
         takeawayRequest.setStatus(TakeawayStatusConsts.HAS_BEING_TAKEN);
         takeawayRequest.setObjectId(objectID);

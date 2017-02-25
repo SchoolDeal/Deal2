@@ -37,8 +37,13 @@ public class TakeOutFragmentPresenter {
     }
 
     public void loadOrdersSuccess(List<TakeOutOrderBean> orders){
-        adapter.setData(orders);
-        takeOutFragment.setAdapter(adapter);
+        if (orders != null) {
+            adapter.setData(orders);
+            takeOutFragment.setAdapter(adapter);
+            takeOutFragment.loadSuccess();
+        }else{
+            takeOutFragment.loadDataEmpty();
+        }
     }
 
     public void loadOrdersFail(int i, String s){

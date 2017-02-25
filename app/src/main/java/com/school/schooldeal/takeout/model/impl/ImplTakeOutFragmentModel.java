@@ -10,6 +10,5 @@ import java.util.List;
  */
 
 public interface ImplTakeOutFragmentModel {
-    List<TakeOutOrderBean> getOrders();
     void loadOrders();
 }

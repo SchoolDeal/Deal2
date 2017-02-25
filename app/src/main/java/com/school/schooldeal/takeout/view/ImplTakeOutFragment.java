@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface ImplTakeOutFragment {
     void setAdapter(TakeOutDataAdapter adapter);
+    void loadSuccess();
+    void loadDataEmpty();
 }

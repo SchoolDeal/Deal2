@@ -102,4 +102,33 @@ public class TakeOutOrderBean{
     public void setMoney(Float money) {
         this.money = money;
     }
+
+    @Override
+    public String toString() {
+        return "TakeOutOrderBean{" +
+                "id='" + id + '\'' +
+                ", amount=" + amount +
+                ", destination='" + destination + '\'' +
+                ", restaurantName='" + restaurantName + '\'' +
+                ", restaurantAddress='" + restaurantAddress + '\'' +
+                ", money=" + money +
+                ", status=" + status +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TakeOutOrderBean that = (TakeOutOrderBean) o;
+
+        return id.equals(that.id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

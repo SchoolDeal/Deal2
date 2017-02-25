@@ -27,11 +27,14 @@ import java.util.List;
  * 外卖界面的recyclerView数据适配器
  */
 
-public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean>{
+public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> implements ImplCaptureRequest{
 
     private static final String className = "TODataAdapter";
 
     private OnTakeoutItemClickListener mOnTakeoutItemClickListener;
+    private GenerateService mGenerateService = new GenerateService(getContext(), this);
+
+    private int captureItemPosition;
 
 
     //private List<String> requestIDs = new ArrayList<>();
@@ -54,18 +57,21 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean>{
         restaurantAddress.setText(item.getRestaurantAddress());
         restaurantName.setText(item.getRestaurantName());
 
-        if (item.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN){
-            capture.setText("已被抢");
+        if (!Util.IS_STUDENT) {
             capture.setClickable(false);
-            capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
-        }else if (item.getStatus() == TakeawayStatusConsts.CANCELLED){
-            capture.setClickable(false);
-            capture.setText("已取消");
-            capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
-        }else if (item.getStatus() == TakeawayStatusConsts.COMPLETED){
-            capture.setClickable(false);
-            capture.setText("已完成");
-            capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            if (item.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN){
+                capture.setText("未被抢");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_amber_400));
+            } else if (item.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
+                capture.setText("已被抢");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            } else if (item.getStatus() == TakeawayStatusConsts.CANCELLED) {
+                capture.setText("已取消");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            } else if (item.getStatus() == TakeawayStatusConsts.COMPLETED) {
+                capture.setText("已完成");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            }
         }
     }
 
@@ -76,20 +82,16 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean>{
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
         super.onBindViewHolder(holder, position);
-        final int a = position;
+        //final int a = position;
         holder.getView(R.id.capture).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //mOnTakeoutItemClickListener.onItemClick(v, getLists().get(a));
+                captureItemPosition = position;
                 if (Util.IS_STUDENT) {
-                    GenerateService.generateService(getContext(), getLists().get(a));
-                    ToastUtil.makeShortToast(getContext(), "抢单成功");
-                    //通知list进行移除操作
-                    getLists().remove(a);
-                    notifyItemRemoved(a);
-                    notifyItemRangeChanged(a, getItemCount());
+                    mGenerateService.generateService(getLists().get(captureItemPosition), GenerateService.ADAPTER);
                 }
             }
         });
@@ -97,8 +99,8 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean>{
             @Override
             public void onClick(View v) {
                 //mOnTakeoutItemClickListener.onItemClick(v, getLists().get(a));
-                Log.d(className, "position: "+a+" id: "+getLists().get(a).getId());
-                TakeoutDetailsActivity.actionStart(getContext(), getLists().get(a).getId());
+                Log.d(className, "position: "+position+" id: "+getLists().get(position).getId());
+                TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId());
             }
         });
     }
@@ -110,6 +112,14 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean>{
 
     public void setOnTakeoutItemClickListener(OnTakeoutItemClickListener onTakeoutItemClickListener) {
         mOnTakeoutItemClickListener = onTakeoutItemClickListener;
+    }
+
+    @Override
+    public void captureRequestSuccess() {
+        //通知list进行移除操作
+        getLists().remove(captureItemPosition);
+        notifyItemRemoved(captureItemPosition);
+        notifyItemRangeChanged(captureItemPosition, getItemCount());
     }
 
     public interface OnTakeoutItemClickListener{

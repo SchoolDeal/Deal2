@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.school.schooldeal.R;
@@ -166,6 +167,8 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
             ToastUtil.makeShortToast(this, "还没填完整哦！！");
         }else if (Float.valueOf(mRemunerationEditTakeoutGenerate.getText().toString()) >= 100){
             ToastUtil.makeShortToast(context, "每份报酬不要超过100元");
+        }else if(Integer.valueOf(mAmountEditTakeoutGenerate.getText().toString()) > 20){
+            ToastUtil.makeShortToast(context, "每次不能超过20份");
         } else{
             TakeoutGenerateBean generateBean = new TakeoutGenerateBean(
                     mStudentPhoneEditTakeoutGenerate.getText().toString(),
