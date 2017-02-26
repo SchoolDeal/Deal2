@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -55,6 +56,8 @@ public class SignUpAcitivity extends BaseActivity
     Button signUp;
     @BindView(R.id.edit_bedroom)
     MaterialEditText mEditBedroom;
+    @BindView(R.id.edit_address)
+    MaterialEditText editAddress;
 
     private SignUpPresenter presenter;
     private Located located;
@@ -68,6 +71,16 @@ public class SignUpAcitivity extends BaseActivity
     protected void initData() {
         presenter = new SignUpPresenter(context, this);
         presenter.checkUserIsStudentOrNot();
+        if (!Util.IS_STUDENT) startLocated();
+    }
+
+    private void startLocated() {
+        located = new Located(context);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && this.checkSelfPermission(ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && this.checkSelfPermission(ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION}, 0);
+        }
+        located.starLocated(this);
     }
 
     @Override
@@ -84,6 +97,13 @@ public class SignUpAcitivity extends BaseActivity
         editSchool.setVisibility(View.GONE);
         editSchoolNumber.setVisibility(View.GONE);
         editApartment.setVisibility(View.GONE);
+        mEditBedroom.setVisibility(View.GONE);
+        editAddress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public String getAddress(){
+        return editAddress.getText().toString();
     }
 
     @Override
@@ -137,6 +157,11 @@ public class SignUpAcitivity extends BaseActivity
     }
 
     @Override
+    public void setAddress(String address) {
+        editAddress.setText(address);
+    }
+
+    @Override
     public String getBedroom(){
         return mEditBedroom.getText().toString();
     }
@@ -152,12 +177,7 @@ public class SignUpAcitivity extends BaseActivity
             if (Util.IS_STUDENT) {
                 presenter.signUpStudent();
             } else {
-                located = new Located(context);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && this.checkSelfPermission(ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                        && this.checkSelfPermission(ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions(new String[]{ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION}, 0);
-                }
-                located.starLocated(this);
+                presenter.signUpRestaurant();
             }
         }
     }
@@ -208,7 +228,6 @@ public class SignUpAcitivity extends BaseActivity
                 presenter.setAddress(aMapLocation.getAddress());
                 presenter.setLongtitude(aMapLocation.getLongitude());
                 presenter.setLatitude(aMapLocation.getLatitude());
-                presenter.signUpRestaurant();
             } else {
                 Log.e("AmapError", "location Error, ErrCode:"
                         + aMapLocation.getErrorCode() + ", errInfo:"

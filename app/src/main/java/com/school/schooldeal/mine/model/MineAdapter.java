@@ -14,6 +14,7 @@ import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
+import com.school.schooldeal.mine.view.AboutUsActivity;
 import com.school.schooldeal.mine.view.FedBackActivity;
 import com.school.schooldeal.mine.view.MineReceivedActivity;
 import com.school.schooldeal.takeout.view.TakeoutListActivity;
@@ -82,9 +83,11 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                 break;
             case Util.about_us:
                 //关于我们
+                getContext().startActivity(AboutUsActivity.getIntent(getContext()));
                 break;
             case Util.version_up:
                 //版本升级
+                ToastUtil.makeShortToast(getContext(),"已是最新版本");
                 break;
         }
     }

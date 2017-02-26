@@ -2,19 +2,16 @@ package com.school.schooldeal;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.Uri;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.ashokvarma.bottomnavigation.BadgeItem;
@@ -22,38 +19,33 @@ import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.school.schooldeal.application.MyFragmentPagerAdapter;
 import com.school.schooldeal.base.BaseActivity;
-import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.message.model.ConversationListAdapterEx;
 import com.school.schooldeal.message.server.HomeWatcherReceiver;
 import com.school.schooldeal.mine.view.MineFragment;
 import com.school.schooldeal.schooltask.view.SchoolTaskFragment;
-import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
-import com.school.schooldeal.sign.view.SignInAcitivty;
 import com.school.schooldeal.takeout.view.TakeOutFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.bmob.push.BmobPush;
-import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.FindListener;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imkit.manager.IUnReadMessageObserver;
-import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.UserInfo;
-import io.rong.message.ContactNotificationMessage;
 
 public class MainActivity extends BaseActivity implements ImplMainActivity,
         BottomNavigationBar.OnTabSelectedListener
         , ViewPager.OnPageChangeListener, IUnReadMessageObserver,
-        Toolbar.OnMenuItemClickListener,RongIM.UserInfoProvider{
+        RongIM.UserInfoProvider {
 
     @BindView(R.id.view_pager)
     ViewPager viewPager;
@@ -63,6 +55,10 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
     BottomNavigationBar bottom;
     @BindView(R.id.toolBar)
     Toolbar toolbar;
+    @BindView(R.id.find)
+    ImageView find;
+    @BindView(R.id.title)
+    TextView title;
     private BadgeItem no_read_message;
     private ConversationListFragment mConversationListFragment = null;
     private MaterialDialog progressDialog;
@@ -80,7 +76,7 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
 
     @Override
     protected void initData() {
-        presenter = new MainActivityPresenter(context,this);
+        presenter = new MainActivityPresenter(context, this);
         presenter.refreshCurrentUser();
         initFragments();
         initViewPager();
@@ -89,14 +85,13 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
         initBottomNavigationBar();    //初始化底部导航栏
         initToolBar();                //初始化toolbar
         initPushService();            //启动推送服务
-        RongIM.setUserInfoProvider(this,false);
+        RongIM.setUserInfoProvider(this, false);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         presenter.initUserList();
-        //presenter.refreshCurrentUser();
     }
 
     private void initPushMessage() {
@@ -125,7 +120,7 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
         if (getIntent() != null && getIntent().hasExtra("PUSH_CONVERSATIONTYPE") && getIntent().hasExtra("PUSH_TARGETID")) {
             String conversationType = getIntent().getStringExtra("PUSH_CONVERSATIONTYPE");
             String targetId = getIntent().getStringExtra("PUSH_TARGETID");
-            presenter.getConversation(conversationType,targetId);
+            presenter.getConversation(conversationType, targetId);
         }
     }
 
@@ -133,7 +128,7 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
         no_read_message = new BadgeItem()
                 .setBorderWidth(2)
                 .setBackgroundColor(Color.RED)
-                .setText(2+"")
+                .setText(2 + "")
                 .setHideOnSelect(false);
     }
 
@@ -142,24 +137,24 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
     }
 
     private void initToolBar() {
-        toolbar.setTitle(titles[0]);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
-        toolbar.inflateMenu(R.menu.menu_main);
-        toolbar.setOnMenuItemClickListener(this);
-        toolbar.getMenu().getItem(0).setVisible(false);
+        /*toolbar.setTitle(titles[0]);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));*/
+        title.setText(titles[0]);
+        find.setVisibility(View.GONE);
     }
 
     private void initBottomNavigationBar() {
         bottom.setActiveColor(R.color.barBackColor);
-        if (Util.IS_STUDENT){
+        if (Util.IS_STUDENT) {
             bottom.addItem(new BottomNavigationItem(R.mipmap.locationgt, titles[0]))
                     .addItem(new BottomNavigationItem(R.mipmap.phonegt, titles[1]))
                     .addItem(new BottomNavigationItem(R.mipmap.textgt, titles[2]).setBadgeItem(no_read_message))
                     .addItem(new BottomNavigationItem(R.mipmap.number, titles[3]))
                     .initialise();
-        }else {
+        } else {
             toolbar.setBackgroundResource(R.color.md_teal_400);
-            toolbar.setTitleTextColor(0xffffff);
+//            toolbar.setTitleTextColor(0xffffff);
+            title.setText(titles[0]);
             bottom.addItem(new BottomNavigationItem(R.mipmap.locationgt, titles[0]))
                     .addItem(new BottomNavigationItem(R.mipmap.textgt, titles[2]).setBadgeItem(no_read_message))
                     .addItem(new BottomNavigationItem(R.mipmap.number, titles[3]))
@@ -175,6 +170,7 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
                 , fragments));
         viewPager.setCurrentItem(0);
         viewPager.setOnPageChangeListener(this);
+
     }
 
     private void initFragments() {
@@ -214,19 +210,21 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
     @Override
     public void onTabSelected(int position) {
         viewPager.setCurrentItem(position);
-        if (Util.IS_STUDENT){
-            toolbar.setTitle(titles[position]);
-            if (position==2){
-                toolbar.getMenu().getItem(0).setVisible(true);
-            }else {
-                toolbar.getMenu().getItem(0).setVisible(false);
+        if (Util.IS_STUDENT) {
+//            toolbar.setTitle(titles[position]);
+            title.setText(titles[position]);
+            if (position == 2) {
+                find.setVisibility(View.VISIBLE);
+            } else {
+                find.setVisibility(View.GONE);
             }
-        } else{
-            toolbar.setTitle(titles_restaurant[position]);
-            if (position==1){
-                toolbar.getMenu().getItem(0).setVisible(true);
-            }else {
-                toolbar.getMenu().getItem(0).setVisible(false);
+        } else {
+//            toolbar.setTitle(titles_restaurant[position]);
+            title.setText(titles_restaurant[position]);
+            if (position == 1) {
+                find.setVisibility(View.VISIBLE);
+            } else {
+                find.setVisibility(View.GONE);
             }
         }
     }
@@ -276,56 +274,48 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
             no_read_message.hide();
         } else if (count > 0 && count < 100) {
             if (no_read_message.isHidden()) no_read_message.show();
-            no_read_message.setText(count+"");
+            no_read_message.setText(count + "");
         } else {
             if (no_read_message.isHidden()) no_read_message.show();
-            no_read_message.setText(99+"+");
+            no_read_message.setText(99 + "+");
         }
     }
 
     @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        String msg = "";
-        switch (menuItem.getItemId()) {
-            case R.id.action_find:
-                presenter.showInputDialog();
-                break;
-        }
-        if(!msg.equals("")) {
-            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
-        }
-        return true;
-    }
-
-    @Override
-    public void showProgressDialog(String title, String content){
+    public void showProgressDialog(String title, String content) {
         progressDialog = new MaterialDialog.Builder(context)
                 .title(title)
                 .content(content)
-                .progress(true,0)
+                .progress(true, 0)
                 .build();
         progressDialog.show();
     }
 
     @Override
-    public void dismissProgressDialog(){
+    public void dismissProgressDialog() {
         progressDialog.dismiss();
     }
 
     @Override
-    public void startChat(String id,String name) {
+    public void startChat(String id, String name) {
         presenter.refreshUser(id);
         RongIM.getInstance().startConversation(context, Conversation.ConversationType.PRIVATE,
-                id,name);
+                id, name);
     }
 
     @Override
     public UserInfo getUserInfo(String s) {
         for (BmobUser i : presenter.getUserList()) {
             if (i.getObjectId().equals(s)) {
-                return new UserInfo(i.getObjectId(),i.getUsername(), Uri.parse(((StudentUser)i).getImgUrl()));
+                return new UserInfo(i.getObjectId(), i.getUsername(), Uri.parse(((StudentUser) i).getImgUrl()));
             }
         }
         return null;
     }
+
+    @OnClick(R.id.find)
+    public void onClick() {
+        presenter.showInputDialog();
+    }
+
 }

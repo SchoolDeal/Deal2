@@ -22,7 +22,7 @@
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="155dp">
         <ImageView
             android:src="@mipmap/express_min"
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="155dp">
         <ImageView
             android:src="@mipmap/food_min"
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
         android:focusable="true"
         android:clickable="true"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="155dp">
         <ImageView
             android:src="@mipmap/shopping_min"
             android:layout_width="match_parent"

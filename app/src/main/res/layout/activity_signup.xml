@@ -26,8 +26,21 @@
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_email"
+            android:id="@+id/edit_address"
+            app:met_floatingLabel="highlight"
             android:layout_below="@+id/edit_phone"
+            app:met_minCharacters="3"
+            app:met_maxCharacters="11"
+            android:inputType="text"
+            app:met_iconLeft="@mipmap/home"
+            app:met_iconPadding="6dp"
+            app:met_helperText="your restaurant address"
+            android:hint="地址" />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_email"
+            android:layout_below="@+id/edit_address"
             app:met_floatingLabel="highlight"
             app:met_minCharacters="3"
             app:met_maxCharacters="20"
