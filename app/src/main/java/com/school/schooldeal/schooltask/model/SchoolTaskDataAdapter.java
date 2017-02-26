@@ -91,7 +91,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         Student student = commonRequest.getStudent();
         final CardView root = viewHolder.getRoot();
         final Button rob = viewHolder.getRob();
-        viewHolder.getLocation().setText(student.getUsername());
+        viewHolder.getLocation().setText(student.getBedroom());
         viewHolder.getDescribe().setText(commonRequest.getRequestContent());
         viewHolder.getRemuneration().setText(commonRequest.getRemuneration()+"元");
         viewHolder.getStorename().setText(commonRequest.getStore().getStoreName()+":");

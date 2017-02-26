@@ -14,6 +14,7 @@ public class Student extends BmobUser {
     private String sex;             //性别
     private String phoneNum;        //电话
     private Integer credibility;    //信誉度
+    private String bedroom;
 
     public Apartment getApartment() {
         return apartment;
@@ -63,15 +64,24 @@ public class Student extends BmobUser {
         this.studentID = studentID;
     }
 
+    public String getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(String bedroom) {
+        this.bedroom = bedroom;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
-                ", studentID='" + studentID + '\'' +
+                "studentID='" + studentID + '\'' +
                 ", school=" + school +
                 ", apartment=" + apartment +
                 ", sex='" + sex + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", credibility=" + credibility +
+                ", bedroom='" + bedroom + '\'' +
                 '}';
     }
 }

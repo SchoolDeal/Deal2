@@ -13,11 +13,13 @@ import com.school.schooldeal.commen.util.Located;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.schooltask.presenter.SchoolTaskOtherPresenter;
+import com.school.schooldeal.sign.model.StudentUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -66,11 +68,11 @@ public class SchoolTaskModel implements ImplSchoolTaskModel {
         });*/
 
         BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
-        query.addWhereEqualTo("apartmentId","a275751aa8");
+        StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
+        query.addWhereEqualTo("apartmentId",user.getApartment().getObjectId());
         query.addWhereEqualTo("storeType",type);
         query.addWhereEqualTo("type",0);
-        query.include("store");
-        query.include("student");
+        query.include("student,store");
         query.findObjects(context, new FindListener<CommonRequest>() {
             @Override
             public void onSuccess(List<CommonRequest> list) {
@@ -79,13 +81,16 @@ public class SchoolTaskModel implements ImplSchoolTaskModel {
                         orders.add(new SchoolTaskOrderBean(i,list.get(i)));
                     }
                     presenter.initAdapter(orders);
+                    presenter.stopRefresh();
                 }else {
+                    presenter.stopRefresh();
                     ToastUtil.makeShortToast(context,"抱歉，暂时未有单子可接");
                 }
             }
 
             @Override
             public void onError(int i, String s) {
+                presenter.stopRefresh();
                 ToastUtil.makeShortToast(context,"抱歉，暂时未有单子可接");
                 Log.e("TaskModel",i +"  "+s);
             }
@@ -144,12 +149,12 @@ public class SchoolTaskModel implements ImplSchoolTaskModel {
             }
         });*/
         final List<SchoolTaskOrderBean> newOrders = new ArrayList<SchoolTaskOrderBean>();
+        StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
         BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
-        query.addWhereEqualTo("apartmentId","a275751aa8");
+        query.addWhereEqualTo("apartmentId",user.getApartment().getObjectId());
         query.addWhereEqualTo("storeType",type);
         query.addWhereEqualTo("type",0);
-        query.include("store");
-        query.include("student");
+        query.include("student,store");
         query.findObjects(context, new FindListener<CommonRequest>() {
             @Override
             public void onSuccess(List<CommonRequest> list) {
@@ -163,6 +168,7 @@ public class SchoolTaskModel implements ImplSchoolTaskModel {
                     presenter.stopRefresh();
                     ToastUtil.makeShortToast(context,"抱歉，暂时未有单子可接");
                 }
+                presenter.stopRefresh();
             }
 
             @Override
