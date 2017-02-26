@@ -9,6 +9,8 @@ public interface ImplSignUp {
 
     void showRestaurantSignUpView();
 
+    String getAddress();
+
     String getPhone();
 
     String getEmail();
@@ -33,4 +35,5 @@ public interface ImplSignUp {
     void setBedroom(CharSequence text);
 
 
+    void setAddress(String address);
 }

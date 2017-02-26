@@ -87,6 +87,7 @@ public class SignUpPresenter implements ListToDialog{
         String phone = signUp.getPhone();
         String name = signUp.getName();
         String password = signUp.getPassword();
+        address = signUp.getAddress();
 
         RestaurantUser user = new RestaurantUser(name,password,phone
                 ,address,"渝州铁板烧",latitude,longtitude
@@ -145,7 +146,7 @@ public class SignUpPresenter implements ListToDialog{
 
 
     public void setAddress(String address) {
-        this.address = address;
+        signUp.setAddress(address);
     }
 
     public void setLongtitude(double longitude) {

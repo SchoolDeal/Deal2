@@ -90,6 +90,10 @@
             android:launchMode="singleTop">
         </activity>
         <activity
+            android:name=".mine.view.AboutUsActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity
             android:name=".mine.view.PersonalInformationActivity"
             android:launchMode="singleTop">
 

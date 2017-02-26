@@ -55,6 +55,7 @@ public class MineFragment extends BaseFragment implements ImplMineFragment{
         String imgUrl = sp.getString("head_url",Util.defaultHeadImg);
         if (!imgUrl.equals(Util.defaultHeadImg))
             Glide.with(getContext()).load(imgUrl).into(head);
+        name.setText(BmobUser.getCurrentUser(getContext()).getUsername());
     }
 
     @Override
@@ -144,29 +145,6 @@ public class MineFragment extends BaseFragment implements ImplMineFragment{
                 ToastUtil.makeLongToast(getContext(),"退出登录成功");
                 getContext().startActivity(SignInAcitivty.getIntentToSignInActivity(getContext()));
                 getActivity().finish();
-                break;
-        }
-    }
-
-    //选择本地相册选择或者拍照的dialog
-    private void localOrTakePhotoDialog() {
-        new MaterialDialog.Builder(getContext())
-                .items(R.array.local_or_takephoto)
-                .itemsCallback(new MaterialDialog.ListCallback() {
-                    @Override
-                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
-                        chooseMethodForTakePhoto(position);
-                    }
-                }).build().show();
-    }
-
-    private void chooseMethodForTakePhoto(int position) {
-        switch (position){
-            case 0:
-
-                break;
-            case 1:
-
                 break;
         }
     }

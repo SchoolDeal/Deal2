@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
-import com.school.schooldeal.sign.model.RestaurantUser;
 import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.sign.view.SignInAcitivty;
 
