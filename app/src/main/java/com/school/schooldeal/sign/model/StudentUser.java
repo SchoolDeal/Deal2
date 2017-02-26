@@ -2,8 +2,6 @@ package com.school.schooldeal.sign.model;
 
 import android.content.Context;
 
-import com.school.schooldeal.R;
-import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.Apartment;
 import com.school.schooldeal.model.School;
@@ -23,7 +21,7 @@ public class StudentUser extends BmobUser{
     private Apartment apartment;       //公寓编号
     private boolean isStudent;
     private String imgUrl;  //头像url
-    private String bedroom; //寝室号
+    private String bedroom; //房间号
 
     public String getImgUrl() {
         return imgUrl;
@@ -38,7 +36,7 @@ public class StudentUser extends BmobUser{
 
     public StudentUser(Context context, String name, String password,
                        Apartment apartment, School school, String schoolNumber,
-                       String phone, String email, int sex, String bedroom) {
+                       String phone, String email, int sex,String bedroom) {
         setUsername(name);
         setPassword(password);
         setApartment(apartment);

@@ -1,6 +1,7 @@
 package com.school.schooldeal.mine.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.school.schooldeal.base.BaseViewHolder;
 import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.mine.view.FedBackActivity;
+import com.school.schooldeal.mine.view.MineReceivedActivity;
 import com.school.schooldeal.takeout.view.TakeoutListActivity;
 
 import io.rong.imkit.RongIM;
@@ -61,7 +63,9 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                 ToastUtil.makeShortToast(getContext(),item.getItem());
                 break;
             case Util.order_receive:
-                TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);
+                //TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);
+                Intent intent = new Intent(getContext(), MineReceivedActivity.class);
+                getContext().startActivity(intent);
                 //接收的订单
                 break;
             case Util.order_finish:

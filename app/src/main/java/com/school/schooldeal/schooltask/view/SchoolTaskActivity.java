@@ -43,6 +43,8 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
         initRecyclerView();
         presenter = new SchoolTaskOtherPresenter(context,this,title,type);
         setClickListener();
+        setRefresh();
+        refresh.setRefreshing(true);
     }
 
     @Override
@@ -61,7 +63,6 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
                 startActivityForResult(intent,1000);
             }
         });
-        setRefresh();
         this.adapter = adapter;
         recyclerView.setAdapter(adapter);
     }

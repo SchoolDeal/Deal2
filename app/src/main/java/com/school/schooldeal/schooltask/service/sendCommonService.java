@@ -10,10 +10,12 @@ import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.Store;
 import com.school.schooldeal.model.Student;
+import com.school.schooldeal.sign.model.StudentUser;
 
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -101,8 +103,9 @@ public class sendCommonService extends Service {
     private void send(){
         CommonRequest commonRequest = new CommonRequest();
         Student student = new Student();
-        student.setObjectId("fc431324b6");
-        commonRequest.setApartmentId("a275751aa8");
+        StudentUser user = BmobUser.getCurrentUser(this,StudentUser.class);
+        student.setObjectId(user.getObjectId());
+        commonRequest.setApartmentId(user.getApartment().getObjectId());
         commonRequest.setType(0);
         commonRequest.setStoreType(store.getStoreType());
         commonRequest.setStore(store);

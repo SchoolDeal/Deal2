@@ -50,7 +50,7 @@ public class SchoolTaskFragment extends BaseFragment implements ImplSchoolTaskFr
                 Log.e("data","2");
                 intent = new Intent(getActivity(),SchoolTaskActivity.class);
                 intent.putExtra("title","TakeFood");
-                intent.putExtra("type","2");
+                intent.putExtra("type",2);
                 break;
             case R.id.school_task_card_shopping:
                 Log.e("data","3");

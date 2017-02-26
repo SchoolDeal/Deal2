@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/school_task_swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<android.support.design.widget.CoordinatorLayout
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/school_task_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
             android:elevation="10dp"
             android:id="@+id/toolBar_school_task"
-            android:background="@color/md_blue_600"
+            android:background="@color/barBackColor"
             android:fitsSystemWindows="true"
             android:clipToPadding="false"
             android:layout_width="match_parent"
@@ -24,12 +22,22 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_below="@id/school_task_appbar"
+        android:id="@+id/school_task_swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/school_task_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/school_task_fab"
@@ -44,8 +52,7 @@
         android:layout_marginBottom="16dp"
         app:srcCompat="@drawable/ic_action_name"/>
 
-    </android.support.design.widget.CoordinatorLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
+</android.support.design.widget.CoordinatorLayout>
 
 <!--
 
