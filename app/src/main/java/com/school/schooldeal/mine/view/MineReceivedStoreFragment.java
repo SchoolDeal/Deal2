@@ -34,14 +34,6 @@ public class MineReceivedStoreFragment extends BaseFragment implements ImplMineR
 
     private MineReceivedStorePresenter mPresenter;
 
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_store, container, false);
-//        ButterKnife.bind(this, view);
-//        return view;
-//    }
-
     @Override
     protected void initData() {
         initRecycler();
