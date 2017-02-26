@@ -91,7 +91,8 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
                 //mOnTakeoutItemClickListener.onItemClick(v, getLists().get(a));
                 captureItemPosition = position;
                 if (Util.IS_STUDENT) {
-                    mGenerateService.generateService(getLists().get(captureItemPosition), GenerateService.ADAPTER);
+                    //mGenerateService.generateService(getLists().get(captureItemPosition), GenerateService.ADAPTER);
+                    mGenerateService.queryTheRequestStatus(getLists().get(captureItemPosition));
                 }
             }
         });
@@ -114,12 +115,34 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
         mOnTakeoutItemClickListener = onTakeoutItemClickListener;
     }
 
+    /**
+     * 抢单成功的回调
+     */
     @Override
     public void captureRequestSuccess() {
         //通知list进行移除操作
         getLists().remove(captureItemPosition);
         notifyItemRemoved(captureItemPosition);
         notifyItemRangeChanged(captureItemPosition, getItemCount());
+    }
+
+    /**
+     * 请求已被抢的回调
+     */
+    @Override
+    public void requestHasBeenCaptured() {
+        ToastUtil.makeShortToast(getContext(), "抱歉，该订单已被抢。");
+        getLists().remove(captureItemPosition);
+        notifyItemRemoved(captureItemPosition);
+        notifyItemRangeChanged(captureItemPosition, getItemCount());
+    }
+
+    /**
+     * 请求未被抢的回调
+     */
+    @Override
+    public void requestIsNotCaptured() {
+        mGenerateService.generateService(getLists().get(captureItemPosition), GenerateService.ADAPTER);
     }
 
     public interface OnTakeoutItemClickListener{

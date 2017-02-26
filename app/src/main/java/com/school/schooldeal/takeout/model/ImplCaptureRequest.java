@@ -6,4 +6,6 @@ package com.school.schooldeal.takeout.model;
 
 public interface ImplCaptureRequest {
     void captureRequestSuccess();
+    void requestHasBeenCaptured();
+    void requestIsNotCaptured();
 }

@@ -59,12 +59,29 @@ public class TakeOutDetailsPresenter implements ImplCaptureRequest{
     }
 
     public void captureRequest(){
-        mGenerateService.generateService(mTakeOutOrderBean, GenerateService.DETAIL);
+        //先查询是否被抢，之后回调
+        mGenerateService.queryTheRequestStatus(mTakeOutOrderBean);
     }
 
     @Override
     public void captureRequestSuccess() {
         mDetailsActivity.captureRequestSuccess();
+    }
+
+    /**
+     * 当请求已被抢的回调
+     */
+    @Override
+    public void requestHasBeenCaptured() {
+        mDetailsActivity.requestHasBeenCaptured();
+    }
+
+    /**
+     * 当请求未被抢的回调
+     */
+    @Override
+    public void requestIsNotCaptured() {
+        mGenerateService.generateService(mTakeOutOrderBean, GenerateService.DETAIL);
     }
 
     /**

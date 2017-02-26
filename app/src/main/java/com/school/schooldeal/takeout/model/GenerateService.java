@@ -10,7 +10,9 @@ import com.school.schooldeal.sign.model.StudentUser;
 import com.school.schooldeal.takeout.TakeawayStatusConsts;
 import com.school.schooldeal.takeout.model.bean.TakeOutOrderBean;
 
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 
@@ -85,6 +87,31 @@ public class GenerateService {
             @Override
             public void onFailure(int i, String s) {
                 Log.e(className, "Set TakeawayRequest error: "+i+" ,message: "+s);
+            }
+        });
+    }
+
+    /**
+     * 查询外卖单是否已被抢下
+     * @param takeOutOrderBean
+     */
+    public void queryTheRequestStatus(TakeOutOrderBean takeOutOrderBean){
+        Log.d(className, "Query takeawayRequest: ObjectID: "+takeOutOrderBean.getId());
+        BmobQuery<TakeawayRequest> requestBmobQuery = new BmobQuery<>();
+        requestBmobQuery.getObject(context, takeOutOrderBean.getId(), new GetListener<TakeawayRequest>() {
+            @Override
+            public void onSuccess(TakeawayRequest takeawayRequest) {
+                if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN
+                        || takeawayRequest.getStatus() == TakeawayStatusConsts.COMPLETED){
+                    mCaptureRequest.requestHasBeenCaptured();
+                }else{
+                    mCaptureRequest.requestIsNotCaptured();
+                }
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.e(className, "Query the request status fail, error: "+i+" message: "+s);
             }
         });
     }

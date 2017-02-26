@@ -359,7 +359,7 @@
 
                     <TextView
                         android:id="@+id/studentName_takeoutDetails"
-                        android:text="李华"
+                        android:text="    "
                         android:textSize="@dimen/takeoutDetails_content_textSize"
                         android:textColor="@color/md_grey_800"
                         android:layout_width="wrap_content"
@@ -408,7 +408,7 @@
 
                     <TextView
                         android:id="@+id/studentPhoneNum_takeoutDetails"
-                        android:text="18323232323"
+                        android:text="    "
                         android:textSize="@dimen/takeoutDetails_content_textSize"
                         android:textColor="@color/md_grey_800"
                         android:layout_width="wrap_content"

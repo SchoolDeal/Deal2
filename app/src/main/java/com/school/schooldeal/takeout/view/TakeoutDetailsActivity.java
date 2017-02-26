@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.model.TakeawayService;
@@ -123,8 +124,10 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         if (!Util.IS_STUDENT) {
             mCaptureDetail.setClickable(false);
             mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
-            if (takeawayRequest.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN)
+            if (takeawayRequest.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN) {
                 mCaptureDetail.setText("暂未被抢");
+                mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
+            }
             else if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
                 mCaptureDetail.setText("已被抢");
                 mPresenter.loadStudentInfo();
@@ -151,6 +154,15 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
             mStudentNameTakeoutDetails.setText(service.getStudent().getUsername());
         if (!"".equals(service.getStudent().getMobilePhoneNumber()))
             mStudentPhoneNumTakeoutDetails.setText(service.getStudent().getMobilePhoneNumber());
+    }
+
+    /**
+     * 该单已被抢的回调
+     */
+    @Override
+    public void requestHasBeenCaptured() {
+        ToastUtil.makeShortToast(context, "对不起，该订单已被抢");
+        finish();
     }
 
     /**
