@@ -31,7 +31,8 @@
 
             <ImageView
                 android:id="@+id/restaurant_img"
-                android:background="@mipmap/king"
+                android:background="@color/md_grey_100"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"/>
 

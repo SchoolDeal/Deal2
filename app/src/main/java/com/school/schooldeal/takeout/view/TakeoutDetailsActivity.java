@@ -1,9 +1,11 @@
 package com.school.schooldeal.takeout.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.bumptech.glide.Glide;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseActivity;
 import com.school.schooldeal.commen.util.ToastUtil;
@@ -29,6 +34,8 @@ import butterknife.OnClick;
 public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutDetailsActivity {
 
     public static final String className = "TODetailsActivity";
+    public static final int NOT_BEEN_CAPTURED = 0;
+    public static final int MINE_RECEIVED = 1;
 
     @BindView(R.id.toolBar_takeoutDetails)
     Toolbar mToolBarTakeoutDetails;
@@ -54,15 +61,35 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
     TextView mStudentPhoneNumTakeoutDetails;
     @BindView(R.id.RlForBusinessShow_takeoutDetails)
     RelativeLayout mRlForBusinessShowTakeoutDetails;
+    @BindView(R.id.studentNameHint_takeoutDetails)
+    TextView mStudentNameHintTakeoutDetails;
 
     private TakeOutDetailsPresenter mPresenter = new TakeOutDetailsPresenter(this, this);
     private String requestID = "";
+    private TakeOutOrderBean mOrderBean;
+    //当前页面状态
+    private int status;
+    private String dialogTitle = "确认";
+    private String dialogContent = "请确认你已将外卖送至收货人寝室，未送到将会对你的信用分产生影响，是否确认已完成该请求？";
 
     /**
      * 用于启动本Activity
      *
      * @param context
      * @param requestID 外卖请求的ID
+     */
+    public static void actionStart(Context context, String requestID, TakeOutOrderBean orderBean) {
+        Intent intent = new Intent(context, TakeoutDetailsActivity.class);
+        intent.putExtra("requestID", requestID);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("TakeoutOrderBean", orderBean);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    /**
+     * @param context
+     * @param requestID 外卖请求bean
      */
     public static void actionStart(Context context, String requestID) {
         Intent intent = new Intent(context, TakeoutDetailsActivity.class);
@@ -77,9 +104,9 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
 //        Intent intent = getIntent();
 //        this.requestID = intent.getStringExtra("requestID");
 
-        if (Util.IS_STUDENT){
-            mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
-        }
+//        if (Util.IS_STUDENT) {
+//            mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
+//        }
     }
 
     @Override
@@ -88,6 +115,17 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         Intent intent = getIntent();
         requestID = intent.getStringExtra("requestID");
         Log.d("deal", "requestID: " + requestID);
+        if (Util.IS_STUDENT) {
+            status = NOT_BEEN_CAPTURED;
+            mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
+        }
+        TakeOutOrderBean bean = (TakeOutOrderBean) intent.getSerializableExtra("TakeoutOrderBean");
+        if (bean != null) {
+            this.mOrderBean = bean;
+            initConsigneeData();
+            status = MINE_RECEIVED;
+            mRlForBusinessShowTakeoutDetails.setVisibility(View.VISIBLE);
+        }
         if (!"".equals(requestID))
             mPresenter.loadTakeawayDetails(requestID);
     }
@@ -121,14 +159,16 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         mBizPhoneNumTakeoutDetails.setText(takeawayRequest.getRestaurant().getMobilePhoneNumber());
         mAmountTakeout.setText(takeawayRequest.getAmount().toString() + "份");
         mMoneyTakeoutDetails.setText("￥" + String.valueOf(takeawayRequest.getRemuneration()));
+        Glide.with(context)
+                .load(takeawayRequest.getRestaurant().getImgUrl())
+                .into(mRestaurantImg);
         if (!Util.IS_STUDENT) {
-            mCaptureDetail.setClickable(false);
+            mCaptureDetail.setEnabled(false);
             mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
             if (takeawayRequest.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN) {
                 mCaptureDetail.setText("暂未被抢");
                 mRlForBusinessShowTakeoutDetails.setVisibility(View.GONE);
-            }
-            else if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
+            } else if (takeawayRequest.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
                 mCaptureDetail.setText("已被抢");
                 mPresenter.loadStudentInfo();
             } else if (takeawayRequest.getStatus() == TakeawayStatusConsts.COMPLETED) {
@@ -165,6 +205,12 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         finish();
     }
 
+    @Override
+    public void finishServiceSuccess() {
+        ToastUtil.makeShortToast(context, "确认成功！！");
+        finish();
+    }
+
     /**
      * 初始化Toolbar
      */
@@ -184,8 +230,38 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
             case R.id.restaurant_img:
                 break;
             case R.id.capture_detail:
-                mPresenter.captureRequest();
+                if (status == NOT_BEEN_CAPTURED)
+                    mPresenter.captureRequest();
+                else if (status == MINE_RECEIVED) {
+                    MaterialDialog dialog = new MaterialDialog
+                            .Builder(this)
+                            .title(dialogTitle)
+                            .content(dialogContent)
+                            .positiveText("确认")
+                            .negativeText("取消")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    mPresenter.finishService(mOrderBean.getId(), mOrderBean.getServiceID());
+                                }
+                            })
+                            .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .show();
+                }
                 break;
         }
+    }
+
+    private void initConsigneeData() {
+        mStudentNameHintTakeoutDetails.setText("收货学生");
+        mStudentNameTakeoutDetails.setText(mOrderBean.getStudentName());
+        mStudentPhoneNumTakeoutDetails.setText(mOrderBean.getStudentPhoneNum());
+        mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
+        mCaptureDetail.setText("点击确认我已完成该请求");
     }
 }

@@ -1,5 +1,7 @@
 package com.school.schooldeal.takeout.model.bean;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -7,7 +9,7 @@ import cn.bmob.v3.BmobObject;
  * 外卖订单bean
  */
 
-public class TakeOutOrderBean{
+public class TakeOutOrderBean implements Serializable{
 
     private String id;
     private int amount;
@@ -17,6 +19,22 @@ public class TakeOutOrderBean{
     private Float money;
     //状态，根据此状态调整界面（按钮）
     private int status;
+    private String imgURL;
+
+    private String studentName; //收货人姓名
+    private String studentBedroom;  //收货人寝室
+    private String studentPhoneNum; //收货人手机号
+    private String serviceID;       //对应 Service 的 ID
+    private String remarks;         //备注
+
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
     public int getStatus() {
         return status;
@@ -46,13 +64,22 @@ public class TakeOutOrderBean{
         this.restaurantName = restaurantName;
     }
 
-    public TakeOutOrderBean(String id, int amount, String destination, String restaurantName, String restaurantAddress, Float money) {
+    public TakeOutOrderBean(String id, int amount, String destination, String restaurantName, String restaurantAddress, Float money, String imgURL) {
         this.id = id;
         this.amount = amount;
         this.destination = destination;
         this.restaurantName = restaurantName;
         this.restaurantAddress = restaurantAddress;
         this.money = money;
+        this.imgURL = imgURL;
+    }
+
+    public String getServiceID() {
+        return serviceID;
+    }
+
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
     }
 
     public int getAmount() {
@@ -103,6 +130,38 @@ public class TakeOutOrderBean{
         this.money = money;
     }
 
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentBedroom() {
+        return studentBedroom;
+    }
+
+    public void setStudentBedroom(String studentBedroom) {
+        this.studentBedroom = studentBedroom;
+    }
+
+    public String getStudentPhoneNum() {
+        return studentPhoneNum;
+    }
+
+    public void setStudentPhoneNum(String studentPhoneNum) {
+        this.studentPhoneNum = studentPhoneNum;
+    }
+
     @Override
     public String toString() {
         return "TakeOutOrderBean{" +
@@ -113,6 +172,12 @@ public class TakeOutOrderBean{
                 ", restaurantAddress='" + restaurantAddress + '\'' +
                 ", money=" + money +
                 ", status=" + status +
+                ", imgURL='" + imgURL + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", studentBedroom='" + studentBedroom + '\'' +
+                ", studentPhoneNum='" + studentPhoneNum + '\'' +
+                ", serviceID='" + serviceID + '\'' +
+                ", remarks='" + remarks + '\'' +
                 '}';
     }
 

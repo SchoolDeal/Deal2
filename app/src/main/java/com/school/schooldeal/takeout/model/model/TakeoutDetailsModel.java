@@ -6,6 +6,7 @@ import android.util.Log;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.model.TakeawayService;
 import com.school.schooldeal.sign.model.StudentUser;
+import com.school.schooldeal.takeout.TakeawayStatusConsts;
 import com.school.schooldeal.takeout.model.impl.ImplTakeoutDetailsModel;
 import com.school.schooldeal.takeout.presenter.TakeOutDetailsPresenter;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.GetListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by GavynZhang on 2017/1/23 0:54.
@@ -89,5 +91,23 @@ public class TakeoutDetailsModel implements ImplTakeoutDetailsModel {
 //
 //            }
 //        });
+    }
+
+    @Override
+    public void finishService(String requestObjectID, String serviceObjectID) {
+        TakeawayRequest takeawayRequest = new TakeawayRequest();
+        takeawayRequest.setStatus(TakeawayStatusConsts.COMPLETED);
+        takeawayRequest.setObjectId(requestObjectID);
+        takeawayRequest.update(mContext, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                mDetailsPresenter.finishServiceSuccess();
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.e(className, "Finish service fail, error:"+i+" message:"+s);
+            }
+        });
     }
 }

@@ -69,6 +69,8 @@ public class TakeoutGeneratePresenter {
         mTakeawayRequest.setRestaurant(BmobUser.getCurrentUser(mContext, RestaurantUser.class));
         mTakeawayRequest.setConsigneeName(generateBean.getConsigneeName());
         mTakeawayRequest.setBedroom(generateBean.getBedroom());
+        //收货学生的电话
+        mTakeawayRequest.setConsigneePhoneNum(generateBean.getStuPhoneNum());
         //设置状态
         mTakeawayRequest.setStatus(TakeawayStatusConsts.NOT_BEING_TAKEN);
         if (! (mSchool == null || mApartment == null)) {

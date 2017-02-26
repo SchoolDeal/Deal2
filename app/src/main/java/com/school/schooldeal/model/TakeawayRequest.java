@@ -22,7 +22,16 @@ public class TakeawayRequest extends BmobObject {
     private School school;              //收货学校
     private Apartment apartment;        //收货公寓
     private String bedroom;             //收货寝室号
+    private String consigneePhoneNum;   //收货人电话
     private Integer status;                 //服务单的状态，0: 未被接下  1: 已被接下  2: 被取消
+
+    public String getConsigneePhoneNum() {
+        return consigneePhoneNum;
+    }
+
+    public void setConsigneePhoneNum(String consigneePhoneNum) {
+        this.consigneePhoneNum = consigneePhoneNum;
+    }
 
     public Integer getStatus() {
         return status;
@@ -125,6 +134,7 @@ public class TakeawayRequest extends BmobObject {
                 ", school=" + school +
                 ", apartment=" + apartment +
                 ", bedroom='" + bedroom + '\'' +
+                ", consigneePhoneNum='" + consigneePhoneNum + '\'' +
                 ", status=" + status +
                 '}';
     }

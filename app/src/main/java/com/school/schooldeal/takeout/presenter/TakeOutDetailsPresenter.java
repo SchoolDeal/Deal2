@@ -53,7 +53,8 @@ public class TakeOutDetailsPresenter implements ImplCaptureRequest{
                 takeawayRequest.getApartment().getApartmentName() + takeawayRequest.getBedroom()+"寝室",
                 takeawayRequest.getRestaurant().getName(),
                 takeawayRequest.getRestaurant().getAddress(),
-                takeawayRequest.getRemuneration());
+                takeawayRequest.getRemuneration(),
+                takeawayRequest.getRestaurant().getImgUrl());
         mTakeOutOrderBean.setId(takeawayRequest.getObjectId());
         mTakeOutOrderBean.setStatus(takeawayRequest.getStatus());
     }
@@ -97,5 +98,18 @@ public class TakeOutDetailsPresenter implements ImplCaptureRequest{
      */
     public void loadStudentInfoSuccess(TakeawayService takeawayService){
         mDetailsActivity.showStudentInfo(takeawayService);
+    }
+
+    /**
+     * 完成service
+     * @param requestObjectID
+     * @param serviceObjectID
+     */
+    public void finishService(String requestObjectID, String serviceObjectID){
+        mDetailsModel.finishService(requestObjectID, serviceObjectID);
+    }
+
+    public void finishServiceSuccess(){
+        mDetailsActivity.finishServiceSuccess();
     }
 }

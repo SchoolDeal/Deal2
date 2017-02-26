@@ -17,4 +17,5 @@ public interface ImplTakeoutDetailsActivity {
     void captureRequestSuccess();
     void showStudentInfo(TakeawayService service);
     void requestHasBeenCaptured();
+    void finishServiceSuccess();
 }

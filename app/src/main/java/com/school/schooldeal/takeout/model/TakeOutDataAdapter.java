@@ -7,9 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
@@ -21,6 +23,8 @@ import com.school.schooldeal.takeout.view.TakeoutDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.rong.imageloader.utils.L;
 
 /**
  * Created by U-nookia on 2016/12/23.
@@ -51,14 +55,20 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
         TextView restaurantAddress = holder.getView(R.id.address_take_out_order);
         TextView restaurantName = holder.getView(R.id.business_take_out_order);
         Button capture = holder.getView(R.id.capture);
+        ImageView restaurantImg = holder.getView(R.id.img_take_out_item);
         amount.setText(item.getAmount()+"");
         destination.setText(item.getDestination());
         money.setText(item.getMoney().toString());
         restaurantAddress.setText(item.getRestaurantAddress());
         restaurantName.setText(item.getRestaurantName());
+        //加载图片
+        Glide.with(getContext())
+                .load(item.getImgURL())
+                .into(restaurantImg);
 
         if (!Util.IS_STUDENT) {
-            capture.setClickable(false);
+            Log.d(className, "!IS_STUDENT");
+            capture.setEnabled(false);
             if (item.getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN){
                 capture.setText("未被抢");
                 capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_amber_400));
@@ -69,6 +79,22 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
                 capture.setText("已取消");
                 capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
             } else if (item.getStatus() == TakeawayStatusConsts.COMPLETED) {
+                capture.setText("已完成");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            }
+        }
+        if (Util.IS_STUDENT){
+            Log.d(className, "IS_STUDENT");
+            if (item.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
+                capture.setEnabled(false);
+                capture.setText("进行中");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_red_300));
+            } else if (item.getStatus() == TakeawayStatusConsts.CANCELLED) {
+                capture.setEnabled(false);
+                capture.setText("已取消");
+                capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
+            } else if (item.getStatus() == TakeawayStatusConsts.COMPLETED) {
+                capture.setEnabled(false);
                 capture.setText("已完成");
                 capture.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_300));
             }
@@ -101,7 +127,10 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
             public void onClick(View v) {
                 //mOnTakeoutItemClickListener.onItemClick(v, getLists().get(a));
                 Log.d(className, "position: "+position+" id: "+getLists().get(position).getId());
-                TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId());
+                if (getLists().get(position).getStatus() == TakeawayStatusConsts.NOT_BEING_TAKEN)
+                    TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId());
+                if (getLists().get(position).getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN)
+                    TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId(), getLists().get(position));
             }
         });
     }

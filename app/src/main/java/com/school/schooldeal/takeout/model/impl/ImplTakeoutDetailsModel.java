@@ -8,4 +8,5 @@ public interface ImplTakeoutDetailsModel {
     void loadPicture();
     void loadTakeawayDetails(String requestID);
     void loadStudentInfo();
+    void finishService(String requestObjectID, String serviceObjectID);
 }

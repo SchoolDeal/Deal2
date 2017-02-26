@@ -115,7 +115,8 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                     request.getApartment().getApartmentName() + request.getBedroom()+"寝室",
                     request.getRestaurant().getName(),
                     request.getRestaurant().getAddress(),
-                    request.getRemuneration()
+                    request.getRemuneration(),
+                    request.getRestaurant().getImgUrl()
             );
             orderBean.setId(request.getObjectId());
             orderBean.setStatus(request.getStatus());
