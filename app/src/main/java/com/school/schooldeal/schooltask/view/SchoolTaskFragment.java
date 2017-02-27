@@ -43,19 +43,19 @@ public class SchoolTaskFragment extends BaseFragment implements ImplSchoolTaskFr
             case R.id.school_task_card_express:
                 Log.e("data","1");
                 intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","Express");
+                intent.putExtra("title","代取快递");
                 intent.putExtra("type",1);
                 break;
             case R.id.school_task_card_take_food:
                 Log.e("data","2");
                 intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","TakeFood");
+                intent.putExtra("title","带饭");
                 intent.putExtra("type",2);
                 break;
             case R.id.school_task_card_shopping:
                 Log.e("data","3");
                 intent = new Intent(getActivity(),SchoolTaskActivity.class);
-                intent.putExtra("title","Shopping");
+                intent.putExtra("title","购物");
                 intent.putExtra("type",3);
                 break;
             default:

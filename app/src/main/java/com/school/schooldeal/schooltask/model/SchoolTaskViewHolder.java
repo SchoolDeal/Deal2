@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.schooldeal.R;
@@ -22,6 +23,7 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
     private TextView describe;
     private TextView remuneration;
     private TextView storename;
+    private ImageView head;
 
     public SchoolTaskViewHolder(View itemView,Context context) {
         super(itemView);
@@ -32,6 +34,7 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
         describe = (TextView)itemView.findViewById(R.id.describe_school_task_item);
         remuneration = (TextView)itemView.findViewById(R.id.remuneration_school_task_item);
         storename = (TextView)itemView.findViewById(R.id.start_school_task_item);
+        head = (ImageView)itemView.findViewById(R.id.img_head_school_task_item);
         /*root.setOnClickListener(this);
         rob.setOnClickListener(this);*/
     }
@@ -98,5 +101,13 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
 
     public void setStorename(TextView storename) {
         this.storename = storename;
+    }
+
+    public ImageView getHead() {
+        return head;
+    }
+
+    public void setHead(ImageView head) {
+        this.head = head;
     }
 }

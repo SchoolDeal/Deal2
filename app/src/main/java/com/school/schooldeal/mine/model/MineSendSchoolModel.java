@@ -29,6 +29,8 @@ public class MineSendSchoolModel {
         StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
         BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
         query.addWhereEqualTo("student",user.getObjectId());
+        query.addWhereEqualTo("type",1);
+        query.addWhereEqualTo("type",0);
         query.include("student,store");
         query.findObjects(context, new FindListener<CommonRequest>() {
             @Override
@@ -53,6 +55,8 @@ public class MineSendSchoolModel {
         StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
         BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
         query.addWhereEqualTo("student",user.getObjectId());
+        query.addWhereEqualTo("type",1);
+        query.addWhereEqualTo("type",0);
         query.include("student,store");
         query.findObjects(context, new FindListener<CommonRequest>() {
             @Override
