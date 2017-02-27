@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.school.schooldeal.R;
@@ -31,6 +32,8 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
     TextView money;
     @BindView(R.id.school_task_detailed_phone)
     TextView phone;
+    @BindView(R.id.school_task_detailed_img)
+    ImageView image;
     private static int ROB = 2;
     private static int NOROB = 1;
     private Intent intent;
@@ -72,6 +75,17 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
         content.setText(commonRequest.getRequestContent());
         money.setText(commonRequest.getRemuneration()+"元");
         phone.setText(commonRequest.getStudent().getPhoneNum());
+        switch (commonRequest.getStoreType()){
+            case 1:
+                image.setImageResource(R.mipmap.express_min);
+                break;
+            case 2:
+                image.setImageResource(R.mipmap.food_min);
+                break;
+            case 3:
+                image.setImageResource(R.mipmap.shopping_min);
+                break;
+        }
     }
 
     @Override
