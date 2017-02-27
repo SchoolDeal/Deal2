@@ -58,14 +58,13 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
         switch (item.getItem()){
             case Util.order_release:
                 if (Util.IS_STUDENT){
-
+                    Intent intent2 = new Intent(getContext(), MineSendSchoolActivity.class);
+                    getContext().startActivity(intent2);
                 }else{
                     TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.PUBLISHED);
                 }
                 //发布的订单
                 //ToastUtil.makeShortToast(getContext(),item.getItem());
-                Intent intent2 = new Intent(getContext(), MineSendSchoolActivity.class);
-                getContext().startActivity(intent2);
                 break;
             case Util.order_receive:
                 //TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);
