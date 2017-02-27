@@ -12,11 +12,11 @@ import android.widget.TextView;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
-import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.mine.view.AboutUsActivity;
 import com.school.schooldeal.mine.view.FedBackActivity;
 import com.school.schooldeal.mine.view.MineReceivedActivity;
+import com.school.schooldeal.mine.view.MineSendSchoolActivity;
 import com.school.schooldeal.takeout.view.TakeoutListActivity;
 
 import io.rong.imkit.RongIM;
@@ -61,7 +61,9 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                     TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.PUBLISHED);
                 }
                 //发布的订单
-                ToastUtil.makeShortToast(getContext(),item.getItem());
+                //ToastUtil.makeShortToast(getContext(),item.getItem());
+                Intent intent2 = new Intent(getContext(), MineSendSchoolActivity.class);
+                getContext().startActivity(intent2);
                 break;
             case Util.order_receive:
                 //TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);

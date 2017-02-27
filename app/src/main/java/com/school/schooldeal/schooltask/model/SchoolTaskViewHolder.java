@@ -15,7 +15,7 @@ import com.school.schooldeal.base.BaseViewHolder;
 
 public class SchoolTaskViewHolder extends BaseViewHolder{
     //private SchoolTaskDataAdapter.OnSchoolTaskItemClickListener onItemClickListener = null;
-    private Context context;
+    //private Context context;
     private Button rob;
     private CardView root;
     private TextView location;
@@ -25,7 +25,7 @@ public class SchoolTaskViewHolder extends BaseViewHolder{
 
     public SchoolTaskViewHolder(View itemView,Context context) {
         super(itemView);
-        this.context = context;
+        //this.context = context;
         root = (CardView)itemView.findViewById(R.id.school_task_card_all);
         rob = (Button)itemView.findViewById(R.id.rob_school_task_item);
         location = (TextView)itemView.findViewById(R.id.destination_school_task_order);

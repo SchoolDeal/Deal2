@@ -3,7 +3,6 @@
     android:id="@+id/school_task_card_all"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/white"
@@ -21,6 +20,7 @@
         android:layout_margin="12dp">
 
         <ImageView
+            android:background="@drawable/ep"
             android:src="@mipmap/edward"
             android:id="@+id/img_head_school_task_item"
             android:layout_width="90dp"

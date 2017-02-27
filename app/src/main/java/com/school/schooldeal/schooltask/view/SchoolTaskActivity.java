@@ -107,6 +107,10 @@ public class SchoolTaskActivity extends BaseActivity implements ImplSchoolTaskAc
     }
 
     private void setRefresh(){
+        refresh.setColorSchemeResources(
+                R.color.md_red_600,
+                R.color.md_yellow_600,
+                R.color.md_blue_600);
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

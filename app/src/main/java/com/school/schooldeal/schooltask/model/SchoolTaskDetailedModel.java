@@ -7,8 +7,10 @@ import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.CommonService;
 import com.school.schooldeal.model.Student;
 import com.school.schooldeal.schooltask.presenter.SchoolTaskDetailed;
+import com.school.schooldeal.sign.model.StudentUser;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -30,9 +32,10 @@ public class SchoolTaskDetailedModel implements ImplSchoolTaskDetailedModel{
             @Override
             public void onSuccess(CommonRequest request) {
                 if (request.getType() == 0){
+                    StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
                     CommonService commonService = new CommonService();
                     Student student = new Student();
-                    student.setObjectId("b91d31b71e");
+                    student.setObjectId(user.getObjectId());
                     commonService.setRequest(commonRequest);
                     commonService.setStudent(student);
                     commonService.setRemuneration(commonRequest.getRemuneration());

@@ -14,10 +14,12 @@ import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.CommonService;
 import com.school.schooldeal.model.Student;
+import com.school.schooldeal.sign.model.StudentUser;
 
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.GetListener;
 import cn.bmob.v3.listener.SaveListener;
 
@@ -99,6 +101,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         rob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final StudentUser user = BmobUser.getCurrentUser(context,StudentUser.class);
                 BmobQuery<CommonRequest> query = new BmobQuery<CommonRequest>();
                 query.getObject(context, commonRequest.getObjectId(), new GetListener<CommonRequest>() {
                     @Override
@@ -108,7 +111,7 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
                             commonRequest.setType(1);
                             commonRequest.update(context);
                             Student student = new Student();
-                            student.setObjectId("b91d31b71e");
+                            student.setObjectId(user.getObjectId());
                             commonService.setRequest(commonRequest);
                             commonService.setStudent(student);
                             commonService.setRemuneration(commonRequest.getRemuneration());

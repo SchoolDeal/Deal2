@@ -198,6 +198,7 @@
         <activity android:name=".takeout.view.TakeoutListActivity">
         </activity>
         <activity android:name=".mine.view.MineReceivedActivity" />
+        <activity android:name=".mine.view.MineSendSchoolActivity" />
     </application>
 
 </manifest>

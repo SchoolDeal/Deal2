@@ -15,146 +15,122 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ImageView
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:id="@+id/item_minereceive_school_image"
+            android:id="@+id/item_minesend_school_image"
             android:src="@mipmap/shopping"
             android:background="@drawable/ep"
             android:layout_width="110dp"
             android:layout_height="110dp" />
-
         <TextView
             android:layout_marginBottom="5dp"
-            android:id="@+id/item_minereceive_school_taskHint"
-            android:layout_alignTop="@id/item_minereceive_school_image"
+            android:id="@+id/item_minesend_school_taskHint"
+            android:layout_alignTop="@id/item_minesend_school_image"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:textSize="16dp"
             android:text="任务:"
-            android:layout_toRightOf="@id/item_minereceive_school_image"
+            android:layout_toRightOf="@id/item_minesend_school_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:id="@+id/item_minereceive_school_task"
+            android:id="@+id/item_minesend_school_task"
             android:textSize="16dp"
-            android:text="取快递"
-            android:layout_toRightOf="@id/item_minereceive_school_taskHint"
+            android:text="买东西"
+            android:layout_toRightOf="@id/item_minesend_school_taskHint"
             android:textColor="@color/black"
             android:layout_marginLeft="10dp"
-            android:layout_alignTop="@id/item_minereceive_school_image"
+            android:layout_alignTop="@id/item_minesend_school_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <ImageView
-            android:id="@+id/item_minereceive_school_over"
+            android:id="@+id/item_minesend_school_over"
             android:src="@mipmap/noover"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
         <TextView
-            android:id="@+id/item_minereceive_school_overHint"
+            android:id="@+id/item_minesend_school_overHint"
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
             android:text="未完成"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/item_minereceive_school_over"
+            android:layout_below="@id/item_minesend_school_over"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:layout_marginBottom="5dp"
-            android:text="发单人宿舍:"
+            android:id="@+id/item_minesend_school_storeHint"
+            android:text="商店名称:"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_minesend_school_image"
+            android:layout_below="@id/item_minesend_school_taskHint"
             android:textColor="@color/black"
             android:textSize="16dp"
-            android:layout_toRightOf="@id/item_minereceive_school_image"
-            android:layout_below="@id/item_minereceive_school_taskHint"
-            android:id="@+id/item_minereceive_school_presonHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:id="@+id/item_minereceive_school_presonName"
-            android:text="506"
-            android:textColor="@color/black"
+            android:id="@+id/item_minesend_school_store"
             android:layout_marginLeft="10dp"
-            android:layout_below="@id/item_minereceive_school_taskHint"
-            android:layout_toRightOf="@id/item_minereceive_school_presonHint"
-            android:textSize="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_marginBottom="5dp"
-            android:id="@+id/item_minereceive_school_phoneNumHint"
-            android:text="电话:"
+            android:text="31栋便利店"
+            android:layout_toLeftOf="@id/item_minesend_school_over"
+            android:layout_toRightOf="@id/item_minesend_school_storeHint"
+            android:layout_below="@id/item_minesend_school_taskHint"
             android:textColor="@color/black"
             android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/item_minereceive_school_image"
-            android:layout_below="@id/item_minereceive_school_presonHint"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_toRightOf="@id/item_minereceive_school_phoneNumHint"
-            android:layout_below="@id/item_minereceive_school_presonHint"
-            android:text="2333333333"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/item_minereceive_school_phoneNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:layout_marginBottom="5dp"
-            android:id="@+id/item_minereceive_school_detailedHint"
-            android:text="任务内容:"
+            android:id="@+id/item_minesend_school_detailedHint"
+            android:text="详细:"
             android:textColor="@color/black"
             android:textSize="16dp"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/item_minereceive_school_image"
-            android:layout_below="@id/item_minereceive_school_phoneNumHint"
+            android:layout_toRightOf="@id/item_minesend_school_image"
+            android:layout_below="@id/item_minesend_school_storeHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_toLeftOf="@id/item_minereceive_school_over"
-            android:layout_toRightOf="@id/item_minereceive_school_detailedHint"
-            android:layout_below="@id/item_minereceive_school_phoneNumHint"
-            android:id="@+id/item_minereceive_school_detailed"
-            android:text="带点辣条"
+            android:layout_toLeftOf="@id/item_minesend_school_over"
+            android:text="带辣条"
+            android:id="@+id/item_minesend_school_detailed"
             android:textColor="@color/black"
             android:textSize="16dp"
+            android:layout_below="@id/item_minesend_school_storeHint"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_minesend_school_detailedHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:text="报酬:"
-            android:id="@+id/item_minereceive_school_refundHint"
+            android:id="@+id/item_minesend_school_refundHint"
             android:textColor="@color/black"
             android:textSize="16dp"
             android:layout_marginLeft="10dp"
-            android:layout_below="@id/item_minereceive_school_detailedHint"
-            android:layout_toRightOf="@id/item_minereceive_school_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"/>
-        <TextView
-            android:text="5元"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/item_minereceive_school_detailedHint"
-            android:layout_toRightOf="@id/item_minereceive_school_refundHint"
-            android:id="@+id/item_minereceive_school_refund"
+            android:layout_toRightOf="@id/item_minesend_school_image"
+            android:layout_below="@id/item_minesend_school_detailedHint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
-
+        <TextView
+            android:id="@+id/item_minesend_school_refund"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="5元"
+            android:layout_toLeftOf="@id/item_minesend_school_over"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_below="@id/item_minesend_school_detailedHint"
+            android:layout_toRightOf="@id/item_minesend_school_refundHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
