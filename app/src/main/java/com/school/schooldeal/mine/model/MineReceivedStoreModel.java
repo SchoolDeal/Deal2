@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.school.schooldeal.mine.presenter.MineReceivedStorePresenter;
+import com.school.schooldeal.mine.presenter.ReceivedSchoolPresenter;
 import com.school.schooldeal.model.TakeawayRequest;
 import com.school.schooldeal.model.TakeawayService;
 import com.school.schooldeal.sign.model.StudentUser;
@@ -27,12 +28,14 @@ public class MineReceivedStoreModel implements ImplMineReceivedStoreModel{
 
     private Context mContext;
     private MineReceivedStorePresenter mPresenter;
+    private int status;
 
     private List<TakeOutOrderBean> mOrderBeanList = new ArrayList<>();
 
-    public MineReceivedStoreModel(Context context, MineReceivedStorePresenter presenter) {
+    public MineReceivedStoreModel(Context context, MineReceivedStorePresenter presenter, int status) {
         mContext = context;
         mPresenter = presenter;
+        this.status = status;
     }
 
     @Override
@@ -44,7 +47,10 @@ public class MineReceivedStoreModel implements ImplMineReceivedStoreModel{
         serviceBmobQuery.findObjects(mContext, new FindListener<TakeawayService>() {
             @Override
             public void onSuccess(List<TakeawayService> list) {
-                conversionAndLoadSuccess(list);
+                if (status == MineReceivedStorePresenter.RECEIVED)
+                    conversionAndLoadSuccess(list);
+                else if (status == MineReceivedStorePresenter.OVER)
+                    conversionAndLoadSuccessOver(list);
                 Log.d(className, "List: "+list.get(0).toString());
             }
 
@@ -82,5 +88,29 @@ public class MineReceivedStoreModel implements ImplMineReceivedStoreModel{
             }
         }
         mPresenter.loadOrdersSuccess(mOrderBeanList);
+    }
+
+    private void conversionAndLoadSuccessOver(List<TakeawayService> list){
+        TakeOutOrderBean bean;
+        for (TakeawayService service : list){
+            if (service.getRequest().getStatus() == TakeawayStatusConsts.COMPLETED) {
+                bean = new TakeOutOrderBean();
+                bean.setId(service.getRequest().getObjectId());
+                bean.setServiceID(service.getObjectId());
+                bean.setStatus(service.getRequest().getStatus());
+                bean.setAmount(service.getNumber());
+                bean.setDestination(service.getRequest().getApartment().getApartmentName() + service.getRequest().getBedroom() + "寝室");
+                bean.setRestaurantName(service.getRequest().getRestaurant().getName());
+                bean.setRestaurantAddress(service.getRequest().getRestaurant().getAddress());
+                bean.setMoney(service.getRemuneration());
+                bean.setStudentName(service.getRequest().getConsigneeName());
+                bean.setStudentBedroom(service.getRequest().getBedroom());
+                bean.setStudentPhoneNum(service.getRequest().getConsigneePhoneNum());
+                bean.setImgURL(service.getRequest().getRestaurant().getImgUrl());
+
+                mOrderBeanList.add(bean);
+            }
+        }
+        mPresenter.loadOverOrdersSuccess(mOrderBeanList);
     }
 }

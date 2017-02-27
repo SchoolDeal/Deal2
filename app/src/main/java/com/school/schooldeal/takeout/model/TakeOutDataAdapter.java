@@ -131,6 +131,9 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
                     TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId());
                 if (getLists().get(position).getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN)
                     TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId(), getLists().get(position));
+                if (getLists().get(position).getStatus() == TakeawayStatusConsts.COMPLETED)
+                    TakeoutDetailsActivity.actionStart(getContext(), getLists().get(position).getId(), getLists().get(position));
+
             }
         });
     }

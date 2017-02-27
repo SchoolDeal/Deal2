@@ -94,19 +94,37 @@ public class TakeoutDetailsModel implements ImplTakeoutDetailsModel {
     }
 
     @Override
-    public void finishService(String requestObjectID, String serviceObjectID) {
+    public void finishService(String requestObjectID, final String serviceObjectID) {
         TakeawayRequest takeawayRequest = new TakeawayRequest();
         takeawayRequest.setStatus(TakeawayStatusConsts.COMPLETED);
         takeawayRequest.setObjectId(requestObjectID);
         takeawayRequest.update(mContext, new UpdateListener() {
             @Override
             public void onSuccess() {
+                changeServiceToFinish(serviceObjectID);
                 mDetailsPresenter.finishServiceSuccess();
             }
 
             @Override
             public void onFailure(int i, String s) {
                 Log.e(className, "Finish service fail, error:"+i+" message:"+s);
+            }
+        });
+    }
+
+    private void changeServiceToFinish(String serviceObjectID){
+        TakeawayService service = new TakeawayService();
+        service.setObjectId(serviceObjectID);
+        service.setFinish(true);
+        service.update(mContext, new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(className, "changeServiceToFinish success");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                Log.e(className, "changeServiceToFinish Fail, error: "+i+" message:"+s);
             }
         });
     }

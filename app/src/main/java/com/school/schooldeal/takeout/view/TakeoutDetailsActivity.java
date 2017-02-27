@@ -261,7 +261,14 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
         mStudentNameHintTakeoutDetails.setText("收货学生");
         mStudentNameTakeoutDetails.setText(mOrderBean.getStudentName());
         mStudentPhoneNumTakeoutDetails.setText(mOrderBean.getStudentPhoneNum());
-        mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
-        mCaptureDetail.setText("点击确认我已完成该请求");
+        if (mOrderBean.getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
+            mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_amber_400));
+            mCaptureDetail.setText("点击确认我已完成该请求");
+        }
+        if (mOrderBean.getStatus() == TakeawayStatusConsts.COMPLETED){
+            mCaptureDetail.setEnabled(false);
+            mCaptureDetail.setBackgroundColor(getResources().getColor(R.color.md_grey_400));
+            mCaptureDetail.setText("已完成");
+        }
     }
 }
