@@ -2,5 +2,9 @@
     {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\xml\\rc_file_path.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\xml\\rc_file_path.xml"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\xml\\rc_file_path.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\xml\\rc_file_path.xml"
     }
 ]

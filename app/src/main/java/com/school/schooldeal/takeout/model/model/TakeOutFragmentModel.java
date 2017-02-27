@@ -71,6 +71,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                         } else {
                             Log.d(className, "查询成功，无数据返回");
                             mPresenter.loadOrdersSuccess(null);
+                            mPresenter.loadDataEmpty();
                         }
                     }else{
                         Log.d(className, "load error: "+e.getErrorCode()+" message: "+e.getMessage());

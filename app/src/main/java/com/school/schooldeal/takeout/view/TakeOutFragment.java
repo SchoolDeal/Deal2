@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
+import android.widget.RelativeLayout;
 
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseFragment;
@@ -40,6 +41,8 @@ public class TakeOutFragment extends BaseFragment
     FloatingActionButton mTakeoutFab;
     @BindView(R.id.swipeRefresh_takeoutFragment)
     SwipeRefreshLayout mSwipeRefreshTakeoutFragment;
+    @BindView(R.id.no_data)
+    RelativeLayout mNoData;
 
     private TakeOutFragmentPresenter presenter;
     //FloatingActionBtn动画
@@ -82,11 +85,13 @@ public class TakeOutFragment extends BaseFragment
 
     @Override
     public void loadSuccess() {
+        mNoData.setVisibility(View.GONE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
     }
 
     @Override
     public void loadDataEmpty() {
+        mNoData.setVisibility(View.VISIBLE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
         ToastUtil.makeShortToast(getContext(), "数据为空");
     }
@@ -137,7 +142,7 @@ public class TakeOutFragment extends BaseFragment
         return marginBottom;
     }
 
-    private void initSwipeRefresh(){
+    private void initSwipeRefresh() {
         mSwipeRefreshTakeoutFragment.setColorSchemeResources(
                 R.color.md_red_600,
                 R.color.md_yellow_600,
@@ -150,4 +155,5 @@ public class TakeOutFragment extends BaseFragment
             }
         });
     }
+
 }

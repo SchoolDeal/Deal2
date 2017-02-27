@@ -49,4 +49,8 @@ public class TakeOutFragmentPresenter {
     public void loadOrdersFail(int i, String s){
         Log.e(className, "Load Orders Fail, Code: "+i+" "+s);
     }
+
+    public void loadDataEmpty(){
+        takeOutFragment.loadDataEmpty();
+    }
 }
