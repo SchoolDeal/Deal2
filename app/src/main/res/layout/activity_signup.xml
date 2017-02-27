@@ -69,6 +69,7 @@
             app:met_floatingLabel="highlight"
             app:met_minCharacters="1"
             app:met_maxCharacters="1"
+            android:cursorVisible="false"
             app:met_iconPadding="6dp"
             app:met_iconLeft="@mipmap/sex"
             android:inputType="text"
@@ -94,6 +95,7 @@
             app:met_floatingLabel="highlight"
             app:met_minCharacters="3"
             app:met_maxCharacters="20"
+            android:cursorVisible="false"
             app:met_iconPadding="6dp"
             app:met_iconLeft="@mipmap/school"
             android:inputType="text"
@@ -119,6 +121,7 @@
             app:met_floatingLabel="highlight"
             app:met_minCharacters="3"
             app:met_maxCharacters="20"
+            android:cursorVisible="false"
             app:met_iconPadding="6dp"
             app:met_iconLeft="@mipmap/location"
             android:inputType="text"
@@ -141,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_bedroom"
             android:layout_marginTop="12dp"
-            android:background="@color/white"
+            android:background="@color/md_teal_400"
             android:text="Sign up"
             android:id="@+id/signUp" />
     </RelativeLayout>
