@@ -112,6 +112,9 @@ public class TakeoutDetailsModel implements ImplTakeoutDetailsModel {
         });
     }
 
+    /**
+     * @param serviceObjectID objectID
+     */
     private void changeServiceToFinish(String serviceObjectID){
         TakeawayService service = new TakeawayService();
         service.setObjectId(serviceObjectID);
