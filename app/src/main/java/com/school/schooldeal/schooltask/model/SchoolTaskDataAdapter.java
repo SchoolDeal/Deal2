@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.bumptech.glide.Glide;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
@@ -97,6 +98,11 @@ public class SchoolTaskDataAdapter extends BaseRecyclerAdapter<SchoolTaskOrderBe
         viewHolder.getDescribe().setText(commonRequest.getRequestContent());
         viewHolder.getRemuneration().setText(commonRequest.getRemuneration()+"元");
         viewHolder.getStorename().setText(commonRequest.getStore().getStoreName()+":");
+        if (!student.getImgUrl().isEmpty()){
+            Glide.with(context)
+                    .load(student.getImgUrl())
+                    .into(viewHolder.getHead());
+        }
 
         rob.setOnClickListener(new View.OnClickListener() {
             @Override

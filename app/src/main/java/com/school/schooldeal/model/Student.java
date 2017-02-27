@@ -17,6 +17,7 @@ public class Student extends BmobUser implements Serializable{
     private String phoneNum;        //电话
     private Integer credibility;    //信誉度
     private String bedroom;
+    private String imgUrl;  //头像url
 
     public Apartment getApartment() {
         return apartment;
@@ -74,6 +75,14 @@ public class Student extends BmobUser implements Serializable{
         this.bedroom = bedroom;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -84,6 +93,7 @@ public class Student extends BmobUser implements Serializable{
                 ", phoneNum='" + phoneNum + '\'' +
                 ", credibility=" + credibility +
                 ", bedroom='" + bedroom + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
                 '}';
     }
 }
