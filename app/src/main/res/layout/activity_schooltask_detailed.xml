@@ -17,7 +17,7 @@
     <ImageView
         android:id="@+id/school_task_detailed_img"
         android:layout_below="@id/toolBar_school_task_detailed"
-        android:background="@mipmap/xueyou"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
     <TextView

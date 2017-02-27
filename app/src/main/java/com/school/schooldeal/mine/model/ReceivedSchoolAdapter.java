@@ -33,7 +33,7 @@ public class ReceivedSchoolAdapter extends RecyclerView.Adapter<ReceivedSchoolVi
     @Override
     public void onBindViewHolder(ReceivedSchoolViewHolder holder, int position) {
         CommonService service = lists.get(position);
-        CommonRequest request = service.getRequest();
+        final CommonRequest request = service.getRequest();
         Student student = service.getStudent();
         if (request.getType() != 2){
             holder.getOver().setImageResource(R.mipmap.noover);
@@ -59,6 +59,14 @@ public class ReceivedSchoolAdapter extends RecyclerView.Adapter<ReceivedSchoolVi
         holder.getBedroom().setText(student.getBedroom());
         holder.getContent().setText(request.getRequestContent());
         holder.getRefund().setText(request.getRemuneration()+"元");
+        /*holder.getCardView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MineRobDetailedActivity.class);
+                intent.putExtra("data",request);
+                context.startActivity(intent);
+            }
+        });*/
     }
 
     @Override

@@ -7,7 +7,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/school_task_release_toolbar"
-        android:background="@color/md_cyan_A400"
+        android:background="@color/barBackColor"
         android:clipToPadding="false"
         android:fitsSystemWindows="true"
         android:elevation="5dp"

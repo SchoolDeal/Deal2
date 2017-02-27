@@ -1,11 +1,14 @@
 package com.school.schooldeal.mine.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.school.schooldeal.R;
+import com.school.schooldeal.mine.view.MineSendDetailedActivity;
 import com.school.schooldeal.model.CommonRequest;
 import com.school.schooldeal.model.Store;
 
@@ -31,7 +34,7 @@ public class MineSendAdapter extends RecyclerView.Adapter<MySendViewHolder> {
 
     @Override
     public void onBindViewHolder(MySendViewHolder holder, int position) {
-        CommonRequest commonRequest = lists.get(position);
+        final CommonRequest commonRequest = lists.get(position);
         Store store = commonRequest.getStore();
         if (commonRequest.getType() != 2){
             holder.getOver().setImageResource(R.mipmap.noover);
@@ -53,6 +56,14 @@ public class MineSendAdapter extends RecyclerView.Adapter<MySendViewHolder> {
         holder.getStorename().setText(store.getStoreName());
         holder.getDetailed().setText(commonRequest.getRequestContent());
         holder.getRefund().setText(commonRequest.getRemuneration()+"元");
+        holder.getCardView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MineSendDetailedActivity.class);
+                intent.putExtra("data",commonRequest);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

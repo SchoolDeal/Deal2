@@ -1,5 +1,7 @@
 package com.school.schooldeal.model;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobObject;
 
 /**
@@ -8,7 +10,7 @@ import cn.bmob.v3.BmobObject;
  * 用于外卖之外的其他目的地，如食堂，商店，餐馆
  */
 
-public class Store extends BmobObject {
+public class Store extends BmobObject implements Serializable{
 
     private String storeID;
     private int storeType;      //店铺类型

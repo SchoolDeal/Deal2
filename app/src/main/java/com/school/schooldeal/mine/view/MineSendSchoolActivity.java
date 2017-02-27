@@ -33,6 +33,7 @@ public class MineSendSchoolActivity extends BaseActivity {
         refresh.setRefreshing(true);
         presenter = new MineSendSchoolPresenter(this,this);
         presenter.getData();
+        setRefresh();
         initToolBar();
     }
 

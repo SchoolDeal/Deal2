@@ -68,7 +68,7 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
     }
 
     private void setData(){
-        destination.setText(commonRequest.getStudent().getUsername());
+        destination.setText(commonRequest.getStore().getStoreName());
         content.setText(commonRequest.getRequestContent());
         money.setText(commonRequest.getRemuneration()+"元");
         phone.setText(commonRequest.getStudent().getPhoneNum());

@@ -1,5 +1,6 @@
 package com.school.schooldeal.mine.model;
 
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ public class MySendViewHolder extends BaseViewHolder {
     private TextView refund;
     private TextView detailed;
     private TextView storename;
+    private CardView cardView;
     public MySendViewHolder(View itemView) {
         super(itemView);
         image = (ImageView) itemView.findViewById(R.id.item_minesend_school_image);
@@ -28,6 +30,7 @@ public class MySendViewHolder extends BaseViewHolder {
         refund = (TextView) itemView.findViewById(R.id.item_minesend_school_refund);
         detailed = (TextView) itemView.findViewById(R.id.item_minesend_school_detailed);
         storename = (TextView)itemView.findViewById(R.id.item_minesend_school_store);
+        cardView = (CardView)itemView.findViewById(R.id.item_minesend_school);
     }
 
     public ImageView getImage() {
@@ -84,5 +87,13 @@ public class MySendViewHolder extends BaseViewHolder {
 
     public void setStorename(TextView storename) {
         this.storename = storename;
+    }
+
+    public CardView getCardView() {
+        return cardView;
+    }
+
+    public void setCardView(CardView cardView) {
+        this.cardView = cardView;
     }
 }

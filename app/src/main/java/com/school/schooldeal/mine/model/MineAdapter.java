@@ -12,9 +12,11 @@ import android.widget.TextView;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
 import com.school.schooldeal.base.BaseViewHolder;
+import com.school.schooldeal.commen.util.ToastUtil;
 import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.mine.view.AboutUsActivity;
 import com.school.schooldeal.mine.view.FedBackActivity;
+import com.school.schooldeal.mine.view.MineOverReqestActivity;
 import com.school.schooldeal.mine.view.MineReceivedActivity;
 import com.school.schooldeal.mine.view.MineSendSchoolActivity;
 import com.school.schooldeal.takeout.view.TakeoutListActivity;
@@ -72,7 +74,9 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                 //接收的订单
                 break;
             case Util.order_finish:
-                TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.FINISHED);
+                //TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.FINISHED);
+                Intent intent1 = new Intent(getContext(), MineOverReqestActivity.class);
+                getContext().startActivity(intent1);
                 //完成的订单
                 break;
             case Util.fed_back:

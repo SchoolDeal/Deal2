@@ -1,12 +1,14 @@
 package com.school.schooldeal.model;
 
+import java.io.Serializable;
+
 import cn.bmob.v3.BmobUser;
 
 /**
  * Created by GavynZhang on 2017/1/20 18:22.
  */
 
-public class Student extends BmobUser {
+public class Student extends BmobUser implements Serializable{
 
     private String studentID;       //ID
     private School school;          //对应学校
