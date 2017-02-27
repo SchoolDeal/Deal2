@@ -36,4 +36,12 @@ public interface ImplSignUp {
 
 
     void setAddress(String address);
+
+    void showProgressDialog(String title, String content);
+
+    void dismissProgressDialog();
+
+    void hideClickSchoolSoftInput();
+
+    void hideClicApartSoftInput();
 }

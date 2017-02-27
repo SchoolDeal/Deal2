@@ -68,7 +68,6 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                 getContext().startActivity(intent2);
                 break;
             case Util.order_receive:
-                //TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.RECEIVED);
                 Intent intent = new Intent(getContext(), MineReceivedActivity.class);
                 getContext().startActivity(intent);
                 //接收的订单

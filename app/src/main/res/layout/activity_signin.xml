@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/signIn"
             android:layout_marginTop="12dp"
-            android:background="@color/white"
+            android:background="@color/md_teal_400"
             android:text="Sign up"
             android:id="@+id/signUp" />
         <Button
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_password"
             android:layout_marginTop="12dp"
-            android:background="@color/white"
+            android:background="@color/md_teal_400"
             android:text="Sign in"
             android:id="@+id/signIn" />
     </RelativeLayout>
@@ -60,28 +60,27 @@
         android:gravity="center_horizontal"
         android:id="@+id/choice"
         android:orientation="vertical">
-        <TextView
+        <Button
             android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/sign_choice"
+            android:layout_height="106dp"
+            android:background="@mipmap/rectangle1"
             android:gravity="center"
             android:text="我是店家"
             android:id="@+id/restaurant"
             android:textColor="@color/white"
-            android:textSize="32dp"
+            android:textSize="28dp"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"/>
-        <TextView
+        <Button
             android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/sign_choice"
-            android:layout_marginTop="12dp"
+            android:layout_height="106dp"
+            android:background="@mipmap/rectangle1"
             android:gravity="center"
             android:id="@+id/student"
             android:text="我是学生"
             android:textColor="@color/white"
-            android:textSize="32dp"
+            android:textSize="28dp"
             android:focusable="true"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"/>

@@ -38,6 +38,7 @@ public class SignUpModel implements ImplSignUpModel{
             @Override
             public void onError(int i, String s) {
                 ToastUtil.makeShortToast(context,"未获取到学校数据");
+                ListToDialog.getSchoolOrApartMsgError(s);
             }
         });
     }
@@ -55,6 +56,7 @@ public class SignUpModel implements ImplSignUpModel{
             @Override
             public void onError(int i, String s) {
                 ToastUtil.makeShortToast(context,"未获取到公寓数据");
+                ListToDialog.getSchoolOrApartMsgError(s);
             }
         });
     }

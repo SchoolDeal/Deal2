@@ -13,4 +13,6 @@ public interface ListToDialog {
     void setSchoolListToDialog(List<School> schoolList);
 
     void setApartmentListToDialog(List<Apartment> list);
+
+    void getSchoolOrApartMsgError(String s);
 }

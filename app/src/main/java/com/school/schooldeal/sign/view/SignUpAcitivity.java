@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,7 +23,6 @@ import com.school.schooldeal.commen.util.Util;
 import com.school.schooldeal.sign.presenter.SignUpPresenter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -61,6 +60,7 @@ public class SignUpAcitivity extends BaseActivity
 
     private SignUpPresenter presenter;
     private Located located;
+    private MaterialDialog progress;
 
     public static Intent getIntentToSignUpActivity(Context context) {
         Intent intent = new Intent(context, SignUpAcitivity.class);
@@ -173,6 +173,7 @@ public class SignUpAcitivity extends BaseActivity
 
     @OnClick(R.id.signUp)
     public void onClick() {
+        showProgressDialog("请稍候","正在注册......");
         if (checkUserName()) {
             if (Util.IS_STUDENT) {
                 presenter.signUpStudent();
@@ -185,6 +186,7 @@ public class SignUpAcitivity extends BaseActivity
     private boolean checkUserName() {
         if (!editName.validateWith(
                 new RegexpValidator("不符合长度要求或姓名中含有非法字符", ConstUtils.REGEX_USERNAME))) {
+            dismissProgressDialog();
             return false;
         }
         return true;
@@ -235,5 +237,35 @@ public class SignUpAcitivity extends BaseActivity
                 ToastUtil.makeShortToast(context, aMapLocation.getErrorInfo());
             }
         }
+    }
+
+    @Override
+    public void showProgressDialog(String title, String content){
+        progress = new MaterialDialog.Builder(context)
+                .title(title)
+                .content(content)
+                .progress(true,0)
+                .build();
+        progress.show();
+    }
+
+    @Override
+    public void dismissProgressDialog(){
+        progress.dismiss();
+    }
+
+    @Override
+    public void hideClickSchoolSoftInput() {
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editSchool.getWindowToken(), 0);
+    }
+
+    @Override
+    public void hideClicApartSoftInput() {
+        editApartment.clearFocus();
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editApartment.getWindowToken(),0);
     }
 }

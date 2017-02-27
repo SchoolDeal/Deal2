@@ -131,7 +131,7 @@ public class SignInAcitivty extends BaseActivity implements ImplSignIn {
                 public void onError(RongIMClient.ErrorCode errorCode) {
                     ToastUtil.makeShortToast(context,"connect false:"+errorCode);
                     dismissDialog();
-                    
+                    showView();
                     Log.d("bbbb","tokenerror");
                 }
             });

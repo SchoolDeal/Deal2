@@ -2,6 +2,7 @@ package com.school.schooldeal.sign.presenter;
 
 import android.content.Context;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -64,6 +65,7 @@ public class SignUpPresenter implements ListToDialog{
 
         if (name.equals("")||password.equals("")||schoolNumber.equals("")||phone.equals("")||email.equals("")||apartment==null||school==null||sex==0||"".equals(bedroom)){
             ToastUtil.makeShortToast(context, "出现输入错误");
+            signUp.dismissProgressDialog();
             return;
         }else {
             StudentUser user = new StudentUser(context,name,password,apartment,school,schoolNumber,
@@ -73,10 +75,12 @@ public class SignUpPresenter implements ListToDialog{
                 @Override
                 public void onSuccess() {
                     Toast.makeText(context,"sign up success",Toast.LENGTH_SHORT).show();
+                    signUp.dismissProgressDialog();
                     signUp.finishView();
                 }
                 @Override
                 public void onFailure(int i, String s) {
+                    signUp.dismissProgressDialog();
                     Toast.makeText(context,"sign false  "+s,Toast.LENGTH_SHORT).show();
                 }
             });
@@ -98,10 +102,12 @@ public class SignUpPresenter implements ListToDialog{
             @Override
             public void onSuccess() {
                 Toast.makeText(context,"sign up success",Toast.LENGTH_SHORT).show();
+                signUp.dismissProgressDialog();
                 signUp.finishView();
             }
             @Override
             public void onFailure(int i, String s) {
+                signUp.dismissProgressDialog();
                 Toast.makeText(context,"sign false  "+s,Toast.LENGTH_SHORT).show();
             }
         });
@@ -120,6 +126,7 @@ public class SignUpPresenter implements ListToDialog{
     }
 
     private void chooseSchool(final List<String> schoolList) {
+        signUp.dismissProgressDialog();
         new MaterialDialog.Builder(context)
                 .items(schoolList)
                 .itemsCallback(new MaterialDialog.ListCallback() {
@@ -133,6 +140,7 @@ public class SignUpPresenter implements ListToDialog{
     }
 
     public void chooseApartMent(final List<String> apartmentList) {
+        signUp.dismissProgressDialog();
         new MaterialDialog.Builder(context)
                 .items(apartmentList)
                 .itemsCallback(new MaterialDialog.ListCallback() {
@@ -158,6 +166,8 @@ public class SignUpPresenter implements ListToDialog{
     }
 
     public void clickSchoolEdit() {
+        signUp.hideClickSchoolSoftInput();
+        signUp.showProgressDialog("请稍候","正在获取学校数据......");
         signUpModel.getSchoolListFromBmob();
     }
 
@@ -189,11 +199,18 @@ public class SignUpPresenter implements ListToDialog{
         chooseApartMent(apartmentNames);
     }
 
+    @Override
+    public void getSchoolOrApartMsgError(String s) {
+        signUp.dismissProgressDialog();
+    }
+
     public void clickApartmentEdit() {
+        signUp.hideClicApartSoftInput();
         if (!schoolSelected){
             ToastUtil.makeShortToast(context,"请先选择学校");
             return;
         }
+        signUp.showProgressDialog("请稍候","正在获取公寓数据......");
         signUpModel.getApartmentListFromBmob(school);
     }
 }
