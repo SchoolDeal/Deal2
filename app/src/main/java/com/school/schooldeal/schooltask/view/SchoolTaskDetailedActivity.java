@@ -112,4 +112,8 @@ public class SchoolTaskDetailedActivity extends BaseActivity implements ImplScho
         }
     }
 
+    public void onback(){
+        this.onBackPressed();
+    }
+
 }

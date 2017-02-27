@@ -121,7 +121,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
             orderBean.setId(request.getObjectId());
             orderBean.setStatus(request.getStatus());
             if (!orders.contains(orderBean))
-                orders.add(orderBean);
+                orders.add(0,orderBean);
         }
         mPresenter.loadOrdersSuccess(orders);
     }

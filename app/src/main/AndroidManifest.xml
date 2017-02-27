@@ -183,6 +183,13 @@
             </intent-filter>
         </receiver>
 
+        <!--复制添加-->
+        <receiver android:name=".schooltask.view.SchoolTaskReleaseActivity$MsgRecive" >
+            <intent-filter>
+                <action android:name="deal.school.action.SCHOOLMSG"/>
+            </intent-filter>
+        </receiver>
+
         <!-- 设置bmob appkey -->
         <meta-data
             android:name="Bmob_APP_KEY"

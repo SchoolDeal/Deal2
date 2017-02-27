@@ -1,6 +1,11 @@
 package com.school.schooldeal.schooltask.view;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +44,8 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
     EditText remarks;
     private List<String> stores;
     private Boolean chooseStore = false;
-
+    private MaterialDialog materialDialog;
+    private MsgRecive msgRecive;
     @Override
     protected void initData() {
         initToolBar();
@@ -48,6 +54,10 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
         send.setOnClickListener(this);
         arrow.setOnClickListener(this);
         storename.setOnClickListener(this);
+        msgRecive = new MsgRecive();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("deal.school.action.SCHOOLMSG");
+        registerReceiver(msgRecive,filter);
     }
 
     @Override
@@ -73,6 +83,10 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
                 if (refundText.isEmpty() && contentText.isEmpty() && chooseStore == false){
                     ToastUtil.makeShortToast(context,"请完善订单信息");
                 }else {
+                    materialDialog = new MaterialDialog.Builder(this)
+                            .title("正在发送")
+                            .progress(true,0)
+                            .show();
                     presenter.sendMessage(storename.getText().toString(),contentText,refundText,remarksText);
                 }
                 break;
@@ -102,5 +116,20 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
     @Override
     public void setStores(List<String> stores) {
         this.stores = stores;
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(msgRecive);
+        super.onDestroy();
+    }
+
+    public class MsgRecive extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.e("Release","OK");
+            materialDialog.dismiss();
+        }
     }
 }

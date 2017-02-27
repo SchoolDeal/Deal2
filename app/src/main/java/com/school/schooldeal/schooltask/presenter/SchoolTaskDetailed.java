@@ -27,4 +27,7 @@ public class SchoolTaskDetailed {
     public void setType(){
         schoolTaskDetailedActivity.setType(1);
     }
+    public void onBack(){
+        schoolTaskDetailedActivity.onback();
+    }
 }

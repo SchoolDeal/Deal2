@@ -85,6 +85,15 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
      */
     @Override
     public void saveSuccess() {
+        loadingDialog.dismiss();
+        ToastUtil.makeShortToast(this, "发布成功！！");
+        finish();
+    }
+
+    @Override
+    public void saveFail() {
+        loadingDialog.dismiss();
+        ToastUtil.makeShortToast(this, "发布失败！！");
         finish();
     }
 
@@ -161,6 +170,11 @@ public class TakeoutGenerateActivity extends BaseActivity implements ImplTakeout
                 }
                 break;
             case R.id.generateRequest_takeoutGenerate:
+                loadingDialog = new MaterialDialog.Builder(this)
+                        .title("生成请求")
+                        .content("请稍候")
+                        .progress(true, 0)
+                        .show();
                 generateTakeoutRequest();
                 break;
         }

@@ -117,12 +117,20 @@ public class sendCommonService extends Service {
             @Override
             public void onSuccess() {
                 ToastUtil.makeShortToast(getApplicationContext(),"发送成功");
+                Intent intent = new Intent();
+                intent.setAction("deal.school.action.SCHOOLMSG");
+                sendBroadcast(intent);
+                Log.e("service","OK");
                 stopSelf();
             }
 
             @Override
             public void onFailure(int i, String s) {
                 ToastUtil.makeShortToast(getApplicationContext(),"学校订单发送失败，请稍后重试");
+                Intent intent = new Intent();
+                intent.setAction("deal.school.action.SCHOOLMSG");
+                sendBroadcast(intent);
+                Log.e("service","NO");
                 Log.e("erro in Commonservice",i+" "+s);
                 stopSelf();
             }

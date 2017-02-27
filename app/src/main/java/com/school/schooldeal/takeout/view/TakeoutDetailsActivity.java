@@ -72,6 +72,8 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
     private String dialogTitle = "确认";
     private String dialogContent = "请确认你已将外卖送至收货人寝室，未送到将会对你的信用分产生影响，是否确认已完成该请求？";
 
+    private MaterialDialog captureProgressDialog;
+
     /**
      * 用于启动本Activity
      *
@@ -173,6 +175,7 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
                 mPresenter.loadStudentInfo();
             } else if (takeawayRequest.getStatus() == TakeawayStatusConsts.COMPLETED) {
                 mCaptureDetail.setText("已完成");
+                mPresenter.loadStudentInfo();
             }
 
         }
@@ -207,6 +210,7 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
 
     @Override
     public void finishServiceSuccess() {
+        captureProgressDialog.dismiss();
         ToastUtil.makeShortToast(context, "确认成功！！");
         finish();
     }
@@ -230,9 +234,14 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
             case R.id.restaurant_img:
                 break;
             case R.id.capture_detail:
-                if (status == NOT_BEEN_CAPTURED)
+                if (status == NOT_BEEN_CAPTURED) {
+                    captureProgressDialog = new MaterialDialog.Builder(this)
+                            .title("抢单")
+                            .content("请稍候")
+                            .progress(true, 0)
+                            .show();
                     mPresenter.captureRequest();
-                else if (status == MINE_RECEIVED) {
+                } else if (status == MINE_RECEIVED) {
                     MaterialDialog dialog = new MaterialDialog
                             .Builder(this)
                             .title(dialogTitle)

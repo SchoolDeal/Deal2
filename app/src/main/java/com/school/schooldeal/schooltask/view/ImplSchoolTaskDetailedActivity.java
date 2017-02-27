@@ -7,4 +7,5 @@ package com.school.schooldeal.schooltask.view;
 public interface ImplSchoolTaskDetailedActivity {
     void setType(int type);
     int getType();
+    void onback();
 }

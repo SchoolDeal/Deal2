@@ -46,6 +46,7 @@ public class SchoolTaskDetailedModel implements ImplSchoolTaskDetailedModel{
                             commonRequest.update(context);
                             ToastUtil.makeShortToast(context,"抢单成功");
                             presenter.setType();
+                            presenter.onBack();
                         }
 
                         @Override
@@ -56,6 +57,7 @@ public class SchoolTaskDetailedModel implements ImplSchoolTaskDetailedModel{
                 }else {
                     ToastUtil.makeShortToast(context,"糟糕，单子已经被抢走了");
                     presenter.setType();
+                    presenter.onBack();
                 }
             }
 

@@ -68,6 +68,7 @@ public class MineReceivedStoreModel implements ImplMineReceivedStoreModel{
 
     private void conversionAndLoadSuccess(List<TakeawayService> list){
         TakeOutOrderBean bean;
+        mOrderBeanList.clear();
         for (TakeawayService service : list){
             if (service.getRequest().getStatus() == TakeawayStatusConsts.HAS_BEING_TAKEN) {
                 bean = new TakeOutOrderBean();
@@ -84,7 +85,8 @@ public class MineReceivedStoreModel implements ImplMineReceivedStoreModel{
                 bean.setStudentPhoneNum(service.getRequest().getConsigneePhoneNum());
                 bean.setImgURL(service.getRequest().getRestaurant().getImgUrl());
 
-                mOrderBeanList.add(bean);
+//                if (!mOrderBeanList.contains(bean))
+                    mOrderBeanList.add(0, bean);
             }
         }
         mPresenter.loadOrdersSuccess(mOrderBeanList);

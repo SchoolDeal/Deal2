@@ -42,14 +42,16 @@ public class TakeoutGenerateModel implements ImplTakeoutGenerateModel {
         serviceRequest.save(mContext, new SaveListener() {
             @Override
             public void onSuccess() {
-                ToastUtil.makeShortToast(mContext, "Save to Bmob ok!!!");
+                //ToastUtil.makeShortToast(mContext, "Save to Bmob ok!!!");
                 mGeneratePresenter.saveToBmobSuccess(serviceRequest.getObjectId());
 
             }
 
             @Override
             public void onFailure(int i, String s) {
-                ToastUtil.makeShortToast(mContext, "Save Fail, i: "+i+" String: "+s);
+                //ToastUtil.makeShortToast(mContext, "Save Fail, i: "+i+" String: "+s);
+                Log.e(className, "Save fail, error: "+i+" message: "+s);
+                mGeneratePresenter.saveRequestToBmobFail(i, s);
             }
         });
     }

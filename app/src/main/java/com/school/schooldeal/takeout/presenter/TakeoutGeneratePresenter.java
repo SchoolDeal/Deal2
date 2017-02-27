@@ -177,4 +177,8 @@ public class TakeoutGeneratePresenter {
         mApartment = mApartments.get(position);
     }
 
+    public void saveRequestToBmobFail(int i, String s){
+        mGenerateActivity.saveFail();
+    }
+
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ImplTakeoutGenerateActivity {
     void saveSuccess();
+    void saveFail();
     void loadSchoolSuccess(List<String> schools);
     void loadApartmentSuccess(List<String> apartments);
 }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.school.schooldeal.R;
 import com.school.schooldeal.base.BaseRecyclerAdapter;
@@ -39,6 +40,7 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
     private GenerateService mGenerateService = new GenerateService(getContext(), this);
 
     private int captureItemPosition;
+    private MaterialDialog mDialog;
 
 
     //private List<String> requestIDs = new ArrayList<>();
@@ -118,6 +120,11 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
                 captureItemPosition = position;
                 if (Util.IS_STUDENT) {
                     //mGenerateService.generateService(getLists().get(captureItemPosition), GenerateService.ADAPTER);
+                    mDialog = new MaterialDialog.Builder(getContext())
+                            .title("抢单")
+                            .content("请稍候……")
+                            .progress(true, 0)
+                            .show();
                     mGenerateService.queryTheRequestStatus(getLists().get(captureItemPosition));
                 }
             }
@@ -152,6 +159,7 @@ public class TakeOutDataAdapter extends BaseRecyclerAdapter<TakeOutOrderBean> im
      */
     @Override
     public void captureRequestSuccess() {
+        mDialog.dismiss();
         //通知list进行移除操作
         getLists().remove(captureItemPosition);
         notifyItemRemoved(captureItemPosition);
