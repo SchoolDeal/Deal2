@@ -144,8 +144,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_bedroom"
             android:layout_marginTop="12dp"
-            android:background="@color/md_teal_400"
-            android:text="Sign up"
+            android:background="@color/md_teal_300"
+            android:text="注         册"
+            android:textSize="18dp"
+            android:textColor="@color/white"
             android:id="@+id/signUp" />
     </RelativeLayout>
 </ScrollView>

@@ -44,7 +44,7 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
     EditText remarks;
     private List<String> stores;
     private Boolean chooseStore = false;
-    private MaterialDialog materialDialog;
+    private static MaterialDialog materialDialog;
     private MsgRecive msgRecive;
     @Override
     protected void initData() {
@@ -124,7 +124,7 @@ public class SchoolTaskReleaseActivity extends BaseActivity implements ImplSchoo
         super.onDestroy();
     }
 
-    public class MsgRecive extends BroadcastReceiver{
+    public static class MsgRecive extends BroadcastReceiver{
 
         @Override
         public void onReceive(Context context, Intent intent) {

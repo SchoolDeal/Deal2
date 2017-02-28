@@ -239,10 +239,11 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
                             .title("抢单")
                             .content("请稍候")
                             .progress(true, 0)
-                            .show();
+                            .build();
+                    captureProgressDialog.show();
                     mPresenter.captureRequest();
                 } else if (status == MINE_RECEIVED) {
-                    MaterialDialog dialog = new MaterialDialog
+                    new MaterialDialog
                             .Builder(this)
                             .title(dialogTitle)
                             .content(dialogContent)
@@ -265,6 +266,7 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
                                     dialog.dismiss();
                                 }
                             })
+                            .build()
                             .show();
                 }
                 break;

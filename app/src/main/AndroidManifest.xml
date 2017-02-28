@@ -197,11 +197,13 @@
         <!-- bmobim end -->
         <activity android:name=".takeout.view.TakeoutDetailsActivity">
         </activity>
-        <activity android:name=".takeout.view.TakeoutGenerateActivity">
+        <activity android:name=".takeout.view.TakeoutGenerateActivity"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".schooltask.view.SchoolTaskDetailedActivity">
         </activity>
-        <activity android:name=".schooltask.view.SchoolTaskReleaseActivity"/>
+        <activity android:name=".schooltask.view.SchoolTaskReleaseActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".takeout.view.TakeoutListActivity">
         </activity>
         <activity android:name=".mine.view.MineReceivedActivity" />

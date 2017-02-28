@@ -303,6 +303,11 @@ public class MainActivity extends BaseActivity implements ImplMainActivity,
                 id, name);
     }
 
+    public static void startPrivateForRestaurant(Context context,String id,String name){
+        RongIM.getInstance().startConversation(context, Conversation.ConversationType.PRIVATE,
+                id, name);
+    }
+
     @Override
     public UserInfo getUserInfo(String s) {
         for (BmobUser i : presenter.getUserList()) {
