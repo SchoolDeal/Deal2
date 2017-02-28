@@ -251,6 +251,11 @@ public class TakeoutDetailsActivity extends BaseActivity implements ImplTakeoutD
                             .onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    captureProgressDialog = new MaterialDialog.Builder(TakeoutDetailsActivity.this)
+                                            .title("确认")
+                                            .content("请稍候")
+                                            .progress(true, 0)
+                                            .show();
                                     mPresenter.finishService(mOrderBean.getId(), mOrderBean.getServiceID());
                                 }
                             })
