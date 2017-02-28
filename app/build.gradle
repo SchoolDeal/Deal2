@@ -42,8 +42,6 @@ dependencies {
     compile files('libs/gson-2.6.2.jar')
     //bmob sdk依赖
     compile 'cn.bmob.android:bmob-sdk:3.4.7-aar'
-    //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk，具体的依赖关系可查看下面注释[1]
-    compile 'cn.bmob.android:bmob-im:2.0.5@aar'
     //md
     compile 'com.android.support:design:24.2.1'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
@@ -52,8 +50,6 @@ dependencies {
     compile 'com.wrapp.floatlabelededittext:library:0.0.6'
     compile files('libs/Bmob_Push_V1.0.0beta_20160627.jar')
     compile files('libs/AMap_Location_V3.2.1_20161228.jar')
-    //easyRecyclerView
-    compile 'com.jude:easyrecyclerview:4.3.7'
     //圆形头像
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //融云

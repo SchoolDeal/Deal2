@@ -33,7 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:id="@+id/img_modify"
-            android:src="@mipmap/head"
+            android:src="@color/md_grey_200"
             android:layout_marginRight="22dp"/>
     </RelativeLayout>
     <RelativeLayout

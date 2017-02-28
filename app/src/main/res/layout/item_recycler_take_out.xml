@@ -26,7 +26,7 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/head"
+            android:src="@color/md_grey_200"
             android:id="@+id/img_take_out_item"/>
         <TextView
             android:layout_width="wrap_content"

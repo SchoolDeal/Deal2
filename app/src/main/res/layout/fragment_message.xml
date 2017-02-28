@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/empty"
-            android:src="@mipmap/empty"/>
+            android:id="@+id/empty" />
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

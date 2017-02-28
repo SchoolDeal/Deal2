@@ -15,7 +15,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="66sp"
             android:layout_height="66sp"
-            android:src="@mipmap/head"
+            android:src="@color/md_grey_200"
             android:id="@+id/head"/>
         <LinearLayout
             android:layout_width="match_parent"

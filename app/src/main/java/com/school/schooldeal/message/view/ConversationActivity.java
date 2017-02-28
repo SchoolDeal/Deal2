@@ -56,13 +56,4 @@ public class ConversationActivity extends BaseActivity{
         return R.layout.conversation;
     }
 
-    /*@OnClick(R.id.send)
-    public void onClick() {
-
-    }*/
-
-    /*@Override
-    public void setAdapter(ConversationAdapter adapter) {
-        conversation.setAdapter(adapter);
-    }*/
 }
