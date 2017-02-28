@@ -67,6 +67,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                     if (e == null) {
                         List<TakeawayRequest> result = bmobQueryResult.getResults();
                         if (result != null && result.size() > 0) {
+                            Log.d(className, "______________result: "+result.toString());
                             conversionAndLoadSuccess(result);
                         } else {
                             Log.d(className, "查询成功，无数据返回");
@@ -76,6 +77,7 @@ public class TakeOutFragmentModel implements ImplTakeOutFragmentModel {
                     }else{
                         Log.d(className, "load error: "+e.getErrorCode()+" message: "+e.getMessage());
                         mPresenter.loadOrdersFail(e.getErrorCode(), e.getMessage());
+                        mPresenter.loadDataEmpty();
                     }
                 }
             });

@@ -37,12 +37,15 @@ public class TakeOutFragment extends BaseFragment
 
     @BindView(R.id.takeOutRecycler)
     RecyclerView takeOutRecycler;
-    @BindView(R.id.takeout_fab)
-    FloatingActionButton mTakeoutFab;
     @BindView(R.id.swipeRefresh_takeoutFragment)
     SwipeRefreshLayout mSwipeRefreshTakeoutFragment;
     @BindView(R.id.no_data)
     RelativeLayout mNoData;
+    @BindView(R.id.no_data_rl)
+    RelativeLayout mNoDataRl;
+    @BindView(R.id.takeout_fab)
+    FloatingActionButton mTakeoutFab;
+
 
     private TakeOutFragmentPresenter presenter;
     //FloatingActionBtn动画
@@ -85,21 +88,16 @@ public class TakeOutFragment extends BaseFragment
 
     @Override
     public void loadSuccess() {
-        mNoData.setVisibility(View.GONE);
+        mNoDataRl.setVisibility(View.GONE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
     }
 
     @Override
     public void loadDataEmpty() {
-        mNoData.setVisibility(View.VISIBLE);
+        mNoDataRl.setVisibility(View.VISIBLE);
+        //mNoData.setVisibility(View.VISIBLE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
         ToastUtil.makeShortToast(getContext(), "数据为空");
-    }
-
-    @OnClick(R.id.takeout_fab)
-    public void onClick() {
-        Intent intent = new Intent(getContext(), TakeoutGenerateActivity.class);
-        startActivity(intent);
     }
 
     //RecyclerView滑动监听
@@ -156,4 +154,17 @@ public class TakeOutFragment extends BaseFragment
         });
     }
 
+    @OnClick({R.id.no_data_rl, R.id.takeout_fab})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.no_data_rl:
+                initData();
+                mNoDataRl.setVisibility(View.GONE);
+                break;
+            case R.id.takeout_fab:
+                Intent intent = new Intent(getContext(), TakeoutGenerateActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 }
