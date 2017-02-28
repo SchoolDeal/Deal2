@@ -189,7 +189,6 @@ public class TakeOutOrderBean implements Serializable{
         TakeOutOrderBean that = (TakeOutOrderBean) o;
 
         return id.equals(that.id);
-
     }
 
     @Override
