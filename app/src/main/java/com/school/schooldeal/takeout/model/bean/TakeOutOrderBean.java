@@ -71,6 +71,7 @@ public class TakeOutOrderBean implements Serializable{
         this.restaurantName = restaurantName;
         this.restaurantAddress = restaurantAddress;
         this.money = money;
+
         this.imgURL = imgURL;
     }
 
