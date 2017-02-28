@@ -70,6 +70,7 @@ public class TakeOutFragment extends BaseFragment
         takeOutRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+
     @Override
     public void onResume() {
         super.onResume();
