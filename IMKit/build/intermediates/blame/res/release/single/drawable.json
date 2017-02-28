@@ -40,12 +40,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_btn_send.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_voice_input_selector.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_voice_input_selector.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_ic_files_selector.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_ic_files_selector.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_voice_input_selector.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_voice_input_selector.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_btn_voice.xml",
@@ -80,12 +80,12 @@
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_bg_sidebar.xml"
     },
     {
-        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_sel_picsel_toolbar_back.xml",
-        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_sel_picsel_toolbar_back.xml"
-    },
-    {
         "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_white_bg_shape.xml",
         "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_white_bg_shape.xml"
+    },
+    {
+        "merged": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_sel_picsel_toolbar_back.xml",
+        "source": "G:\\Android\\ProgectFromGithub\\Time\\SchoolDeal\\IMKit\\src\\main\\res\\drawable\\rc_sel_picsel_toolbar_back.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_corner_voice_style.xml",
@@ -100,12 +100,12 @@
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_progress_sending_style.xml"
     },
     {
-        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_selector_title_back_press.xml",
-        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_selector_title_back_press.xml"
-    },
-    {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_an_voice_receive.xml",
         "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_an_voice_receive.xml"
+    },
+    {
+        "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_selector_title_back_press.xml",
+        "source": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\src\\main\\res\\drawable\\rc_selector_title_back_press.xml"
     },
     {
         "merged": "D:\\AboutCode\\Projects\\AndroidProjects\\FromGithub\\Deal2\\IMKit\\build\\intermediates\\res\\merged\\release\\drawable\\rc_btn_send.xml",

@@ -97,8 +97,9 @@ public class TakeOutFragment extends BaseFragment
     public void loadDataEmpty() {
         mNoDataRl.setVisibility(View.VISIBLE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
-        ToastUtil.makeShortToast(getContext(), "数据为空");
+        //ToastUtil.makeShortToast(getContext(), "数据为空");
     }
+
 
     //RecyclerView滑动监听
     private void addOnScrollListener() {
