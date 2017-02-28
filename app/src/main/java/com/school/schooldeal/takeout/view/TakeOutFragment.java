@@ -95,7 +95,6 @@ public class TakeOutFragment extends BaseFragment
     @Override
     public void loadDataEmpty() {
         mNoDataRl.setVisibility(View.VISIBLE);
-        //mNoData.setVisibility(View.VISIBLE);
         mSwipeRefreshTakeoutFragment.setRefreshing(false);
         ToastUtil.makeShortToast(getContext(), "数据为空");
     }
