@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="46dp"
-    android:gravity="center_vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
     android:id="@+id/item_view"
-    android:background="@color/white"
+    android:elevation="0dp"
+    app:cardElevation="0dp"
+    app:cardMaxElevation="2px"
+    app:cardUseCompatPadding="false"
     android:focusable="true"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground">
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_alignBottom="@+id/item_content"
-        android:id="@+id/item_img"
-        android:src="@mipmap/find"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/item_img"
-        android:id="@+id/item_content"
-        android:text="发布订单"
-        android:textSize="16dp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/item_content"
-        android:layout_alignTop="@+id/item_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="12dp"
-        android:src="@mipmap/right"/>
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/item_img"
+            android:src="@mipmap/find"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_img"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:id="@+id/item_content"
+            android:text="发布订单"
+            android:textSize="16dp"/>
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:tint="@color/md_grey_400"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/right"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

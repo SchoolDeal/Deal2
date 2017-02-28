@@ -2,7 +2,11 @@ package com.school.schooldeal.mine.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,8 +34,15 @@ import io.rong.imlib.model.CSCustomServiceInfo;
 
 public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
 
+    private boolean underAPI23;
+
     public MineAdapter(Context context) {
         super(context);
+        ifUnderSDK22();
+    }
+
+    private void ifUnderSDK22() {
+        if (Integer.parseInt(Build.VERSION.SDK)<23) underAPI23 = true;
     }
 
     @Override
@@ -43,15 +54,36 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
     protected void bindData(BaseViewHolder holder, final MineRecyclerItemBean item) {
         ImageView img = holder.getView(R.id.item_img);
         TextView item_content = holder.getView(R.id.item_content);
-        RelativeLayout itemView = holder.getView(R.id.item_view);
+        CardView itemView = holder.getView(R.id.item_view);
         img.setImageResource(item.getImgRes());
         item_content.setText(item.getItem());
+        /*if (underAPI23) itemView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                dealTouchEvent(v,event);
+                return false;
+            }
+        });*/
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 click(item);
             }
         });
+    }
+
+    private void dealTouchEvent(View v,MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                v.setBackgroundColor(getContext().getResources().getColor(R.color.md_grey_200));
+                break;
+            case MotionEvent.ACTION_UP:
+                v.setBackgroundColor(Color.WHITE);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (event.getY()<v.getTop()||event.getY()>v.getBottom()) v.setBackgroundColor(Color.WHITE);
+                break;
+        }
     }
 
     private void click(MineRecyclerItemBean item) {
@@ -63,8 +95,6 @@ public class MineAdapter extends BaseRecyclerAdapter<MineRecyclerItemBean> {
                 }else{
                     TakeoutListActivity.actionStart(getContext(), TakeoutListActivity.PUBLISHED);
                 }
-                //发布的订单
-                //ToastUtil.makeShortToast(getContext(),item.getItem());
                 break;
             case Util.order_receive:
                 Intent intent = new Intent(getContext(), MineReceivedActivity.class);
